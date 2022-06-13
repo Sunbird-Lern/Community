@@ -1,0 +1,6465 @@
+openapi: 3.0.1
+info:
+  title: Discussions Forum
+  description: |-
+    The Discussions Forum API allows users to participate in multiple discussions on the forum. They can:
+      - create multiple discussion categories and have many discussions under each category.
+      - post the questions
+      - reply to posts
+      - upvote or downvote posts
+  version: 1.0.0
+servers:
+- url: https://staging.sunbirded.org/api
+paths:
+  /discussion/categories:
+    get:
+      tags:
+      - categories
+      summary: Get list of all categories
+      description: |-
+        This api is used to fetch all categories from nodebb.
+           - The endpoint for **Category** is `/categories`
+           - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+           - Backend Route: http://nodebb-service:4567/discussions/api/categories
+      operationId: GetCategories
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumListOfCategories'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Categories
+  /discussion/v2/categories:
+    post:
+      tags:
+      - categories
+      summary: Add a new category
+      description: |-
+        This api allows the user to create a new category in nodebb
+          - The endpoint for **Category** is `/v2/categories`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/categories
+      operationId: CreateCategory
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCategory'
+            examples:
+              a:
+                summary: Create simple category
+                value:
+                  name: NodeJS Tutorial
+              b:
+                summary: Create category with all inputs
+                value:
+                  name: NodeJS Tutorial
+                  description: Nodejs Tutorial
+                  bgColor: White
+                  color: black
+                  parentCid: 1
+                  class: category
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCategoryResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Categories
+  /discussion/category/{category_id}/{slug}:
+    get:
+      tags:
+      - categories
+      summary: Get category details
+      description: |-
+        This api allows the user to get all details of a category by using categoryId and slug from nodebb.
+          - The endpoint for **Category** is `/category/{category_id}/{slug}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/category/{category_id}/{slug}
+      operationId: GetCategoryDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: category_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCategoryDetails'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Categories
+  /discussion/category/{cid}:
+    get:
+      tags:
+      - categories
+      summary: Get the category details by category id
+      description: |-
+        This api allow the user to get all the details of categories using categoryId from nodebb
+          - The endpoint for **Category** is `/category/{cid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/category/{cid}
+      operationId: GetCategoryDetailsById
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: cid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCategoryDetails'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Categories
+  /discussion/category/list:
+    post:
+      tags:
+      - categories
+      summary: Get List of category details
+      description: |-
+        This api allow the user to get all the details of categories based on cid mentioned in array from nodebb
+          - The endpoint for **Category** is `/category/list`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/category/list
+      operationId: GetListOfCategoryDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCategoryList'
+            examples:
+              a:
+                summary: Get category details of cid mention in array
+                value:
+                  request: 
+                    cids: 
+                      - 2
+                      - 3
+        required: true    
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCategoryListResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Categories    
+  /discussion/v2/categories/{cid}:
+    put:
+      tags:
+      - categories
+      summary: Updates already existing catrgory details
+      description: |-
+        This api can updated the category details based on the category id which we created previously
+          - The endpoint for **Category** is `/v2/categories/{cid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/categories/{cid}
+      operationId: UpdateCategory
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: cid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCategory'
+            examples:
+              a:
+                summary: Update the category
+                value:
+                  description: Nodejs Tutorial
+                  bgColor: White
+                  color: black
+                  parentCid: 1
+                  class: category
+        required: false
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCategoryResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Categories
+    delete:
+      tags:
+      - categories
+      summary: Delete the Category
+      description: |-
+        This api allows the user to delete the existing category by using categoryID from nodebb
+          - The endpoint for **Category** is `/v2/categories/{cid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/categories/{cid}
+      operationId: DeleteCategory
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: cid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Categories
+  /discussion/v2/categories/{cid}/moderators:
+    get:
+      tags:
+      - categories
+      summary: Get the moderators list for a category
+      description: |-
+        This api can get the list of category moderators based on the category ID that we created previously
+          - The endpoint for **Category** is `/v2/categories/{cid}/moderators`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/categories/{cid}/moderators
+      operationId: GetModeratorsList
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: cid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumModeratorsResponse'
+              examples:
+                a:
+                  summary: "Success response"
+                  value:
+                    uid : 8
+                    username : content_reviewer_tn1970
+                    userslug : content_reviewer_tn1970
+                    picture : null
+                    displayname : content_reviewer_tn1970
+                    icon:text : C
+                    icon:bgColor : #1b5e20
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Categories    
+  /discussion/v2/categories/{cid}/state:
+    put:
+      tags:
+      - categories
+      summary: Enable category
+      description: |-
+        This api allow the user to enable the category(If the category is in disable state)
+          - The endpoint for **Category** is `/v2/categories/{cid}/state`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/categories/{cid}/state
+      operationId: EnableCategories
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: cid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Categories  
+    delete:
+      tags:
+      - categories
+      summary: Disable Category
+      description: |-
+        This api allow the user to disable category in nodebb
+          - The endpoint for **Category** is `/v2/categories/{cid}/state`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/categories/{cid}/state
+      operationId: DisableCategories
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: cid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Categories  
+  /discussion/v2/categories/{cid}/privileges:
+    put:
+      tags:
+      - categories
+      summary: Add privileges to category
+      description: |-
+        This api allow the user to add privilages for category in nodebb.
+          - The endpoint for **Category** is `/v2/categories/{cid}/privileges`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/categories/{cid}/privileges
+      operationId: AddPrivilagesToCategories
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: cid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumAddPrivilagesToCategory'
+            examples:
+              a:
+                summary: Success operation
+                value:
+                  'groups:topics:create'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Categories  
+    delete:
+      tags:
+      - categories
+      summary: Remove privileges for a category
+      description: |-
+        This api allow user to remove privileges for a category in nodebb.
+          - The endpoint for **Category** is `/v2/categories/{cid}/state`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/categories/{cid}/privileges
+      operationId: RemovePrivilagesCategories
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: cid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer    
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Categories      
+  /discussion/user/{userslug}:
+    get:
+      tags:
+      - users
+      summary: Fetch nodebb user details
+      description: |-
+        This api is used for fetching the user details based on user slug from nodebb.
+          - The endpoint for **User** is `/user/{userslug}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/user/{userslug}
+      operationId: GetUserDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userslug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumUserDetails'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Users
+  /discussion/user/uid/{uid}:
+    get:
+      tags:
+      - users
+      summary: Fetch nodebb user details by using uid
+      description: |-
+        This api is used for fetching the user details based on nodebb uid.
+          - The endpoint for **User** is `/user/uid/{uid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/user/uid/{uid}
+      operationId: GetUserDetailsByUid
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: uid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumUserDetailsByUid'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Users    
+  /discussion/user/{userslug}/upvoted:
+    get:
+      tags:
+      - users
+      summary: Fetch user upvoted posts list
+      description: |-
+        This api is used for fetching the user upvote details from nodebb.
+          - The endpoint for **User** is `/user/{userslug}/upvoted`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/user/{userslug}/upvoted
+      operationId: GetUserUpvoteDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userslug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumUserDetails'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Users
+  /discussion/user/{userslug}/downvoted:
+    get:
+      tags:
+      - users
+      summary: Fetch user downvoted posts list
+      description: |-
+        This api is used for fetching the user down vote details from nodebb.
+          - The endpoint for **User** is `/user/{userslug}/downvoted`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/user/{userslug}/downvoted
+      operationId: GetUserDownvoteDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userslug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumUserDetails'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Users
+  /discussion/user/{userslug}/bookmarks:
+    get:
+      tags:
+      - users
+      summary: Fetch user bookmarked posts
+      description: |-
+        This api is used for fetching the user bookmark post details from nodebb.
+          - The endpoint for **User** is `/user/{userslug}/bookmarks`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/user/{userslug}/bookmarks
+      operationId: GetUserBookmarkDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userslug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumUserDetails'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Users
+  /discussion/user/{userslug}/posts:
+    get:
+      tags:
+      - users
+      summary: Fetch user recent posts
+      description: |-
+        This api is used for fetching the user recent post details from nodebb.
+          - The endpoint for **User** is `/user/{userslug}/posts`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/user/{userslug}/posts
+      operationId: GetUserPostsDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userslug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumUserDetails'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Users    
+  /discussion/v2/users:
+    post:
+      tags:
+      - users
+      summary: Create new user in nodebb using write api plugin
+      description: |-
+        This api is used for creating the user in nodebb using write api plugin.
+          - The endpoint for **User** is `/v2/users`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/users
+      operationId: CreateNewUser
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCreateUser'
+            examples:
+              a:
+                summary: Create user
+                value:
+                  username: Vinu Kumar
+                  email: example@gmail.com
+                  password: Test@123
+        required: false
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCreateUserResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Users
+  /discussion/v2/users/{uid}:
+    put:
+      tags:
+      - users
+      summary: Updates a user's profile information
+      description: |-
+        This api is used to update user's profile information in nodebb.
+          - The endpoint for **User** is `/v2/users/{uid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/users/{uid}
+      operationId: UpdateUserInfo
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: uid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumUpdateUserInfo'
+            examples:
+              a:
+                summary: Update user info
+                value:
+                  username: Venkat
+                  email: example@gmail.com
+                  fullname: venkat kadiveti
+                  website: https://example.org/
+                  location: Bangalore
+                  birthday: 02/04/1995
+                  signature: venkat
+        required: false
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumPostOperationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Users
+    delete:
+      tags:
+      - users
+      summary: Deletes a user from nodebb
+      description: |-
+        This api is used for deleting user in nodebb.
+          - The endpoint for **User** is `/v2/users/{uid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/users/{uid}
+      operationId: DeleteUser
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: uid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumPostOperationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Users
+  /discussion/user/v1/create:
+    post:
+      tags:
+      - users
+      summary: Create new user in nodebb Sunbird OIDC
+      description: |-
+        This api is used for creating the user in nodebb usig Sunbird OIDC plugin.
+          - The endpoint for **User** is `/user/v1/create`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/user/v1/create
+      operationId: CreateNewUserUsingOIDC
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCreateUserOIDC'
+            examples:
+              a:
+                summary: Create user
+                value:
+                  request:
+                    example: 
+                     id : api.discussions.user.create
+                     ver : 1.0
+                     params :
+                      resmsgid : 
+                      msgid : 
+                      status : unsuccessful
+                      msg : User already Exists
+                     responseCode : 400
+                     result : 
+                        userId : 
+                          uid: 1
+                        userSlug : content_creator_tn3941
+                        userName : content_creator_tn3941
+        required: false
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCreateUserResponseOIDC'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Users
+  /discussion/unread:
+    get:
+      tags:
+      - topics
+      summary: Get unread topics
+      description: |-
+        This api allow the user to get all the unread topics in nodebb
+          - The endpoint for **Topics** is `/unread`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/unread
+      operationId: GetUnreadTopics
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumTopicResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Topics
+  /discussion/recent:
+    get:
+      tags:
+      - topics
+      summary: Get recent topics
+      description: |-
+        This api allow the user to get all the recent topics in nodebb
+          - The endpoint for **Topics** is `/recent`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/recent
+      operationId: GetRecentTopics
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumTopicResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Topics
+  /discussion/popular:
+    get:
+      tags:
+      - topics
+      summary: Get popular topics
+      description: |-
+        This api allow the user to get all the popular topics in nodebb
+          - The endpoint for **Topics** is `/recent`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/popular
+      operationId: GetPopularTopics
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumTopicResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Topics
+  /discussion/top:
+    get:
+      tags:
+      - topics
+      summary: Get top topics
+      description: |-
+        This api allow the user to get all top topics in nodebb
+          - The endpoint for **Topics** is `/top`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/top
+      operationId: GetTopTopics
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumTopTopicResponse'
+              examples:
+                a:
+                  summary: 'Success response'
+                  value:
+                    nextStart : 20
+                    topicCount : 50
+                    topics :
+                      mainPid : 67
+                      postcount : 5
+                      slug : 35/how-to-enroll-into-nishtha-courses
+                      tid : 35
+                      timestamp : 1610697802418
+                      title : How to enroll into Nishtha courses
+                      uid : 18
+                      viewcount : 103
+                      postercount : 5
+                      teaserPid : 109
+                      downvotes : 0
+                      upvotes : 3
+                      deleted : 0
+                      locked : 0
+                      pinned : 0
+                      pinExpiry : 0
+                      deleterUid : 0
+                      titleRaw : How to enroll into Nishtha courses
+                      timestampISO : 2021-01-15T08:03:22.418Z
+                      lastposttimeISO : 2021-01-20T05:48:10.675Z
+                      pinExpiryISO : 
+                      votes : 3
+                      thumbs : 
+                      category :
+                        cid : 9
+                        lastposttime : 1611121690675
+                        name : General Discussion
+                        slug : 9/general-discussion
+                        icon : fa-comments
+                        backgroundImage : null
+                        imageClass : cover
+                        bgColor : #BA8BAF
+                        color : #ffffff
+                        disabled : 0
+                      user : 
+                        cid : 9
+                        lastposttime : 1611121690675
+                        uid : 18
+                        username : vsv.df1_t1p1
+                        userslug : vsv-df1_t1p1
+                        reputation : 3
+                        postcount : 1
+                        picture : null
+                        signature : null
+                        banned : 0
+                        status : offline
+                        displayname : vsv.df1_t1p1
+                        icon:text : V
+                        icon:bgColor : #2196f3
+                        banned_until_readable : Not Banned
+                      teaser : null
+                      tags : 
+                      isOwner : false
+                      ignored : false
+                      unread : false
+                      bookmark : 1
+                      unreplied : false
+                      icons : 
+                      index : 0
+                    tids : 
+                    canPost : true
+                    showSelect : true
+                    showTopicTools : true
+                    categories : 
+                    allCategoriesUrl : top
+                    selectedCategory : null
+                    selectedCids : 
+                    feeds:disableRSS : 0
+                    rssFeedUrl : /discussions/top/alltime.rss?uid=6&token=bdb3cc19-791f-4d4a-a97c-895565cb3ad7
+                    title : null
+                    filters : 
+                    selectedFilter : null
+                    terms : 
+                    selectedTerm : null
+                    pagination : null
+                    breadcrumbs : 
+                    loggedIn : true
+                    relative_path : /discussions
+                    template : null
+                    url : /discussions/top
+                    bodyClass : page-top page-status-200
+                    _header : null
+                    widgets : null
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Topics    
+  /discussion/unread/total:
+    get:
+      tags:
+      - topics
+      summary: Get total count
+      description: |-
+        This api allow the user to get count of unread topics in nodebb
+          - The endpoint for **Topics** is `/unread/total`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/unread/total
+      operationId: GetCountOfTopics
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCountOfTopic'
+              examples:
+                a:
+                  summary: "success response"
+                  value:
+                    10
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Topics    
+  /discussion/topic/teaser/{topic_id}:
+    get:
+      tags:
+      - topics
+      summary: Get teaser of topic
+      description: |-
+        This api allow the user to get teaser details of topic in nodebb
+          - The endpoint for **Topics** is `/topic/teaser/{topic_id}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/topic/teaser/{topic_id}
+      operationId: GetTeaserOfTopics
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: topic_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer    
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumTeaserTopicDetails'
+              examples:
+                a:
+                  summary: "success response"
+                  value:
+                    pid : 16
+                    tid : 16
+                    content : <p dir="auto">Disucssion umesh 1</p>
+                    uid : 4
+                    timestamp : 1610103898937
+                    deleted : false
+                    upvotes : 0
+                    downvotes : 0
+                    replies : 0
+                    votes : 0
+                    timestampISO : 2021-01-08T11:04:58.937Z
+                    user : 
+                      uid : 4
+                      username : nodebb
+                      userslug : nodebb
+                      picture : null
+                      status : offline
+                      displayname : nodebb
+                      icon:text : N
+                      icon:bgColor : #9c27b0
+                    topic : 
+                      uid : 4
+                      tid : 16
+                      title : Disucssion umesh 1
+                      cid : 8
+                      slug : 16/disucssion-umesh-1
+                      deleted : 0
+                      postcount : 1
+                      mainPid : 16
+                      teaserPid : null
+                      titleRaw : Disucssion umesh 1
+                    category : 
+                      cid : 8
+                      name : Announcements
+                      icon : fa-comments
+                      slug : 8/announcements
+                      parentCid : 7
+                      bgColor : #A1B56C
+                      color : #ffffff
+                      backgroundImage : null
+                      imageClass : cover
+                    isMainPost : true
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Topics    
+  /discussion/topic/{topic_id}/{slug}:
+    get:
+      tags:
+      - topics
+      summary: Get topics details
+      description: |-
+        This api allow the user to get topics details by using topicId ad slug from nodebb
+          - The endpoint for **Topics** is `/topic/{topic_id}/{slug}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/topic/{topic_id}/{slug}
+      operationId: GetTopicsDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: topic_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: slug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumTopicDetails'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Topics
+  /discussion/topic/pagination/{topic_id}:
+    get:
+      tags:
+      - topics
+      summary: Get Paginate details topics
+      description: |-
+        This api allow the user to get paginations topics in nodebb
+          - The endpoint for **Topics** is `/topic/pagination/{topic_id}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/topic/pagination/{topic_id}
+      operationId: GetPaginationTopics
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: topic_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer    
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumTopicPaginationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Topics
+  /discussion/v2/topics:
+    post:
+      tags:
+      - topics
+      summary: Create new topic
+      description: |-
+        This api allow the user to create new topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics
+      operationId: CreateNewTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCreateTopicBody'
+            examples:
+              a:
+                summary: Create simple topic
+                value:
+                  cid: 1
+                  title: Learning
+                  content: All Javascript frameworks
+              b:
+                summary: Create topics with tags
+                value:
+                  cid: 1
+                  title: Learning
+                  content: All Javascript frameworks
+                  tags:
+                  - Angular
+                  - React
+        required: false
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCreateTopicResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics
+  /discussion/v2/topics/{tid}/state:
+    put:
+      tags:
+      - topics
+      summary: Delete a topic (Soft delete)
+      description: |-
+        This api allow the user to delete a topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}/state`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}/state
+      operationId: SoftDeleteTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics
+  /discussion/v2/topics/{tid}/follow:
+    put:
+      tags:
+      - topics
+      summary: Follow a topic
+      description: |-
+        This api allow the user to follow a topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}/state`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}/follow
+      operationId: FollowTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics
+    delete:
+      tags:
+      - topics
+      summary: UnFollow a Post
+      description: |-
+        This api allow the user to unfollow a topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}/state`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}/follow
+      operationId: UnFollowTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics 
+  /discussion/v2/topics/{tid}/tags:
+    put:
+      tags:
+      - topics
+      summary: Add tags for a topic
+      description: |-
+        This api allow the user to add tags to a topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}/tags`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}/tags
+      operationId: AddTagsToTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumAddTagsToTopic'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics  
+    delete:
+      tags:
+      - topics
+      summary: Delete tags for a topic
+      description: |-
+        This api allow the user to delete tags for a topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}/tags`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}/tags
+      operationId: DaleteTagsForTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics  
+  /discussion/v2/topics/{tid}/pin:
+    put:
+      tags:
+      - topics
+      summary: Pin a topic
+      description: |-
+        This api allow the user to pin to a topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}/pin`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}/pin
+      operationId: PinTagsToTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumAddTagsToTopic'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics  
+    delete:
+      tags:
+      - topics
+      summary: Unpin a topic
+      description: |-
+        This api allow the user to unpin a topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}/pin`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}/pin
+      operationId: UnPinTagsToTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics      
+  /discussion/v2/topics/{tid}:
+    put:
+      tags:
+      - topics
+      summary: Updates topic details
+      description: |-
+        This api allow the user to update topic details in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}
+      operationId: UpdateTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumUpdateTopicBody'
+            examples:
+              a:
+                summary: Update topic
+                value:
+                  content: Example content
+                  pid: 1
+                  handle: example
+                  title: Topic title
+                  topic_thumb: 0
+                  tags:
+                  - Angular
+        required: false
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCreateTopicResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics
+    post:
+      tags:
+      - topics
+      summary: Create new reply to topic
+      description: |-
+        This api allow the user to create new reply to topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}
+      operationId: CreateNewReplyToTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCreateReplyBody'
+            examples:
+              a:
+                summary: Create Reply
+                value:
+                  content: Example reply to topic
+                  toPid: 1
+        required: false
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCreateTopicResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Topics
+    delete:
+      tags:
+      - topics
+      summary: delete topic
+      description: |-
+        This api allow the user to delete topic in nodebb
+          - The endpoint for **Topics** is `/v2/topics/{tid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/topics/{tid}
+      operationId: DeleteTopic
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: tid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCreateTopicResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Topics
+  /discussion/groups:
+    get:
+      tags:
+      - groups
+      summary: Get group list
+      description: |-
+        This api allows the user to get the groups list in nodebb
+          - The endpoint for **Groups** is `/groups`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/groups
+      operationId: GetGroupList
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumGroupListResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Groups
+  /discussion/groups/{slug}:
+    get:
+      tags:
+      - groups
+      summary: Get group Details
+      description: |-
+        This api allows the user to get the group details in nodebb
+          - The endpoint for **Groups** is `/groups/{slug}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/groups/{slug}
+      operationId: GetGroupDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumGroupDetailsResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Groups
+  /discussion/v2/groups:
+    post:
+      tags:
+      - groups
+      summary: Create new group
+      description: |-
+        This api allow the user to create new group in nodebb
+          - The endpoint for **Groups** is `/v2/groups`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/groups
+      operationId: CreateNewGroup
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumGroupRequestBody'
+            examples:
+              a:
+                summary: Create group
+                value:
+                  name: Group name
+                  description: Group description
+                  hidden: false
+                  private: true
+                  ownerUid: 1
+        required: false
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumGroupResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Groups
+  /discussion/v2/groups/{slug}:
+    delete:
+      tags:
+      - groups
+      summary: Deletes a group
+      description: |-
+        This api allow the user to delete group in nodebb
+          - The endpoint for **Groups** is `/v2/groups/{slug}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/groups/{slug}
+      operationId: DeleteGroup
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumPostOperationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Groups
+  /discussion/v2/groups/{slug}/membership:
+    put:
+      tags:
+      - groups
+      summary: Join to group
+      description: |-
+        This api allow the user to join to group in nodebb
+          - The endpoint for **Groups** is `/v2/groups/{slug}/membership`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/groups/{slug}/membership
+      operationId: JoinToNewGroup
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Groups
+    delete:
+      tags:
+      - groups
+      summary: Exit from group
+      description: |-
+        This api allow the user to Exit from group in nodebb
+          - The endpoint for **Groups** is `/v2/groups/{slug}/membership`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/groups/{slug}/membership
+      operationId: ExitFromNewGroup
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Groups 
+  /discussion/v2/groups/{slug}/membership/{uid}:
+    put:
+      tags:
+      - groups
+      summary: Add User to group
+      description: |-
+        This api allow the user to Add user to group in nodebb
+          - The endpoint for **Groups** is `/v2/groups/{slug}/membership/{uid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/groups/{slug}/membership/{uid}
+      operationId: AddUserIntoGroup
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: uid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer    
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Groups
+    delete:
+      tags:
+      - groups
+      summary: Remove user from group
+      description: |-
+        This api allow the user to remove user from group in nodebb
+          - The endpoint for **Groups** is `/v2/groups/{slug}/membership/{uid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/groups/{slug}/membership/{uid}
+      operationId: RemoveUserFromGroup
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: uid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer    
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Groups    
+  /discussion/v2/posts/{pid}:
+    put:
+      tags:
+      - Posts
+      summary: Edits a post by post ID
+      description: |-
+        This api allows the user to edit post in the nodebb
+          - The endpoint for **Post** is `/v2/posts/{pid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/posts/{pid}
+      operationId: UpdatePost
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: pid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumUpdatePostBody'
+            examples:
+              a:
+                summary: Edit post
+                value:
+                  content: Some example content
+                  title: Post title name
+                  topic_thumb: 0
+                  tags:
+                  - JS
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumPostOperationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Posts
+    delete:
+      tags:
+      - Posts
+      summary: Delete a post by postID
+      description: |-
+        This api allows the user to delete post in the nodebb
+          - The endpoint for **Post** is `/v2/posts/{pid}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/posts/{pid}
+      operationId: DeletePost
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: pid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumPostOperationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Posts
+  /discussion/v2/posts/{pid}/vote:
+    post:
+      tags:
+      - Posts
+      summary: Vote a post by postID
+      description: |-
+        This api allows the user to vote(Up/down) to post in the nodebb
+          - The endpoint for **Post** is `/v2/posts/{pid}/vote`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/posts/{pid}/vote
+      operationId: VotePost
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: pid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        description: The delta must be a number. If delta is > 0, it's considered an upvote;
+          if delta is < 0, it's considered a downvote; otherwise, it's an unvote.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumVotePostBody'
+            examples:
+              a:
+                summary: Up vote
+                value:
+                  delta: 1
+              b:
+                summary: Down vote
+                value:
+                  delta: -1
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumPostOperationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Posts
+    delete:
+      tags:
+      - Posts
+      summary: Remove votes for a post by postID
+      description: |-
+        This api allows the user to delete vote(Up/down) to post in the nodebb
+          - The endpoint for **Post** is `/v2/posts/{pid}/vote`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/posts/{pid}/vote
+      operationId: UnvotesPost
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: pid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumPostOperationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Posts
+  /discussion/v2/posts/{pid}/bookmark:
+    post:
+      tags:
+      - Posts
+      summary: Bookmarks a post by postID
+      description: |-
+        This api allows the user to bookmarks a post in the nodebb
+          - The endpoint for **Post** is `/v2/posts/{pid}/bookmark`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/posts/{pid}/bookmark
+      operationId: BookmarksPost
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: pid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumPostOperationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Posts
+    delete:
+      tags:
+      - Posts
+      summary: Removes bookmarks for a post by postID
+      description: |-
+        This api allows the user to Unbookmarks a post in the nodebb
+          - The endpoint for **Post** is `/v2/posts/{pid}/bookmark`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/posts/{pid}/bookmark
+      operationId: UnbookmarksPost
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: pid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumPostOperationResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Posts
+  /discussion/v2/posts/{pid}/state:
+    put:
+      tags:
+      - Posts
+      summary: Restores a post
+      description: |-
+        This api allows the user to Restores a post in the nodebb
+          - The endpoint for **Post** is `/v2/posts/{pid}/state`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/posts/{pid}/state
+      operationId: RestorePost
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: pid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Posts
+    delete:
+      tags:
+      - Posts
+      summary: Deletes a post
+      description: |-
+        This api allows the user to Deletes a post in the nodebb
+          - The endpoint for **Post** is `/v2/posts/{pid}/state`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/v2/posts/{pid}/state
+      operationId: SoftDeletePost
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: pid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumDeleteCategory'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Posts    
+  /discussion/forum/v2/read:
+    post:
+      tags:
+      - Forum
+      summary: Get Forum Id
+      description: |-
+        This api allow the user to get the forum id
+          - The endpoint for **Forum** is `/forum/v2/read`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/forum/v2/read
+      operationId: GetForumID
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumReadForumCID'
+            examples:
+              a:
+                summary: Create group
+                value:
+                  request :
+                    type: 'course' 
+                    identifier: 'do_12345678996312'
+        required: false  
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumForumResponse'
+                x-content-type: application/json
+      x-swagger-router-controller: Forum
+  /discussion/forum/v2/create:
+    post:
+      tags:
+      - Forum
+      summary: Create forum id
+      description: |-
+        This api allow the user to create new forum id
+          - The endpoint for **Forum** is `/forum/v2/create`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/forum/v2/create
+      operationId: CreateForumID
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCreateForumCID'
+            examples:
+              a:
+                summary: Create forumID
+                value:
+                  sbType: course
+                  cid: 2
+                  sbIdentifier: do_123456789
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumForumResponse'
+                x-content-type: application/json
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Forum
+  /discussion/forum/v2/remove:
+    post:
+      tags:
+      - Forum
+      summary: Remove forum id
+      description: |-
+        This api allow the user to remove forum id
+          - The endpoint for **Forum** is `/forum/v2/remove`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/forum/v2/remove
+      operationId: RemoveForumID
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCreateForumCID'
+            examples:
+              a:
+                summary: Create forumID
+                value:
+                  sbType: course
+                  cid: 
+                    - 2
+                  sbIdentifier: do_123456789
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumRemoveContext'
+                x-content-type: application/json
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Forum 
+  /discussion/forum/v2/uids:
+    post:
+      tags:
+      - Forum
+      summary: Get nodebb uids based on sunbird id
+      description: |-
+        This api allow the user to get nodebb id bypassing sunbird id
+          - The endpoint for **Forum** is `/forum/v2/uids`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/forum/v2/uids
+      operationId: GetNodebbUidByUsingSbIdentifier
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumNodebbUids'
+            examples:
+              a:
+                summary: Get nodebbuids by sending sunbird uids
+                value:
+                  request:
+                    sbIdentifiers:
+                      - '08631a74-4b94-4cf7-a818-831135248a4a'
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumNodebbUidsResponse'
+                x-content-type: application/json
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Forum
+  /discussion/forum/v3/groups/users:
+    post:
+      tags:
+      - Forum
+      summary: Get nodebb users added for a category
+      description: |-
+        This api allow the user to get nodebb users added for a category
+          - The endpoint for **Forum** is `/forum/v3/groups/users`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/forum/v3/groups/users
+      operationId: GetNodebbUsersAddedInCategory
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumNodebbUsersList'
+            examples:
+              a:
+                summary: Get nodebb users added for a category
+                value:
+                  request:
+                    cid: 268
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumNodebbUsersListResponse'
+                x-content-type: application/json
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Forum
+  /discussion/forum/v3/group/membership:
+    post:
+      tags:
+      - Forum
+      summary: Add sunbird users into nodebb group
+      description: |-
+        This api allow the user to add sunbird users into nodebb group
+          - The endpoint for **Forum** is `/forum/v3/groups/membership`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/forum/v3/groups/membership
+      operationId: AddUsersIntoGroups
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumAddUsersIntoGroup'
+            examples:
+              a:
+                summary: Get nodebb users added for a category
+                value:
+                  request:
+                    groups:
+                      - Category Owner
+                    members:
+                      - sbUserName: content_reviewer_tn1970
+                        sbUid: '08631a74-4b94-4cf7-a818-831135248a4a'
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumAddUsersIntoGroupResponse'
+                x-content-type: application/json
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Forum
+  /discussion/forum/tags:
+    post:
+      tags:
+      - Forum
+      summary: Get context based tags
+      description: |-
+        This api allow the user to get context based tags
+          - The endpoint for **Forum** is `/forum/tags`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/forum/tags
+      operationId: GetContextBasedTags
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumContextBasedTags'
+            examples:
+              a:
+                summary: Context based tags discussions
+                value:
+                  request:
+                    cids:
+                      - 2
+                      - 3
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumContextBasedTagsResponse'
+                x-content-type: application/json
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Forum        
+  /discussion/forum/v3/category/{cid}/privileges:
+    post:
+      tags:
+      - Forum
+      summary: Get nodebb privileges added for a category
+      description: |-
+        This api allow the user to get nodebb privileges added for a category
+          - The endpoint for **Forum** is `/forum/v3/category/{cid}/privileges`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/forum/v3/category/{cid}/privileges
+      operationId: GetNodebbPrivilegesAddedInCategory
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: cid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer    
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumNodebbCategoryPrivileges'
+            examples:
+              a:
+                summary: Get nodebb privileges added for a category
+                value:
+                  request:
+                    groups:
+                      - Category Owner
+                      - registered-users
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumNodebbCategoryPrivilegesResponse'
+                x-content-type: application/json
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Forum       
+  /discussion/forum/v3/create:
+    post:
+      tags:
+      - Forum
+      summary: Attaching category for context
+      description: |-
+        This api allow the user to attaching category id with a context
+          - The endpoint for **Forum** is `/forum/v3/create`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/forum/v3/create
+      operationId: AttachingCategoryWithContext
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumAttachCid'
+            examples:
+              a:
+                summary: Attach category with context
+                value:
+                  category: 
+                    name: "Batch 1"
+                    pid: 567
+                    description: "Mentors can start discussions"
+                    privileges:
+                      copyFromCategory: 268
+                    context: 
+                    - type: batch
+                      identifier: "01307806402750054416"
+                    subcategories: 
+                      - name: Annoucements
+                        description: Only creators can make annoucements
+                        privileges:
+                         copyFromParent: true
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumForumontextResponse'
+                x-content-type: application/json
+      x-codegen-request-body-name: body
+      x-swagger-router-controller: Forum    
+  /discussion/tags:
+    get:
+      tags:
+      - tags
+      summary: Get list of all tags
+      description: |-
+        This api is used to fetch tags from nodebb.
+           - The endpoint for **Tags** is `/tags`
+           - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+           - Backend Route: http://nodebb-service:4567/discussions/api/tags
+      operationId: GetTags
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discussionForumListOfTags'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: tags    
+  /discussion/tags/list:
+    post:
+      tags:
+      - tags
+      summary: Get List of category details for based on tag name and cid.
+      description: |-
+        This api allow the user to get all the details of category based on tag name and cid mentioned in array from nodebb
+          - The endpoint for **Tag** is `/tags/list`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/tags/list
+      operationId: GetListOfTagDetails
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumTagList'
+            examples:
+              a:
+                summary: Get category details based on tag name and cid mention in array
+                value:
+                  request:
+                    tag: "nodebb"
+                    cid: 
+                      - 2
+                      - 3
+        required: true    
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumCategoryListResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Tags 
+  /discussion/privileges/v2/copy:
+    post:
+      tags:
+      - privileges
+      summary: Copy privileges from one category to another category 
+      description: |-
+        This api allow the user to copy all privileges from one category to another category.
+          - The endpoint for **Privileges** is `/privileges/v2/copy`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Backend Route: http://nodebb-service:4567/discussions/api/privileges/v2/copy
+      operationId: CopyPrivilegesFromOneToOther
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discussionForumCopyPrivileges'
+            examples:
+              a:
+                summary: Copy privileges from on category to other category 
+                value:
+                  request:
+                    pid: 2
+                    cid: 3
+        required: true    
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumcopyPrivilegesResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discussionForumError'
+      x-swagger-router-controller: Privileges     
+components:
+  schemas:
+    discussionForumCategory:
+      required:
+      - bgColor
+      - class
+      - color
+      - description
+      - name
+      - parentCid
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        bgColor:
+          type: string
+        color:
+          type: string
+        parentCid:
+          type: integer
+        class:
+          type: string
+    discussionForumDeleteCategory:
+      type: object
+      properties:
+        code:
+          type: string
+        payload:
+          type: object
+          properties: {}
+          example: {}
+      example:
+        code: code
+        payload: {}
+    discussionForumCreateUser:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+    discussionForumCategoryResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        payload:
+          $ref: '#/components/schemas/discussionForumCategoryResponse_payload'
+      example:
+        code: code
+        payload:
+          color: color
+          numRecentReplies: numRecentReplies
+          icon: icon
+          link: link
+          description: description
+          topic_count: topic_count
+          imageClass: imageClass
+          parentCid: 6
+          descriptionParsed: descriptionParsed
+          bgColor: bgColor
+          name: name
+          disabled: disabled
+          post_count: post_count
+          isSection: isSection
+          class: class
+          slug: slug
+          cid: 0
+          order: order
+    discussionForumListOfCategories:
+      type: object
+      properties:
+        cid:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        descriptionParsed:
+          type: string
+        icon:
+          type: string
+        bgColor:
+          type: string
+        color:
+          type: string
+        slug:
+          type: string
+        parentCid:
+          type: integer
+        topic_count:
+          type: string
+        post_count:
+          type: string
+        disabled:
+          type: string
+        order:
+          type: string
+        link:
+          type: string
+        numRecentReplies:
+          type: string
+        class:
+          type: string
+        imageClass:
+          type: string
+        isSection:
+          type: string
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/discussionForumListOfCategories_posts'
+        children:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        tagWhitelist:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        unread-class:
+          type: string
+        totalTopicCount:
+          type: integer
+        totalPostCount:
+          type: integer
+        minTags:
+          type: integer
+        maxTags:
+          type: integer
+      example:
+        unread-class: unread-class
+        color: color
+        numRecentReplies: numRecentReplies
+        icon: icon
+        link: link
+        description: description
+        posts:
+        - parentCid: 9
+          index: 2
+          topic:
+            title: title
+            slug: slug
+          pid: 1
+          timestampISO: timestampISO
+          user:
+            uid: 5
+            icon:bgColor: icon:bgColor
+            icon:text: icon:text
+            userslug: userslug
+            picture: picture
+            username: username
+          content: content
+          timestamp: 5
+          cid: 7
+        - parentCid: 9
+          index: 2
+          topic:
+            title: title
+            slug: slug
+          pid: 1
+          timestampISO: timestampISO
+          user:
+            uid: 5
+            icon:bgColor: icon:bgColor
+            icon:text: icon:text
+            userslug: userslug
+            picture: picture
+            username: username
+          content: content
+          timestamp: 5
+          cid: 7
+        totalTopicCount: 3
+        parentCid: 6
+        totalPostCount: 2
+        maxTags: 7
+        descriptionParsed: descriptionParsed
+        bgColor: bgColor
+        children:
+        - {}
+        - {}
+        disabled: disabled
+        tagWhitelist:
+        - {}
+        - {}
+        class: class
+        slug: slug
+        order: order
+        minTags: 4
+        topic_count: topic_count
+        imageClass: imageClass
+        name: name
+        post_count: post_count
+        isSection: isSection
+        cid: 0
+    discussionForumUserDetails:
+      type: object
+      properties:
+        uid:
+          type: string
+        username:
+          type: string
+        userslug:
+          type: string
+        email:
+          type: string
+        email:confirmed:
+          type: boolean
+        joindate:
+          type: integer
+        lastonline:
+          type: integer
+        fullname:
+          type: string
+        location:
+          type: string
+        birthday:
+          type: string
+        website:
+          type: string
+        aboutme:
+          type: string
+        signature:
+          type: string
+        uploadedpicture:
+          type: string
+        profileviews:
+          type: integer
+        reputation:
+          type: integer
+        postcount:
+          type: integer
+        topiccount:
+          type: integer
+        lastposttime:
+          type: integer
+        banned:
+          type: boolean
+        banned:expire:
+          type: integer
+        status:
+          type: string
+        flags:
+          type: string
+        followerCount:
+          type: integer
+        followingCount:
+          type: integer
+        cover:url:
+          type: string
+        cover:position:
+          type: string
+        groupTitle:
+          type: string
+        groupTitleArray:
+          type: array
+          items:
+            type: string
+        icon:text:
+          type: string
+        icon:bgColor:
+          type: boolean
+        joindateISO:
+          type: string
+        lastonlineISO:
+          type: string
+        banned_until:
+          type: integer
+        banned_until_readable:
+          type: string
+        aboutmeParsed:
+          type: string
+        age:
+          type: integer
+        emailClass:
+          type: string
+        ips:
+          type: object
+          properties: {}
+          example: {}
+        isBlocked:
+          type: boolean
+        blocksCount:
+          type: boolean
+        yourid:
+          type: integer
+        theirid:
+          type: integer
+        isTargetAdmin:
+          type: boolean
+        isAdmin:
+          type: boolean
+        isGlobalModerator:
+          type: boolean
+        isModerator:
+          type: boolean
+        isAdminOrGlobalModerator:
+          type: boolean
+        isAdminOrGlobalModeratorOrModerator:
+          type: boolean
+        isSelfOrAdminOrGlobalModerator:
+          type: boolean
+        canEdit:
+          type: boolean
+        canBan:
+          type: boolean
+        canChangePassword:
+          type: boolean
+        isSelf:
+          type: boolean
+        isFollowing:
+          type: boolean
+        hasPrivateChat:
+          type: integer
+        showHidden:
+          type: boolean
+        groups:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        disableSignatures:
+          type: boolean
+        reputation:disabled:
+          type: boolean
+        downvote:disabled:
+          type: boolean
+        profile_links:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        sso:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        websiteLink:
+          type: string
+        websiteName:
+          type: string
+        moderationNote:
+          type: string
+        username:disableEdit:
+          type: boolean
+        email:disableEdit:
+          type: boolean
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/discussionForumUserDetails_posts'
+        latestPosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/discussionForumUserDetails_posts'
+        bestPosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/discussionForumUserDetails_posts'
+        breadcrumbs:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        title:
+          type: string
+        allowCoverPicture:
+          type: boolean
+        selectedGroup:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        loggedIn:
+          type: boolean
+        relative_path:
+          type: string
+        template:
+          type: object
+          properties: {}
+          example: {}
+        url:
+          type: string
+        bodyClass:
+          type: string
+        widgets:
+          type: object
+          properties: {}
+          example: {}
+        _header:
+          type: object
+          properties: {}
+          example: {}
+      example:
+        websiteLink: websiteLink
+        _header: {}
+        reputation: 5
+        blocksCount: true
+        posts:
+        - upvotes: 5
+          pid: 6
+          timestampISO: timestampISO
+          downvotes: 9
+          tid: 7
+          content: content
+          uid: 1
+          deleted: true
+          isMainPost: true
+          topic:
+            uid: 8
+            deleted: 3
+            postcount: 6
+            titleRaw: titleRaw
+            mainPid: 1
+            title: title
+            teaserPid: {}
+            tid: 9
+            slug: slug
+            cid: 6
+          votes: 9
+          category:
+            parentCid: 6
+            bgColor: bgColor
+            color: color
+            backgroundImage: {}
+            name: name
+            icon: icon
+            slug: slug
+            cid: 2
+            imageClass: imageClass
+          user:
+            uid: 6
+            icon:bgColor: icon:bgColor
+            icon:text: icon:text
+            userslug: userslug
+            picture: {}
+            username: username
+            status: status
+          timestamp: 4
+        - upvotes: 5
+          pid: 6
+          timestampISO: timestampISO
+          downvotes: 9
+          tid: 7
+          content: content
+          uid: 1
+          deleted: true
+          isMainPost: true
+          topic:
+            uid: 8
+            deleted: 3
+            postcount: 6
+            titleRaw: titleRaw
+            mainPid: 1
+            title: title
+            teaserPid: {}
+            tid: 9
+            slug: slug
+            cid: 6
+          votes: 9
+          category:
+            parentCid: 6
+            bgColor: bgColor
+            color: color
+            backgroundImage: {}
+            name: name
+            icon: icon
+            slug: slug
+            cid: 2
+            imageClass: imageClass
+          user:
+            uid: 6
+            icon:bgColor: icon:bgColor
+            icon:text: icon:text
+            userslug: userslug
+            picture: {}
+            username: username
+            status: status
+          timestamp: 4
+        sso:
+        - {}
+        - {}
+        icon:text: icon:text
+        isGlobalModerator: true
+        joindate: 0
+        profile_links:
+        - {}
+        - {}
+        reputation:disabled: true
+        banned_until_readable: banned_until_readable
+        allowCoverPicture: true
+        isAdmin: true
+        moderationNote: moderationNote
+        ips: {}
+        latestPosts:
+        - null
+        - null
+        aboutme: aboutme
+        email:confirmed: true
+        isTargetAdmin: true
+        isAdminOrGlobalModerator: true
+        emailClass: emailClass
+        loggedIn: true
+        downvote:disabled: true
+        topiccount: 2
+        relative_path: relative_path
+        isSelf: true
+        breadcrumbs:
+        - {}
+        - {}
+        status: status
+        birthday: birthday
+        template: {}
+        showHidden: true
+        yourid: 1
+        lastposttime: 7
+        isModerator: true
+        signature: signature
+        icon:bgColor: true
+        canEdit: true
+        flags: flags
+        groupTitle: groupTitle
+        isBlocked: true
+        bestPosts:
+        - null
+        - null
+        title: title
+        widgets: {}
+        followingCount: 2
+        lastonlineISO: lastonlineISO
+        email:disableEdit: true
+        uid: uid
+        groupTitleArray:
+        - groupTitleArray
+        - groupTitleArray
+        canChangePassword: true
+        profileviews: 1
+        bodyClass: bodyClass
+        cover:url: cover:url
+        selectedGroup:
+        - {}
+        - {}
+        banned: true
+        banned_until: 4
+        userslug: userslug
+        followerCount: 3
+        email: email
+        website: website
+        isFollowing: true
+        uploadedpicture: uploadedpicture
+        canBan: true
+        lastonline: 6
+        disableSignatures: true
+        banned:expire: 9
+        groups:
+        - {}
+        - {}
+        username:disableEdit: true
+        joindateISO: joindateISO
+        url: url
+        isSelfOrAdminOrGlobalModerator: true
+        websiteName: websiteName
+        hasPrivateChat: 1
+        isAdminOrGlobalModeratorOrModerator: true
+        cover:position: cover:position
+        postcount: 5
+        location: location
+        fullname: fullname
+        aboutmeParsed: aboutmeParsed
+        age: 7
+        theirid: 1
+        username: username
+    discussionForumUserDetailsByUid:
+      type: object
+      properties:
+        uid:
+         type: number
+        username:
+         type: string
+        userslug:
+         type: string
+        email:confirmed:
+         type: number
+        joindate:
+         type: number
+        lastonline:
+         type: number
+        picture:
+         type: object
+        location:
+         type: object
+        birthday:
+         type: object
+        website:
+         type: object
+        aboutme:
+         type: object
+        signature:
+         type: object
+        uploadedpicture:
+         type: object
+        profileviews:
+         type: number
+        reputation:
+         type: number
+        postcount:
+         type: number
+        topiccount:
+         type: number
+        lastposttime:
+         type: number
+        banned:
+         type: number
+        banned:expire:
+         type: number
+        status:
+         type: string
+        flags:
+         type: object
+        followerCount:
+         type: number
+        followingCount:
+         type: number
+        cover:url:
+         type: object
+        cover:position:
+         type: object
+        groupTitle:
+         type: object
+        sunbird-oidcId:
+         type: object
+        displayname:
+         type: string
+        groupTitleArray:
+         type: object
+        icon:text:
+         type: string
+        icon:bgColor:
+         type: string
+        joindateISO:
+         type: string
+        lastonlineISO:
+         type: string
+        banned_until:
+         type: number
+        banned_until_readable:
+         type: string
+    discussionForumCategoryDetails:
+      type: object
+      properties:
+        bgColor:
+          type: string
+        cid:
+          type: integer
+        class:
+          type: string
+        color:
+          type: string
+        description:
+          type: string
+        descriptionParsed:
+          type: string
+        disabled:
+          type: integer
+        icon:
+          type: string
+        imageClass:
+          type: string
+        isSection:
+          type: integer
+        link:
+          type: string
+        name:
+          type: string
+        numRecentReplies:
+          type: integer
+        order:
+          type: integer
+        parentCid:
+          type: integer
+        post_count:
+          type: integer
+        slug:
+          type: string
+        topic_count:
+          type: integer
+        minTags:
+          type: integer
+        maxTags:
+          type: integer
+        totalPostCount:
+          type: integer
+        totalTopicCount:
+          type: integer
+        tagWhitelist:
+          type: array
+          items:
+            type: string
+        unread-class:
+          type: string
+        children:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/discussionForumCategoryDetails_topics'
+        isWatched:
+          type: boolean
+        isNotWatched:
+          type: boolean
+        isIgnored:
+          type: boolean
+        breadcrumbs:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        title:
+          type: string
+        privileges:
+          type: object
+          properties: {}
+          example: {}
+        showSelect:
+          type: boolean
+        showTopicTools:
+          type: boolean
+        rssFeedUrl:
+          type: string
+        feeds:disableRSS:
+          type: integer
+        reputation:disabled:
+          type: integer
+        pagination:
+          type: object
+          properties: {}
+          example: {}
+        loggedIn:
+          type: boolean
+        relative_path:
+          type: string
+        template:
+          type: object
+          properties: {}
+          example: {}
+        url:
+          type: string
+        bodyClass:
+          type: string
+        _header:
+          type: object
+          properties: {}
+          example: {}
+        widgets:
+          type: object
+          properties: {}
+          example: {}
+      example:
+        unread-class: unread-class
+        template: {}
+        privileges: {}
+        pagination: {}
+        color: color
+        numRecentReplies: 5
+        icon: icon
+        link: link
+        _header: {}
+        description: description
+        title: title
+        widgets: {}
+        showSelect: true
+        totalTopicCount: 7
+        parentCid: 2
+        maxTags: 2
+        totalPostCount: 4
+        bgColor: bgColor
+        descriptionParsed: descriptionParsed
+        children:
+        - {}
+        - {}
+        bodyClass: bodyClass
+        disabled: 6
+        rssFeedUrl: rssFeedUrl
+        tagWhitelist:
+        - tagWhitelist
+        - tagWhitelist
+        class: class
+        slug: slug
+        order: 5
+        minTags: 3
+        showTopicTools: true
+        topics:
+        - pinned: 6
+          lastposttime: 1
+          upvotes: 8
+          unreplied: true
+          unread: true
+          timestampISO: timestampISO
+          title: title
+          teaserPid: {}
+          tid: 7
+          uid: 4
+          lastposttimeISO: lastposttimeISO
+          deleterUid: 6
+          isOwner: true
+          mainPid: 1
+          locked: 9
+          slug: slug
+          timestamp: 1
+          ignored: true
+          index: 6
+          downvotes: 9
+          icons: {}
+          tags: {}
+          bookmark: {}
+          deleted: 9
+          postcount: 6
+          viewcount: 5
+          titleRaw: titleRaw
+          votes: 3
+          category: {}
+          user: {}
+          cid: 1
+          teaser: {}
+        - pinned: 6
+          lastposttime: 1
+          upvotes: 8
+          unreplied: true
+          unread: true
+          timestampISO: timestampISO
+          title: title
+          teaserPid: {}
+          tid: 7
+          uid: 4
+          lastposttimeISO: lastposttimeISO
+          deleterUid: 6
+          isOwner: true
+          mainPid: 1
+          locked: 9
+          slug: slug
+          timestamp: 1
+          ignored: true
+          index: 6
+          downvotes: 9
+          icons: {}
+          tags: {}
+          bookmark: {}
+          deleted: 9
+          postcount: 6
+          viewcount: 5
+          titleRaw: titleRaw
+          votes: 3
+          category: {}
+          user: {}
+          cid: 1
+          teaser: {}
+        isNotWatched: true
+        reputation:disabled: 2
+        isWatched: true
+        isIgnored: true
+        topic_count: 9
+        url: url
+        imageClass: imageClass
+        feeds:disableRSS: 1
+        loggedIn: true
+        name: name
+        isSection: 1
+        post_count: 7
+        relative_path: relative_path
+        breadcrumbs:
+        - {}
+        - {}
+        cid: 0
+    discussionForumTopicResponse:
+      type: object
+      properties:
+        nextStart:
+          type: integer
+        topicCount:
+          type: integer
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/discussionForumTopicResponse_topics'
+        tids:
+          type: array
+          items:
+            type: string
+        canPost:
+          type: boolean
+        showSelect:
+          type: boolean
+        showTopicTools:
+          type: boolean
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/discussionForumTopicResponse_categories'
+        allCategoriesUrl:
+          type: string
+        selectedCategory:
+          type: object
+          properties: {}
+          example: {}
+        selectedCids:
+          type: array
+          items:
+            type: string
+        feeds:disableRSS:
+          type: integer
+        rssFeedUrl:
+          type: string
+        title:
+          type: string
+        filters:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        selectedFilter:
+          type: object
+          properties: {}
+          example: {}
+        terms:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        selectedTerm:
+          type: object
+          properties: {}
+          example: {}
+        pagination:
+          type: object
+          properties: {}
+          example: {}
+        breadcrumbs:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        loggedIn:
+          type: boolean
+        relative_path:
+          type: string
+        template:
+          type: object
+          properties: {}
+          example: {}
+        url:
+          type: string
+        bodyClass:
+          type: string
+        _header:
+          type: object
+          properties: {}
+          example: {}
+        widgets:
+          type: object
+          properties: {}
+          example: {}
+      example:
+        template: {}
+        pagination: {}
+        _header: {}
+        nextStart: 0
+        selectedTerm: {}
+        title: title
+        widgets: {}
+        showSelect: true
+        canPost: true
+        selectedCids:
+        - selectedCids
+        - selectedCids
+        terms:
+        - {}
+        - {}
+        bodyClass: bodyClass
+        topicCount: 6
+        rssFeedUrl: rssFeedUrl
+        categories:
+        - parentCid: 5
+          color: color
+          bgColor: bgColor
+          level: level
+          name: name
+          icon: icon
+          selected: true
+          cid: 4
+          imageClass: imageClass
+        - parentCid: 5
+          color: color
+          bgColor: bgColor
+          level: level
+          name: name
+          icon: icon
+          selected: true
+          cid: 4
+          imageClass: imageClass
+        showTopicTools: true
+        topics:
+        - pinned: 1
+          lastposttime: 5
+          upvotes: 1
+          unreplied: true
+          unread: true
+          timestampISO: timestampISO
+          title: title
+          teaserPid: {}
+          tid: 7
+          uid: 3
+          lastposttimeISO: lastposttimeISO
+          deleterUid: 6
+          isOwner: true
+          mainPid: 5
+          locked: 7
+          slug: slug
+          timestamp: 9
+          ignored: true
+          index: 1
+          downvotes: 1
+          icons: {}
+          tags: {}
+          bookmark: {}
+          deleted: 4
+          postcount: 2
+          viewcount: 2
+          titleRaw: titleRaw
+          votes: 7
+          category:
+            parentCid: 6
+            bgColor: bgColor
+            color: color
+            backgroundImage: {}
+            name: name
+            icon: icon
+            slug: slug
+            cid: 2
+            imageClass: imageClass
+          user:
+            uid: 6
+            icon:bgColor: icon:bgColor
+            icon:text: icon:text
+            userslug: userslug
+            picture: {}
+            username: username
+            status: status
+          cid: 1
+          teaser: {}
+        - pinned: 1
+          lastposttime: 5
+          upvotes: 1
+          unreplied: true
+          unread: true
+          timestampISO: timestampISO
+          title: title
+          teaserPid: {}
+          tid: 7
+          uid: 3
+          lastposttimeISO: lastposttimeISO
+          deleterUid: 6
+          isOwner: true
+          mainPid: 5
+          locked: 7
+          slug: slug
+          timestamp: 9
+          ignored: true
+          index: 1
+          downvotes: 1
+          icons: {}
+          tags: {}
+          bookmark: {}
+          deleted: 4
+          postcount: 2
+          viewcount: 2
+          titleRaw: titleRaw
+          votes: 7
+          category:
+            parentCid: 6
+            bgColor: bgColor
+            color: color
+            backgroundImage: {}
+            name: name
+            icon: icon
+            slug: slug
+            cid: 2
+            imageClass: imageClass
+          user:
+            uid: 6
+            icon:bgColor: icon:bgColor
+            icon:text: icon:text
+            userslug: userslug
+            picture: {}
+            username: username
+            status: status
+          cid: 1
+          teaser: {}
+        filters:
+        - {}
+        - {}
+        allCategoriesUrl: allCategoriesUrl
+        url: url
+        selectedFilter: {}
+        tids:
+        - tids
+        - tids
+        feeds:disableRSS: 9
+        loggedIn: true
+        selectedCategory: {}
+        relative_path: relative_path
+        breadcrumbs:
+        - {}
+        - {}
+    discussionForumTopicDetails:
+      type: object
+      properties:
+        cid:
+          type: integer
+        lastposttime:
+          type: integer
+        mainPid:
+          type: integer
+        postcount:
+          type: integer
+        slug:
+          type: string
+        tid:
+          type: integer
+        timestamp:
+          type: integer
+        title:
+          type: string
+        uid:
+          type: integer
+        viewcount:
+          type: integer
+        deleted:
+          type: integer
+        locked:
+          type: integer
+        pinned:
+          type: integer
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        deleterUid:
+          type: integer
+        titleRaw:
+          type: string
+        timestampISO:
+          type: string
+        lastposttimeISO:
+          type: string
+        votes:
+          type: integer
+        teaserPid:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        posts:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        category:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        tagWhitelist:
+          type: array
+          items:
+            type: string
+        minTags:
+          type: integer
+        maxTags:
+          type: integer
+        thread_tools:
+          type: array
+          items:
+            type: string
+        isFollowing:
+          type: boolean
+        isNotFollowing:
+          type: boolean
+        isIgnoring:
+          type: boolean
+        bookmark:
+          type: object
+          properties: {}
+          example: {}
+        postSharing:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        deleter:
+          type: object
+          properties: {}
+          example: {}
+        merger:
+          type: object
+          properties: {}
+          example: {}
+        related:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        unreplied:
+          type: boolean
+        icons:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        privileges:
+          type: object
+          properties: {}
+          example: {}
+        topicStaleDays:
+          type: integer
+        reputation:disabled:
+          type: integer
+        downvote:disabled:
+          type: integer
+        feeds:disableRSS:
+          type: integer
+        bookmarkThreshold:
+          type: integer
+        necroThreshold:
+          type: integer
+        postEditDuration:
+          type: integer
+        postDeleteDuration:
+          type: integer
+        scrollToMyPost:
+          type: boolean
+        allowMultipleBadges:
+          type: boolean
+        privateUploads:
+          type: boolean
+        rssFeedUrl:
+          type: string
+        postIndex:
+          type: integer
+        breadcrumbs:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        pagination:
+          type: object
+          properties: {}
+          example: {}
+        loggedIn:
+          type: boolean
+        relative_path:
+          type: string
+        template:
+          type: object
+          properties: {}
+          example: {}
+        url:
+          type: string
+        bodyClass:
+          type: string
+        loggedInUser:
+          type: object
+          properties: {}
+          example: {}
+        _header:
+          type: object
+          properties: {}
+          example: {}
+        widgets:
+          type: object
+          properties: {}
+          example: {}
+      example:
+        privileges: {}
+        upvotes: 7
+        unreplied: true
+        privateUploads: true
+        postDeleteDuration: 6
+        _header: {}
+        topicStaleDays: 4
+        teaserPid: 6
+        loggedInUser: {}
+        posts:
+        - {}
+        - {}
+        tid: 5
+        postEditDuration: 9
+        deleterUid: 1
+        necroThreshold: 8
+        mainPid: 1
+        rssFeedUrl: rssFeedUrl
+        locked: 2
+        slug: slug
+        reputation:disabled: 5
+        downvotes: 1
+        tags:
+        - tags
+        - tags
+        bookmark: {}
+        feeds:disableRSS: 9
+        isNotFollowing: true
+        loggedIn: true
+        downvote:disabled: 9
+        postIndex: 3
+        titleRaw: titleRaw
+        relative_path: relative_path
+        breadcrumbs:
+        - {}
+        - {}
+        cid: 0
+        allowMultipleBadges: true
+        template: {}
+        pinned: 4
+        pagination: {}
+        lastposttime: 6
+        bookmarkThreshold: 6
+        postSharing:
+        - {}
+        - {}
+        timestampISO: timestampISO
+        title: title
+        widgets: {}
+        deleter: {}
+        uid: 7
+        lastposttimeISO: lastposttimeISO
+        maxTags: 1
+        related:
+        - {}
+        - {}
+        bodyClass: bodyClass
+        tagWhitelist:
+        - tagWhitelist
+        - tagWhitelist
+        timestamp: 2
+        minTags: 7
+        isIgnoring: true
+        isFollowing: true
+        scrollToMyPost: true
+        icons:
+        - {}
+        - {}
+        url: url
+        deleted: 3
+        postcount: 5
+        thread_tools:
+        - thread_tools
+        - thread_tools
+        viewcount: 9
+        votes: 1
+        category:
+        - {}
+        - {}
+        merger: {}
+    discussionForumGroupListResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        allowGroupCreation:
+          type: boolean
+        nextStart:
+          type: integer
+        title:
+          type: string
+        breadcrumbs:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        loggedIn:
+          type: boolean
+        relative_path:
+          type: string
+        template:
+          type: object
+          properties: {}
+          example: {}
+        url:
+          type: string
+        bodyClass:
+          type: string
+        _header:
+          type: object
+          properties: {}
+          example: {}
+        widgets:
+          type: object
+          properties: {}
+          example: {}
+      example:
+        template: {}
+        loggedIn: true
+        bodyClass: bodyClass
+        _header: {}
+        groups:
+        - {}
+        - {}
+        allowGroupCreation: true
+        nextStart: 0
+        title: title
+        relative_path: relative_path
+        widgets: {}
+        breadcrumbs:
+        - {}
+        - {}
+        url: url
+    discussionForumGroupDetailsResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        group:
+          type: object
+          properties: {}
+          example: {}
+        posts:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        isAdmin:
+          type: boolean
+        isGlobalMod:
+          type: boolean
+        allowPrivateGroups:
+          type: integer
+        breadcrumbs:
+          type: array
+          items:
+            type: object
+            properties: {}
+            example: {}
+        loggedIn:
+          type: boolean
+        relative_path:
+          type: string
+        template:
+          type: object
+          properties: {}
+          example: {}
+        url:
+          type: object
+          properties: {}
+          example: {}
+        bodyClass:
+          type: string
+        _header:
+          type: object
+          properties: {}
+          example: {}
+        widgets:
+          type: object
+          properties: {}
+          example: {}
+      example:
+        template: {}
+        _header: {}
+        isGlobalMod: true
+        isAdmin: true
+        title: title
+        widgets: {}
+        posts:
+        - {}
+        - {}
+        url: {}
+        allowPrivateGroups: 0
+        loggedIn: true
+        bodyClass: bodyClass
+        relative_path: relative_path
+        breadcrumbs:
+        - {}
+        - {}
+        group: {}
+    discussionForumCreateTopicResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        payload:
+          $ref: '#/components/schemas/discussionForumCreateTopicResponse_payload'
+      example:
+        code: code
+        payload:
+          topicData:
+            pinned: 4
+            lastposttime: 6
+            upvotes: 7
+            unreplied: 6
+            mainPost: {}
+            unread: true
+            timestampISO: timestampISO
+            title: title
+            teaserPid: {}
+            tid: 5
+            uid: 7
+            lastposttimeISO: lastposttimeISO
+            deleterUid: 1
+            isOwner: true
+            mainPid: 1
+            locked: 2
+            slug: slug
+            timestamp: 2
+            ignored: true
+            downvotes: 1
+            icons: {}
+            tags: {}
+            bookmark: {}
+            deleted: 3
+            postcount: 5
+            viewcount: 9
+            titleRaw: titleRaw
+            votes: 1
+            category: {}
+            user: {}
+            cid: 0
+            teaser: {}
+          postData:
+            isMain: true
+            bookmarked: true
+            selfPost: true
+            index: 9
+            pid: 7
+            timestampISO: timestampISO
+            display_edit_tools: true
+            tid: 4
+            content: content
+            uid: 1
+            display_moderator_tools: true
+            display_move_tools: true
+            topic: {}
+            votes: 6
+            display_delete_tools: true
+            user: {}
+            timestamp: 5
+            cid: 9
+    discussionForumCreateTopicBody:
+      required:
+      - cid
+      - content
+      - title
+      type: object
+      properties:
+        cid:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+    discussionForumCreateReplyBody:
+      required:
+      - content
+      type: object
+      properties:
+        content:
+          type: string
+        toPid:
+          type: integer
+    discussionForumUpdateTopicBody:
+      required:
+      - content
+      - pid
+      type: object
+      properties:
+        pid:
+          type: integer
+        content:
+          type: string
+        handle:
+          type: string
+        title:
+          type: string
+        topic_thumb:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+    discussionForumUpdatePostBody:
+      required:
+      - content
+      type: object
+      properties:
+        content:
+          type: string
+        title:
+          type: string
+        topic_thumb:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+    discussionForumVotePostBody:
+      required:
+      - delta
+      type: object
+      properties:
+        delta:
+          type: integer
+          description: delta must be a number. If delta > 0, it's considered an upvote;
+            if delta < 0, it's considered a downvote; otherwise, it's an unvote.
+    discussionForumPostOperationResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        payload:
+          type: object
+          properties: {}
+          example: {}
+      example:
+        code: code
+        payload: {}
+    discussionForumUpdateUserInfo:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        fullname:
+          type: string
+        website:
+          type: string
+        location:
+          type: string
+        birthday:
+          type: string
+        signature:
+          type: string
+    discussionForumForumResponse:
+      type: object
+      properties:
+        type:
+          type: string
+        identifier:
+          type: string
+        cid:
+          type: integer
+      example:
+        identifier: identifier
+        type: type
+        cid: 0
+    discussionForumForumIdRequestBody:
+      type: object
+      properties:
+        type:
+          type: string
+        identifier:
+          type: string
+        cid:
+          type: integer
+    discussionForumGroupRequestBody:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        hidden:
+          type: boolean
+        private:
+          type: boolean
+        ownerUid:
+          type: integer
+    discussionForumGroupResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        payload:
+          $ref: '#/components/schemas/discussionForumGroupResponse_payload'
+      example:
+        code: code
+        payload:
+          userTitle: userTitle
+          createtime: 0
+          private: 2
+          system: 5
+          hidden: 5
+          userTitleEnabled: 6
+          disableLeave: 9
+          memberCount: 1
+          name: name
+          description: description
+          disableJoinRequests: 7
+          slug: slug
+    discussionForumCreateUserResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        payload:
+          $ref: '#/components/schemas/discussionForumCreateUserResponse_payload'
+      example:
+        code: code
+        payload:
+          uid: 0
+    discussionForumError:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        params:
+          type: object
+          properties: {}
+    discussionForumCategoryResponse_payload:
+      type: object
+      properties:
+        cid:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        descriptionParsed:
+          type: string
+        icon:
+          type: string
+        bgColor:
+          type: string
+        color:
+          type: string
+        slug:
+          type: string
+        parentCid:
+          type: integer
+        topic_count:
+          type: string
+        post_count:
+          type: string
+        disabled:
+          type: string
+        order:
+          type: string
+        link:
+          type: string
+        numRecentReplies:
+          type: string
+        class:
+          type: string
+        imageClass:
+          type: string
+        isSection:
+          type: string
+      example:
+        color: color
+        numRecentReplies: numRecentReplies
+        icon: icon
+        link: link
+        description: description
+        topic_count: topic_count
+        imageClass: imageClass
+        parentCid: 6
+        descriptionParsed: descriptionParsed
+        bgColor: bgColor
+        name: name
+        disabled: disabled
+        post_count: post_count
+        isSection: isSection
+        class: class
+        slug: slug
+        cid: 0
+        order: order
+    discussionForumListOfCategories_user:
+      type: object
+      properties:
+        uid:
+          type: integer
+        username:
+          type: string
+        userslug:
+          type: string
+        picture:
+          type: string
+        icon:text:
+          type: string
+        icon:bgColor:
+          type: string
+      example:
+        uid: 5
+        icon:bgColor: icon:bgColor
+        icon:text: icon:text
+        userslug: userslug
+        picture: picture
+        username: username
+    discussionForumListOfCategories_topic:
+      type: object
+      properties:
+        slug:
+          type: string
+        title:
+          type: string
+      example:
+        title: title
+        slug: slug
+    discussionForumListOfCategories_posts:
+      type: object
+      properties:
+        pid:
+          type: integer
+        timestamp:
+          type: integer
+        content:
+          type: string
+        timestampISO:
+          type: string
+        user:
+          $ref: '#/components/schemas/discussionForumListOfCategories_user'
+        index:
+          type: integer
+        cid:
+          type: integer
+        parentCid:
+          type: integer
+        topic:
+          $ref: '#/components/schemas/discussionForumListOfCategories_topic'
+      example:
+        parentCid: 9
+        index: 2
+        topic:
+          title: title
+          slug: slug
+        pid: 1
+        timestampISO: timestampISO
+        user:
+          uid: 5
+          icon:bgColor: icon:bgColor
+          icon:text: icon:text
+          userslug: userslug
+          picture: picture
+          username: username
+        content: content
+        timestamp: 5
+        cid: 7
+    discussionForumUserDetails_user:
+      type: object
+      properties:
+        uid:
+          type: integer
+        username:
+          type: string
+        userslug:
+          type: string
+        picture:
+          type: object
+          properties: {}
+          example: {}
+        status:
+          type: string
+        icon:text:
+          type: string
+        icon:bgColor:
+          type: string
+      example:
+        uid: 6
+        icon:bgColor: icon:bgColor
+        icon:text: icon:text
+        userslug: userslug
+        picture: {}
+        username: username
+        status: status
+    discussionForumUserDetails_topic:
+      type: object
+      properties:
+        uid:
+          type: integer
+        tid:
+          type: integer
+        title:
+          type: string
+        cid:
+          type: integer
+        slug:
+          type: string
+        deleted:
+          type: integer
+        postcount:
+          type: integer
+        mainPid:
+          type: integer
+        teaserPid:
+          type: object
+          properties: {}
+          example: {}
+        titleRaw:
+          type: string
+      example:
+        uid: 8
+        deleted: 3
+        postcount: 6
+        titleRaw: titleRaw
+        mainPid: 1
+        title: title
+        teaserPid: {}
+        tid: 9
+        slug: slug
+        cid: 6
+    discussionForumUserDetails_category:
+      type: object
+      properties:
+        cid:
+          type: integer
+        name:
+          type: string
+        icon:
+          type: string
+        slug:
+          type: string
+        parentCid:
+          type: integer
+        bgColor:
+          type: string
+        color:
+          type: string
+        backgroundImage:
+          type: object
+          properties: {}
+          example: {}
+        imageClass:
+          type: string
+      example:
+        parentCid: 6
+        bgColor: bgColor
+        color: color
+        backgroundImage: {}
+        name: name
+        icon: icon
+        slug: slug
+        cid: 2
+        imageClass: imageClass
+    discussionForumUserDetails_posts:
+      type: object
+      properties:
+        pid:
+          type: integer
+        tid:
+          type: integer
+        content:
+          type: string
+        uid:
+          type: integer
+        timestamp:
+          type: integer
+        deleted:
+          type: boolean
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        votes:
+          type: integer
+        timestampISO:
+          type: string
+        user:
+          $ref: '#/components/schemas/discussionForumUserDetails_user'
+        topic:
+          $ref: '#/components/schemas/discussionForumUserDetails_topic'
+        category:
+          $ref: '#/components/schemas/discussionForumUserDetails_category'
+        isMainPost:
+          type: boolean
+      example:
+        upvotes: 5
+        pid: 6
+        timestampISO: timestampISO
+        downvotes: 9
+        tid: 7
+        content: content
+        uid: 1
+        deleted: true
+        isMainPost: true
+        topic:
+          uid: 8
+          deleted: 3
+          postcount: 6
+          titleRaw: titleRaw
+          mainPid: 1
+          title: title
+          teaserPid: {}
+          tid: 9
+          slug: slug
+          cid: 6
+        votes: 9
+        category:
+          parentCid: 6
+          bgColor: bgColor
+          color: color
+          backgroundImage: {}
+          name: name
+          icon: icon
+          slug: slug
+          cid: 2
+          imageClass: imageClass
+        user:
+          uid: 6
+          icon:bgColor: icon:bgColor
+          icon:text: icon:text
+          userslug: userslug
+          picture: {}
+          username: username
+          status: status
+        timestamp: 4
+    discussionForumCategoryDetails_topics:
+      type: object
+      properties:
+        cid:
+          type: integer
+        lastposttime:
+          type: integer
+        mainPid:
+          type: integer
+        postcount:
+          type: integer
+        slug:
+          type: string
+        tid:
+          type: integer
+        timestamp:
+          type: integer
+        title:
+          type: string
+        uid:
+          type: integer
+        viewcount:
+          type: integer
+        deleted:
+          type: integer
+        locked:
+          type: integer
+        pinned:
+          type: integer
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        deleterUid:
+          type: integer
+        titleRaw:
+          type: string
+        timestampISO:
+          type: string
+        lastposttimeISO:
+          type: string
+        votes:
+          type: integer
+        teaserPid:
+          type: object
+          properties: {}
+          example: {}
+        category:
+          type: object
+          properties: {}
+          example: {}
+        user:
+          type: object
+          properties: {}
+          example: {}
+        teaser:
+          type: object
+          properties: {}
+          example: {}
+        tags:
+          type: object
+          properties: {}
+          example: {}
+        isOwner:
+          type: boolean
+        ignored:
+          type: boolean
+        unread:
+          type: boolean
+        bookmark:
+          type: object
+          properties: {}
+          example: {}
+        unreplied:
+          type: boolean
+        icons:
+          type: object
+          properties: {}
+          example: {}
+        index:
+          type: integer
+      example:
+        pinned: 6
+        lastposttime: 1
+        upvotes: 8
+        unreplied: true
+        unread: true
+        timestampISO: timestampISO
+        title: title
+        teaserPid: {}
+        tid: 7
+        uid: 4
+        lastposttimeISO: lastposttimeISO
+        deleterUid: 6
+        isOwner: true
+        mainPid: 1
+        locked: 9
+        slug: slug
+        timestamp: 1
+        ignored: true
+        index: 6
+        downvotes: 9
+        icons: {}
+        tags: {}
+        bookmark: {}
+        deleted: 9
+        postcount: 6
+        viewcount: 5
+        titleRaw: titleRaw
+        votes: 3
+        category: {}
+        user: {}
+        cid: 1
+        teaser: {}
+    discussionForumTopicResponse_topics:
+      type: object
+      properties:
+        cid:
+          type: integer
+        lastposttime:
+          type: integer
+        mainPid:
+          type: integer
+        postcount:
+          type: integer
+        slug:
+          type: string
+        tid:
+          type: integer
+        timestamp:
+          type: integer
+        title:
+          type: string
+        uid:
+          type: integer
+        viewcount:
+          type: integer
+        deleted:
+          type: integer
+        locked:
+          type: integer
+        pinned:
+          type: integer
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        deleterUid:
+          type: integer
+        titleRaw:
+          type: string
+        timestampISO:
+          type: string
+        lastposttimeISO:
+          type: string
+        votes:
+          type: integer
+        teaserPid:
+          type: object
+          properties: {}
+          example: {}
+        category:
+          $ref: '#/components/schemas/discussionForumUserDetails_category'
+        user:
+          $ref: '#/components/schemas/discussionForumUserDetails_user'
+        teaser:
+          type: object
+          properties: {}
+          example: {}
+        tags:
+          type: object
+          properties: {}
+          example: {}
+        isOwner:
+          type: boolean
+        ignored:
+          type: boolean
+        unread:
+          type: boolean
+        bookmark:
+          type: object
+          properties: {}
+          example: {}
+        unreplied:
+          type: boolean
+        icons:
+          type: object
+          properties: {}
+          example: {}
+        index:
+          type: integer
+      example:
+        pinned: 1
+        lastposttime: 5
+        upvotes: 1
+        unreplied: true
+        unread: true
+        timestampISO: timestampISO
+        title: title
+        teaserPid: {}
+        tid: 7
+        uid: 3
+        lastposttimeISO: lastposttimeISO
+        deleterUid: 6
+        isOwner: true
+        mainPid: 5
+        locked: 7
+        slug: slug
+        timestamp: 9
+        ignored: true
+        index: 1
+        downvotes: 1
+        icons: {}
+        tags: {}
+        bookmark: {}
+        deleted: 4
+        postcount: 2
+        viewcount: 2
+        titleRaw: titleRaw
+        votes: 7
+        category:
+          parentCid: 6
+          bgColor: bgColor
+          color: color
+          backgroundImage: {}
+          name: name
+          icon: icon
+          slug: slug
+          cid: 2
+          imageClass: imageClass
+        user:
+          uid: 6
+          icon:bgColor: icon:bgColor
+          icon:text: icon:text
+          userslug: userslug
+          picture: {}
+          username: username
+          status: status
+        cid: 1
+        teaser: {}
+    discussionForumTopicResponse_categories:
+      type: object
+      properties:
+        cid:
+          type: integer
+        name:
+          type: string
+        level:
+          type: string
+        icon:
+          type: string
+        parentCid:
+          type: integer
+        color:
+          type: string
+        bgColor:
+          type: string
+        imageClass:
+          type: string
+        selected:
+          type: boolean
+      example:
+        parentCid: 5
+        color: color
+        bgColor: bgColor
+        level: level
+        name: name
+        icon: icon
+        selected: true
+        cid: 4
+        imageClass: imageClass
+    discussionForumCreateTopicResponse_payload_topicData:
+      type: object
+      properties:
+        cid:
+          type: integer
+        lastposttime:
+          type: integer
+        mainPid:
+          type: integer
+        postcount:
+          type: integer
+        slug:
+          type: string
+        tid:
+          type: integer
+        timestamp:
+          type: integer
+        title:
+          type: string
+        uid:
+          type: integer
+        viewcount:
+          type: integer
+        deleted:
+          type: integer
+        locked:
+          type: integer
+        pinned:
+          type: integer
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        deleterUid:
+          type: integer
+        titleRaw:
+          type: string
+        timestampISO:
+          type: string
+        lastposttimeISO:
+          type: string
+        votes:
+          type: integer
+        teaserPid:
+          type: object
+          properties: {}
+          example: {}
+        category:
+          type: object
+          properties: {}
+          example: {}
+        user:
+          type: object
+          properties: {}
+          example: {}
+        teaser:
+          type: object
+          properties: {}
+          example: {}
+        tags:
+          type: object
+          properties: {}
+          example: {}
+        isOwner:
+          type: boolean
+        ignored:
+          type: boolean
+        unread:
+          type: boolean
+        bookmark:
+          type: object
+          properties: {}
+          example: {}
+        unreplied:
+          type: integer
+        icons:
+          type: object
+          properties: {}
+          example: {}
+        mainPost:
+          type: object
+          properties: {}
+          example: {}
+      example:
+        pinned: 4
+        lastposttime: 6
+        upvotes: 7
+        unreplied: 6
+        mainPost: {}
+        unread: true
+        timestampISO: timestampISO
+        title: title
+        teaserPid: {}
+        tid: 5
+        uid: 7
+        lastposttimeISO: lastposttimeISO
+        deleterUid: 1
+        isOwner: true
+        mainPid: 1
+        locked: 2
+        slug: slug
+        timestamp: 2
+        ignored: true
+        downvotes: 1
+        icons: {}
+        tags: {}
+        bookmark: {}
+        deleted: 3
+        postcount: 5
+        viewcount: 9
+        titleRaw: titleRaw
+        votes: 1
+        category: {}
+        user: {}
+        cid: 0
+        teaser: {}
+    discussionForumCreateTopicResponse_payload_postData:
+      type: object
+      properties:
+        pid:
+          type: integer
+        uid:
+          type: integer
+        tid:
+          type: integer
+        content:
+          type: string
+        timestamp:
+          type: integer
+        cid:
+          type: integer
+        isMain:
+          type: boolean
+        user:
+          type: object
+          properties: {}
+          example: {}
+        topic:
+          type: object
+          properties: {}
+          example: {}
+        index:
+          type: integer
+        votes:
+          type: integer
+        bookmarked:
+          type: boolean
+        display_edit_tools:
+          type: boolean
+        display_delete_tools:
+          type: boolean
+        display_moderator_tools:
+          type: boolean
+        display_move_tools:
+          type: boolean
+        selfPost:
+          type: boolean
+        timestampISO:
+          type: string
+      example:
+        isMain: true
+        bookmarked: true
+        selfPost: true
+        index: 9
+        pid: 7
+        timestampISO: timestampISO
+        display_edit_tools: true
+        tid: 4
+        content: content
+        uid: 1
+        display_moderator_tools: true
+        display_move_tools: true
+        topic: {}
+        votes: 6
+        display_delete_tools: true
+        user: {}
+        timestamp: 5
+        cid: 9
+    discussionForumCreateTopicResponse_payload:
+      type: object
+      properties:
+        topicData:
+          $ref: '#/components/schemas/discussionForumCreateTopicResponse_payload_topicData'
+        postData:
+          $ref: '#/components/schemas/discussionForumCreateTopicResponse_payload_postData'
+      example:
+        topicData:
+          pinned: 4
+          lastposttime: 6
+          upvotes: 7
+          unreplied: 6
+          mainPost: {}
+          unread: true
+          timestampISO: timestampISO
+          title: title
+          teaserPid: {}
+          tid: 5
+          uid: 7
+          lastposttimeISO: lastposttimeISO
+          deleterUid: 1
+          isOwner: true
+          mainPid: 1
+          locked: 2
+          slug: slug
+          timestamp: 2
+          ignored: true
+          downvotes: 1
+          icons: {}
+          tags: {}
+          bookmark: {}
+          deleted: 3
+          postcount: 5
+          viewcount: 9
+          titleRaw: titleRaw
+          votes: 1
+          category: {}
+          user: {}
+          cid: 0
+          teaser: {}
+        postData:
+          isMain: true
+          bookmarked: true
+          selfPost: true
+          index: 9
+          pid: 7
+          timestampISO: timestampISO
+          display_edit_tools: true
+          tid: 4
+          content: content
+          uid: 1
+          display_moderator_tools: true
+          display_move_tools: true
+          topic: {}
+          votes: 6
+          display_delete_tools: true
+          user: {}
+          timestamp: 5
+          cid: 9
+    discussionForumGroupResponse_payload:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        createtime:
+          type: integer
+        userTitle:
+          type: string
+        userTitleEnabled:
+          type: integer
+        description:
+          type: string
+        memberCount:
+          type: integer
+        hidden:
+          type: integer
+        system:
+          type: integer
+        private:
+          type: integer
+        disableJoinRequests:
+          type: integer
+        disableLeave:
+          type: integer
+      example:
+        userTitle: userTitle
+        createtime: 0
+        private: 2
+        system: 5
+        hidden: 5
+        userTitleEnabled: 6
+        disableLeave: 9
+        memberCount: 1
+        name: name
+        description: description
+        disableJoinRequests: 7
+        slug: slug
+    discussionForumCreateUserResponse_payload:
+      type: object
+      properties:
+        uid:
+          type: integer
+      example:
+        uid: 0
+    discussionForumReadForumCID:
+      type: object
+      properties:
+        request: 
+          type: object
+          properties:
+            type:
+              type: 'string'
+            identifier:
+              type: 'string'
+    discussionForumCreateForumCID:
+      type: object
+      properties:
+        request: 
+          type: object
+          properties:
+            sbType:
+              type: 'string'
+            sbIdentifier:
+              type: 'string'
+            cid:
+              type: integer
+    discussionForumListOfTags:
+      type: object
+      properties:
+        value :
+          type : string
+        score :
+          type : integer
+        valueEscaped :
+          type : string
+        color :
+          type : string
+        bgColor :
+          type : string
+      example: 
+       value : learning
+       score : 1
+       valueEscaped : learning
+       color : "#FFF"
+       bgColor : "#EEE"
+    discussionForumCreateUserOIDC:
+      type: object
+      properties:
+        request: 
+          type: object
+          properties:
+            username: 
+              type: string
+            identifier:
+              type: string
+    discussionForumCreateUserResponseOIDC:
+      type: object
+      properties:
+        id :
+         type : string
+        ver :
+          type : string
+        params :
+          type : object
+          properties:
+            resmsgid :
+              type : string
+            msgid :
+              type : string
+            status :
+              type : string
+            msg :
+              type : string
+        responseCode :
+          type : string
+        result :
+          type : object
+          properties:
+            userId :
+              type : object
+              properties:
+                uid: 
+                  type: integer
+            userSlug :
+              type : string
+            userName :
+              type : string
+    discussionForumModeratorsResponse:
+      type: object
+      properties:
+        uid :
+         type: integer
+        username :
+         type: string
+        userslug :
+         type: string
+        picture :
+         type: string
+        displayname :
+         type: string
+        icon:text :
+         type: string
+        icon:bgColor :
+         type: string
+    discussionForumTopTopicResponse:
+      type: object
+      properties:
+        nextStart :
+         type: integer
+        topicCount :
+         type: integer
+        topics :
+         type: array
+         items:
+          $ref: '#/components/schemas/discussionForumTopicDetails'
+        tids :
+          type: object
+        canPost :
+         type: object
+        showSelect :
+         type: object
+        showTopicTools :
+         type: object
+        categories :
+         type: object
+        allCategoriesUrl :
+         type: string
+        selectedCategory :
+         type: object
+        selectedCids :
+         type: object
+        feeds:disableRSS :
+         type: integer
+        rssFeedUrl :
+         type: string
+        title :
+         type: string
+        filters :
+         type: object
+        selectedFilter :
+         type: object
+        terms :
+         type: object
+        selectedTerm :
+         type: object
+        pagination :
+         type: object
+        breadcrumbs :
+         type: object
+        loggedIn :
+         type: object
+        relative_path :
+         type: string
+        template :
+         type: object
+        url :
+         type: string
+        bodyClass :
+         type: string
+        _header :
+         type: object
+        widgets :
+         type: object
+    discussionForumCountOfTopic:
+      type: integer
+    discussionForumTeaserTopicDetails:
+      type: object
+      properties:
+        pid :
+         type: integer
+        tid :
+         type: integer
+        content :
+         type: string
+        uid :
+         type: integer
+        timestamp :
+         type: integer
+        deleted :
+         type: object
+        upvotes :
+         type: integer
+        downvotes :
+         type: integer
+        replies :
+         type: integer
+        votes :
+         type: integer
+        timestampISO :
+         type: string
+        user :
+         type: object
+         properties:
+          uid :
+           type: integer
+          username :
+           type: string
+          userslug :
+           type: string
+          picture :
+           type: object
+          status :
+           type: string
+          displayname :
+           type: string
+          icon:text :
+           type: string
+          icon:bgColor :
+           type: string
+        topic :
+         type: object
+         properties:
+          uid :
+           type: integer
+          tid :
+           type: integer
+          title :
+           type: string
+          cid :
+           type: integer
+          slug :
+           type: string
+          deleted :
+           type: integer
+          postcount :
+           type: integer
+          mainPid :
+           type: integer
+          teaserPid :
+           type: object
+          titleRaw :
+           type: string
+        category :
+         type: object
+         properties:
+          cid :
+           type: integer
+          name :
+           type: string
+          icon :
+           type: string
+          slug :
+           type: string
+          parentCid :
+           type: integer
+          bgColor :
+           type: string
+          color :
+           type: string
+          backgroundImage :
+           type: object
+          imageClass :
+           type: string
+        isMainPost :
+         type: object
+    discussionForumTopicPaginationResponse:
+      type: object
+      properties:
+        pagination:
+          type: object
+          properties:
+            prev :
+             type: object
+             properties:
+              page:
+                type: integer
+              active:
+                type: string
+            next :
+              type: object
+              properties:
+                page:
+                  type: integer
+                active:
+                  type: string
+            first :
+              type: object
+              properties:
+                page:
+                  type: integer
+                active:
+                  type: string
+            last :
+              type: object
+              properties:
+                page:
+                  type: integer
+                active:
+                  type: string
+            rel :
+             type: object
+            pages :
+             type: object
+            currentPage :
+             type: integer
+            pageCount :
+             type: integer
+    discussionForumAddTagsToTopic:
+      type: array
+      items:
+        type: string
+    discussionForumAddPrivilagesToCategory:
+      type: array
+      items:
+        type: string
+    discussionForumAttachCid:
+      type: object
+      properties:
+        category:
+          type: object
+          properties:
+            name:
+             type: string
+            pid:
+             type: string
+            description:
+             type: string
+            context:
+              type: array
+              items:
+               type: object
+               properties:
+                type:
+                 type: string
+                identifier:
+                 type: string
+            privileges:
+             type: object
+             properties:
+               copyFromCategory:
+                type: string
+            subcategories:
+             type: array
+             items:
+              type: object
+              properties:
+                name:
+                 type: string
+                description:
+                 type: string
+                privileges:
+                 type: object
+                 properties:
+                  copyFromCategory:
+                    type: string
+    discussionForumForumontextResponse:
+      type: object
+      properties:
+        result: 
+          type: object
+          properties: 
+            forums:
+              type: array
+              items:
+                type: object
+                properties:
+                  sbType:
+                    type: string
+                  sbIdentifier:
+                    type: string
+                  newCid: 
+                    type: number
+                  cids: 
+                    type: array
+                    items: 
+                      type: number
+            groups:
+              type: array
+              items: 
+                type: object
+                properties: 
+                  name: 
+                    type: string
+                  members:
+                    type: array
+                    items: 
+                      type: object
+            subcategories:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  cid: 
+                    type: number
+                  pid:
+                    type: number
+                  groups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name: 
+                          type: string
+                        members: 
+                          type: array
+                          items: 
+                            type: object
+      example:
+        forums:
+          - sbType: "batch"
+            sbIdentifier: "01307806402750054416"
+            newCid: 580
+            cids:
+              - 580
+        groups:
+          - name: "registered-users"
+            members:
+              - uid: 29
+                userName: "content_reviewer_tn1970"
+                sbUid: "08631a74-4b94-4cf7-a818-831135248a4a"
+        subcategories:
+          - name: "Annoucements"
+            cid: 581
+            pid: 580
+            groups:
+              - name: "registered-users"
+                members:
+                  - uid: 29
+                    userName: "content_reviewer_tn1970"
+                    sbUid: "08631a74-4b94-4cf7-a818-831135248a4a"
+    discussionForumRemoveContext: 
+      type: object
+      properties:
+        id:
+         type: string
+        ver:
+         type: string
+        ets:
+         type: number
+        params:
+         type: object
+         properties:
+          resmsgid:
+           type: string
+          msgid:
+           type: string
+          status:
+           type: string
+        responseCode:
+         type: string
+        result:
+         type: string
+      example:
+        id: "api.forum.v2.remove"
+        ver: '1.0'
+        ets: 1618421469097
+        params:
+          resmsgid: "01d3023f-e68f-4e5a-84dc-e67aa69dfd48"
+          msgid: ''
+          status: Success
+        responseCode: OK
+        result: "Forum remove for context success"
+    discussionForumCategoryList:
+      type: object
+      properties:
+        request: 
+          type: object
+          properties: 
+            cids: 
+              type: array
+              items: 
+                type: number
+      example: 
+        request:
+          cids:
+            - 2
+    discussionForumCategoryListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/discussionForumCategoryDetails'    
+    discussionForumTagList:
+      type: object
+      properties:
+        request: 
+          type: object
+          properties: 
+            tag:
+              type: string
+            cid: 
+              type: array
+              items: 
+                type: number
+      example: 
+        request:
+          tag: nodebb
+          cid:
+            - 2
+    discussionForumCopyPrivileges:
+      type: object
+      properties: 
+        result: 
+          type: object
+          properties: 
+            cid:
+              type: number
+            pid:
+              type: number
+      example:
+        request:
+          pid: 265
+          cid: 2
+    discussionForumcopyPrivilegesResponse: 
+      type: object
+      properties:
+        id:
+         type: string
+        ver:
+         type: string
+        ets:
+         type: number
+        params:
+         type: object
+         properties:
+          resmsgid:
+           type: string
+          msgid:
+           type: string
+          status:
+           type: string
+        responseCode:
+         type: string
+        result:
+         type: string
+      example:
+        id: "api.forum.v2.remove"
+        ver: '1.0'
+        ets: 1618421469097
+        params:
+          resmsgid: "01d3023f-e68f-4e5a-84dc-e67aa69dfd48"
+          msgid: ''
+          status: Success
+        responseCode: OK
+        result: "Privileges copied successfuly"    
+    discussionForumNodebbUids:
+      type: object
+      properties:
+        request:
+          type: object
+          properties:
+            sbIdentifiers:
+              type: array
+              items: 
+                type: string
+    discussionForumNodebbUidsResponse:
+      type: object
+      properties: 
+        result: 
+          type: object
+          properties:
+            userIds:
+              type: array
+              items: 
+                type: object
+                properties: 
+                  nodebbUid:
+                    type: number
+                  sbUid:
+                    type: string
+      example:
+        id: .api.forum.v2.uids
+        ver: '1.0'
+        ets: 1618428120524
+        params:
+          resmsgid: 3bf46d2d-6dd4-49e5-a2e7-6b7fa16101b3
+          msgid: ''
+          status: Success
+        responseCode: OK
+        result:
+          userIds:
+            - nodebbUid: 29
+              sbUid: 08631a74-4b94-4cf7-a818-831135248a4a
+    discussionForumNodebbUsersList:
+      type: object
+      properties:
+        request:
+          type: object
+          properties:
+            cid:
+              type: number                   
+    discussionForumNodebbUsersListResponse:
+      type: object
+      properties: 
+        result: 
+          type: object
+          properties:
+            groups:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  members:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        uid:
+                          type: number
+                        userName:
+                          type: string
+                        sbUid:
+                          type: string      
+    discussionForumNodebbCategoryPrivileges:
+      type: object
+      properties:
+        request:
+          type: object
+          properties:
+            groups:
+              type: array
+              items:
+                 type: string
+    discussionForumNodebbCategoryPrivilegesResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              nameEscaped:
+                type: string
+              privileges:
+                type: object    
+              isPrivate:
+                type: boolean
+              isSystem:
+                type: boolean  
+    discussionForumAddUsersIntoGroup:
+      type: object
+      properties:
+        request:
+          type: object
+          properties:
+            groups:
+              type: array
+              items:
+                type: string
+            members:
+              type: array
+              items:
+                type: object
+                properties:
+                  sbUserName:
+                    type: string
+                  sbUid:
+                    type: string      
+    discussionForumAddUsersIntoGroupResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              members:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    uid:
+                      type: number
+                    userName: 
+                      type: string
+                    sbUid:
+                      type: string        
+    discussionForumContextBasedTags:
+      type: object
+      properties:
+        request:
+          type: object
+          properties:
+            cids:
+              type: array
+              items:
+                type: number
+    discussionForumContextBasedTagsResponse:
+      type: object
+      properties:
+        value:
+          type: string
+        valueEscaped:
+          type: string
+        color:
+          type: string
+        bgColor:
+          type: string
+        score:
+          type: number         

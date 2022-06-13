@@ -1,0 +1,581 @@
+openapi: 3.0.1
+info:
+  title: Course Progress APIs
+  description: |-
+    The Course Progress API resource is used to publish and update the status of the course as consumed by a user. The operations include the basic course status and the updated status.
+
+    The URL for Course Progress API is /course/v1/content/state.
+    - The backend URL for Course Progress APIs is /v1/content/state.
+    - [TestCases](https://app.getpostman.com/run-collection/fa3d016f153862ea5537)
+  termsOfService: https://github.com/project-sunbird/sunbird-commons/blob/master/LICENSE
+  contact:
+    email: info@sunbird.org
+  version: '1.0'
+servers:
+  - url: 'https://staging.open-sunbird.org/api'
+    variables: {}
+paths:
+  /course/v1/content/state/read:
+    post:
+      tags:
+        - Course Progress API(s)
+      summary: Read Content State
+      description: |-
+        This API is used for reading the current progress of the course (content) consumed by a user. For example, the user can view and check the progress of a specific course or course(s) consumed.
+
+        - The endpoint for **Read Course State** is `/read`
+
+        - The fields marked with an asterisk (*) are mandatory.
+        They cannot be null or empty.
+      operationId: ReadContentState
+      parameters:
+        - name: Content-Type
+          in: header
+          description: "The Content Type entity is the media type of the resource. Possible\
+            \ media types are:- \n  - application/json"
+          required: true
+          schema:
+            type: string
+            example: 'application/json'
+        - name: Authorization
+          in: header
+          description: 'To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received, here.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+        - name: x-authenticated-user-token
+          in: header
+          description: 'The registered user token/key to authenticate user and execute
+          the API.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+      requestBody:
+        description: 'Represents the body and form data parameters of the course
+          progress state API'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReadContentStateRequest'
+            example:
+              request:
+                userId: '{{user-id}}'
+                courseId: '{{course-id}}'
+                contentIds:
+                  - '{{content-id}}'
+                batchId: '{{batch-id}}'
+        required: true
+      responses:
+        '200':
+          description: 'SUCCESS. The "Read Course States" operation was successful!'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadContentState-Contentnotconsumed'
+              example:
+                id: api.content.state.read
+                ver: v1
+                ts: '2020-11-24 07:34:28:089+0000'
+                params:
+                  resmsgid: null
+                  msgid: f00d1bf0-4014-40bb-b055-4972e598977a
+                  err: null
+                  status: success
+                  errmsg: null
+                responseCode: OK
+                result:
+                  contentList: []
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateContentState-500InternalServerError'
+              example:
+                id: api.content.state.read
+                ver: v1
+                ts: '2020-11-24 07:37:21:727+0000'
+                params:
+                  resmsgid: null
+                  msgid: null
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: 'Process failed,please try again later.'
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /course/v1/content/state/update:
+    patch:
+      tags:
+        - Course Progress API(s)
+      summary: Update Content State
+      description: |-
+        This API is used to update the Course(content) state as consumed by a user. For example, when the user resumes a course or courses after the point at which it was stopped, the status of the course is updated.
+
+        The endpoint for **Update Course State** is `/update`
+
+        The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+      operationId: UpdateContentState
+      parameters:
+        - name: Content-Type
+          in: header
+          description: "The Content Type entity is the media type of the resource. Possible\
+            \ media types can be:- \n  - application/json"
+          required: true
+          schema:
+            type: string
+            example: 'application/json'
+        - name: Authorization
+          in: header
+          description: 'To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received, here.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+        - name: x-authenticated-user-token
+          in: header
+          description: 'The registered user token/key to authenticate user and execute
+          the API.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+      requestBody:
+        description: 'Represents the body and formdata parameters of the course progress
+          state API'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateContentStateRequest'
+            example:
+              request:
+                userId: '{{user-id}}'
+                contents:
+                  - contentId: '{{content-id}}'
+                    batchId: '{{batch-id}}'
+                    status: 2
+                    courseId: '{{course-id}}'
+                    lastAccessTime: '2020-11-23 12:58:35:179+0000'
+                assessments:
+                  - contentId: '{{content-id}}'
+                    batchId: '{{batch-id}}'
+                    courseId: '{{course-id}}'
+                    userId: '{{user-id}}'
+                    attemptId: '{{attemptId}}'
+                    assessmentTs: '1567591211000'
+                    events: [ ]
+        required: true
+      responses:
+        '200':
+          description: 'SUCCESS. The "Update Course State" operation was successful!'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateContentState-200OK-Success'
+              example:
+                id: api.content.state.update
+                ver: v1
+                ts: '2020-11-27 14:07:27:025+0000'
+                params:
+                  resmsgid: null
+                  msgid: 74aa2cb5-0580-4183-adff-c6e69204f1ee
+                  err: null
+                  status: success
+                  errmsg: null
+                responseCode: OK
+                result:
+                  do_11259843042561228816: SUCCESS
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateContentState-500InternalServerError'
+              example:
+                id: api.content.state.update
+                ver: v1
+                ts: '2020-11-24 07:37:21:727+0000'
+                params:
+                  resmsgid: null
+                  msgid: null
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: 'Process failed,please try again later.'
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+components:
+  schemas:
+    ReadContentStateRequest:
+      title: ReadContentStateRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/Request'
+      example:
+        request:
+          userId: '{{user-id}}'
+          courseId: '{{course-id}}'
+          contentIds:
+            - '{{content-id}}'
+          batchId: '{{batch-id}}'
+    Request:
+      title: Request
+      required:
+        - userId
+        - courseId
+        - contentIds
+        - batchId
+      type: object
+      properties:
+        userId:
+          type: string
+          description: 'This identifier uniquely identifies a user'
+        courseId:
+          type: string
+          description: 'Identifier of the course'
+        contentIds:
+          type: array
+          items:
+            type: string
+          description: 'This represents the list of content IDs for that course and batch. Associate only one courseId and batchId to the list of all content IDs.'
+        batchId:
+          type: string
+          description: 'The identifier of the batch to which the course belongs.'
+      example:
+        userId: '{{user-id}}'
+        courseId: '{{course-id}}'
+        contentIds:
+          - '{{content-id}}'
+        batchId: '{{batch-id}}'
+    ReadContentState-Contentnotconsumed:
+      title: ReadContentState-Contentnotconsumed
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/Params'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/Result'
+      example:
+        id: api.content.state.read
+        ver: v1
+        ts: '2020-11-24 07:34:28:089+0000'
+        params:
+          resmsgid: null
+          msgid: f00d1bf0-4014-40bb-b055-4972e598977a
+          err: null
+          status: success
+          errmsg: null
+        responseCode: OK
+        result:
+          contentList: []
+    Params:
+      title: Params
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+        err:
+          type: string
+          nullable: true
+        status:
+          type: string
+        errmsg:
+          type: string
+          nullable: true
+      example:
+        resmsgid: null
+        msgid: f00d1bf0-4014-40bb-b055-4972e598977a
+        err: null
+        status: success
+        errmsg: null
+    Result:
+      title: Result
+      required:
+        - contentList
+      type: object
+      properties:
+        contentList:
+          type: array
+          items:
+            type: string
+          description: ''
+      example:
+        contentList: []
+    UpdateContentStateRequest:
+      title: UpdateContentStateRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/Request1'
+      example:
+        request:
+          userId: '{{user-id}}'
+          contents:
+            - contentId: '{{content-id}}'
+              batchId: '{{batch-id}}'
+              status: 2
+              courseId: '{{course-id}}'
+              lastAccessTime: '2020-11-23 12:58:35:179+0000'
+    Request1:
+      title: Request1
+      required:
+        - userId
+        - contents
+      type: object
+      properties:
+        userId:
+          type: string
+          description: 'This ID uniquely identifies a user'
+        contents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
+          description: 'This represents the array of the contents which comprises of various parameters related to the content'
+        assessments:
+          description: 'This represents the array of the assessments which comprises of various parameters related to assessments'
+          type: array
+          items:
+            $ref: '#/components/schemas/Assessment'
+      example:
+        userId: '{{user-id}}'
+        contents:
+          - contentId: '{{content-id}}'
+            batchId: '{{batch-id}}'
+            status: 2
+            courseId: '{{course-id}}'
+            lastAccessTime: '2020-11-23 12:58:35:179+0000'
+        assessments:
+          - contentId: '{{content-id}}'
+            batchId: '{{batch-id}}'
+            courseId: '{{course-id}}'
+            userId: '{{user-id}}'
+            attemptId: '{{attemptId}}'
+            assessmentTs: '1567591211000'
+            events: [ ]
+    Content:
+      title: Content
+      required:
+        - contentId
+        - batchId
+        - status
+        - courseId
+        - lastAccessTime
+      type: object
+      properties:
+        contentId:
+          type: string
+          description: 'The identifier of content status need to update'
+        batchId:
+          type: string
+          description: 'Identifier of the batch, for user enrolled'
+        status:
+          type: integer
+          format: int32
+          description: 'This represents the user content consumption status. For reference: Example 0 - not started, 1- in progress, 2- completed'
+        courseId:
+          type: string
+          description: 'Identifier of the course'
+        lastAccessTime:
+          type: string
+          description: 'Represents when was the the course content last accessed'
+      example:
+        contentId: '{{content-id}}'
+        batchId: '{{batch-id}}'
+        status: 2
+        courseId: '{{course-id}}'
+        lastAccessTime: '2020-11-23 12:58:35:179+0000'
+    Assessment:
+      title: Assessment
+      type: object
+      properties:
+        assessmentTs:
+          description: 'Assessment time in epoch'
+          type: string
+        batchId:
+          description: 'This ID uniquely identifies a batch'
+          type: string
+        courseId:
+          description: 'This ID uniquely identifies the course'
+          type: string
+        userId:
+          description: 'This ID uniquely identifies a user'
+          type: string
+        attemptId:
+          description: 'This ID uniquely identifies the attempt'
+          type: string
+        contentId:
+          description: 'This ID uniquely identifies the content'
+          type: string
+        events:
+          description: 'This will have the assess events of the telemetry'
+          example: []
+          type: array
+          items: {}
+      example:
+        contentId: '{{content-id}}'
+        batchId: '{{batch-id}}'
+        attemptId: '{{attemptId}}'
+        courseId: '{{course-id}}'
+        assessmentTs: '1567591211000'
+        userId: '{{user-id}}'
+        events: [ ]
+    UpdateContentState-200OK-Success:
+      title: UpdateContentState-200OK-Success
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/Params'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/Result1'
+      example:
+        id: api.content.state.update
+        ver: v1
+        ts: '2020-11-27 14:07:27:025+0000'
+        params:
+          resmsgid: null
+          msgid: 74aa2cb5-0580-4183-adff-c6e69204f1ee
+          err: null
+          status: success
+          errmsg: null
+        responseCode: OK
+        result:
+          do_11259843042561228816: SUCCESS
+    Result1:
+      title: Result1
+      required:
+        - do_11259843042561228816
+      type: object
+      properties:
+        do_11259843042561228816:
+          type: string
+      example:
+        do_11259843042561228816: SUCCESS
+    UpdateContentState-500InternalServerError:
+      title: UpdateContentState-500InternalServerError
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/Params2'
+        responseCode:
+          type: string
+        result:
+          type: object
+      example:
+        id: api.content.state.update
+        ver: v1
+        ts: '2020-11-24 07:37:21:727+0000'
+        params:
+          resmsgid: null
+          msgid: null
+          err: INTERNAL_ERROR
+          status: SERVER_ERROR
+          errmsg: 'Process failed,please try again later.'
+        responseCode: SERVER_ERROR
+        result: {}
+    Params2:
+      title: Params2
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+          nullable: true
+        err:
+          type: string
+        status:
+          type: string
+        errmsg:
+          type: string
+      example:
+        resmsgid: null
+        msgid: null
+        err: INTERNAL_ERROR
+        status: SERVER_ERROR
+        errmsg: 'Process failed,please try again later.'
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+tags:
+  - name: Course Progress API(s)
+    description: ''

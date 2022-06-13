@@ -1,0 +1,1548 @@
+openapi: 3.0.1
+info:
+  version: "1.0"
+  title: Group Management  API(s)
+  termsOfService: 'https://github.com/project-sunbird/sunbird-commons/blob/master/LICENSE'
+  description: >-
+    - The Group Management API resources are used to manage individual groups,
+    their members and activities, these resources allow you to create new group,
+    fetch/update group details, add/edit/remove memebers to a group, add/delete
+    activities in a group and fetch all groups of a user. 
+ 
+    <b>Note:</b> These resources can be used as a part of scripts or programs to allow authorized administrators to manage the groups.
+externalDocs:
+ description: "Testcases"
+ url: "https://www.getpostman.com/collections/917a232c0828a32a4174"
+
+paths:
+  /group/v1/create:
+    post:
+      description: >-
+        This API is used to create a group
+           - The endpoint for **Create Group** is `/group/v1/create`  
+           - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+      summary: Create Group
+      tags:
+        - Group APIs
+      operationId: Create Group
+      parameters:
+        - name: ts
+          in: header
+          required: false
+          description: Timestamp at which given API request is sent.
+          schema:
+            type: string
+        - name: X-msgid
+          in: header
+          required: false
+          description: This ID uniquely identifies a request if the same API is executed
+            multiple times.
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
+          description: To make use of any Group API, you require authorization. Raise a
+            request to the administrator for the use of the API. You will
+            receive the authorization key. Specify the key received, here.
+          schema:
+            type: string
+        - name: x-authenticated-user-token
+          in: header
+          required: false
+          description: It is a unique token/key to authenticate the user each time an API
+            is called. For corresponding sessions this token is used, not your
+            actual username/password
+          schema:
+            type: string
+        - name: x-authenticated-for
+          in: header
+          required: false
+          description: Managed User token of registered MUA user performing given API
+            request.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/groupapiCreateGroupRequest"
+            examples:
+             a:
+              summary: "Create Group"
+              value:
+               request:
+                name: "Study Group"
+                description: "This groups belongs to  group study"
+             b:
+              summary: "Create group with member"
+              value:
+               request:
+                name: "Maths Group"
+                description: "This group belongs for studying maths"
+                members: [{
+                  userId: "userid"
+                }]
+                  
+        description: >-
+          - The body payload comprises of the metadata of the group being
+          created - The body parameter refers to the format of the request, the
+          request body (payload) takes the following media types to make the
+          payload:
+             - JSON
+        required: true
+      responses:
+        "200":
+          description: OK ! Successful operation."Create Group" operation was successfully
+            executed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupCreateResponse"
+              example:
+                id: api.group.create
+                ver: "v1"
+                ts: "2020-12-01 20:52:25:226+0000"
+                params: null
+                result: 
+                  groupId: "682473c2-12ba-4a89-b8db-67c2c65ca97a"
+                responseCode: 200
+        "400":
+          description: BAD REQUEST. The "Create Group" operation failed ! The possible
+            reason for failure is that you may have missed providing input for a
+            mandatory parameter.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.create"
+                ver: null
+                ts: "2020-12-02 11:09:52:748+0530"
+                params: 
+                  resmsgid: null
+                  msgid: "6da747d8-c19f-40cb-9938-fcf0913e301f"
+                  err: "GS_CRT02"
+                  status: "failed"
+                  errmsg: "Failed to create group, fields are missing in the request. Enter the required values and resend the request."
+                result: {}
+                responseCode: 400
+        "401":
+          description: Unauthorized User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.create"
+                ver: null
+                ts: "2020-12-02 05:53:25:361+0000"
+                params: 
+                  resmsgid: null
+                  msgid: "f5e58ea069e93de16e721d0312a195dc"
+                  err: "GS_UNAUTHORIZED"
+                  status: "failed"
+                  errmsg: "You are an unauthorized.Contact your system administrator"
+                result: {}
+                responseCode: 401
+        "500":
+          description: "'INTERNAL SERVER ERROR. We track these errors automatically and
+            try to set it right at the earliest. Try refreshing the page. If the
+            problem persists contact us at info@sunbird.org.'"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: api.group.create
+                ver: v1
+                ts: 2020-12-01 10:49:01:948+0000
+                params:
+                  resmsgid: 
+                  msgid: 12eb0ca45ce4c776fab994d120bedd41
+                  err: "GS_CRT03"
+                  status: "failed"
+                  errmsg: "Failed to create group, due to database error or there are too many concurrent calls to the server. Try again later."
+                responseCode: SERVER_ERROR
+                result: {}
+      security:
+        - bearer: []
+  /group/v1/update:
+    patch:
+      description: >-
+        This API is used for updating the group related details. This can also
+        be used to add/edit/remove members of a group and also to add/remove
+        activitties of a group. This API can add details partially as well, for
+        example, one member in the request could not be added, because that
+        member is inactive or id doesn't exist, still other properties in the
+        request is updated. If a member is not added, only the status of that
+        will be shown in the “errors” array in response.
+          - The endpoint for **Update Group** is `/group/v1/update`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - Once group suspended following operation can only be performed :-
+            1. All member are eligible to leave the group. 
+            2. Creator will be able to delete the group.
+            3. Admin will be able to reactivate the group.
+            4. All other operations are not permitted once group is suspended.
+      summary: Update Group
+      tags:
+        - Group APIs
+      operationId: Update Group
+
+      parameters:
+        - name: ts
+          in: header
+          required: false
+          description: Timestamp at which given API request is sent.
+          schema:
+            type: string
+        - name: X-msgid
+          in: header
+          required: false
+          description: This ID uniquely identifies a request if the same API is executed
+            multiple times.
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
+          description: "Specify authorization key (format: Bearer api-key) received from
+            administrator when performing given API request."
+          schema:
+            type: string
+        - name: X-Authenticated-User-Token
+          in: header
+          required: true
+          description: Access token of registered user performing given API request.
+          schema:
+            type: string
+        - name: x-authenticated-for
+          in: header
+          required: false
+          description: Managed User token of registered MUA user performing given API
+            request.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/groupapiUpdateGroupRequest"
+            examples:
+             a:
+               summary: Group Details Update Request
+               value:
+                 request:
+                  groupId: "groupid"
+                  name: "Demo Group"
+                  description: "Group name is changed for demo purpose"
+             b:
+               summary: Suspend Group
+               value:
+                request:
+                 groupId: "groupid"
+                 status: "suspended"
+             c:
+               summary: Delete group
+               value:
+                request:
+                 groupId: "groupid"
+                 status: "inactive"
+             d:
+               summary: Add Activities
+               value:
+                request:
+                 groupId: "groupid"
+                 activities: {
+                   add:  [{
+                     id: "do_activity_id",
+                     type: "Textbook"
+                   }]
+                 }
+             
+             e:
+               summary: Remove Activities
+               value:
+                request:
+                 groupId: "groupid"
+                 activities: {
+                   remove:  [
+                     "do_Activity_id"
+                   ]
+                 }
+             f:
+              summary: Add Member
+              value:
+               request:
+                groupId: "groupid"
+                members: {
+                 add: [{
+                   userId: "userid"
+                 }]
+                }
+             g:
+              summary: Edit Member
+              value:
+               request:
+                groupId: "groupid"
+                members: {
+                  edit: [{
+                    userId: "userid",
+                    role: "admin"
+                  }]
+                }
+             h:
+              summary: Remove Member
+              value:
+               request:
+                groupId: "groupid"
+                members: {
+                  remove: ["userid"]
+                }
+                 
+        description: >-
+          - The body payload comprises of the metadata about the group to be
+          updated. - The body parameter refers to the format of the request, the
+          request body (payload) takes the following media types to make the
+          payload:
+             - JSON
+        required: true
+      responses:
+        "200":
+          description: OK ! Successful operation."Update Group" operation was successfully
+            executed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiUpdateGroupResponse"
+              examples:
+               a:
+                summary: Update Group Response
+                value:
+                  id: "d1232323"
+                  ver: "3.0"
+                  ets: "139832389023"
+                  responseCode: "200"
+                  result: 
+                    response: "success"
+                                   
+        "400":
+          description: BAD REQUEST. The "Update Group" operation failed ! The possible
+            reason for failure is that you may have missed providing input for a
+            mandatory parameter.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.update"
+                ver: null
+                ts: "2020-12-02 11:09:52:748+0530"
+                params: 
+                  resmsgid: null
+                  msgid: "6da747d8-c19f-40cb-9938-fcf0913e301f"
+                  err: "GS_UDT02"
+                  status: "failed"
+                  errmsg: "Failed to update group, mandatory fields are missing in the request. Enter the required values and resend the request."
+                result: {}
+                responseCode: 400
+        "401":
+          description: Unauthorized User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.update"
+                ver: null
+                ts: "2020-12-02 05:53:25:361+0000"
+                params: 
+                  resmsgid: null
+                  msgid: "f5e58ea069e93de16e721d0312a195dc"
+                  err: "GS_UNAUTHORIZED"
+                  status: "failed"
+                  errmsg: "You are an unauthorized.Contact your system administrator"
+                result: {}
+                responseCode: 401
+        "404":
+          description: Resource not found. The "Update Group" operation failed ! The
+            possible reason for failure is that requested resource not found.
+            here resource is group.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.update"
+                ver: null
+                ts: "2020-12-02 11:40:57:348+0530"
+                params: 
+                  resmsgid: null
+                  msgid: "ed1c0b7c-8f10-4a35-9f42-93966d8d97f6"
+                  err: "GS_UDT07"
+                  status: "failed"
+                  errmsg: "Failed to update, group does not exist. Contact your system administrator."
+                result: {}
+                responseCode: 400
+        "500":
+          description: "'INTERNAL SERVER ERROR. We track these errors automatically and
+            try to set it right at the earliest. Try refreshing the page. If the
+            problem persists contact us at info@sunbird.org.'"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: api.group.update
+                ver: v1
+                ts: 2020-12-01 10:49:01:948+0000
+                params:
+                  resmsgid: 
+                  msgid: 12eb0ca45ce4c776fab994d120bedd41
+                  err: "GS_UDT03"
+                  status: "failed"
+                  errmsg: "Failed to update group, due to database error or there are too many concurrent calls to the server. Try again later."
+                responseCode: SERVER_ERROR
+                result: {}
+     
+  "/group/v1/read/{groupId}":
+    get:
+      description: >-
+        This API is used for getting a specific group, it is based on the unique
+        ID of the group
+          - The endpoint for **Get Group by Group ID** is `/group/v1/read/{groupId}`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          - User can pass an optional query parameter 'fields'. The value is a comma separated list of fields whose information is required in response. e.g. fields=members,activities
+          - 'members' is to return all the members of the group.
+          - 'activities' is to return all the activities of the group along with activity information from search service.
+      summary: Get Group by Group ID
+      tags:
+        - Group APIs
+      operationId: Get Group by Group ID
+      parameters:
+        - in: path
+          name: groupId
+          required: true
+          description: Please append a valid Group Id To the Request URL
+          schema:
+            type: string
+        - in: query
+          name: fields
+          required: false
+          description: "If user need any specific values like, members and activities of
+            the group append 'fields' as QueryParam. Ex:
+            fields=members,activities"
+          schema:
+            type: string
+        - name: ts
+          in: header
+          required: false
+          description: Timestamp at which given API request is sent.
+          schema:
+            type: string
+        - name: X-msgid
+          in: header
+          required: false
+          description: This ID uniquely identifies a request if the same API is executed
+            multiple times.
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
+          description: "Specify authorization key (format: Bearer api-key) received from
+            administrator when performing given API request."
+          schema:
+            type: string
+        - name: x-authenticated-user-token
+          in: header
+          required: true
+          description: Access token of registered user performing given API request.
+          schema:
+            type: string
+        - name: x-authenticated-for
+          in: header
+          required: false
+          description: Managed User token of registered MUA user performing given API
+            request.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK ! Successful operation."Get Group by Group ID" operation was
+            successfully executed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGetGroupResponse"
+              example:
+                  id: "api.group.read"
+                  ver: "v1"
+                  ts: "2020-12-02 12:15:30:633+0530"
+                  params: null
+                  result: 
+                   membershipType: "moderated"
+                   updatedBy: "27b9d2ae-3e07-4ebf-909c-985e217417a2"
+                   createdBy: "27b9d2ae-3e07-4ebf-909c-985e217417a2"
+                   activities: 
+                     - id: "do_212691674291134464114382"
+                       type: "Course"
+                   members: 
+                     - userId: "39c1cdf3-57c6-4614-b96d-27e29d757085"
+                       groupId: "298eb021-fe35-4448-a97e-ca1987ea0768"
+                       role: "admin"
+                       status: "active"
+                       createdOn: "2020-10-16 05:29:26:371+0000"
+                       createdBy: "39c1cdf3-57c6-4614-b96d-27e29d757085"
+                       updatedOn: null
+                       updatedBy: null
+                       removedOn: null
+                       removedBy: null
+                       visited: null
+                       name: "satish Nirmalkar"
+                   name: "17july"
+                   id: "90e70ade-260d-48d6-a8b0-fd5f3e45b4f6"
+                   updatedOn: "2020-07-22 10:24:42:316+0530"
+                   createdOn: "2020-07-17 13:43:55:561+0530"
+                   status: "active"
+                   responseCode: 200
+        "400":
+          description: BAD REQUEST,"Get Group by Group ID" operation failed ! The possible
+            reason for failure is that you may have given the wrong id.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.read"
+                ver: null
+                ts: "2020-12-02 11:09:52:748+0530"
+                params: 
+                  resmsgid: null
+                  msgid: "6da747d8-c19f-40cb-9938-fcf0913e301f"
+                  err: "GS_RED07"
+                  status: "failed"
+                  errmsg: "Failed to read details, group not found. Contact your system administrator."
+                result: {}
+                responseCode: 400
+        "401":
+          description: Unauthorized User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.read"
+                ver: null
+                ts: "2020-12-02 05:53:25:361+0000"
+                params: 
+                  resmsgid: null
+                  msgid: "f5e58ea069e93de16e721d0312a195dc"
+                  err: "GS_UNAUTHORIZED"
+                status: "failed"
+                errmsg: "You are an unauthorized.Contact your system administrator"
+                result: {}
+                responseCode: 401
+        "500":
+          description: "'INTERNAL SERVER ERROR. We track these errors automatically and
+            try to set it right at the earliest. Try refreshing the page. If the
+            problem persists contact us at info@sunbird.org.'"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: api.group.update
+                ver: v1
+                ts: 2020-12-01 10:49:01:948+0000
+                params:
+                  resmsgid: 
+                  msgid: 12eb0ca45ce4c776fab994d120bedd41
+                  err: "GS_RED03"
+                  status: "failed"
+                  errmsg: "Failed to read group details due to database error or there are too many concurrent calls to the server. Try again later."
+                responseCode: SERVER_ERROR
+                result: {}
+     
+  /group/v1/list:
+    post:
+      description: >-
+        This API is used for listing groups of a particular user.
+          - The endpoint for **List Group** is `/group/v1/list`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+      summary: List Groups by User
+      tags:
+        - Group APIs
+      operationId: List Groups by User
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: To make use of any Group API, you require authorization. Raise a
+            request to the administrator for the use of the API. You will
+            receive the authorization key. Specify the key received, here.
+          schema:
+            type: string
+        - name: x-authenticated-user-token
+          in: header
+          required: true
+          description: It is a unique token/key to authenticate the user each time an API
+            is called. For corresponding sessions this token is used, not your
+            actual username/password
+          schema:
+            type: string
+        - name: x-authenticated-for
+          in: header
+          required: false
+          description: Managed User token of registered MUA user performing given API
+            request. From this LUA and MUA id are seperated and LUA is validated
+            against user_id in x-authenticated-user-token
+          schema:
+            type: string
+        - name: ts
+          in: header
+          required: false
+          description: Timestamp is a sequence of characters or encoded information
+            identifying when the list group API call occurred, usually it gives
+            date and time of day, mostly accurate to a small fraction of a
+            second.
+          schema:
+            type: string
+        - name: X-msgid
+          in: header
+          required: false
+          description: This ID uniquely identifies a request if the same API is executed
+            multiple times.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/groupapiListGroupRequest"
+            examples:
+             a: 
+              summary: List Groups
+              value:
+               reuqest:
+                userId: "userid"
+        description: >-
+          - The body payload comprises of metadata of the groups of the user
+          being listed - The body parameter refers to the format of the request,
+          the request body (payload) takes the following media types to make the
+          payload:
+             - JSON
+           **Note**: You can list the groups based on user id
+            - The userId can be passed inside the filters of the request payload
+        required: true
+      responses:
+        "200":
+          description: OK ! Successful operation."List Group" operation was successfully
+            executed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiListGroupResponse"
+              example:
+                id: api.group.list
+                ts: "2020-12-02 12:57:58:595+0530"
+                ver: v1
+                params: ~
+                result: 
+                 group: 
+                  - activities: 
+                    - id: do_2130548011728240641164
+                      type: Course
+                    - id: do_21301074192677273611434
+                      type: Course
+                    createdBy: ab467e6e-1f32-453c-b1d8-c6b5fa6c7b9e
+                    createdOn: "2020-07-14 15:04:14:075+0530"
+                    id: 01460efa-ee58-4c3a-b171-810999128b8c
+                    memberRole: admin
+                    membershipType: invite_only
+                    name: "Maths class 2"
+                    status: active
+                    updatedBy: ab467e6e-1f32-453c-b1d8-c6b5fa6c7b9e
+                    updatedOn: "2020-07-17 18:07:53:603+0530"
+                  - activities: 
+                    - id: do_21308363397050368012
+                      type: Course
+                    createdBy: ab467e6e-1f32-453c-b1d8-c6b5fa6c7b9e
+                    createdOn: "2020-08-11 10:56:14:680+0530"
+                    description: do_21308363397050368012
+                    id: 1481a7d2-00fb-43d3-915b-5251a328e08c
+                    memberRole: admin
+                    membershipType: invite_only
+                    name: Vk-3.2NestedCourse
+                    responseCode: 200
+                    status: active
+                    updatedBy: ab467e6e-1f32-453c-b1d8-c6b5fa6c7b9e
+                    updatedOn: "2020-08-11 10:57:13:052+0530"
+                
+        "400":
+          description: BAD REQUEST. The "List Group" operation failed ! The possible
+            reason for failure is that you may have missed providing input for a
+            mandatory parameter.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.list"
+                ver: null
+                ts: "2020-12-02 11:09:52:748+0530"
+                params: 
+                  resmsgid: null
+                  msgid": "6da747d8-c19f-40cb-9938-fcf0913e301f"
+                  err: "GS_LST02"
+                  status: "failed"
+                  errmsg: "Failed to fetch group list, mandatory fields are missing in the request. Enter the required values and resend the request."
+                result: {}
+                responseCode: 400
+                
+        "401":
+          description: Unauthorized User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.list"
+                ver: null
+                ts: "2020-12-02 05:53:25:361+0000"
+                params: 
+                  resmsgid: null
+                  msgid: "f5e58ea069e93de16e721d0312a195dc"
+                  err: "GS_UNAUTHORIZED"
+                status: "UNAUTHORIZED"
+                errmsg: "You are an unauthorized.Contact your system administrator."
+                result: {}
+                responseCode: 401
+        
+        "500":
+          description: "'INTERNAL SERVER ERROR. We track these errors automatically and
+            try to set it right at the earliest. Try refreshing the page. If the
+            problem persists contact us at info@sunbird.org.'"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: api.group.list
+                ver: v1
+                ts: 2020-12-01 10:49:01:948+0000
+                params:
+                  resmsgid: 
+                  msgid: 12eb0ca45ce4c776fab994d120bedd41
+                  err: "GS_RED03"
+                  status: "failed"
+                  errmsg: "Failed to read group details due to database error or there are too many concurrent calls to the server. Try again later."
+                responseCode: SERVER_ERROR
+                result: {}
+      
+  /group/v1/delete:
+    post:
+      description: >-
+        This API is used for deleting the groups .
+          - The endpoint for **Delete Group** is `/group/v1/delete`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+          
+      summary: Delete Group by User
+      tags:
+        - Group APIs
+      operationId: Delete Group by User
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: To make use of any Group API, you require authorization. Raise a
+            request to the administrator for the use of the API. You will
+            receive the authorization key. Specify the key received, here.
+          schema:
+            type: string
+        - name: x-authenticated-user-token
+          in: header
+          required: true
+          description: It is a unique token/key to authenticate the user each time an API
+            is called. For corresponding sessions this token is used, not your
+            actual username/password
+          schema:
+            type: string
+        - name: x-authenticated-for
+          in: header
+          required: false
+          description: Managed User token of registered MUA user performing given API
+            request. From this LUA and MUA id are seperated and LUA is validated
+            against user_id in x-authenticated-user-token
+          schema:
+            type: string
+        - name: ts
+          in: header
+          required: false
+          description: Timestamp is a sequence of characters or encoded information
+            identifying when the list group API call occurred, usually it gives
+            date and time of day, mostly accurate to a small fraction of a
+            second.
+          schema:
+            type: string
+        - name: X-msgid
+          in: header
+          required: false
+          description: This ID uniquely identifies a request if the same API is executed
+            multiple times.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/groupapiDeleteGroupRequest"
+            example:
+               request:
+                groupId: "6da747d8-c19f-40cb-9938-fcf0913e301f"
+        description: >-
+          - The body payload comprises of metadata of the groups of the user
+          being listed - The body parameter refers to the format of the request,
+          the request body (payload) takes the following media types to make the
+          payload:
+             - JSON
+           **Note**: Only creator can  only delete the group 
+            - The groupId should be passed on request payload to delete the group
+        required: true
+      responses:
+        "200":
+          description: OK ! Successful operation."Delete Group" operation was successfully
+            executed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiDeleteGroupResponse"
+              example:
+                id: "api.group.delete"
+                ver: null
+                ts: "2020-12-02 11:09:52:748+0530"
+                params: null
+                result: 
+                 response: "SUCCESS"
+                responseCode: 200
+                
+        "400":
+          description: BAD REQUEST. The "Delete Group" operation failed ! The possible
+            reason for failure is that you may have missed providing input for a
+            mandatory parameter.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.delete"
+                ver: null
+                ts: "2020-12-02 11:09:52:748+0530"
+                params: 
+                  resmsgid: null
+                  msgid": "6da747d8-c19f-40cb-9938-fcf0913e301f"
+                  err: "GS_DLT02"
+                  status: "failed"
+                  errmsg: "Failed to delete group, mandatory fields are missing in the request. Enter the required values and resend the request."
+                result: {}
+                responseCode: 400
+                
+        "401":
+          description: Unauthorized User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.delete"
+                ver: null
+                ts: "2020-12-02 05:53:25:361+0000"
+                params: 
+                  resmsgid: null
+                  msgid: "f5e58ea069e93de16e721d0312a195dc"
+                  err: "GS_UNAUTHORIZED"
+                status: "failed"
+                errmsg: "You are an unauthorized.Contact your system administrator."
+                result: {}
+                responseCode: 401
+      
+        "500":
+          description: "'INTERNAL SERVER ERROR. We track these errors automatically and
+            try to set it right at the earliest. Try refreshing the page. If the
+            problem persists contact us at info@sunbird.org.'"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: api.group.delete
+                ver: v1
+                ts: 2020-12-01 10:49:01:948+0000
+                params:
+                  resmsgid: 
+                  msgid: 12eb0ca45ce4c776fab994d120bedd41
+                  err: "GS_DLT03"
+                  status: "failed"
+                  errmsg: "Failed to delete group, due to database error or there are too many concurrent calls to the server. Try again later."
+                responseCode: SERVER_ERROR
+                result: {}
+      security:
+        - bearer: []
+  /group/membership/v1/update:
+    post:
+      description: >-
+        This API is used for updating membership, Currently it supports only to update visited flag to verify that user has already visited the group once.
+          - The endpoint for **Membership Update Group** is `/group/membership/v1/update`
+          - The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+      summary: Group Membership Update by User
+      tags:
+        - Group APIs
+      operationId: Group Membership update by User
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: To make use of any Group API, you require authorization. Raise a
+            request to the administrator for the use of the API. You will
+            receive the authorization key. Specify the key received, here.
+          schema:
+            type: string
+        - name: x-authenticated-user-token
+          in: header
+          required: true
+          description: It is a unique token/key to authenticate the user each time an API
+            is called. For corresponding sessions this token is used, not your
+            actual username/password
+          schema:
+            type: string
+        - name: x-authenticated-for
+          in: header
+          required: false
+          description: Managed User token of registered MUA user performing given API
+            request. From this LUA and MUA id are seperated and LUA is validated
+            against user_id in x-authenticated-user-token
+          schema:
+            type: string
+        - name: ts
+          in: header
+          required: false
+          description: Timestamp is a sequence of characters or encoded information
+            identifying when the list group API call occurred, usually it gives
+            date and time of day, mostly accurate to a small fraction of a
+            second.
+          schema:
+            type: string
+        - name: X-msgid
+          in: header
+          required: false
+          description: This ID uniquely identifies a request if the same API is executed
+            multiple times.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/groupapiGroupMembershipRequest"
+            example:
+             request:
+              userId: "userid"
+              groups: [{
+                groupId: "groupid",
+                visited: true
+              }]
+        description: >-
+          - The body payload comprises of metadata of the groups of the user
+          being listed - The body parameter refers to the format of the request,
+          the request body (payload) takes the following media types to make the
+          payload:
+             - JSON
+           **Note**: You can delete the group created by a user
+            - The groupId should be passed on request payload to delete the group
+        required: true
+      responses:
+        "200":
+          description: OK ! Successful operation."Group Membership Update" operation was successfully
+            executed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupMembershipResponse"
+              example:
+                id: "api.group.membership.update"
+                ver: null
+                ts: "2020-12-02 11:09:52:748+0530"
+                params: null
+                result: 
+                 response: "SUCCESS"
+                responseCode: 200
+                
+        "400":
+          description: BAD REQUEST. The "Group Membership Update" operation failed ! The possible
+            reason for failure is that you may have missed providing input for a
+            mandatory parameter.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.membership.update"
+                ver: null
+                ts: "2020-12-02 11:09:52:748+0530"
+                params: 
+                  resmsgid: null
+                  msgid": "6da747d8-c19f-40cb-9938-fcf0913e301f"
+                  err: "GS_MBRSHP_UDT02"
+                  status: "failed"
+                  errmsg: "Failed to update group member details, mandatory fields are missing in the request. Enter the required values and resend the request."
+                result: {}
+                responseCode: 400
+        "401":
+          description: Unauthorized User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: "api.group.membership.update"
+                ver: null
+                ts: "2020-12-02 05:53:25:361+0000"
+                params: 
+                  resmsgid: null
+                  msgid: "f5e58ea069e93de16e721d0312a195dc"
+                  err: "GS_UNAUTHORIZED"
+                status: "failed"
+                errmsg: "You are an unauthorized.Contact your system administrator."
+                result: {}
+                responseCode: 401
+      
+        "500":
+          description: "'INTERNAL SERVER ERROR. We track these errors automatically and
+            try to set it right at the earliest. Try refreshing the page. If the
+            problem persists contact us at info@sunbird.org.'"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/groupapiGroupErrorResponse"
+              example:
+                id: api.group.membership.update
+                ver: v1
+                ts: 2020-12-01 10:49:01:948+0000
+                params:
+                  resmsgid: 
+                  msgid: 12eb0ca45ce4c776fab994d120bedd41
+                  err: "GS_MBRSHP_UDT03"
+                  status: "failed"
+                  errmsg: "Failed to create group, due to database error or there are too many concurrent calls to the server. Try again later."
+                responseCode: SERVER_ERROR
+                result: {}
+    
+servers:
+  - url: https://staging.sunbirded.org/api
+components:
+  securitySchemes:
+    bearer:
+      type: apiKey   # arbitrary name for the security scheme
+      in: header     # The secrity scheme parameter is in "header"
+      name: Authorization  # name of the header, query parameter or cookie
+    userToken:
+      type: apiKey                        # arbitrary name for the security scheme               
+      in: header                          # The secrity scheme parameter is in "header"
+      name: x-authenticated-user-token    # name of the header, query parameter or cookie
+    manageduserToken:
+      type: apiKey                       # arbitrary name for the security scheme
+      in: header                         # The secrity scheme parameter is in "header"
+      name: x-authenticated-for          # name of the header, query parameter or cookie
+  schemas:
+    groupapiCreateGroupRequest:
+      description: Create Group Object
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/groupapiApiRequest'
+      properties:
+        request:
+          type: object
+          properties:
+            name:
+              description: Represents the name of the group
+              type: string
+            description:
+              description: Represents the description of the group
+              type: string
+            membershipType:
+              type: string
+              description: Represents the MembershipType (invite_only/moderated) of the group
+              default: invite_only
+            members:
+              type: array
+              items:
+                type: object
+                allOf:
+                  - $ref: "#/components/schemas/groupapimemberReqObject"
+            activities:
+              type: array
+              items:
+                type: object
+                allOf:
+                  - $ref: "#/components/schemas/groupapiactivityReqObject"
+          required:
+            - name
+      required:
+        - request
+    groupapiApiRequest:
+      description: "Group Create Request"
+      type: object
+      properties:
+       id:
+        description: Represents an API uniquely
+        type: string
+       ver:
+        description: Represents the version of the API which was used
+        type: string
+       ets:
+        description: Represents the EPOCH (UTC) timestamp in milliseconds since EPOCH
+        type: string
+        format: int64
+       params:
+        type: object
+        properties:
+          msgid:
+            description: Represents the unique ID of the message being sent
+            type: string
+          did:
+            description: Represents the device UUID from which API is called
+            type: string
+    groupapiGroupCreateResponse:
+      description: The response body of create group
+      type: object
+      allOf:
+       - $ref: "#/components/schemas/groupapiInitResObject"
+      required:
+       - result
+      properties:
+       result:
+         type: object
+         required:
+          - groupId
+          - response
+          - errors
+         properties:
+           response:
+             type: string
+             description: Success or Failure
+           groupId:
+             type: string
+             description: Group id of the created group
+           errors:
+             type: object
+             allOf:
+               - $ref: "#/components/schemas/groupapiErrorObjectForPartialSuccess"
+      
+    groupapiErrorObjectForPartialSuccess:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            type: object
+            properties:
+              useriId:
+                type: string
+              errorCode:
+                type: string
+              errorMessage:
+                type: string
+        activities:
+          type: array
+          items:
+            type: object
+            properties:
+              activityId:
+                type: string
+              errorCode:
+                type: string
+              errorMessage:
+                type: string
+    groupapiUpdateGroupRequest:
+      type: object
+      properties:
+        request:
+          type: object
+          properties:
+            groupId:
+              description: Represents the ID of the group to be updated
+              type: string
+            name:
+              description: Represents the name of the group
+              type: string
+            description:
+              description: Represents the description of the group
+              type: string
+            membershipType:
+              type: string
+              description: Represents the MembershipType (invite_only/moderated) of the group
+            status:
+              description: Represents the status (active/inactive) of the group
+              type: string
+          allOf:
+            - $ref: "#/components/schemas/groupapiMemberOperations"
+            - $ref: "#/components/schemas/groupapiActivityOperations"
+          required:
+            - groupId
+      required:
+        - request
+    groupapiUpdateGroupResponse:
+      description: Update response for a Group API
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/groupapiInitResObject"#/ApiResponse
+        - $ref: "#/components/schemas/groupapiResultWithPartialErrorResponse"
+    groupapiListGroupRequest:
+      description: List group request
+      type: object
+      properties:
+        filters:
+          type: object
+          properties:
+            userId:
+              type: string
+              description: UserId is optional
+    groupapiListGroupResponse:
+      description: The response body of List Group
+      type: object
+      properties:
+        response:
+          type: object
+          properties:
+            count:
+              type: integer
+            group:
+              type: array
+              items:
+                type: object
+                allOf:
+                  - $ref: "#/components/schemas/groupapiListGroupResponseObject"
+    groupapiListGroupResponseObject:
+      title: Group Response Object
+      type: object
+      properties:
+        id:
+          type: string
+          description: Represents the id of the group
+        name:
+          description: Represents the name of the group
+          type: string
+        description:
+          description: Represents the description of the group
+          type: string
+        membershipType:
+          type: string
+          description: Represents the MembershipType (invite_only/moderated) of the group
+          default: invite_only
+        status:
+          description: Represents the status (active/inactive) of the group
+          type: string
+        memberRole:
+          description: Represents the role (member/admin) of the user
+          type: string
+      allOf:
+        - $ref: "#/components/schemas/groupapiauditObject"
+    groupapiGetGroupResponse:
+      title: Group Response Object
+      type: object
+      properties:
+        id:
+          type: string
+          description: Represents the id of the group
+        name:
+          description: Represents the name of the group
+          type: string
+        description:
+          description: Represents the description of the group
+          type: string
+        membershipType:
+          type: string
+          description: Represents the MembershipType (invite_only/moderated) of the group
+          default: invite_only
+        status:
+          description: Represents the status (active/inactive) of the group
+          type: string
+        members:
+          type: array
+          items:
+            type: object
+            allOf:
+              - $ref: "#/components/schemas/groupapimemberResponse"
+        activities:
+          type: array
+          items:
+            type: object
+            allOf:
+              - $ref: "#/components/schemas/groupapiactivityResponse"
+      allOf:
+        - $ref: "#/components/schemas/groupapiauditObject"
+    groupapiDeleteGroupRequest:
+      type: object
+      properties:
+        request:
+          type: object
+          properties:
+            groupId:
+              description: Represents the ID of the group to be deleted
+              type: string
+          required:
+            - groupId
+      required:
+        - request
+    groupapiDeleteGroupResponse:
+      description: Delete response for a Group API
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/groupapiInitResObject"#/ApiResponse
+        - $ref: "#/components/schemas/groupapiResultWithEmptyBody"
+    groupapiGroupMembershipRequest:
+      type: object
+      properties:
+        request:
+          type: object
+          properties:
+            userId:
+              description: Represents the ID of the user
+              type: string
+            groups:
+              type: array
+              items:
+                type: object
+                properties:
+                   groupId:
+                      description: "Id of the group"
+                      type: "string"
+                   visited:
+                      description: "Visited flag for the group"
+                      type: "boolean"
+          required:
+            - userId
+      required:
+        - request
+    groupapiGroupMembershipResponse:
+      description: Group Membership response for a Group API
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/groupapiInitResObject"#/ApiResponse
+        - $ref: "#/components/schemas/groupapiResultWithEmptyBody"
+    groupapiGroupErrorResponse:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/groupapiInitResObject"#/ApiResponse
+        - $ref: "#/components/schemas/groupapiEmptyResult"
+    groupapiUnAuthorizedResponse:
+      allOf:
+        - $ref: "#/components/schemas/groupapiResultWithEmptyBody"
+        - $ref: "#/components/schemas/groupapiInitResObject"#/ApiResponse
+    groupapiEmptyResult:
+      type: object
+      properties:
+        result:
+          type: object
+          description: Empty Result
+    groupapiResultStatus:
+      type: object
+      properties:
+        response:
+          type: string
+          description: Success or Failure
+    groupapiResultWithEmptyBody:
+      type: object
+      properties:
+        result:
+          $ref: "#/components/schemas/groupapiResultStatus"
+    groupapiResultWithPartialErrorResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            response:
+              type: string
+              description: Success or Failure
+            error:
+              type: object
+              allOf:
+                - $ref: "#/components/schemas/groupapiErrorObjectForPartialSuccess"
+    groupapiInitResObject:
+      title: initResObject
+      type: object
+      properties:
+        id:
+         type: "string"
+        ver:
+         type: "string"
+        ets:
+         type: "string"
+        params:
+         type: object
+         properties:
+          msgid:
+           type: "string"
+          resmsgid:
+           type: "string"
+          err:
+           type: "string"
+          errmsg:
+           type: "string"
+          errdetail:
+           type: "string"
+          status:
+           type: "string"
+    groupapiauditObject:
+      title: auditObject
+      type: object
+      properties:
+        createdOn:
+          type: string
+          description: Record created date
+        createdBy:
+          type: string
+          description: Record created userid
+        updatedOn:
+          type: string
+          description: Record updated date
+        updatedBy:
+          type: string
+          description: Record updated userid
+    groupapimemberAuditObject:
+      title: memberAuditObject
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/groupapiauditObject"
+      properties:
+        removedOn:
+          type: string
+          description: Record removed date
+        removedBy:
+          type: string
+          description: Record removed userid
+    groupapimemberResponse:
+      title: memberResponse
+      type: object
+      properties:
+        userName:
+          type: string
+          description: Name of the user
+      allOf:
+        - $ref: "#/components/schemas/groupapimemberObject"
+        - $ref: "#/components/schemas/groupapimemberAuditObject"
+    groupapiactivityResponse:
+      title: activityResponse
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/groupapiactivityObject"
+      properties:
+        activityInfo:
+          type: object
+          description: Activity response from content service
+    groupapimemberObject:
+      title: memberObject
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Group id to which the member belongs to
+        userId:
+          type: string
+          description: uuid of the member
+        role:
+          type: string
+          description: Role of the user in group [ADMIN/MEMBER]
+        status:
+          type: string
+          description: Status of the user in group [Active/Inactive]
+      required:
+        - userId
+        - groupId
+    groupapiactivityObject:
+      title: activityObject
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the activity.
+        type:
+          type: string
+          description: Type of the activity
+      required:
+        - id
+        - type
+    groupapimemberReqObject:
+      title: memberReqObject
+      type: object
+      properties:
+        userId:
+          type: string
+          description: uuid of the member
+        role:
+          type: string
+          description: Role of the user in group [admin/member]
+          default: member
+      required:
+        - userId
+    groupapiactivityReqObject:
+      title: activityReqObject
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the activity.
+        type:
+          type: string
+          description: Type of the activity
+      required:
+        - id
+        - type
+    groupapiActivityOperations:
+      type: object
+      properties:
+        activities:
+          type: object
+          properties:
+            add:
+              type: array
+              items:
+                type: object
+                allOf:
+                  - $ref: "#/components/schemas/groupapiactivityReqObject"
+            edit:
+              type: array
+              items:
+                type: object
+                allOf:
+                  - $ref: "#/components/schemas/groupapiactivityReqObject"
+            remove:
+              type: array
+              items:
+                type: string
+                description: Id of the activity.
+    groupapiMemberOperations:
+      type: object
+      properties:
+        members:
+          type: object
+          properties:
+            add:
+              type: array
+              items:
+                type: object
+                allOf:
+                  - $ref: "#/components/schemas/groupapimemberReqObject"
+            edit:
+              type: array
+              items:
+                type: object
+                allOf:
+                  - $ref: "#/components/schemas/groupapimemberReqObject"
+            remove:
+              type: array
+              items:
+                type: string
+                description: uuid of the member

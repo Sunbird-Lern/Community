@@ -1,0 +1,673 @@
+openapi: 3.0.1
+info:
+  title: Course Batch Certificate api
+  description: |-
+   These APIs are used to attach and remove course batch certificate templates,
+    and to issue certificates for course batch.
+    - [TestCases](https://app.getpostman.com/run-collection/416aa8eeb21eaa3fe30c)
+    
+  version: "1.0"
+servers:
+- url: https://staging.open-sunbird.org/api
+paths:
+  /course/batch/cert/v1/template/add:
+    patch:
+      tags:
+      - Certificate Template Api
+      summary: Add certificate template to a course batch
+      description: |-
+        This API allows you to attach certificate templates.
+           - On request, the **_ /template/add_** endpoint attaches a template to the course batch.
+           - All fields marked with an * are mandatory
+           - The mandatory fields cannot be null or empty
+           - Backend route: http://lms-service:9000/v1/course/batch/cert/template/add
+      operationId: AddCertificateTemplate
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The Content Type entity is the media type of the resource.Possible
+          media types can be Application/json
+        required: true
+        schema:
+          type: string
+      - name: ts
+        in: header
+        description: 'The timestamp at which the **Add certificate template** request
+          was sent. '
+        required: false
+        schema:
+          type: string
+      - name: X-msgid
+        in: header
+        description: A unique ID that identifies the request, in case the same API
+          is executed multiple times.
+        required: false
+        schema:
+          type: string
+      - name: x-authenticated-user-token
+        in: header
+        description: The access token of the registered user sending the given API
+          request. This is an alphanumeric string.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received here.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: The body refers to the format of the request. The body contains
+          metadata about the request to add the certificate template.
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/coursebatchcertificateapiApiRequest'
+              - $ref: '#/components/schemas/coursebatchcertificateapiAddCertificateTemplateRequest'
+        required: true
+      responses:
+        200:
+          description: OK ! Operation successful."Add Certificate template" operation
+            was executed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  coursebatchcertificateapiApiResponse:
+                    $ref: '#/components/schemas/coursebatchcertificateapiApiResponse'
+                  coursebatchcertificateapiSuccessResponse:
+                    $ref: '#/components/schemas/coursebatchcertificateapiSuccessResponse'
+              example:
+                id: api.course.batch.cert.template.add
+                ver: v1
+                ts: 2020-12-03 05:15:43:693+0000
+                params:
+                  resmsgid: 
+                  msgid: dcef916a-bbf0-48b6-bb20-2e4b9e90745d
+                  err: 
+                  status: success
+                  errmsg: 
+                responseCode: OK
+                result:
+                  response: SUCCESS
+        400:
+          description: BAD REQUEST. The "Add Certificate template" operation failed.
+            Input for a mandatory parameter may be missing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchcertificateapiAddCertificateTemplateErrorResponse'
+              example:
+                id: api.course.batch.cert.template.add
+                ver: v1
+                ts: 2020-12-03 05:16:35:486+0000
+                params:
+                  resmsgid: 
+                  msgid: 3d203596-1344-4abd-bb2e-430f1dc865e1
+                  err: null
+                  status: SERVER_ERROR
+                  errmsg: No such batch exists.
+                responseCode: CLIENT_ERROR
+                result: {}
+            
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchcertificateapiAddCertificateTemplateErrorResponse'
+              example:
+                id: api.course.batch.cert.issue
+                ver: v1
+                ts: 2020-12-03 04:59:57:705+0000
+                params:
+                  resmsgid: 
+                  msgid: fefbbbf8-1e39-40a9-b76d-3bd60b9f3786
+                  err: UNAUTHORIZED_USER
+                  status: SERVER_ERROR
+                  errmsg: You are not authorized.
+                responseCode: CLIENT_ERROR
+                result: {}
+        500:
+          description: INTERNAL SERVER ERROR ! Looks like something went wrong. These
+            errors are tracked automatically. Try refreshing the page. If the problem
+            persists, contact info@sunbird.org.
+          content: 
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/coursebatchcertificateapi500ServerError'
+              example:
+                id: api.course.batch.cert.template.add
+                ver: v1
+                ts: '2020-11-23 15:15:18:331+0000'
+                params:
+                  resmsgid: null
+                  msgid: null
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: 'Process failed,please try again later.'
+                responseCode: SERVER_ERROR
+                result: {}
+      x-codegen-request-body-name: Body
+      security:
+      - bearer: []
+      - userToken: []
+      
+  /course/batch/cert/v1/template/remove:
+    patch:
+      tags:
+      - Certificate Template Api
+      summary: remove certificate template from course batch
+      description: |-
+        This API is associated with detaching certificate templates.
+           - The **_ /template/remove_** endpoint detaches a template from the course batch.
+           - All fields marked with an * are mandatory
+           - Required fields cannot be null or empty
+           - Backend Route: http://lms-service:9000/v1/course/batch/cert/template/remove
+      operationId: RemoveCertificateTemplate
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The Content Type entity is the media type of the resource.Possible
+          media types can be Application/json
+        required: true
+        schema:
+          type: string
+      - name: ts
+        in: header
+        description: 'The timestamp at which the **remove certificate template** request
+          was sent. '
+        required: false
+        schema:
+          type: string
+      - name: X-msgid
+        in: header
+        description: A unique ID that identifies the request in case the same API
+          is executed multiple times.
+        required: false
+        schema:
+          type: string
+      - name: x-authenticated-user-token
+        in: header
+        description: The access token of the registered user sending the given API
+          request. This is an alphanumeric string.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received here.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: The body refers to the format of the request. The body contains
+          metadata about the request to remove certificate template.
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/coursebatchcertificateapiApiRequest'
+              - $ref: '#/components/schemas/coursebatchcertificateapiRemoveCertificateTemplateRequest'
+            example:
+              request:
+                batch:
+                  courseId: courseId
+                  batchId: batchId
+                  template:
+                    identifier: template Identifier
+        required: true
+      responses:
+        200:
+          description: OK ! Operation successful."Remove Certificate template" operation
+            was executed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  coursebatchcertificateapiApiResponse:
+                    $ref: '#/components/schemas/coursebatchcertificateapiApiResponse'
+                  coursebatchcertificateapiSuccessResponse:
+                    $ref: '#/components/schemas/coursebatchcertificateapiSuccessResponse'
+              example:
+                id: api.course.batch.cert.template.remove
+                ver: v1
+                ts: 2020-12-03 05:36:09:531+0000
+                params:
+                  resmsgid: 
+                  msgid: cac9434e-fc66-47dc-b37b-15438b3c68ab
+                  err: 
+                  status: success
+                  errmsg: 
+                responseCode: OK
+                result:
+                  response: SUCCESS
+        400:
+          description: BAD REQUEST. The "Remove Certificate template" operation failed.
+            Input for a mandatory parameter may be missing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchcertificateapiRemoveCertificateTemplateErrorResponse'
+              example:
+                id: api.course.batch.cert.template.remove
+                ver: v1
+                ts: 2020-12-03 05:36:09:531+0000
+                params:
+                  resmsgid: 
+                  msgid: cac9434e-fc66-47dc-b37b-15438b3c68ab
+                  err: 
+                  status: success
+                  errmsg: 
+                responseCode: OK
+                result:
+                  response: SUCCESS
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchcertificateapiAddCertificateTemplateErrorResponse'
+              example:
+                id: api.course.batch.cert.issue
+                ver: v1
+                ts: 2020-12-03 04:59:57:705+0000
+                params:
+                  resmsgid: 
+                  msgid: fefbbbf8-1e39-40a9-b76d-3bd60b9f3786
+                  err: UNAUTHORIZED_USER
+                  status: SERVER_ERROR
+                  errmsg: You are not authorized.
+                responseCode: CLIENT_ERROR
+                result: {}
+        500:
+          description: INTERNAL SERVER ERROR ! Looks like something went wrong. These
+            errors are tracked automatically. Try refreshing the page. If the problem
+            persists, contact info@sunbird.org.
+          content: 
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/coursebatchcertificateapi500ServerError'
+              example:
+                id: api.course.batch.cert.template.remove
+                ver: v1
+                ts: '2020-11-23 15:15:18:331+0000'
+                params:
+                  resmsgid: null
+                  msgid: null
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: 'Process failed,please try again later.'
+                responseCode: SERVER_ERROR
+                result: {} 
+      x-codegen-request-body-name: Body
+      security:
+      - bearer: []
+      - userToken: []
+components:
+  schemas:
+    coursebatchcertificateapi500ServerError:
+      title: 500ServerError
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          type: string
+        responseCode:
+          type: string
+        result:
+          type: object
+          properties:
+           message:
+            type: string
+    coursebatchcertificateapiAddCertificateTemplateRequest:
+      title: AddCertificateTemplateRequest
+      required:
+      - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/coursebatchcertificateapiAddCourseBatchTemplateRequest'
+    coursebatchcertificateapiAddCourseBatchTemplateRequest:
+      title: AddCourseBatchTemplateRequest
+      required:
+      - batch
+      type: object
+      properties:
+        batch:
+          $ref: '#/components/schemas/coursebatchcertificateapiAddCourseBatchTemplate'
+    coursebatchcertificateapiAddCourseBatchTemplate:
+      title: AddCourseBatchTemplate
+      required:
+      - batchId
+      - courseId
+      - template
+      type: object
+      properties:
+        courseId:
+          type: string
+          description: The course identifier
+        batchId:
+          type: string
+          description: The batch identifier
+        template:
+          $ref: '#/components/schemas/coursebatchcertificateapiAddBatchTemplate'
+    coursebatchcertificateapiAddBatchTemplate:
+      title: AddBatchTemplate
+      required:
+      - criteria
+      - identifier
+      - issuer
+      - signatoryList
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: The template identifier
+        criteria:
+          type: object
+          properties:
+            enrollment:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: "2"
+          description: The filter for the template
+        signatoryList:
+          type: array
+          description: The list of signatories
+          items:
+            type: object
+            required:
+            - name
+            - id
+            - designation
+            - image
+            properties:
+              name:
+                type: string
+                description: The signatory name
+              id:
+                type: string
+                description: The identifier for the signatory
+              designation:
+                type: string
+                description: The designation of the signatory
+                example: CEO
+              image:
+                type: string
+                description: image of the signatory signature
+        issuer:
+          type: object
+          required:
+          - name
+          - url
+          properties:
+            name:
+              type: string
+              description: The issuer name
+            url:
+              type: string
+              description: The issuer URL
+            publicKey:
+              type: array
+              description: The public keys
+              example:
+              - 7
+              - 8
+              items:
+                type: integer
+                format: int64
+          description: The filter for the template
+    coursebatchcertificateapiRemoveCertificateTemplateRequest:
+      title: RemoveCertificateTemplateRequest
+      required:
+      - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/coursebatchcertificateapiRemoveCourseBatchTemplateRequest'
+    coursebatchcertificateapiRemoveCourseBatchTemplateRequest:
+      title: RemoveCourseBatchTemplateRequest
+      required:
+      - batch
+      type: object
+      properties:
+        batch:
+          $ref: '#/components/schemas/coursebatchcertificateapiRemoveCourseBatchTemplate'
+    coursebatchcertificateapiRemoveCourseBatchTemplate:
+      title: RemoveCourseBatchTemplate
+      required:
+      - batchId
+      - courseId
+      - template
+      type: object
+      properties:
+        courseId:
+          type: string
+          description: The course identifier
+        batchId:
+          type: string
+          description: The batch identifier
+        template:
+          $ref: '#/components/schemas/coursebatchcertificateapiRemoveBatchTemplate'
+    coursebatchcertificateapiRemoveBatchTemplate:
+      title: RemoveBatchTemplate
+      required:
+      - templateId
+      type: object
+      properties:
+        templateId:
+          type: string
+          description: The template identifier
+    coursebatchcertificateapiIssueCertificateRequest:
+      title: Issue certificate request
+      required:
+      - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/coursebatchcertificateapiRequest'
+    coursebatchcertificateapiRequest:
+      title: Request
+      required:
+      - batchId
+      - courseId
+      type: object
+      properties:
+        courseId:
+          type: string
+          description: The course identifier
+        batchId:
+          type: string
+          description: The batch identifier
+        userIds:
+          type: array
+          description: The optional User IDs
+          items:
+            type: string
+    coursebatchcertificateapiIssueCertificateResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            courseId:
+              type: string
+              description: The course identifier
+            batchId:
+              type: string
+              description: The batch identifier
+            status:
+              type: string
+              description: The certificate issue status
+              example: Certificates issue action for Course Batch Id 0128821148183429120
+                submitted Successfully!
+          description: The response details
+      description: Issue certificate Response
+    coursebatchcertificateapiResponseHeader:
+      title: ResponseHeader
+      type: object
+      properties:
+        id:
+          type: string
+          description: The API Identifier
+        ver:
+          type: string
+          description: The API version information
+        ts:
+          type: string
+          description: The API execution timestamp
+        params:
+          $ref: '#/components/schemas/coursebatchcertificateapiResponseParams'
+        responseCode:
+          type: string
+          description: The API response code
+          example: CLIENT_ERROR
+    coursebatchcertificateapiResponseParams:
+      title: Response Parameter
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          description: Represents the response message ID
+        msgid:
+          type: string
+          description: Represents the error message ID
+        err:
+          type: string
+          description: Represents the error code
+        status:
+          type: string
+          description: The response status
+        errmsg:
+          type: string
+          description: Error Message
+          example: No such batchId exists
+    coursebatchcertificateapiEmptyResult:
+      title: Empty Result
+      type: object
+      properties:
+        result:
+          type: object
+          properties: {}
+          description: Empty Result
+    coursebatchcertificateapiIssueCertificateErrorResponse:
+      title: Create Content Error Response
+      allOf:
+      - $ref: '#/components/schemas/coursebatchcertificateapiResponseHeader'
+      - $ref: '#/components/schemas/coursebatchcertificateapiEmptyResult'
+    coursebatchcertificateapiSuccessResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            response:
+              type: string
+              example: SUCCESS
+      description: Contains the success response
+    coursebatchcertificateapiAddCertificateTemplateErrorResponse:
+      title: Create cerrtificate error response
+      allOf:
+      - $ref: '#/components/schemas/coursebatchcertificateapiResponseHeader'
+      - $ref: '#/components/schemas/coursebatchcertificateapiEmptyResult'
+    coursebatchcertificateapiRemoveCertificateTemplateErrorResponse:
+      title: Remove certificate error response
+      allOf:
+      - $ref: '#/components/schemas/coursebatchcertificateapiResponseHeader'
+      - $ref: '#/components/schemas/coursebatchcertificateapiEmptyResult'
+    coursebatchcertificateapiApiRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Represents an API uniquely
+        ver:
+          type: string
+          description: Represents the version of the API which was used
+        ets:
+          type: integer
+          description: Represents the EPOCH (UTC) timestamp in milliseconds since
+            EPOCH
+          format: int64
+        params:
+          type: object
+          properties:
+            msgid:
+              type: string
+              description: Represents the unique ID of the message being sent
+            did:
+              type: string
+              description: Represents the device UUID from which API is called
+    coursebatchcertificateapiApiResponse:
+      required:
+      - ets
+      - id
+      - params
+      - ver
+      type: object
+      properties:
+        id:
+          type: string
+          description: Represents the ID of the request which was made
+        ver:
+          type: string
+          description: Represents the version of the API which was used
+        ets:
+          type: integer
+          description: Represents the EPOCH (UTC) timestamp in milliseconds since
+            EPOCH
+          format: int64
+        params:
+          required:
+          - msgid
+          - resmsgid
+          - status
+          type: object
+          properties:
+            msgid:
+              type: string
+              description: Represents the ID of the message sent
+            resmsgid:
+              type: string
+              description: Represents the ID of the response message
+            status:
+              type: string
+              enum:
+              - success
+              - error
+        responseCode:
+          type: string
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+    userToken:
+      type: apiKey
+      name: x-authenticated-user-token
+      in: header
