@@ -2,7 +2,11 @@
 
 Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) : This is the link to the set of issues/ submissions or requests that are being considered for development as part of the Sunbird Lern roadmap. You can upvote an issue if you find it relevant, or <mark style="color:blue;">add a new issue</mark> to the list
 
-\*\*\*\*[**Release-5.0.0**](https://project-sunbird.atlassian.net/issues/?filter=12509) **(Planned release date - 19 Aug'22)**
+
+
+
+
+[**Release-5.0.0**](https://project-sunbird.atlassian.net/issues/?filter=12509) **(Planned release date - 19 Aug'22)**
 
 | **1.** [**Design and plan for decoupling Lern building block from other BB repos and creating its own set up**](https://project-sunbird.atlassian.net/browse/SB-30063)                                                                                                                                                                                                                                                                                                                                      |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15,4 +19,4 @@ Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) :
 
 #### [Sunbird Lern Backlog](https://project-sunbird.atlassian.net/issues/?filter=12361)
 
-This is the list of approved backlog items that can be picked up by the Sunbird Lern team as well as other contributors or adopters for development and submission as part of the Lern building block.\\
+This is the list of approved backlog items that can be picked up by the Sunbird Lern team as well as other contributors or adopters for development and submission as part of the Lern building block.
