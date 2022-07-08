@@ -68,6 +68,7 @@
 ## Engage
 
 * [Discuss](https://github.com/Sunbird-Lern/Community/discussions)
+* [Contribute to Sunbird Lern](https://github.com/Sunbird-Lern/Community/discussions/15)
 
 ## USE
 
@@ -112,3 +113,4 @@
   * [Release V 4.9.0](use/release-notes-1/release-v-4.9.0.md)
   * [Release V 4.8.0](use/release-notes-1/release-v-4.8.0-upcoming.md)
   * [Release V 4.7.0](use/release-notes-1/release-v-4.7.0-live.md)
+* [Raise an Issue](https://github.com/Sunbird-Lern/Community/discussions/10)
