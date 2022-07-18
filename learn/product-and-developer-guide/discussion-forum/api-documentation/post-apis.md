@@ -1,7 +1,15 @@
 # Post APIs
 
-{% swagger src="../../../../.gitbook/assets/openapi.json" path="/discussion/v2/posts/{pid}" method="put" %}
-[openapi.json](../../../../.gitbook/assets/openapi.json)
+{% swagger src="../../../../.gitbook/assets/DF-API (1).yaml" path="/discussion/v2/topics/{tid}" method="post" %}
+[DF-API (1).yaml](<../../../../.gitbook/assets/DF-API (1).yaml>)
+{% endswagger %}
+
+{% swagger src="../../../../.gitbook/assets/DF-API.yaml" path="/discussion/v2/topics/{tid}" method="post" %}
+[DF-API.yaml](../../../../.gitbook/assets/DF-API.yaml)
+{% endswagger %}
+
+{% swagger src="../../../../.gitbook/assets/openapi (2).yaml" path="undefined" method="undefined" %}
+[openapi (2).yaml](<../../../../.gitbook/assets/openapi (2).yaml>)
 {% endswagger %}
 
 {% swagger src="../../../../.gitbook/assets/openapi.json" path="/discussion/v2/posts/{pid}" method="delete" %}
@@ -28,6 +36,6 @@
 [openapi.json](../../../../.gitbook/assets/openapi.json)
 {% endswagger %}
 
-{% swagger src="../../../../.gitbook/assets/openapi.json" path="/discussion/v2/posts/{pid}/state" method="delete" %}
-[openapi.json](../../../../.gitbook/assets/openapi.json)
+{% swagger src="../../../../.gitbook/assets/DF-API (2).yaml" path="/discussion/v2/posts/{pid}/state" method="delete" %}
+[DF-API (2).yaml](<../../../../.gitbook/assets/DF-API (2).yaml>)
 {% endswagger %}
