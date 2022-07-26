@@ -1,8 +1,8 @@
-# Configurations
+# Functional Configurations
 
 There are various configurations that can be made via the Batch Service:
 
-* Batch type : Open (users can enrol by themselves)
+* Batch type: Open (users can enroll by themselves)
 * Batch Start date and End date and Enrolment End date
 * Certificate generation for batch
 * Criteria for earning a certificate (minimum score for the course assessment)
@@ -39,4 +39,5 @@ Following are the functional configurations
 | sunbird\_otp\_day\_rate\_limit                 | In a day, 20 configured OTPs were allowed                          | 20                              |
 | sunbird\_sync\_read\_wait\_time                | wait time in seconds                                               | 1500                            |
 | sunbird\_course\_completion\_certificate\_name | Certificate name                                                   | 100PercentCompletionCertificate |
-| enrollment\_list\_size                         | number of enrolments                                               | 1000                            |
+| enrollment\_list\_size                         | number of enrolmen                                                 | 1000                            |
+
