@@ -244,7 +244,7 @@ sunbird_redis_host=127.0.0.1
 sunbird_redis_scan_interval=2000
 sunbird_cache_enable=false
 sunbird_redis_connection_pool_size=250
-#kafka_topics_instruction=local.coursebatch.job.request
+#kafka_topics_instruction={{env}}{{bb}}.coursebatch.job.request
 kafka_urls=localhost:9092
 sunbird_audit_event_batch_allowed=false
 sunbird_fuzzy_search_threshold=0.5
@@ -254,7 +254,7 @@ sunbird_cert_completion_img_url=https://sunbirddev.blob.core.windows.net/orgemai
 sunbird_reset_pass_msg=Your have requested to reset password. Click on the link to set a password: {0}
 sunbird_reset_pass_mail_subject=Reset Password
 sunbird_subdomain_keycloak_base_url=https://merge.dev.sunbirded.org/auth/
-kafka_topics_certificate_instruction=local.issue.certificate.request
+kafka_topics_certificate_instruction={{env}}{{bb}}.issue.certificate.request
 kafka_linger_ms=5
 sunbird_cert_service_base_url=
 sunbird_cert_download_uri=/v1/user/certs/download
@@ -263,12 +263,12 @@ sunbird_account_merge_body=All your {0} usage details are merged into your accou
 sunbird_user_upload_error_visualization_threshold=20001
 sunbird_course_completion_certificate_name=100PercentCompletionCertificate
 sunbird_migrate_user_body=You can now access your {0} state teacher account using {1}. Please log out and login once again to see updated details.
-#kafka_assessment_topic=local.telemetry.assess
+#kafka_assessment_topic={{env}}{{bb}}.telemetry.assess
 sunbird_account_merge_subject=Account merged successfully
 sunbird_pass_regex=(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!\"#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}~])(?=\\S+$).{8,}
 sunbird_cert_template_url=/asset/v4/read
 sunbird_user_create_sync_type=ES
-sunbird_user_create_sync_topic=local.user.events
+sunbird_user_create_sync_topic={{env}}{{bb}}.user.events
 sigterm_stop_delay=40
 sunbird_user_qrcode_courses_limit=5000
 learning.content.props.to.add=mimeType,contentType,name,code,description,keywords,framework,copyright,topic
@@ -364,11 +364,11 @@ media_download_duration = "300 seconds"
 include "base-config.conf"
 
 kafka {
-  input.topic = "sunbirddev.coursebatch.job.request"
-  output.audit.topic = "sunbirddev.telemetry.raw"
-  output.failed.topic = "sunbirddev.activity.agg.failed"
-  output.certissue.topic = "sunbirddev.issue.certificate.request"
-  groupId = "sunbirddev-activity-aggregate-updater-group"
+  input.topic = ${job.env}{{bb}}".coursebatch.job.request"
+  output.audit.topic = ${job.env}{{bb}}".telemetry.raw"
+  output.failed.topic = ${job.env}{{bb}}".activity.agg.failed"
+  output.certissue.topic = ${job.env}{{bb}}".issue.certificate.request"
+  groupId = ${job.env}{{bb}}"-activity-aggregate-updater-group"
 }
 
 task {
@@ -427,10 +427,10 @@ service {
 include "base-config.conf"
 
 kafka {
-  input.topic = "sunbirddev.issue.certificate.request"
-  output.topic = "sunbirddev.generate.certificate.request"
-  output.failed.topic = "sunbirddev.issue.certificate.failed"
-  groupId = "collection-cert-pre-processor-group"
+  input.topic = ${job.env}{{bb}}".issue.certificate.request"
+  output.topic = ${job.env}{{bb}}".generate.certificate.request"
+  output.failed.topic = ${job.env}{{bb}}".issue.certificate.failed"
+  groupId = ${job.env}{{bb}}"-collection-cert-pre-processor-group"
 }
 
 task {
@@ -474,10 +474,10 @@ enable.suppress.exception = true
 include "base-config.conf"
 
 kafka {
-  input.topic = "sunbirddev.generate.certificate.request"
-  output.failed.topic = "sunbirddev.generate.certificate.failed"
-  groupId = "certificate-generator-group"
-  output.audit.topic = "sunbirddev.telemetry.raw"
+  input.topic = ${job.env}{{bb}}".generate.certificate.request"
+  output.failed.topic = ${job.env}{{bb}}".generate.certificate.failed"
+  groupId = ${job.env}{{bb}}"-certificate-generator-group"
+  output.audit.topic = ${job.env}{{bb}}".telemetry.raw"
 }
 
 task {
@@ -517,11 +517,11 @@ enable.rc.certificate = true
 include "base-config.conf"
 
 kafka {
-  input.topic = "sunbirddev.batch.enrolment.sync.request"
-  output.audit.topic = "sunbirddev.telemetry.raw"
-  output.failed.topic = "sunbirddev.enrolment.reconciliation.failed"
-  output.certissue.topic = "sunbirddev.issue.certificate.request"
-  groupId = "sunbirddev-enrolment-reconciliation-group"
+  input.topic = ${job.env}{{bb}}".batch.enrolment.sync.request"
+  output.audit.topic = ${job.env}{{bb}}".telemetry.raw"
+  output.failed.topic = ${job.env}{{bb}}".enrolment.reconciliation.failed"
+  output.certissue.topic = ${job.env}{{bb}}".issue.certificate.request"
+  groupId = ${job.env}{{bb}}"-enrolment-reconciliation-group"
 }
 
 task {
@@ -569,8 +569,8 @@ service {
 include "base-config.conf"
 
 kafka {
-  input.topic = "sunbirddev.content.postpublish.request"
-  groupId = "sunbirddev-relation-cache-updater-group"
+  input.topic = ${job.env}{{bb}}".content.postpublish.request"
+  groupId = ${job.env}{{bb}}"-relation-cache-updater-group"
 }
 
 task {
@@ -674,10 +674,10 @@ lms-cassandra {
 include "base-config.conf"
 
 kafka {
-  input.topic = ${job.env}".telemetry.assess"
-  failed.topic= ${job.env}".telemetry.assess.failed"
-  groupId = ${job.env}"-assessment-aggregator-group"
-  output.certissue.topic =  ${job.env}".issue.certificate.request"
+  input.topic = ${job.env}{{bb}}".telemetry.assess"
+  failed.topic= ${job.env}{{bb}}".telemetry.assess.failed"
+  groupId = ${job.env}{{bb}}"-assessment-aggregator-group"
+  output.certissue.topic =  ${job.env}{{bb}}".issue.certificate.request"
 }
 
 task {
