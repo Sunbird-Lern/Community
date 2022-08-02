@@ -4,6 +4,39 @@ Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) :
 
 
 
+<mark style="color:orange;">**Release-5.1.0**</mark> <mark style="color:orange;"></mark><mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 25 Nov'22) - Projects**</mark>
+
+****
+
+**Backlog Items for Sunbird RC integration with Lern**
+
+Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 releases in order to facilitate Registry driven credentials. A few pending backlog items in this project will be completed as part of Release 5.1.0&#x20;
+
+**Support for Optional material for Courses**
+
+All Course content is considered as mandatory for course completion as of today. There is a functional need called out for being able to add 'optional' material to courses - such that it does not contribute to course progress. This project will cover Lern changes that need to be done in order to enable Optional material for courses
+
+**Making Lern Cloud agnostic.**
+
+The Sunbird blocks are currently built for Azure. There are some dependencies that have to be addressed in order to make it cloud agnostic, and enable support for other cloud service providers
+
+**Move out custom configurations for adopters (Diksha) from the Sunbird repo**
+
+This relates to the custom configurations for one of the largest Lern adopters - Diksha
+
+****
+
+**Other Building Block related projects for process and adoption to be taken up as part of release 5.1:**
+
+> 1. Evaluate 5.0 release process for adoption of Postman and Newman as tools for test case automation and API documentation
+> 2. Create marketing collateral for SB Lern - Lern Primer, Lern Digital Experience
+> 3. (placeholder)
+> 4. (placeholder)
+
+****
+
+****
+
 
 
 [**Release-5.0.0**](https://project-sunbird.atlassian.net/issues/?filter=12509) **(Planned release date - 19 Aug'22)**
