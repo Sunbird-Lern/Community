@@ -16,6 +16,10 @@ Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 re
 
 All Course content is considered as mandatory for course completion as of today. There is a functional need called out for being able to add 'optional' material to courses - such that it does not contribute to course progress. This project will cover Lern changes that need to be done in order to enable Optional material for courses
 
+**Sunbird Lern Installer - design and dependencies**
+
+Allow a potential adopter to install SB Lern in an easy fashion. Release 5.1 will cover the design for the installer, and identify/ resolve dependencies that need to be addressed as part of this effort.&#x20;
+
 **Support for configurable keyspaces**
 
 Make keyspaces configurable in the SB Lern code - so as to enable connections to to shared instances of Cassandra, ES, Postgres etc.
@@ -30,7 +34,7 @@ This relates to the custom configurations for one of the largest Lern adopters -
 
 > 1. Evaluate 5.0 release process for adoption of Postman and Newman as tools for test case automation and API documentation
 > 2. Create marketing collateral for SB Lern - Lern Primer, Lern Digital Experience
-> 3. (placeholder)
+> 3. DIC transition plan / work for Diksha - Documentation ++
 > 4. (placeholder)
 
 ****
