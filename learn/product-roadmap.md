@@ -16,7 +16,7 @@ Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 re
 
 All Course content is considered as mandatory for course completion as of today. There is a functional need called out for being able to add 'optional' material to courses - such that it does not contribute to course progress. This project will cover Lern changes that need to be done in order to enable Optional material for courses
 
-**Refactoring of SB Lern Course Service**&#x20;
+**Refactoring of SB Lern Batch Service**&#x20;
 
 There are a few dependencies for the course service APIs and the DB layers that need to be resolved in order to remove the dependecies that Lern has on SB Obsrv and Knowlg.
 
