@@ -4,7 +4,7 @@ Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) :
 
 
 
-<mark style="color:orange;">**Release-5.1.0**</mark> <mark style="color:orange;"></mark><mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 25 Nov'22) - Projects**</mark>
+<mark style="color:orange;">**Release-5.1.0**</mark> <mark style="color:orange;"></mark><mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 04 Nov'22) - Projects**</mark>
 
 ****
 
@@ -15,6 +15,10 @@ Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 re
 **Support for Optional material for Courses**
 
 All Course content is considered as mandatory for course completion as of today. There is a functional need called out for being able to add 'optional' material to courses - such that it does not contribute to course progress. This project will cover Lern changes that need to be done in order to enable Optional material for courses
+
+**Refactoring of SB Lern Course Service**&#x20;
+
+There are a few dependencies for the course service APIs and the DB layers that need to be resolved in order to remove the dependecies that Lern has on SB Obsrv and Knowlg.
 
 **Sunbird Lern Installer - design and dependencies**
 
