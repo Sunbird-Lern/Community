@@ -10,15 +10,15 @@ Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) :
 
 **Backlog Items for Sunbird RC integration with Lern**
 
-Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 releases in order to facilitate Registry driven credentials. A few pending backlog items in this project will be completed as part of Release 5.1.0&#x20;
+Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 releases in order to facilitate Registry driven credentials. A few pending backlog items in this project will be completed as part of Release 5.1.0, including migration of certificates issued so far to Sunbird RC.&#x20;
 
 **Support for Optional material for Courses**
 
 All Course content is considered as mandatory for course completion as of today. There is a functional need called out for being able to add 'optional' material to courses - such that it does not contribute to course progress. This project will cover Lern changes that need to be done in order to enable Optional material for courses
 
-**Making Lern Cloud agnostic.**
+**Support for configurable keyspaces**
 
-The Sunbird blocks are currently built for Azure. There are some dependencies that have to be addressed in order to make it cloud agnostic, and enable support for other cloud service providers
+Make keyspaces configurable in the SB Lern code - so as to enable connections to to shared instances of Cassandra, ES, Postgres etc.
 
 **Move out custom configurations for adopters (Diksha) from the Sunbird repo**
 
