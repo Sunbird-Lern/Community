@@ -4,42 +4,71 @@ Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) :
 
 
 
+The following are the propsed items for Release 5.1. This list will be updated and shared on the SB Lern Discussion Forum once the discussions are complete, and the final version of the list is agreed upon.
+
+<mark style="color:orange;">****</mark>
+
 <mark style="color:orange;">**Release-5.1.0**</mark> <mark style="color:orange;"></mark><mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 04 Nov'22) - Projects**</mark>
 
 ****
 
-**Backlog Items for Sunbird RC integration with Lern**
+**Project: Sunbird Lern integration with SB RC**
+
+**Task : Backlog Items for Sunbird RC integration with Lern**
 
 Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 releases in order to facilitate Registry driven credentials. A few pending backlog items in this project will be completed as part of Release 5.1.0, including migration of certificates issued so far to Sunbird RC.&#x20;
 
-**Support for Optional material for Courses**
+**Project: New Feature Development**
+
+**Task: Support for Optional material for Courses**
 
 All Course content is considered as mandatory for course completion as of today. There is a functional need called out for being able to add 'optional' material to courses - such that it does not contribute to course progress. This project will cover Lern changes that need to be done in order to enable Optional material for courses
 
-**Refactoring of SB Lern Batch Service**&#x20;
+**Project: Enabling ease of Adoption**
+
+**Task: Refactoring of SB Lern Batch Service**&#x20;
 
 There are a few dependencies for the course service APIs and the DB layers that need to be resolved in order to remove the dependecies that Lern has on SB Obsrv and Knowlg.
 
-**Sunbird Lern Installer - design and dependencies**
+**Project: Enabling ease of adoption**
+
+**Task: Sunbird Lern Installer - design and dependencies**
 
 Allow a potential adopter to install SB Lern in an easy fashion. Release 5.1 will cover the design for the installer, and identify/ resolve dependencies that need to be addressed as part of this effort.&#x20;
 
-**Support for configurable keyspaces**
+**Project: Enabling ease of adoption**
+
+**Task: Support for configurable keyspaces**
 
 Make keyspaces configurable in the SB Lern code - so as to enable connections to to shared instances of Cassandra, ES, Postgres etc.
 
-**Move out custom configurations for adopters (Diksha) from the Sunbird repo**
+**Project: Enabling ease of adoption**
+
+**Task: Move out custom configurations from the Sunbird repo**
 
 This relates to the custom configurations for one of the largest Lern adopters - Diksha
 
-****
+**Project: Enabling ease of adoption**
 
-**Other Building Block related projects for process and adoption to be taken up as part of release 5.1:**
+**Task: Making SB Lern Cloud agnostic**
 
-> 1. Evaluate 5.0 release process for adoption of Postman and Newman as tools for test case automation and API documentation
-> 2. Create marketing collateral for SB Lern - Lern Primer, Lern Digital Experience
-> 3. DIC transition plan / work for Diksha - Documentation ++
-> 4. (placeholder)
+SB Lern currently has code that is specific to one CSP - this effort will ensure that such dependencies are removed, and SB Lern can function in a cloud agnostic fashion.
+
+**Project: Internal BB process formulation**
+
+**Task: Process for Test case automation and API Documentation**&#x20;
+
+Evaluate 5.0 release process for adoption of Postman and Newman as tools for test case automation and API documentation
+
+**Project: Enabling ease of adoption**
+
+**Task: Creation of knowledge and marketing collateral**&#x20;
+
+Create marketing collateral for SB Lern - Lern Primer, Lern Digital Experience
+
+
+
+Transition plan - Documentation ++
 
 ****
 
