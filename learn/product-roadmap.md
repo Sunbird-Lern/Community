@@ -24,6 +24,10 @@ Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 re
 
 All Course content is considered as mandatory for course completion as of today. There is a functional need called out for being able to add 'optional' material to courses - such that it does not contribute to course progress. This project will cover Lern changes that need to be done in order to enable Optional material for courses
 
+**Task : Course progress exhaust to capture number of attempts**
+
+The current Course progress exhaust is required to be enhanced to capture the number of attempts that a user has made against the assessment tagged to the course.&#x20;
+
 **Project: Enabling ease of Adoption**
 
 **Task: Refactoring of SB Lern Batch Service**&#x20;
