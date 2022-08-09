@@ -14,7 +14,7 @@ The following are the propsed items for Release 5.1. This list will be updated a
 
 **Project: Sunbird Lern integration with SB RC**
 
-**Task : Backlog Items for Sunbird RC integration with Lern**
+**Task : Completion of Sunbird RC integration with Lern**
 
 Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 releases in order to facilitate Registry driven credentials. A few pending backlog items in this project will be completed as part of Release 5.1.0, including migration of certificates issued so far to Sunbird RC.&#x20;
 
