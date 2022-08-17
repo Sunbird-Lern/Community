@@ -41,7 +41,7 @@
 
 Detailed Information is present in the [JIRA](https://project-sunbird.atlassian.net/issues/?filter=12456) list.
 
-Manual Configuration
+**Manual Configuration**
 
 | <p>Add soft link to Core/keys directory<br>in private repo for Sunbird-RC directory</p> | ln -s ../Core/keys/ keys |
 | --------------------------------------------------------------------------------------- | ------------------------ |
