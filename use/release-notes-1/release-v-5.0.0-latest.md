@@ -89,3 +89,45 @@
 {% endtabs %}
 
 Detailed Information is present in the [JIRA](https://project-sunbird.atlassian.net/issues/?filter=12509) list.
+
+Configurations:
+
+1. Jenkins build, deploy and upload related changes for Flink jobs are present in below link:&#x20;
+
+{% embed url="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.0.0/kubernetes/pipelines" %}
+
+2\. There is a new variable added in devops repo to configure the bb name for kafka topics of flink jobs. This variable should be appended after the env name.
+
+{% embed url="https://github.com/Sunbird-Lern/data-pipeline/blob/release-5.0.0/ansible/inventory/env/group_vars/all.yml#L10" %}
+
+Topics with new variable appended are listed below:
+
+```
+kafka_assessment_topic: "{{env_name}}{{bb}}.telemetry.assess"
+kafka_topics_instruction: "{{env_name}}{{bb}}.coursebatch.job.request"
+kafka_topics_certificate_instruction: "{{env_name}}{{bb}}.issue.certificate.request"
+kafka_topics_contentstate_invalid: "{{env_name}}{{bb}}.contentstate.invalid"
+kafka_enrolment_sync_topic: "{{env_name}}{{bb}}.batch.enrolment.sync.request"
+```
+
+3\. Jenkins build, deploy and upload related changes for data products are in below link:
+
+{% embed url="https://github.com/Sunbird-Lern/data-products/tree/release-5.0.0/pipelines" %}
+
+4\. Jenkins build, deploy and upload related changes for microservices are in below link:
+
+{% embed url="https://github.com/project-sunbird/sunbird-devops/tree/learn-bb" %}
+
+Design Documentation:
+
+{% embed url="https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3077767171/Sunbird-Lern+Code+Flink+Jobs+and+Data+Products" %}
+Sunbird-Lern Code, Flink Jobs and Data Products
+{% endembed %}
+
+{% embed url="https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3149922315/Lern+BB+repositories" %}
+Lern BB repositories
+{% endembed %}
+
+{% embed url="https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3156869136/Sunbird-Lern+existing+jenkins+jobs" %}
+Sunbird-Lern existing jenkins jobs
+{% endembed %}
