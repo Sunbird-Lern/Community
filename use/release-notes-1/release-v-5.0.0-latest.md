@@ -4,7 +4,7 @@
 
 | Project | Release Date          | Version |
 | ------- | --------------------- | ------- |
-| Lern    | 01 Aug 22 (tentative) | V 5.0.0 |
+| Lern    | 04 Sep 22 (tentative) | V 5.0.0 |
 
 ### Details of Released Tag
 
@@ -18,26 +18,24 @@
 
 ### **Summary of the Changes** <a href="#1.-summary-of-the-changes" id="1.-summary-of-the-changes"></a>
 
-* Migration to Lern Repository and increased the code coverage and unit test cases to all the components.
-* Deployment and Release processes to all the components.
+* Migrating component repositories in to Lern organisation in GitHub as a first step in making the installation and setup easy for adopters and contributors
+* Increasing code coverage and unit test cases of all the components in Lern as part of stabilising the components
+* Refactoring of the provisioning and deployment scripts of Lern BB
 
 ### **Details of the Changes** <a href="#2.-details-of-the-changes" id="2.-details-of-the-changes"></a>
 
 {% tabs %}
 {% tab title="User&Org Service" %}
-| JIRA ID                                                           | Descriptions                                                                  |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [SB-30072](https://project-sunbird.atlassian.net/browse/SB-30072) | Stabilising of components - increase code coverage and unit test cases        |
-| [SB-30066](https://project-sunbird.atlassian.net/browse/SB-30066) | Deployment and Release processes                                              |
-| [SB-30063](https://project-sunbird.atlassian.net/browse/SB-30063) | Decoupling Lern building block from other BB repos and creating its own setup |
-| [SB-30076](https://project-sunbird.atlassian.net/browse/SB-30076) | UserOrg - increase code coverage and unit test cases                          |
-| [SB-30067](https://project-sunbird.atlassian.net/browse/SB-30067) | UserOrg - Deployment and Release processes                                    |
-| [SB-29842](https://project-sunbird.atlassian.net/browse/SB-29842) | UserOrg Dataproducts Migration to Lern                                        |
-| [SB-29826](https://project-sunbird.atlassian.net/browse/SB-29826) | Sunbird-apimanager-util migration to Lern                                     |
-| [SB-29825](https://project-sunbird.atlassian.net/browse/SB-29825) | Sunbird-auth migration to Lern                                                |
-| [SB-29824](https://project-sunbird.atlassian.net/browse/SB-29824) | Sunbird-utils - DB Migration to Lern                                          |
-| [SB-29823](https://project-sunbird.atlassian.net/browse/SB-29823) | UserOrg Migration to Lern                                                     |
-| [SB-29813](https://project-sunbird.atlassian.net/browse/SB-29813) | OrgSearch to allow partial search and fuzzy Search                            |
+| JIRA ID                                                           | Descriptions                                         |
+| ----------------------------------------------------------------- | ---------------------------------------------------- |
+| [SB-30076](https://project-sunbird.atlassian.net/browse/SB-30076) | UserOrg - increase code coverage and unit test cases |
+| [SB-30067](https://project-sunbird.atlassian.net/browse/SB-30067) | UserOrg - Deployment and Release processes           |
+| [SB-29842](https://project-sunbird.atlassian.net/browse/SB-29842) | UserOrg Dataproducts Migration to Lern               |
+| [SB-29826](https://project-sunbird.atlassian.net/browse/SB-29826) | Sunbird-apimanager-util migration to Lern            |
+| [SB-29825](https://project-sunbird.atlassian.net/browse/SB-29825) | Sunbird-auth migration to Lern                       |
+| [SB-29824](https://project-sunbird.atlassian.net/browse/SB-29824) | Sunbird-utils - DB Migration to Lern                 |
+| [SB-29823](https://project-sunbird.atlassian.net/browse/SB-29823) | UserOrg Migration to Lern                            |
+| [SB-29813](https://project-sunbird.atlassian.net/browse/SB-29813) | OrgSearch to allow partial search and fuzzy Search   |
 {% endtab %}
 
 {% tab title="Course Service" %}
@@ -55,8 +53,7 @@
 | [SB-29834](https://project-sunbird.atlassian.net/browse/SB-29834) | collection-cert-pre-processor Migration to Lern            |
 | [SB-29833](https://project-sunbird.atlassian.net/browse/SB-29833) | certificate processor Migration to Lern                    |
 | [SB-29832](https://project-sunbird.atlassian.net/browse/SB-29832) | certificate-registry migration to Lern                     |
-|                                                                   | cert-service migration to Lern                             |
-|                                                                   |                                                            |
+| [SB-29831](https://project-sunbird.atlassian.net/browse/SB-29831) | cert-service migration to Lern                             |
 
 
 {% endtab %}
