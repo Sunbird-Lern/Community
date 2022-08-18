@@ -8,53 +8,53 @@ The following are the propsed items for Release 5.1. This list will be updated a
 
 <mark style="color:orange;">****</mark>
 
-<mark style="color:orange;">**Release-5.1.0**</mark> <mark style="color:orange;"></mark><mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 04 Nov'22) - Projects**</mark>
+<mark style="color:orange;">****</mark>[<mark style="color:orange;">**Release-5.1.0**</mark>](https://project-sunbird.atlassian.net/issues/?filter=12607) <mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 04 Nov'22) - Projects**</mark>
 
 ****
 
 **Project: Sunbird Lern integration with SB RC**
 
-**Task : Completion of Sunbird RC integration with Lern**
+**Task : Completion of Sunbird RC integration with Lern (** [**LR-3**](https://project-sunbird.atlassian.net/browse/LR-3)**,** [**LR-4**](https://project-sunbird.atlassian.net/browse/LR-4)**,** [**LR-6**](https://project-sunbird.atlassian.net/browse/LR-6)**)**
 
 Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 releases in order to facilitate Registry driven credentials. A few pending backlog items in this project will be completed as part of Release 5.1.0, including migration of certificates issued so far to Sunbird RC.&#x20;
 
 **Project: New Feature Development**
 
-**Task: Support for Optional material for Courses**
+**Task: Support for Optional material for Courses (**[**LR-1**](https://project-sunbird.atlassian.net/browse/LR-1)**)**
 
 All Course content is considered as mandatory for course completion as of today. There is a functional need called out for being able to add 'optional' material to courses - such that it does not contribute to course progress. This project will cover Lern changes that need to be done in order to enable Optional material for courses
 
-**Task : Course progress exhaust to capture number of attempts**
+**Task : Course progress exhaust to capture number of attempts (**[**LR-127**](https://project-sunbird.atlassian.net/browse/LR-127)**)**
 
 The current Course progress exhaust is required to be enhanced to capture the number of attempts that a user has made against the assessment tagged to the course.&#x20;
 
 **Project: Enabling ease of Adoption**
 
-**Task: Refactoring of SB Lern Batch Service**&#x20;
+**Task: Refactoring of SB Lern Batch Service (**[**LR-131**](https://project-sunbird.atlassian.net/browse/LR-131)**)**
 
 There are a few dependencies for the course service APIs and the DB layers that need to be resolved in order to remove the dependecies that Lern has on SB Obsrv and Knowlg.
 
 **Project: Enabling ease of adoption**
 
-**Task: Sunbird Lern Installer - design and dependencies**
+**Task: Sunbird Lern Installer - design and dependencies (**[**LR-100**](https://project-sunbird.atlassian.net/browse/LR-100)**)**
 
 Allow a potential adopter to install SB Lern in an easy fashion. Release 5.1 will cover the design for the installer, and identify/ resolve dependencies that need to be addressed as part of this effort.&#x20;
 
 **Project: Enabling ease of adoption**
 
-**Task: Support for configurable keyspaces**
+**Task: Support for configurable keyspaces (**[**LR-102**](https://project-sunbird.atlassian.net/browse/LR-102)**)**
 
 Make keyspaces configurable in the SB Lern code - so as to enable connections to to shared instances of Cassandra, ES, Postgres etc.
 
 **Project: Enabling ease of adoption**
 
-**Task: Move out custom configurations from the Sunbird repo**
+**Task: Move out custom configurations from the Sunbird repo (**[**LR-123**](https://project-sunbird.atlassian.net/browse/LR-123)**)**
 
 This relates to the custom configurations for one of the largest Lern adopters - Diksha
 
 **Project: Enabling ease of adoption**
 
-**Task: Making SB Lern Cloud agnostic**
+**Task: Making SB Lern Cloud agnostic (**[**LR-113**](https://project-sunbird.atlassian.net/browse/LR-113)**,** [**LR-112**](https://project-sunbird.atlassian.net/browse/LR-112)**,** [**LR-111**](https://project-sunbird.atlassian.net/browse/LR-111)**,** [**LR-110**](https://project-sunbird.atlassian.net/browse/LR-110)**,** [**LR-109**](https://project-sunbird.atlassian.net/browse/LR-109)**,** [**LR-108**](https://project-sunbird.atlassian.net/browse/LR-108)**,** [**LR-107**](https://project-sunbird.atlassian.net/browse/LR-107)**,** [**LR-106**](https://project-sunbird.atlassian.net/browse/LR-106)**,** [**LR-105**](https://project-sunbird.atlassian.net/browse/LR-105)**,** [**LR-104**](https://project-sunbird.atlassian.net/browse/LR-104)**,** [**LR-103**](https://project-sunbird.atlassian.net/browse/LR-103)**,** [**LR-125**](https://project-sunbird.atlassian.net/browse/LR-125)**,** [**LR-128**](https://project-sunbird.atlassian.net/browse/LR-128)**)**
 
 SB Lern currently has code that is specific to one CSP - this effort will ensure that such dependencies are removed, and SB Lern can function in a cloud agnostic fashion.
 
