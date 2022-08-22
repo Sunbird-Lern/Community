@@ -8,13 +8,14 @@
 
 ### Details of Released Tag
 
-| Components               |
-| ------------------------ |
-| Batch Service            |
-| User\&Org Service        |
-| Group Service            |
-| Discussion Forum Service |
-| Notification Service     |
+| Components               | Tags                                                                                                                                                                                                                                                                                                                         |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Batch Service            | <p>sunbird-course-service : </p><p>data-pipeline : <a href="https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.0.0_RC1"><strong>release-5.0.0_RC1</strong> </a></p>                                                                                                                                        |
+| User\&Org Service        | sunbird-lms-service : [**release-5.0.0\_RC1**](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.0\_RC1)                                                                                                                                                                                          |
+| Group Service            | groups-service : [**release-5.0.0\_RC1**](https://github.com/Sunbird-Lern/groups-service/releases/tag/release-5.0.0\_RC1)                                                                                                                                                                                                    |
+| Discussion Forum Service | <p>discussions-middleware : <a href="https://github.com/Sunbird-Lern/discussions-middleware/releases/tag/release-5.0.0_RC1"><strong>release-5.0.0_RC1</strong></a></p><p>sunbird-nodebb : <a href="https://github.com/Sunbird-Lern/sunbird-nodebb/releases/tag/release-5.0.0_RC1"><strong>release-5.0.0_RC1</strong></a></p> |
+| Notification Service     | sunbird-notification-service : [**release-5.0.0\_RC1**](https://github.com/Sunbird-Lern/sunbird-notification-service/releases/tag/release-5.0.0\_RC1)                                                                                                                                                                        |
+| Data Products            | data-products : [**release-5.0.0\_RC1** ](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.0.0\_RC1)                                                                                                                                                                                                     |
 
 ### **Summary of the Changes** <a href="#1.-summary-of-the-changes" id="1.-summary-of-the-changes"></a>
 
