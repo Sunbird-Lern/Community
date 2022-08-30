@@ -22,39 +22,46 @@
 * Migrating component repositories in to Lern organisation in GitHub as a first step in making the installation and setup easy for adopters and contributors
 * Increasing code coverage and unit test cases of all the components in Lern as part of stabilising the components
 * Refactoring of the provisioning and deployment scripts of Lern BB
+* Making SB Lern Cloud agnostic
 
 ### **Details of the Changes** <a href="#2.-details-of-the-changes" id="2.-details-of-the-changes"></a>
 
 {% tabs %}
 {% tab title="User&Org Service" %}
-| JIRA ID                                                           | Descriptions                                         |
-| ----------------------------------------------------------------- | ---------------------------------------------------- |
-| [SB-30076](https://project-sunbird.atlassian.net/browse/SB-30076) | UserOrg - increase code coverage and unit test cases |
-| [SB-30067](https://project-sunbird.atlassian.net/browse/SB-30067) | UserOrg - Deployment and Release processes           |
-| [SB-29842](https://project-sunbird.atlassian.net/browse/SB-29842) | UserOrg Dataproducts Migration to Lern               |
-| [SB-29826](https://project-sunbird.atlassian.net/browse/SB-29826) | Sunbird-apimanager-util migration to Lern            |
-| [SB-29825](https://project-sunbird.atlassian.net/browse/SB-29825) | Sunbird-auth migration to Lern                       |
-| [SB-29824](https://project-sunbird.atlassian.net/browse/SB-29824) | Sunbird-utils - DB Migration to Lern                 |
-| [SB-29823](https://project-sunbird.atlassian.net/browse/SB-29823) | UserOrg Migration to Lern                            |
-| [SB-29813](https://project-sunbird.atlassian.net/browse/SB-29813) | OrgSearch to allow partial search and fuzzy Search   |
+| JIRA ID                                                           | Descriptions                                                                      |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [SB-30076](https://project-sunbird.atlassian.net/browse/SB-30076) | UserOrg - increase code coverage and unit test cases                              |
+| [SB-30067](https://project-sunbird.atlassian.net/browse/SB-30067) | UserOrg - Deployment and Release processes                                        |
+| [SB-29842](https://project-sunbird.atlassian.net/browse/SB-29842) | UserOrg Dataproducts Migration to Lern                                            |
+| [SB-29826](https://project-sunbird.atlassian.net/browse/SB-29826) | Sunbird-apimanager-util migration to Lern                                         |
+| [SB-29825](https://project-sunbird.atlassian.net/browse/SB-29825) | Sunbird-auth migration to Lern                                                    |
+| [SB-29824](https://project-sunbird.atlassian.net/browse/SB-29824) | Sunbird-utils - DB Migration to Lern                                              |
+| [SB-29823](https://project-sunbird.atlassian.net/browse/SB-29823) | UserOrg Migration to Lern                                                         |
+| [SB-29813](https://project-sunbird.atlassian.net/browse/SB-29813) | OrgSearch to allow partial search and fuzzy Search                                |
+| [LR-103](https://project-sunbird.atlassian.net/browse/LR-103)     | Making SB Lern Cloud agnostic : Code changes to generalise CSP support in UserOrg |
 {% endtab %}
 
 {% tab title="Course Service" %}
-| JIRA ID                                                           | Description                                                |
-| ----------------------------------------------------------------- | ---------------------------------------------------------- |
-| [SB-30075](https://project-sunbird.atlassian.net/browse/SB-30075) | Batch service - increase code coverage and unit test cases |
-| [SB-29843](https://project-sunbird.atlassian.net/browse/SB-29843) | Batch service Dataproducts Migration to Lern               |
-| [SB-30068](https://project-sunbird.atlassian.net/browse/SB-30068) | Batch service - Deployment and Release processes           |
-| [SB-29841](https://project-sunbird.atlassian.net/browse/SB-29841) | assessment aggregate updater Migration to Lern             |
-| [SB-29840](https://project-sunbird.atlassian.net/browse/SB-29840) | activity aggregate updater Migration to Lern               |
-| [SB-29839](https://project-sunbird.atlassian.net/browse/SB-29839) | course-service migration to Lern                           |
-| [SB-29837](https://project-sunbird.atlassian.net/browse/SB-29837) | enrolment-reconciliation Migration to Lern                 |
-| [SB-29836](https://project-sunbird.atlassian.net/browse/SB-29836) | relation cache updater Migration to Lern                   |
-| [SB-29835](https://project-sunbird.atlassian.net/browse/SB-29835) | colletion-certificate-generator Migration to Lern          |
-| [SB-29834](https://project-sunbird.atlassian.net/browse/SB-29834) | collection-cert-pre-processor Migration to Lern            |
-| [SB-29833](https://project-sunbird.atlassian.net/browse/SB-29833) | certificate processor Migration to Lern                    |
-| [SB-29832](https://project-sunbird.atlassian.net/browse/SB-29832) | certificate-registry migration to Lern                     |
-| [SB-29831](https://project-sunbird.atlassian.net/browse/SB-29831) | cert-service migration to Lern                             |
+| JIRA ID                                                           | Description                                                                             |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [SB-30075](https://project-sunbird.atlassian.net/browse/SB-30075) | Batch service - increase code coverage and unit test cases                              |
+| [SB-29843](https://project-sunbird.atlassian.net/browse/SB-29843) | Batch service Dataproducts Migration to Lern                                            |
+| [SB-30068](https://project-sunbird.atlassian.net/browse/SB-30068) | Batch service - Deployment and Release processes                                        |
+| [SB-29841](https://project-sunbird.atlassian.net/browse/SB-29841) | assessment aggregate updater Migration to Lern                                          |
+| [SB-29840](https://project-sunbird.atlassian.net/browse/SB-29840) | activity aggregate updater Migration to Lern                                            |
+| [SB-29839](https://project-sunbird.atlassian.net/browse/SB-29839) | course-service migration to Lern                                                        |
+| [SB-29837](https://project-sunbird.atlassian.net/browse/SB-29837) | enrolment-reconciliation Migration to Lern                                              |
+| [SB-29836](https://project-sunbird.atlassian.net/browse/SB-29836) | relation cache updater Migration to Lern                                                |
+| [SB-29835](https://project-sunbird.atlassian.net/browse/SB-29835) | colletion-certificate-generator Migration to Lern                                       |
+| [SB-29834](https://project-sunbird.atlassian.net/browse/SB-29834) | collection-cert-pre-processor Migration to Lern                                         |
+| [SB-29833](https://project-sunbird.atlassian.net/browse/SB-29833) | certificate processor Migration to Lern                                                 |
+| [SB-29832](https://project-sunbird.atlassian.net/browse/SB-29832) | certificate-registry migration to Lern                                                  |
+| [SB-29831](https://project-sunbird.atlassian.net/browse/SB-29831) | cert-service migration to Lern                                                          |
+| [LR-104](https://project-sunbird.atlassian.net/browse/LR-104)     | Making SB Lern Cloud agnostic : Code changes to generalise CSP support in BatchService  |
+| [LR-105](https://project-sunbird.atlassian.net/browse/LR-105)     | Making SB Lern Cloud agnostic : Code changes to generalise CSP support in datapipeline  |
+| [LR-106](https://project-sunbird.atlassian.net/browse/LR-106)     | Making SB Lern Cloud agnostic : Code changes to generalise CSP support in data products |
+| [LR-108](https://project-sunbird.atlassian.net/browse/LR-108)     | Signed URL Generation for old certificates - cert-service                               |
+| [LR-107](https://project-sunbird.atlassian.net/browse/LR-107)     | RC deploy helm chart changes to upload Credential template, context files               |
 
 
 {% endtab %}
