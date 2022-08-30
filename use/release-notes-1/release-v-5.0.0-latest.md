@@ -39,6 +39,17 @@
 | [SB-29823](https://project-sunbird.atlassian.net/browse/SB-29823) | UserOrg Migration to Lern                                                         |
 | [SB-29813](https://project-sunbird.atlassian.net/browse/SB-29813) | OrgSearch to allow partial search and fuzzy Search                                |
 | [LR-103](https://project-sunbird.atlassian.net/browse/LR-103)     | Making SB Lern Cloud agnostic : Code changes to generalise CSP support in UserOrg |
+
+Configurations:
+
+```
+Sunbird-lms-service:
+
+File Path:
+core/cassandra-utils/src/main/resources/cassandra.config.properties
+Changes:
+isMultiDCEnabled=false
+```
 {% endtab %}
 
 {% tab title="Course Service" %}
@@ -63,7 +74,67 @@
 | [LR-108](https://project-sunbird.atlassian.net/browse/LR-108)     | Signed URL Generation for old certificates - cert-service                               |
 | [LR-107](https://project-sunbird.atlassian.net/browse/LR-107)     | RC deploy helm chart changes to upload Credential template, context files               |
 
+Configurations:
 
+
+
+```
+Sunbird-course-service:
+File Path:
+course-mw/sunbird-util/sunbird-platform-core/common-util/src/main/resources/cassandra.config.properties
+Changes:
+isMultiDCEnabled=false
+
+File Path:
+course-mw/sunbird-util/sunbird-platform-core/common-util/src/main/resources/externalresource.properties
+Changes:
+# Add proper cloud service provider (azure,aws,gcloud)
+sunbird_content_cloud_storage_type=azure
+#deleted the below variable
+sunbird_content_azure_storage_container=sunbird-content-dev
+# Added below variable for supporting multiple cloud service providers
+# Provide corresponding cloud service provider(azure,aws,gcloud) container name here 
+sunbird_content_cloud_storage_container=sunbird-content-dev
+```
+
+```
+Cert-service:
+# Making use of the below existing entries from sunbird_cert-service
+CONTAINER_NAME={{cert_service_container_name}}
+CLOUD_STORAGE_TYPE={{cert_service_cloud_storage_type}}
+```
+
+
+
+```
+Certificate-registry:
+File Path:
+all-actors/src/main/resources/cassandra.config.properties
+Changes:
+isMultiDCEnabled=false
+```
+
+
+
+```
+Data-pipeline:
+File Path:
+dp-core/src/main/resources/base-config.conf
+Changes inside lms-cassandra:
+isMultiDCEnabled=false
+
+File Path:
+jobs-core/src/main/resources/base-config.conf
+Changes inside lms-cassandra:
+isMultiDCEnabled=false
+
+cloud_storage_type :azure/aws/gcloud
+```
+
+```
+data-products:
+cloud_storage_type :azure/aws/gcloud
+```
 {% endtab %}
 
 {% tab title="Discussion Forum" %}
@@ -81,7 +152,20 @@
 | [SB-30069](https://project-sunbird.atlassian.net/browse/SB-30069) | Group service - Deployment and Release processes           |
 | [SB-29819](https://project-sunbird.atlassian.net/browse/SB-29819) | Group-service Migration to Lern and deployment setup       |
 
+Configurations:
 
+```
+groups-service:
+File Path:
+cassandra-utils/src/main/resources/cassandra.config.properties
+Changes:
+isMultiDCEnabled=false
+
+File Path:
+sb-utils/src/main/resources/cassandra.config.properties
+Changes:
+isMultiDCEnabled=false
+```
 {% endtab %}
 
 {% tab title="Notification Service" %}
@@ -92,7 +176,15 @@
 | [SB-29827](https://project-sunbird.atlassian.net/browse/SB-29827) | Sunbird-notification-service migration to Lern                            |
 | [SB-30071](https://project-sunbird.atlassian.net/browse/SB-30071) | Sunbird-notification-service - Deployment and Release processes           |
 
+Configurations:
 
+```
+Sunbird-notification-service:
+File path:
+sb-utils/src/main/resources/cassandra.config.properties
+Changes:
+isMultiDCEnabled=false
+```
 {% endtab %}
 {% endtabs %}
 
@@ -100,7 +192,8 @@ Detailed Information is present in the [JIRA](https://project-sunbird.atlassian.
 
 Configurations:
 
-1. Jenkins build, deploy and upload related changes for Flink jobs are present in below link:&#x20;
+1. Nodebb upstream branch: v1.18.6
+2. Jenkins build, deploy and upload related changes for Flink jobs are present in below link:&#x20;
 
 {% embed url="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.0.0/kubernetes/pipelines" %}
 
@@ -116,7 +209,6 @@ kafka_topics_instruction: "{{env_name}}{{bb}}.coursebatch.job.request"
 kafka_topics_certificate_instruction: "{{env_name}}{{bb}}.issue.certificate.request"
 kafka_topics_contentstate_invalid: "{{env_name}}{{bb}}.contentstate.invalid"
 kafka_enrolment_sync_topic: "{{env_name}}{{bb}}.batch.enrolment.sync.request"
-cloud_storage_type
 ```
 
 3\. Jenkins build, deploy and upload related changes for data products are in below link:
