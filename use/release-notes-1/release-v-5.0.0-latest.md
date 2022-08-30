@@ -109,15 +109,88 @@ kafka_topics_instruction: "{{env_name}}{{bb}}.coursebatch.job.request"
 kafka_topics_certificate_instruction: "{{env_name}}{{bb}}.issue.certificate.request"
 kafka_topics_contentstate_invalid: "{{env_name}}{{bb}}.contentstate.invalid"
 kafka_enrolment_sync_topic: "{{env_name}}{{bb}}.batch.enrolment.sync.request"
+cloud_storage_type
 ```
 
 3\. Jenkins build, deploy and upload related changes for data products are in below link:
 
 {% embed url="https://github.com/Sunbird-Lern/data-products/tree/release-5.0.0/pipelines" %}
 
+```
+LERN data-products list
+  exhaust / progressexhaustjob
+  exhaust / responseexhaust
+  exhaust / userinfoexhaust
+  job / course consumption
+  job / course enrolment
+  job / stateadminreport
+  job / stateadmingeoreport
+  job / collectionsummaryjobv2
+  audit / collection reconcilation
+  audit / coursebatch status updater
+  updater / Cassandramigrator
+
+```
+
 4\. Jenkins build, deploy and upload related changes for microservices are in below link:
 
 {% embed url="https://github.com/project-sunbird/sunbird-devops/tree/learn-bb" %}
+
+Devops config changes:
+
+{% code overflow="wrap" %}
+```
+File Path: 
+ansible/inventory/env/group_vars/all.yml
+Changes:
+Added new variable for any lern specific deployments, other BBs need not set this variable if old kafka topic names are used.
+bb: lern
+kafka_topics_instruction: "{{env_name}}{{bb}}.coursebatch.job.request"
+kafka_topics_certificate_instruction: "{{env_name}}{{bb}}.issue.certificate.request"
+kafka_topics_contentstate_invalid: "{{env_name}}{{bb}}.contentstate.invalid"
+kafka_enrolment_sync_topic: "{{env_name}}{{bb}}.batch.enrolment.sync.request"
+kafka_assessment_topic: "{{env_name}}{{bb}}.telemetry.assess" 
+
+## modified consistency levels from quorum to local_quorum for multiple data centers support
+File Path: 
+ansible/roles/stack-sunbird/templates/sunbird_cert-registry-service.env
+Changes:
+sunbird_cassandra_consistency_level=local_quorum
+
+File Path: 
+ansible/roles/stack-sunbird/templates/sunbird_groups-service.env
+Changes:
+sunbird_cassandra_consistency_level=local_quorum
+
+File Path: 
+ansible/roles/stack-sunbird/templates/sunbird_learner-service.env
+Changes:
+sunbird_cassandra_consistency_level=local_quorum
+sunbird_user_cert_kafka_topic={{env_name}}{{bb}}.lms.user.account.merge
+
+File Path: 
+ansible/roles/stack-sunbird/templates/sunbird_lms-service.env
+Changes:
+sunbird_cassandra_consistency_level=local_quorum
+
+File Path: 
+ansible/roles/stack-sunbird/templates/sunbird_notification-service.env
+Changes:
+sunbird_cassandra_consistency_level=local_quorum
+sunbird_notification_kafka_topic={{env_name}}{{bb}}.lms.notification
+
+File Path:
+kubernetes/helm_charts/sunbird-RC/registry/schemas/TrainingCertificate.json
+Changes:
+"credentialTemplate": "https://{{upstream_url}}/schema/credential_template.json"
+
+File Path:
+utils/sunbird-RC/schema/credential_template.json
+Changes:
+"https://{{upstream_url}}/schema/v1_context.json",
+ "https://{{upstream_url}}/schema/sunbird_context.json"
+```
+{% endcode %}
 
 Design Documentation:
 
