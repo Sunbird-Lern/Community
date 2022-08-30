@@ -59,6 +59,8 @@ Now start the nodebb, Using below command.
 
 Build the nodebb using the below command.
 
+&#x20;If there is any code change, any admin pannel change or activating/deactivating of plugins then run the below command then your changes will apply.
+
 ```
 ./nodebb build
 ```
@@ -90,6 +92,8 @@ We have built our own plugins based on our need. We need to enable those plugins
 In this plugins, We added our own apis. Like User login, Enable discussion, read discussion context, disable discussion, user read based on sunbird id …. etc.
 
 To activate plugin. Use below command.
+
+**Note:** If you want to add any new api or modifing existing api go for plugin setup for local.
 
 a. Using repo as a npm module.
 

@@ -1,8 +1,7 @@
 # Tech Stack
 
-| Software            | Version |
-| ------------------- | ------- |
-| NodeBB              |         |
-| ngx-chips           |         |
-| ngx-infinite-scroll |         |
-| lodash-es           |         |
+| Software | Version |
+| -------- | ------- |
+| NodeBB   | v1.18.x |
+| node     | 16.15.0 |
+| angular  | 9.1.15  |

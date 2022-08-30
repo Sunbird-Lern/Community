@@ -85,6 +85,7 @@
       * [Discussion Middleware](use/developer-installation/discussion-forum/installation-guide/discussion-middleware.md)
       * [Discussion forum integration with any application](use/developer-installation/discussion-forum/installation-guide/discussion-forum-integration-with-any-application.md)
       * [Discussion-UI setup along with demo application.](use/developer-installation/discussion-forum/installation-guide/discussion-ui-setup-along-with-demo-application..md)
+      * [Sunbird-lern portal for DF](use/developer-installation/discussion-forum/installation-guide/sunbird-lern-portal-for-df.md)
     * [Source Code](use/developer-installation/discussion-forum/source-code.md)
   * [USER & ORG SERVICE](use/developer-installation/user-and-org-service/README.md)
     * [System Requirements](use/developer-installation/user-and-org-service/system-requirements.md)
