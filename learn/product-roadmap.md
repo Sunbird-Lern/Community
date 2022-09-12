@@ -8,9 +8,11 @@ The following are the propsed items for Release 5.1. This list will be updated a
 
 <mark style="color:orange;">****</mark>
 
-<mark style="color:orange;">****</mark>[<mark style="color:orange;">**Release-5.1.0**</mark>](https://project-sunbird.atlassian.net/issues/?filter=12607) <mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 04 Nov'22) - Projects**</mark>
+<mark style="color:orange;">****</mark>[<mark style="color:orange;">**Release-5.1.0**</mark>](https://project-sunbird.atlassian.net/issues/?filter=12607) <mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 04 Nov'22)**</mark>
 
-****
+_Note - Release 5.1 will have only a small list of planned items (as below) due to the Sunbird CSP related interrupts taking up sprint 1 of the release. The items listed below will be taken up as part of 5.1 sprint 2._
+
+__
 
 **Project: Sunbird Lern integration with SB RC**
 
@@ -33,40 +35,6 @@ The current Course progress exhaust is required to be enhanced to capture the nu
 **Task: Refactoring of SB Lern Batch Service (**[**LR-131**](https://project-sunbird.atlassian.net/browse/LR-131)**)**
 
 There are a few dependencies for the course service APIs and the DB layers that need to be resolved in order to remove the dependecies that Lern has on SB Obsrv and Knowlg.
-
-**Project: Enabling ease of adoption**
-
-**Task: Sunbird Lern Installer - design and dependencies (**[**LR-100**](https://project-sunbird.atlassian.net/browse/LR-100)**)**
-
-Allow a potential adopter to install SB Lern in an easy fashion. Release 5.1 will cover the design for the installer, and identify/ resolve dependencies that need to be addressed as part of this effort.&#x20;
-
-**Project: Enabling ease of adoption**
-
-**Task: Support for configurable keyspaces (**[**LR-102**](https://project-sunbird.atlassian.net/browse/LR-102)**)**
-
-Make keyspaces configurable in the SB Lern code - so as to enable connections to to shared instances of Cassandra, ES, Postgres etc.
-
-**Project: Enabling ease of adoption**
-
-**Task: Move out custom configurations from the Sunbird repo (**[**LR-123**](https://project-sunbird.atlassian.net/browse/LR-123)**)**
-
-This relates to the custom configurations for one of the largest Lern adopters - Diksha
-
-**Project: Internal BB process formulation**
-
-**Task: Process for Test case automation and API Documentation**&#x20;
-
-Evaluate 5.0 release process for adoption of Postman and Newman as tools for test case automation and API documentation
-
-**Project: Enabling ease of adoption**
-
-**Task: Creation of knowledge and marketing collateral**&#x20;
-
-Create marketing collateral for SB Lern - Lern Primer, Lern Digital Experience
-
-
-
-Transition plan - Documentation ++
 
 ****
 
