@@ -8,14 +8,14 @@
 
 ### Details of Released Tag
 
-| Components               | Tags                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Batch Service            | <p>sunbird-course-service : <a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.0.0_RC2"><strong>release-5.0.0_RC2</strong></a></p><p>cert-service : <a href="https://github.com/Sunbird-Lern/cert-service/releases/tag/release-5.0.0_RC1"><strong>release-5.0.0_RC1</strong></a></p><p>certficate-registry : <a href="https://github.com/Sunbird-Lern/certificate-registry/releases/tag/release-5.0.0_RC1"><strong>release-5.0.0_RC1</strong></a></p><p>data-pipeline : <a href="https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.0.0_RC2"><strong>release-5.0.0_RC2</strong></a></p> |
-| User\&Org Service        | sunbird-lms-service : [ **** ](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.0\_RC1)[**release-5.0.0\_RC2**](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.0\_RC2)                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Group Service            | groups-service : [**r**](https://github.com/Sunbird-Lern/groups-service/releases/tag/release-5.0.0\_RC1)[**release-5.0.0\_RC2** ](https://github.com/Sunbird-Lern/groups-service/releases/tag/release-5.0.0\_RC2)                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| Discussion Forum Service | <p>discussions-middleware : <a href="https://github.com/Sunbird-Lern/discussions-middleware/releases/tag/release-5.0.0_RC1"><strong>release-5.0.0_RC1</strong></a></p><p>sunbird-nodebb : <a href="https://github.com/Sunbird-Lern/sunbird-nodebb/releases/tag/release-5.0.0_RC1"><strong>release-5.0.0_RC1</strong></a></p>                                                                                                                                                                                                                                                                                                                  |
-| Notification Service     | sunbird-notification-service : [**release-5.0.0\_RC2**](https://github.com/Sunbird-Lern/sunbird-notification-service/releases/tag/release-5.0.0\_RC2)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Data Products            | data-products : [**release-5.0.0\_RC3**](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.0.0\_RC3)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Components               | Tags                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Batch Service            | <p>sunbird-course-service : <a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.0.0_RC3"><strong>release-5.0.0_RC3</strong> </a></p><p>cert-service : <a href="https://github.com/Sunbird-Lern/cert-service/tree/release-5.0.0_RC3">release-5.0.0_RC3</a></p><p>certficate-registry : <strong></strong> <a href="https://github.com/Sunbird-Lern/certificate-registry/releases/tag/release-5.0.0_RC1">release-5.0.0_RC1</a></p><p>data-pipeline : <a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.0.0_RC6">release-5.0.0_RC6</a></p> |
+| User\&Org Service        | sunbird-lms-service : [ **** ](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.0\_RC1)[release-5.0.0\_RC4](https://github.com/Sunbird-Lern/sunbird-lms-service/tree/release-5.0.0\_RC4)                                                                                                                                                                                                                                                                                                                                                                          |
+| Group Service            | groups-service : [release-5.0.0\_RC3](https://github.com/Sunbird-Lern/groups-service/tree/release-5.0.0\_RC3)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Discussion Forum Service | <p>discussions-middleware : <a href="https://github.com/Sunbird-Lern/discussions-middleware/tree/release-5.0.0_RC2">release-5.0.0_RC2</a></p><p>sunbird-nodebb : <a href="https://github.com/Sunbird-Lern/sunbird-nodebb/releases/tag/release-5.0.0_RC1">release-5.0.0_RC1</a></p>                                                                                                                                                                                                                                                                                                            |
+| Notification Service     | sunbird-notification-service : [release-5.0.0\_RC6 ](https://github.com/Sunbird-Lern/sunbird-notification-service/releases/tag/release-5.0.0\_RC6)                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Data Products            | data-products : [release-5.0.0\_RC4](https://github.com/Sunbird-Lern/data-products/tree/release-5.0.0\_RC4)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 ### **Summary of the Changes** <a href="#1.-summary-of-the-changes" id="1.-summary-of-the-changes"></a>
 
@@ -45,10 +45,12 @@ Configurations:
 ```
 Sunbird-lms-service:
 
-File Path:
-core/cassandra-utils/src/main/resources/cassandra.config.properties
-Changes:
-isMultiDCEnabled=false
+isMultiDCEnabled={{cassandra_isMultiDCEnabled}}
+sunbird_cassandra_consistency_level={{sunbird_cassandra_consistency_level}}
+sunbird_user_cert_kafka_topic={{kafka_topic_lms_user_account}}
+sunbird_cloud_service_provider={{cloud_service_provider}}
+sunbird_account_name={{sunbird_public_storage_account_name}}
+sunbird_account_key={{sunbird_public_storage_account_key}}
 ```
 {% endtab %}
 
@@ -79,17 +81,15 @@ Configurations:
 
 
 ```
+https://github.com/project-sunbird/sunbird-devops/blob/learn-bb/ansible/roles/stack-sunbird/templates/
 Sunbird-course-service:
-File Path:
-course-mw/sunbird-util/sunbird-platform-core/common-util/src/main/resources/cassandra.config.properties
-Changes:
-isMultiDCEnabled=false
+isMultiDCEnabled={{cassandra_isMultiDCEnabled}}
 
-File Path:
-course-mw/sunbird-util/sunbird-platform-core/common-util/src/main/resources/externalresource.properties
-Changes:
 # Add proper cloud service provider (azure,aws,gcloud)
-sunbird_content_cloud_storage_type=azure
+sunbird_cloud_service_provider={{cloud_service_provider}}
+sunbird_account_name={{sunbird_public_storage_account_name}}
+sunbird_account_key={{sunbird_public_storage_account_key}}
+
 #deleted the below variable
 sunbird_content_azure_storage_container=sunbird-content-dev
 # Added below variable for supporting multiple cloud service providers
@@ -97,38 +97,30 @@ sunbird_content_azure_storage_container=sunbird-content-dev
 sunbird_content_cloud_storage_container=sunbird-content-dev
 ```
 
-```
-Cert-service:
-# Making use of the below existing entries from sunbird_cert-service
+<pre><code>Cert-service:
 CONTAINER_NAME={{cert_service_container_name}}
-CLOUD_STORAGE_TYPE={{cert_service_cloud_storage_type}}
-```
+# Add proper cloud service provider (azure,aws,gcloud)
+CLOUD_STORAGE_TYPE={{cloud_service_provider}}
+PRIVATE_CLOUD_STORAGE_SECRET={{sunbird_private_storage_account_key}}
+PRIVATE_CLOUD_STORAGE_KEY={{sunbird_private_storage_account_name}}
+<strong>PUBLIC_CLOUD_STORAGE_KEY={{sunbird_public_storage_account_name}}
+</strong>PUBLIC_CLOUD_STORAGE_SECRET={{sunbird_public_storage_account_key}}</code></pre>
 
 
 
 ```
 Certificate-registry:
-File Path:
-all-actors/src/main/resources/cassandra.config.properties
-Changes:
-isMultiDCEnabled=false
+isMultiDCEnabled={{cassandra_isMultiDCEnabled}}
 ```
 
 
 
 ```
 Data-pipeline:
-File Path:
-dp-core/src/main/resources/base-config.conf
-Changes inside lms-cassandra:
-isMultiDCEnabled=false
-
-File Path:
-jobs-core/src/main/resources/base-config.conf
-Changes inside lms-cassandra:
-isMultiDCEnabled=false
-
+isMultiDCEnabled={{cassandra_isMultiDCEnabled}}
+# Add proper cloud service provider (azure,aws,gcloud)
 cloud_storage_type :azure/aws/gcloud
+
 ```
 
 ```
