@@ -39,6 +39,8 @@
 | [SB-29823](https://project-sunbird.atlassian.net/browse/SB-29823) | UserOrg Migration to Lern                                                         |
 | [SB-29813](https://project-sunbird.atlassian.net/browse/SB-29813) | OrgSearch to allow partial search and fuzzy Search                                |
 | [LR-103](https://project-sunbird.atlassian.net/browse/LR-103)     | Making SB Lern Cloud agnostic : Code changes to generalise CSP support in UserOrg |
+| [LR-124](https://project-sunbird.atlassian.net/browse/LR-124)     | Cassandra related changes for supporting multiple Data Centers                    |
+| [LR-232](https://project-sunbird.atlassian.net/browse/LR-232)     | CSP changes for cert, learner & course service                                    |
 
 Configurations:
 
@@ -54,7 +56,7 @@ sunbird_account_key={{sunbird_public_storage_account_key}}
 ```
 {% endtab %}
 
-{% tab title="Course Service" %}
+{% tab title="Batch Service" %}
 | JIRA ID                                                           | Description                                                                             |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | [SB-30075](https://project-sunbird.atlassian.net/browse/SB-30075) | Batch service - increase code coverage and unit test cases                              |
