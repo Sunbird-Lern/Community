@@ -209,13 +209,60 @@ notification-job
 ```
 
 ```
-Topics with new variable appended are listed below:
+env variable changes are listed below: 
+kubernetes/ansible/roles/flink-jobs-deploy/defaults/main.yml
 
-kafka_assessment_topic: "{{env_name}}{{bb}}.telemetry.assess"
-kafka_topics_instruction: "{{env_name}}{{bb}}.coursebatch.job.request"
-kafka_topics_certificate_instruction: "{{env_name}}{{bb}}.issue.certificate.request"
-kafka_topics_contentstate_invalid: "{{env_name}}{{bb}}.contentstate.invalid"
-kafka_enrolment_sync_topic: "{{env_name}}{{bb}}.batch.enrolment.sync.request"
+###  Merge User Courses Job related Vars
+merge_user_courses_consumer_parallelism: 1
+merge_user_courses_parallelism: 1
+merge_user_courses_course_batch_parallelism: 1
+merge_user_courses_course_date_format: "yyyy-MM-dd HH:mm:ss:SSSZ"
+
+###  Notification Job related Vars
+notification_job_consumer_parallelism: 1
+notification_job_parallelism: 1
+
+### assessment-aggregator related vars
+assessaggregator_parallelism: 1
+assessaggregator_consumer_parallelism: 1
+assessaggregator_downstream_parallelism: 1
+assessaggregator_scoreaggregator_parallelism: 1
+middleware_cassandra_courses_keyspace: sunbird_courses
+middleware_cassandra_assessment_aggregator_table: assessment_aggregator
+middleware_cassandra_assessment_question_type : question
+middleware_cassandra_user_enrolments_table: user_enrolments
+middleware_cassandra_user_activity_agg_table: user_activity_agg
+content_read_api_host: "http://dev.sunbirded.org"
+content_read_api_endpoint: "/api/content/v1/read/"
+
+merge-user-courses:
+    job_class_name: 'org.sunbird.job.merge.user.courses.task.MergeUserCoursesStreamTask'
+    replica: 1
+    jobmanager_memory: 1024m
+    taskmanager_memory: 1024m
+    taskslots: 1
+    cpu_requests: 0.3
+  assessment-aggregator:
+    job_class_name: 'org.sunbird.dp.assessment.task.AssessmentAggregatorStreamTask'
+    replica: 1
+    jobmanager_memory: 1024m
+    taskmanager_memory: 1024m
+    taskmanager_process_memory: 1700m
+    jobmanager_process_memory: 1600m
+    taskslots: 1
+    cpu_requests: 0.3
+    scale_enabled: false
+  notification-job:
+    job_class_name: 'org.sunbird.job.notification.task.NotificationStreamTask'
+    replica: 1
+    jobmanager_memory: 1024m
+    taskmanager_memory: 1024m
+    taskslots: 1
+    cpu_requests: 0.3
+
+Stop the existing Samza jobs - (merge-user-courses and notification-job)
+Stop the assessment-aggregator job from sunbird-data-pipeline and remove it from the corresponding Jenkins job as well
+All these 3 jobs will be running from LERN repo now
 ```
 
 4\. Jenkins build, deploy and upload related changes for data products are in below link:
@@ -248,14 +295,9 @@ LERN data-products list
 ```
 File Path: 
 ansible/inventory/env/group_vars/all.yml
-Changes:
-Added new variable for any lern specific deployments, other BBs need not set this variable if old kafka topic names are used.
-bb: lern
-kafka_topics_instruction: "{{env_name}}{{bb}}.coursebatch.job.request"
-kafka_topics_certificate_instruction: "{{env_name}}{{bb}}.issue.certificate.request"
-kafka_topics_contentstate_invalid: "{{env_name}}{{bb}}.contentstate.invalid"
-kafka_enrolment_sync_topic: "{{env_name}}{{bb}}.batch.enrolment.sync.request"
-kafka_assessment_topic: "{{env_name}}{{bb}}.telemetry.assess" 
+### Release-5.0.0 cloud service provider changes for supporting multiple providers ###
+### cloud_service_provider value should be either (azure, aws, gcloud) as per cloud sdk dependency ###
+cloud_service_provider: "azure"
 
 ## modified consistency levels from quorum to local_quorum for multiple data centers support
 File Path: 
