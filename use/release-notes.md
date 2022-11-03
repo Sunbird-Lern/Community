@@ -1,6 +1,6 @@
 # Overview
 
-> Currently Sunbird inQuiry components are part of Sunbird-ED and hence can't be deployed independently. This can be deployed along with Sunbird-ED.
+> Currently Sunbird Lern components cannot be deployed independently, except for Discussion Forum.&#x20;
 >
 > Please refer to the [Sunbird-Ed deployment ](https://ed.sunbird.org/use/prerequisites-for-your-own-sunbird-ed-instance)for more details.
 
