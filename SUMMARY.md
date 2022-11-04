@@ -74,7 +74,7 @@
 
 ## USE
 
-* [Overview](use/release-notes.md)
+* [Overview](use/use-overview.md)
 * [Developer Installation](use/developer-installation/README.md)
   * [DISCUSSION FORUM](use/developer-installation/discussion-forum/README.md)
     * [System Requirements](use/developer-installation/discussion-forum/system-requirements.md)
@@ -111,11 +111,11 @@
     * [Installation Guide](use/developer-installation/notification-service/installation-guide.md)
     * [Source Code](use/developer-installation/notification-service/source-code.md)
     * [Installation Configuration](use/developer-installation/notification-service/installation-configuration.md)
-* [Release Notes](use/release-notes-1/README.md)
-  * [Release V 5.0.0 (latest)](use/release-notes-1/release-v-5.0.0-latest.md)
-  * [Release V 4.10.0](use/release-notes-1/release-v-4.10.0-latest.md)
-  * [Release V 4.9.0](use/release-notes-1/release-v-4.9.0.md)
-  * [Release V 4.8.0](use/release-notes-1/release-v-4.8.0-upcoming.md)
-  * [Release V 4.7.0](use/release-notes-1/release-v-4.7.0-live.md)
+* [Release Notes](use/release-notes/README.md)
+  * [Release V 5.0.0 (latest)](use/release-notes/release-v-5.0.0-latest.md)
+  * [Release V 4.10.0](use/release-notes/release-v-4.10.0-latest.md)
+  * [Release V 4.9.0](use/release-notes/release-v-4.9.0.md)
+  * [Release V 4.8.0](use/release-notes/release-v-4.8.0-upcoming.md)
+  * [Release V 4.7.0](use/release-notes/release-v-4.7.0-live.md)
 * [Release Calendar](use/release-calendar.md)
 * [Raise an Issue](https://github.com/Sunbird-Lern/Community/discussions/10)
