@@ -14,13 +14,11 @@ The following are the propsed items for Release 5.1. This list will be updated a
 
 **Task : Completion of Data migration  (**[**LR-254**](https://project-sunbird.atlassian.net/browse/LR-4)**)**
 
-Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 releases in order to facilitate Registry driven credentials. A few pending backlog items in this project will be completed as part of Release 5.1.0, including migration of certificates issued so far to Sunbird RC.&#x20;
-
-__
+CSP data migration task for certificates in RC.&#x20;
 
 **Project: Sunbird Lern integration with SB RC**
 
-**Task : Completion of Sunbird RC integration with Lern (** [**LR-3**](https://project-sunbird.atlassian.net/browse/LR-3)**,** [**LR-4**](https://project-sunbird.atlassian.net/browse/LR-4)**,** [**LR-6**](https://project-sunbird.atlassian.net/browse/LR-6)**)**
+**Task : Completion of Sunbird RC integration with Lern (**[**LR-4**](https://project-sunbird.atlassian.net/browse/LR-4)**,** [**LR-6**](https://project-sunbird.atlassian.net/browse/LR-6)**)**
 
 Integration of Sunbird RC with Sunbird Lern has been taken up over the last 2 releases in order to facilitate Registry driven credentials. A few pending backlog items in this project will be completed as part of Release 5.1.0, including migration of certificates issued so far to Sunbird RC.&#x20;
 
@@ -34,11 +32,11 @@ All Course content is considered as mandatory for course completion as of today.
 
 The current Course progress exhaust is required to be enhanced to capture the number of attempts that a user has made against the assessment tagged to the course.&#x20;
 
-<mark style="color:orange;">**Project: Enabling ease of Adoption**</mark>
+**Project: Enabling ease of Adoption**
 
-<mark style="color:orange;">**Task: Refactoring of SB Lern Batch Service (**</mark>[<mark style="color:orange;">**LR-131**</mark>](https://project-sunbird.atlassian.net/browse/LR-131)<mark style="color:orange;">**)**</mark>
+**Task: Refactoring of SB Lern Batch Service (**[**LR-131**](https://project-sunbird.atlassian.net/browse/LR-131)**)**
 
-<mark style="color:orange;">There are a few dependencies for the course service APIs and the DB layers that need to be resolved in order to remove the dependecies that Lern has on SB Obsrv and Knowlg.</mark>
+There are a few dependencies for the course service APIs and the DB layers that need to be resolved in order to remove the dependecies that Lern has on SB Obsrv and Knowlg.
 
 <mark style="color:orange;">****</mark>
 
