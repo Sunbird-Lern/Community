@@ -1,12 +1,14 @@
 # Product Roadmap
 
+Use this link to see the Jira Board that has the [Sunbird Lern roadmap](https://project-sunbird.atlassian.net/jira/software/c/projects/LR/boards/102/roadmap). The roadmap has the list of Epics that are to be taken up, as well as form the backlog for the Sunbird Lern team&#x20;
+
 Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) : This is the link to the set of issues/ submissions or requests that are being considered for development as part of the Sunbird Lern roadmap. You can upvote an issue if you find it relevant, or <mark style="color:blue;">add a new issue</mark> to the list
 
 
 
-The following are the propsed items for Release 5.1. This list will be updated and shared on the SB Lern Discussion Forum once the discussions are complete, and the final version of the list is agreed upon.
 
-<mark style="color:orange;">****</mark>
+
+The following are the propsed items for Release 5.1. This list will be updated and shared on the SB Lern Discussion Forum once the discussions are complete, and the final version of the list is agreed upon.
 
 <mark style="color:orange;">****</mark>[<mark style="color:orange;">**Release-5.1.0**</mark>](https://project-sunbird.atlassian.net/issues/?filter=12607) <mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 13 Jan '23)**</mark>
 
