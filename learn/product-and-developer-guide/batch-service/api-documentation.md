@@ -8,8 +8,8 @@ Refer to \*\*\*\* the below various API documentation related to all the differe
 
 Course Batch Management APIs are listed below:
 
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (3).yaml" path="undefined" method="undefined" %}
-[coursebatchmanapi (3).yaml](<../../../.gitbook/assets/coursebatchmanapi (3).yaml>)
+{% swagger src="../../../.gitbook/assets/coursebatchmanapi.yaml" path="/course/v1/batch/read/{batch-id}" method="get" %}
+[coursebatchmanapi.yaml](../../../.gitbook/assets/coursebatchmanapi.yaml)
 {% endswagger %}
 
 {% swagger src="../../../.gitbook/assets/coursebatchmanapi (5).yaml" path="/course/v1/batch/update" method="patch" %}
@@ -28,8 +28,8 @@ Course Batch Management APIs are listed below:
 
 Course Enrolment APIs are listed below:
 
-{% swagger src="../../../.gitbook/assets/courseenrolmentapi (3).yaml" path="undefined" method="undefined" %}
-[courseenrolmentapi (3).yaml](<../../../.gitbook/assets/courseenrolmentapi (3).yaml>)
+{% swagger src="../../../.gitbook/assets/courseenrolmentapi (1).yaml" path="/course/v1/enrol" method="post" %}
+[courseenrolmentapi (1).yaml](<../../../.gitbook/assets/courseenrolmentapi (1).yaml>)
 {% endswagger %}
 
 {% swagger src="../../../.gitbook/assets/courseenrolmentapi (1).yaml" path="/course/v1/unenrol" method="post" %}
@@ -44,8 +44,8 @@ Course Enrolment APIs are listed below:
 
 Course Progress APIs are listed below:
 
-{% swagger src="../../../.gitbook/assets/courseprogressapi (2).yaml" path="undefined" method="undefined" %}
-[courseprogressapi (2).yaml](<../../../.gitbook/assets/courseprogressapi (2).yaml>)
+{% swagger src="../../../.gitbook/assets/courseprogressapi (1).yaml" path="/course/v1/content/state/read" method="post" %}
+[courseprogressapi (1).yaml](<../../../.gitbook/assets/courseprogressapi (1).yaml>)
 {% endswagger %}
 
 {% swagger src="../../../.gitbook/assets/courseprogressapi (1).yaml" path="/course/v1/content/state/update" method="patch" %}
@@ -56,10 +56,77 @@ Course Progress APIs are listed below:
 
 Course Batch Certificates APIs are listed below:
 
-{% swagger src="../../../.gitbook/assets/coursebatchcertificateapi (1).yaml" path="undefined" method="undefined" %}
+{% swagger src="../../../.gitbook/assets/coursebatchcertificateapi (1).yaml" path="/course/batch/cert/v1/template/add" method="patch" %}
 [coursebatchcertificateapi (1).yaml](<../../../.gitbook/assets/coursebatchcertificateapi (1).yaml>)
 {% endswagger %}
 
 {% swagger src="../../../.gitbook/assets/coursebatchcertificateapi.yaml" path="/course/batch/cert/v1/template/remove" method="patch" %}
 [coursebatchcertificateapi.yaml](../../../.gitbook/assets/coursebatchcertificateapi.yaml)
+{% endswagger %}
+
+Reference: [Group Activity Aggregator](http://docs.sunbird.org/latest/apis/groupactivityapi/#tag/Group-Activity-Apis)
+
+{% swagger src="../../../.gitbook/assets/groupactivityapi.yaml" path="/data/v1/group/activity/agg" method="post" %}
+[groupactivityapi.yaml](../../../.gitbook/assets/groupactivityapi.yaml)
+{% endswagger %}
+
+Reference: [Collection Summary](https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1121058947/Design+Druid+Proxy+API)
+
+{% swagger method="post" path="" baseUrl="" summary="Collection Summary(https://staging.open-sunbird.org/report/v1/collection/summary)" %}
+{% swagger-description %}
+This API gives the collection summary, like the total number of enrolments, completion count, count of certificates issued.
+{% endswagger-description %}
+
+{% swagger-parameter in="body" name="request" required="true" type="Object" %}
+
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="filters" type="Object" required="true" %}
+Search filters
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="collectionId" type="String" required="true" %}
+Id of the collection
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="batchId" type="String" required="true" %}
+Id of the batch
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="group_by" type="String Array" required="false" %}
+`"state", "dist"`
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="intervals" type="String" required="false" %}
+`2019-09-23T00:00:00.000Z/2019-09-24T00:00:00.000Z"`
+
+ St
+
+`artDate - Batch Start Date and  Default EndDate - Current Date`
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="" %}
+```javascript
+{
+  "result": {
+    "collectionId": "", // Collection/CourseId
+    "name": "", // Collection Name
+    "batchId": "", // Batch Identifier
+    "enrolmentCount": "",
+    "completionCount": "",
+    "certificatesIssuedCount": "",
+    "summary": {  // Summary by state and district level
+      "state": {
+        "enrolmentCount": "",
+        "completionCount": ""
+      },
+      "district": {
+        "enrolmentCount": "",
+        "completionCount": ""
+      }
+    }
+  }
+}
+```
+{% endswagger-response %}
 {% endswagger %}

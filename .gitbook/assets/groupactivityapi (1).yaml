@@ -1,0 +1,369 @@
+openapi: 3.0.1
+info:
+  title: Group Activity Apis
+  description: |-
+    The Group Activity API gives you the current status of all group members for a particular activity. An activity could be course, assessment etc.
+
+    The URL for Group Activity API(s) is /data/v1/group/activity/agg.
+
+    - The backend URL for Group Activity Apis is /v1/group/activity/agg.
+    - [TestCases](https://app.getpostman.com/run-collection/ea1cdd12633bb6e7bf9b)
+  termsOfService: https://github.com/project-sunbird/sunbird-commons/blob/master/LICENSE
+  contact:
+    email: info@sunbird.org
+  version: '1.0'
+servers:
+  - url: 'https://staging.open-sunbird.org/api'
+paths:
+  /data/v1/group/activity/agg:
+    post:
+      tags:
+        - Group Activity Apis
+      summary: Group Activity Aggregator
+      description: |-
+        This API is used for reading the current progress of the course (content) consumed by group members. For example, the mentor/user can view and check the progress of a specific activity.
+
+        - The endpoint for **Group Activity Aggregator** is `/agg`
+
+        - The fields marked with an asterisk (*) are mandatory.
+        They cannot be null or empty.
+      operationId: GroupActivityAgg
+      parameters:
+        - name: Content-Type
+          in: header
+          description: 'The Content Type entity is the media type of the resource.Possible\
+          \ media types can be:- \n  - application/json'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: x-authenticated-user-token
+          in: header
+          description: 'The registered user token/key to authenticate user and execute
+          the API.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+        - name: Authorization
+          in: header
+          description: 'To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received, here.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+      requestBody:
+        description: 'Represents the body and formdata parameters of the Group Activity Aggregator API'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/groupactivityapiGroupActivityAggRequest'
+            example:
+              request:
+                groupId: '{{group-id}}'
+                activityId: '{{activity-id}}'
+                activityType: Course
+        required: true
+      responses:
+        '200':
+          description: 'SUCCESS. The "Group Activity Aggregator" operation was successful!'
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupactivityapiGroupActivityAgg-withinvalidactivity-d'
+              example:
+                id: api.group.activity.agg
+                ver: v1
+                ts: '2020-11-27 16:29:46:161+0000'
+                params:
+                  resmsgid: null
+                  msgid: 849f418c-7f6e-4a10-9c5c-16b15f8ea86e
+                  err: null
+                  status: success
+                  errmsg: null
+                responseCode: OK
+                result:
+                  activity:
+                    id: '{{activity-id-invalid}}'
+                    type: Course
+                    agg:
+                      - metric: enrolmentCount
+                        lastUpdatedOn: 1606494586160
+                        value: 0
+                  groupId: b0c4a645-807e-41c7-972e-5c48c5b5e5e7
+                  members: []
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupactivityapiGroupActivityAgg-Errorwhilefetchinggroupmembersrecord'
+              example:
+                id: api.group.activity.agg
+                ver: v1
+                ts: '2020-11-27 16:28:59:243+0000'
+                params:
+                  resmsgid: null
+                  msgid: 28d26091-d6ee-44da-8ea0-01dd71c9dba3
+                  err: null
+                  status: SERVER_ERROR
+                  errmsg: Error while fetching group members record.
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+components:
+  schemas:
+    groupactivityapiGroupActivityAggRequest:
+      title: GroupActivityAggRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/groupactivityapiRequest'
+      example:
+        request:
+          groupId: '{{group-id}}'
+          activityId: '{{activity-id}}'
+          activityType: Course
+    groupactivityapiRequest:
+      title: Request
+      required:
+        - groupId
+        - activityId
+        - activityType
+      type: object
+      properties:
+        groupId:
+          type: string
+        activityId:
+          type: string
+        activityType:
+          type: string
+      example:
+        groupId: '{{group-id}}'
+        activityId: '{{activity-id}}'
+        activityType: Course
+    groupactivityapiGroupActivityAgg-withinvalidactivity-d:
+      title: GroupActivityAgg-withinvalidactivity-d
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/groupactivityapigroupactivityapiParams'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/groupactivityapigroupactivityapiResult'
+      example:
+        id: api.group.activity.agg
+        ver: v1
+        ts: '2020-11-27 16:29:46:161+0000'
+        params:
+          resmsgid: null
+          msgid: 849f418c-7f6e-4a10-9c5c-16b15f8ea86e
+          err: null
+          status: success
+          errmsg: null
+        responseCode: OK
+        result:
+          activity:
+            id: '{{activity-id-invalid}}'
+            type: Course
+            agg:
+              - metric: enrolmentCount
+                lastUpdatedOn: 1606494586160
+                value: 0
+          groupId: b0c4a645-807e-41c7-972e-5c48c5b5e5e7
+          members: []
+    groupactivityapigroupactivityapiParams:
+      title: Params
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+        err:
+          type: string
+          nullable: true
+        status:
+          type: string
+        errmsg:
+          type: string
+          nullable: true
+      example:
+        resmsgid: null
+        msgid: 849f418c-7f6e-4a10-9c5c-16b15f8ea86e
+        err: null
+        status: success
+        errmsg: null
+    groupactivityapigroupactivityapiResult:
+      title: Result
+      required:
+        - activity
+        - groupId
+        - members
+      type: object
+      properties:
+        activity:
+          $ref: '#/components/schemas/groupactivityapiActivity'
+        groupId:
+          type: string
+        members:
+          type: array
+          items:
+            type: string
+          description: ''
+      example:
+        activity:
+          id: '{{activity-id-invalid}}'
+          type: Course
+          agg:
+            - metric: enrolmentCount
+              lastUpdatedOn: 1606494586160
+              value: 0
+        groupId: b0c4a645-807e-41c7-972e-5c48c5b5e5e7
+        members: []
+    groupactivityapiActivity:
+      title: Activity
+      required:
+        - id
+        - type
+        - agg
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        agg:
+          type: array
+          items:
+            $ref: '#/components/schemas/groupactivityapiAgg'
+          description: ''
+      example:
+        id: '{{activity-id-invalid}}'
+        type: Course
+        agg:
+          - metric: enrolmentCount
+            lastUpdatedOn: 1606494586160
+            value: 0
+    groupactivityapiAgg:
+      title: Agg
+      required:
+        - metric
+        - lastUpdatedOn
+        - value
+      type: object
+      properties:
+        metric:
+          type: string
+        lastUpdatedOn:
+          type: integer
+          format: int64
+        value:
+          type: integer
+          format: int32
+      example:
+        metric: enrolmentCount
+        lastUpdatedOn: 1606494586160
+        value: 0
+    groupactivityapiGroupActivityAgg-Errorwhilefetchinggroupmembersrecord:
+      title: GroupActivityAgg-Errorwhilefetchinggroupmembersrecord
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/groupactivityapigroupactivityapiParams1'
+        responseCode:
+          type: string
+        result:
+          type: object
+      example:
+        id: api.group.activity.agg
+        ver: v1
+        ts: '2020-11-27 16:28:59:243+0000'
+        params:
+          resmsgid: null
+          msgid: 28d26091-d6ee-44da-8ea0-01dd71c9dba3
+          err: null
+          status: SERVER_ERROR
+          errmsg: Error while fetching group members record.
+        responseCode: SERVER_ERROR
+        result: {}
+    groupactivityapigroupactivityapiParams1:
+      title: Params1
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+        err:
+          type: string
+          nullable: true
+        status:
+          type: string
+        errmsg:
+          type: string
+      example:
+        resmsgid: null
+        msgid: 28d26091-d6ee-44da-8ea0-01dd71c9dba3
+        err: null
+        status: SERVER_ERROR
+        errmsg: Error while fetching group members record.
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+tags:
+  - name: Group Activity Apis
+    description: ''
