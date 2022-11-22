@@ -1,6 +1,6 @@
 # Organisation Management
 
-{% swagger src="../../../../.gitbook/assets/OrganisationManagement.yaml" path="undefined" method="undefined" %}
+{% swagger src="../../../../.gitbook/assets/OrganisationManagement.yaml" path="/org/v1/create" method="post" %}
 [OrganisationManagement.yaml](../../../../.gitbook/assets/OrganisationManagement.yaml)
 {% endswagger %}
 
