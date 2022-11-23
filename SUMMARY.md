@@ -49,6 +49,7 @@
     * [Functional Configurations](learn/product-and-developer-guide/notification-service/functional-configurations.md)
     * [Dependencies](learn/product-and-developer-guide/notification-service/dependencies.md)
   * [USER & ORG SERVICE](learn/product-and-developer-guide/user-and-org-service/README.md)
+    * [User Roles](learn/product-and-developer-guide/user-and-org-service/user-roles.md)
     * [Architecture](learn/product-and-developer-guide/user-and-org-service/architecture.md)
     * [API Documentation](learn/product-and-developer-guide/user-and-org-service/api-documentation/README.md)
       * [User Management](learn/product-and-developer-guide/user-and-org-service/api-documentation/user-management.md)
