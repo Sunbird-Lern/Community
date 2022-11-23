@@ -1,6 +1,6 @@
-# User Roles
+# System Roles
 
-#### How to create roles?
+#### How to create system roles?
 
 Currently there are no APIs present in UserOrg service to do role management. If any new role needs to be added it is done through DB script.&#x20;
 
@@ -9,22 +9,18 @@ Sample Script:
 <pre><code><strong>insert into sunbird.role (id,name,rolegroupid,status) values ('PROGRAM_MANAGER','Program Manager',['PROGRAM_MANAGER'],1);
 </strong>insert into sunbird.role_group (id,name) values ('PROGRAM_MANAGER','Program Manager');</code></pre>
 
-#### **To fetch the roles in the system,** below API can be used:
+DB details:
+
+```
+CREATE TABLE IF NOT EXISTS sunbird.role(id text, name text,roleGroupId List<text>,status int, PRIMARY KEY (id));
+CREATE TABLE IF NOT EXISTS sunbird.role_group(id text, name text, PRIMARY KEY (id));
+```
+
+To fetch the roles in the system, below API can be used:
 
 ```
 GET /v1/role/read
 ```
-
-#### **To fetch roles of a specific user,** below API can be used:
-
-```
-GET /v1/user/role/read/:uid 
-```
-
-#### To assign roles to a user, below APIs can be used: ([API Documentation](https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/api-documentation/user-management))
-
-<pre><code>POST /v2/user/assign/role
-<strong>POST /private/user/v2/assign/role</strong></code></pre>
 
 #### Role List
 
