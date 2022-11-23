@@ -1,7 +1,7 @@
 # User Management
 
-{% swagger src="../../../../.gitbook/assets/userService.yaml" path="undefined" method="undefined" %}
-[userService.yaml](../../../../.gitbook/assets/userService.yaml)
+{% swagger src="../../../../.gitbook/assets/userManagement.yaml" path="/user/v1/create" method="post" %}
+[userManagement.yaml](../../../../.gitbook/assets/userManagement.yaml)
 {% endswagger %}
 
 {% swagger src="../../../../.gitbook/assets/userService.yaml" path="/user/v2/create" method="post" %}

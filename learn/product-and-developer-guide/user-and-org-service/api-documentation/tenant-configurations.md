@@ -1,6 +1,6 @@
 # Tenant Configurations
 
-{% swagger src="../../../../.gitbook/assets/TenantConfigurations.yaml" path="undefined" method="undefined" %}
+{% swagger src="../../../../.gitbook/assets/TenantConfigurations.yaml" path="/org/v2/preferences/read" method="post" %}
 [TenantConfigurations.yaml](../../../../.gitbook/assets/TenantConfigurations.yaml)
 {% endswagger %}
 

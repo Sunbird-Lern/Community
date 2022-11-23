@@ -1,6 +1,6 @@
 # OTP Services
 
-{% swagger src="../../../../.gitbook/assets/OTP.yaml" path="undefined" method="undefined" %}
+{% swagger src="../../../../.gitbook/assets/OTP.yaml" path="/otp/v1/generate" method="post" %}
 [OTP.yaml](../../../../.gitbook/assets/OTP.yaml)
 {% endswagger %}
 

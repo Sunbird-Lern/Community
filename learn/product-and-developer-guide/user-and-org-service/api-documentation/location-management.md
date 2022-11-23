@@ -1,6 +1,6 @@
 # Location Management
 
-{% swagger src="../../../../.gitbook/assets/LocationManagement.yaml" path="undefined" method="undefined" %}
+{% swagger src="../../../../.gitbook/assets/LocationManagement.yaml" path="/data/v1/location/create" method="post" %}
 [LocationManagement.yaml](../../../../.gitbook/assets/LocationManagement.yaml)
 {% endswagger %}
 

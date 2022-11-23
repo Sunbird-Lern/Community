@@ -1,6 +1,6 @@
 # System Settings
 
-{% swagger src="../../../../.gitbook/assets/SystemSettings.yaml" path="undefined" method="undefined" %}
+{% swagger src="../../../../.gitbook/assets/SystemSettings.yaml" path="/data/v1/system/settings/set" method="post" %}
 [SystemSettings.yaml](../../../../.gitbook/assets/SystemSettings.yaml)
 {% endswagger %}
 

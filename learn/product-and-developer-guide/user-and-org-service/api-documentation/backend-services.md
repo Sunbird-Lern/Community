@@ -1,6 +1,6 @@
 # Backend Services
 
-{% swagger src="../../../../.gitbook/assets/BulkUploadServices.yaml" path="undefined" method="undefined" %}
+{% swagger src="../../../../.gitbook/assets/BulkUploadServices.yaml" path="/user/v1/upload" method="post" %}
 [BulkUploadServices.yaml](../../../../.gitbook/assets/BulkUploadServices.yaml)
 {% endswagger %}
 
