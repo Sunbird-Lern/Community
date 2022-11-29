@@ -8,11 +8,11 @@
 
 ### Details of Released Tag
 
-| Components        | Tags                                                                                                                         |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Batch Service     | <p>sunbird-course-service : </p><p>cert-service : </p><p>certficate-registry : <strong></strong> </p><p>data-pipeline : </p> |
-| User\&Org Service | sunbird-lms-service : [ **** ](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.0\_RC1)          |
-| Data Products     | data-products :                                                                                                              |
+| Components        | Tags                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Batch Service     | <p>sunbird-course-service : <a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.0.1_RC1">release-5.0.1_RC1</a></p><p>cert-service : <a href="https://github.com/Sunbird-Lern/cert-service/releases/tag/release-5.0.1_RC1">release-5.0.1_RC1</a></p><p>data-pipeline : <a href="https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.0.1_RC1">release-5.0.1_RC1</a></p> |
+| User\&Org Service | sunbird-lms-service : [ **** ](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.0\_RC1)[release-5.0.1\_RC1](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.1\_RC1)                                                                                                                                                                                              |
+| Data Products     | data-products : [release-5.0.1\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.0.1\_RC1)                                                                                                                                                                                                                                                                                                       |
 
 ### **Summary of the Changes** <a href="#1.-summary-of-the-changes" id="1.-summary-of-the-changes"></a>
 

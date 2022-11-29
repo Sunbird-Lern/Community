@@ -1,4 +1,4 @@
-# Release V 5.0.0 (latest)
+# Release V 5.0.0
 
 ### Document Release Version <a href="#document-release-version" id="document-release-version"></a>
 
