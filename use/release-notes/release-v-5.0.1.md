@@ -32,15 +32,15 @@ Cloud Migration Scripts:
 
 DB Table Migrations:
 
-[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables) (no need to execute TrainingCertificate script as of now)&#x20;
+[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables)&#x20;
 
-ES Migrations:&#x20;
+ES Migrations in case of opting new CSP provider:&#x20;
 
-[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC) (no need to training certificate index change as of now)
+[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC)&#x20;
 
 
 
-Configurations:
+Env Configurations:
 
 The below environment variable needs to be configured in the devops repo.
 
