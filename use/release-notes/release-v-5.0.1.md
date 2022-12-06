@@ -8,11 +8,11 @@
 
 ### Details of Released Tag
 
-| Components        | Deploy Tags   | Build Tags                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ----------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Batch Service     | release-5.1.0 | <p>sunbird-course-service : <a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.0.1_RC2">release-5.0.1_RC2</a></p><p>cert-service : <a href="https://github.com/Sunbird-Lern/cert-service/releases/tag/release-5.0.1_RC2">release-5.0.1_RC2</a></p><p>data-pipeline : <a href="https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.0.1_RC1">release-5.0.1_RC1</a></p> |
-| User\&Org Service | release-5.1.0 | sunbird-lms-service : [ **** ](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.0\_RC1)[release-5.0.1\_RC1](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.1\_RC1)                                                                                                                                                                                              |
-| Data Products     | release-5.1.0 | data-products : [release-5.0.1\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.0.1\_RC1)                                                                                                                                                                                                                                                                                                       |
+| Components        | Deploy Tags        | Build Tags                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Batch Service     | release-5.1.0\_RC1 | <p>sunbird-course-service : <a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.0.1_RC2">release-5.0.1_RC2</a></p><p>cert-service : <a href="https://github.com/Sunbird-Lern/cert-service/releases/tag/release-5.0.1_RC2">release-5.0.1_RC2</a></p><p>data-pipeline : <a href="https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.0.1_RC1">release-5.0.1_RC1</a></p> |
+| User\&Org Service | release-5.1.0\_RC1 | sunbird-lms-service : [ **** ](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.0\_RC1)[release-5.0.1\_RC1](https://github.com/Sunbird-Lern/sunbird-lms-service/releases/tag/release-5.0.1\_RC1)                                                                                                                                                                                              |
+| Data Products     | release-5.1.0\_RC1 | data-products : [release-5.0.1\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.0.1\_RC1)                                                                                                                                                                                                                                                                                                       |
 
 ### **Summary of the Changes** <a href="#1.-summary-of-the-changes" id="1.-summary-of-the-changes"></a>
 
@@ -28,7 +28,7 @@
 
 
 
-Env Configurations:
+Env Configurations (Needs to be done before service deployment):
 
 The below environment variable needs to be configured in the devops repo.
 
@@ -36,7 +36,7 @@ cloud\_storage\_base\_url: https://sunbirddev.blob.core.windows.net
 
 
 
-DB Data Migrations:
+DB Data Migrations: (Run these scripts after service deployment)
 
 [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables)&#x20;
 
