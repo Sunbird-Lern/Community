@@ -49,7 +49,7 @@ The below environment variable needs to be configured in the devops repo.
 
 <details>
 
-<summary>Ansible Changes in Common.yml, secrets.yml, hosts.yml</summary>
+<summary>Ansible Changes need to be updated in Common.yml, secrets.yml, hosts.yml</summary>
 
 ```
 sunbird-devops-private/ansible/inventory/{{env}}/KnowledgePlatform
@@ -91,7 +91,7 @@ postgres:
 data_exhaust_webhook_url: 
 data_exhaust_Channel: 
 data_exhaust_name:
-
+user_port: 6379
 
 secrets:
 
