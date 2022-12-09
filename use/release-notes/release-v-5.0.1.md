@@ -47,16 +47,31 @@ The below environment variable needs to be configured in the devops repo.
 | ------------------------- | ---------------------------------------- | -------------------------- |
 | cloud\_storage\_base\_url | https://sunbirddev.blob.core.windows.net | To store the CSP base path |
 
+### Data Migrations: (Run these scripts after service deployment)
 
+* **This script is to update the variable based relative url for cloud resources to course\_batch(cassandra) and job\_request(postgres) database tables.**            &#x20;
 
-### DB Data Migrations: (Run these scripts after service deployment)
+[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables)&#x20;
 
-1. This script is to update the variable based relative url for cloud resources to course\_batch(cassandra) and job\_request(postgres) database tables.                        [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables)&#x20;
-2. Update blob URL  or CNAME URL in ES ad RC DB
+Verification Steps after migration:
+
+Check few records in course\_batch table to see whether the certificate template cloud url is changed to variable format and also check in job\_request table to see whether the report url is in relative path format.
+
+* **Update blob URL  or CNAME URL in ES ad RC DB**
 
 To change actual URL to CNAME URL  or In case of opting new CSP provider, to change to new       blob URL execute below scripts :&#x20;
 
 RC PostgreSQL DB table V\_TrainingCertificate data migration: [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3256877067/Training+certificate+migration](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3256877067/Training+certificate+migration)&#x20;
 
 ES Migrations(course-batch index, trainingcertificate index)[ : ](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC)[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC)RC
+
+Verification Steps after migration:
+
+Check ES course\_batch index and TrainingCertificate index to see whether the certificate template cloud url is changed to new csp blob url or cname url. &#x20;
+
+Also check in postgres V\_TrainingCertificate table to see whether the certificate template url is changed to new csp blob url or cname url.&#x20;
+
+
+
+
 
