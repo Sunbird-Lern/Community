@@ -47,6 +47,65 @@ The below environment variable needs to be configured in the devops repo.
 | ------------------------- | ---------------------------------------- | -------------------------- |
 | cloud\_storage\_base\_url | https://sunbirddev.blob.core.windows.net | To store the CSP base path |
 
+<details>
+
+<summary>Ansible Changes in Common.yml, secrets.yml, hosts.yml</summary>
+
+```
+sunbird-devops-private/ansible/inventory/{{env}}/KnowledgePlatform
+
+hosts:
+
+## Lern dataproducts
+[learning]
+
+[raw-broker]
+
+[report-cassandra]
+
+[raw-coordinator]
+
+[redis]
+
+[raw-overlord]
+
+[lp-cassandra]
+
+
+
+common:
+
+## Lern dataproducts
+dp_vault_artifacts_container: 
+db_admin_password: 
+db_password: 
+postgres:                                                                                         
+  db_url:       #"{{ groups['postgres'][0] }}"
+  db_username:  #analytics
+  db_name: 
+  db_password: 
+  db_table_name: 
+  db_port: 5432
+  db_admin_user: 
+  db_admin_password: 
+data_exhaust_webhook_url: 
+data_exhaust_Channel: 
+data_exhaust_name:
+
+
+secrets:
+
+## Lern dataproducts
+dp_vault_data_exhaust_token: 
+dp_vault_pgdb_admin_password: 
+dp_vault_pgdb_password: 
+dp_vault_druid_postgress_pass: 
+core_vault_sunbird_api_auth_token:
+core_vault_sunbird_encryption_key:   ### This variable added for admin user reports which is bein used to encrypt and decrypt data in cassandra.
+```
+
+</details>
+
 ### Data Migrations: (Run these scripts after service deployment)
 
 * **This script is to update the variable based relative url for cloud resources to course\_batch(cassandra) and job\_request(postgres) database tables.**            &#x20;
