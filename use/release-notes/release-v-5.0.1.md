@@ -20,6 +20,15 @@
 
 * Making SB Lern Cloud agnostic
 
+#### Affected Areas:
+
+* Textbook upload and download&#x20;
+* QRCode list download from workspace
+* Old certificate download
+* New certificate generation and download
+* Exhaust Reports - UserInfo, Progress and Reponse Exhausts
+* OrgAdmin Reports - Org Consent Report and Geo Reports
+
 ### Details of the Changes
 
 [LR-262 ](https://project-sunbird.atlassian.net/browse/LR-262)OCI and Open stack support analysis
@@ -42,11 +51,12 @@ The below environment variable needs to be configured in the devops repo.
 
 ### DB Data Migrations: (Run these scripts after service deployment)
 
-[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables)&#x20;
+1. This script is to update the variable based relative url for cloud resources to course\_batch(cassandra) and job\_request(postgres) database tables.                        [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3238723588/CSP+changes+in+Lern+related+tables)&#x20;
+2. Update blob URL  or CNAME URL in ES ad RC DB
 
-**In case of opting new CSP provider execute below scripts to update blob url:**&#x20;
+To change actual URL to CNAME URL  or In case of opting new CSP provider, to change to new       blob URL execute below scripts :&#x20;
 
-DB data migration: [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3256877067/Training+certificate+migration](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3256877067/Training+certificate+migration)&#x20;
+RC PostgreSQL DB table V\_TrainingCertificate data migration: [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3256877067/Training+certificate+migration](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3256877067/Training+certificate+migration)&#x20;
 
-ES Migrations[ : ](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC)[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC)RC
+ES Migrations(course-batch index, trainingcertificate index)[ : ](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC)[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3231449089/CSP+Changes+for+Course+Batch+and+RC)RC
 
