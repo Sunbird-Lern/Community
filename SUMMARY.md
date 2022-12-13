@@ -74,6 +74,7 @@
     * [Schema](learn/product-and-developer-guide/user-and-org-service/schema.md)
     * [Telemetry Events](learn/product-and-developer-guide/user-and-org-service/telemetry-events.md)
     * [System Settings](learn/product-and-developer-guide/user-and-org-service/system-settings.md)
+    * [Keycloak Admin Configuration](learn/product-and-developer-guide/user-and-org-service/keycloak-admin-configuration.md)
 * [Dependencies](learn/dependencies.md)
 * [Product Roadmap](learn/product-roadmap.md)
 
