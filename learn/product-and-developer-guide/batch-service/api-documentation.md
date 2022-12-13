@@ -130,3 +130,33 @@ Id of the batch
 ```
 {% endswagger-response %}
 {% endswagger %}
+
+Reference: [Page APIs](http://docs.sunbird.org/latest/apis/pagesapi/)
+
+{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/create" method="post" %}
+[pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
+{% endswagger %}
+
+{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/update" method="patch" %}
+[pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
+{% endswagger %}
+
+{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/read/{pageName}" method="get" %}
+[pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
+{% endswagger %}
+
+{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/create" method="post" %}
+[pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
+{% endswagger %}
+
+{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/update" method="patch" %}
+[pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
+{% endswagger %}
+
+{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/read/{SectionId}" method="get" %}
+[pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
+{% endswagger %}
+
+{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/list" method="get" %}
+[pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
+{% endswagger %}

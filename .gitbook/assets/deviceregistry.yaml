@@ -1,0 +1,148 @@
+openapi: 3.0.1
+info:
+  title: Sunbird Desktop register API
+  description: This is the API used in Sunbird Desktop Application to get the token
+  termsOfService: https://github.com/project-sunbird/sunbird-commons/blob/master/LICENSE
+  contact:
+    email: info@sunbird.org
+  version: "2.0"
+servers:
+- url: https://staging.open-sunbird.org/api
+paths:
+  /api-manager/v2/consumer/desktop_device/credential/register:
+    post:
+      tags:
+      - Desktop device registry API
+      summary: Get API token
+      description: "This API is used to get the token.\n   - **_/consumer/desktop_device/credential/register/_**\
+        \ endpoint helps to get the token.  \n   - Required\
+        \ fields cannot be left null or empty    "
+      operationId: Get API token
+      parameters:
+      - name: Content-Type
+        in: header
+        description: "The Content Type entity is the media type of the resource.Possible\
+          \ media types can be:- \n  - Application/json\n  - Multipart/form-data\n\
+          \  - Application/x-www-form-urlencoded"
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received, here.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: "'The body parameter refers to the format of the request, the\
+          \ request body (payload) takes the following media types to make the payload:'\
+          \            \n - JSON           \nThe body is the representation of the\
+          \ resource object to get the token"
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/device-registryRequest'
+        required: true
+      responses:
+        200:
+          description: SUCCESS. The operation was successful!
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/device-registryGetTokenResponse'
+        500:
+          description: '''INTERNAL SERVER ERROR. We track these errors automatically
+            and try to set it right at the earliest. Try refreshing the page. If the
+            problem persists contact us at info@sunbird.org.'''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/device-registryGetTokenErrorResponse'
+      x-codegen-request-body-name: Body
+components:
+  schemas:
+    device-registryRequest:
+      title: Registry Request
+      required:
+      - request
+      type: object
+      properties:
+        request:
+          title: RegistryObject
+          required:
+          - key
+          type: object
+          properties:
+            key:
+              type: string
+              description: Device id
+    device-registryGetTokenResponse:
+      description: Get Token Response
+      allOf:
+      - $ref: '#/components/schemas/device-registryResponseHeader'
+      - $ref: '#/components/schemas/device-registryResultWithToken'
+    device-registryResultWithToken:
+      title: Result Containing token
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/device-registryToken'
+    device-registryToken:
+      title: Token details
+      type: object
+      properties:
+        key:
+          type: string
+          description: key
+        secret:
+          type: string
+          description: secret
+        token:
+          type: string
+          description: token
+    device-registryResponseHeader:
+      title: ResponseHeader
+      type: object
+      properties:
+        id:
+          type: string
+          description: Represents the unique API Identifier
+        ver:
+          type: string
+          description: Represents the API version information
+        ets:
+          type: number
+          description: Represents the current time stamp
+        params:
+          $ref: '#/components/schemas/device-registryResponseParams'
+    device-registryResponseParams:
+      title: Response Parameter
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          description: ID represents the response uniquely
+        msgid:
+          type: string
+          description: Represents the unique ID of the response message
+        err:
+          type: string
+          description: Represents the Error Code in case the execution fails
+        status:
+          type: string
+          description: Represents the Response status when an API is called
+        errmsg:
+          type: string
+          description: Represents the text that is part of response status
+    device-registryGetTokenErrorResponse:
+      title: Get Token Error Response
+      allOf:
+      - $ref: '#/components/schemas/device-registryResponseParams'
+      - $ref: '#/components/schemas/device-registryResponseHeader'
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header
