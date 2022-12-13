@@ -17,6 +17,7 @@
     * [Reports](learn/product-and-developer-guide/batch-service/reports.md)
     * [System Configurations](learn/product-and-developer-guide/batch-service/system-configurations.md)
     * [Certificate Registry and Credentialing](learn/product-and-developer-guide/batch-service/certificate-registry-and-credentialing.md)
+    * [Datapipeline (Flink Jobs)](learn/product-and-developer-guide/batch-service/datapipeline-flink-jobs.md)
   * [GROUPS](learn/product-and-developer-guide/groups/README.md)
     * [Architecture](learn/product-and-developer-guide/groups/architecture.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/groups/features-core-capabilities.md)
