@@ -16,6 +16,7 @@
     * [Telemetry Events](learn/product-and-developer-guide/batch-service/telemetry-events.md)
     * [Reports](learn/product-and-developer-guide/batch-service/reports.md)
     * [System Configurations](learn/product-and-developer-guide/batch-service/system-configurations.md)
+    * [Certificate Registry and Credentialing](learn/product-and-developer-guide/batch-service/certificate-registry-and-credentialing.md)
   * [GROUPS](learn/product-and-developer-guide/groups/README.md)
     * [Architecture](learn/product-and-developer-guide/groups/architecture.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/groups/features-core-capabilities.md)
