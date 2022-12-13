@@ -73,6 +73,7 @@
     * [Dependencies](learn/product-and-developer-guide/user-and-org-service/dependencies.md)
     * [Schema](learn/product-and-developer-guide/user-and-org-service/schema.md)
     * [Telemetry Events](learn/product-and-developer-guide/user-and-org-service/telemetry-events.md)
+    * [System Settings](learn/product-and-developer-guide/user-and-org-service/system-settings.md)
 * [Dependencies](learn/dependencies.md)
 * [Product Roadmap](learn/product-roadmap.md)
 
