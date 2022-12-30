@@ -130,6 +130,27 @@ Check ES course\_batch index and TrainingCertificate index to see whether the ce
 
 Also check in postgres V\_TrainingCertificate table to see whether the certificate template url is changed to new csp blob url or cname url.&#x20;
 
+* **Update system settings values for sunbird**
+
+
+Run the system-setting for setting the sunbird id value and the read the api
+```
+curl --location --request POST 'https://staging.sunbirded.org/api/data/v1/system/settings/set
+' \
+--header 'Authorization: Bearer {{authorization-key}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	
+	"request" :
+		{
+			 {
+                "id": "sunbird",
+                "field": "sunbird",
+                "value": "{\\\"latestVersion\\\":\\\"v1\\\",\\\"v1\\\":{\\\"url\\\":\\\"https:\/\/obj.stage.sunbirded.org\/portal\/terms-and-conditions-v1.html\\\"}}"
+            }
+	}
+}'
+
 
 
 
