@@ -5,7 +5,7 @@ An OTP sent via SMS to the user’s registered mobile number is one of the most 
 1. Enter your Username or email and Password
 2. Click Log in to log into the Keycloak admin console
 
-<figure><img src="../../../.gitbook/assets/keycloak_login (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/keycloak_login (1).png" alt=""><figcaption></figcaption></figure>
 
 3\. Click the Realm Selector dropdown from the navigation pane and select an appropriate realm Note: The Master realm is selected by default.
 
