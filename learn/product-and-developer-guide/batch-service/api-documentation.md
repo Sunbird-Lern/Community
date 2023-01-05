@@ -8,20 +8,20 @@ Refer to \*\*\*\* the below various API documentation related to all the differe
 
 Course Batch Management APIs are listed below:
 
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (3).yaml" path="/course/v1/batch/read/{batch-id}" method="get" %}
+{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml" path="/course/v1/batch/read/{batch-id}" method="get" %}
+[coursebatchmanapi (1) (2).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml>)
+{% endswagger %}
+
+{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (3).yaml" path="/course/v1/batch/update" method="patch" %}
 [coursebatchmanapi (1) (3).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (3).yaml>)
 {% endswagger %}
 
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1).yaml" path="/course/v1/batch/update" method="patch" %}
+{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml" path="/course/v1/batch/list" method="post" %}
+[coursebatchmanapi (1) (2).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml>)
+{% endswagger %}
+
+{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1).yaml" path="/course/v1/batch/create" method="post" %}
 [coursebatchmanapi (1).yaml](<../../../.gitbook/assets/coursebatchmanapi (1).yaml>)
-{% endswagger %}
-
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (3).yaml" path="/course/v1/batch/list" method="post" %}
-[coursebatchmanapi (1) (3).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (3).yaml>)
-{% endswagger %}
-
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (4).yaml" path="/course/v1/batch/create" method="post" %}
-[coursebatchmanapi (1) (4).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (4).yaml>)
 {% endswagger %}
 
 **Reference:** [Course Enrolment APIs](http://docs.sunbird.org/latest/apis/courseenrolmentapi/)
@@ -36,8 +36,8 @@ Course Enrolment APIs are listed below:
 [courseenrolmentapi (2).yaml](<../../../.gitbook/assets/courseenrolmentapi (2).yaml>)
 {% endswagger %}
 
-{% swagger src="../../../.gitbook/assets/courseenrolmentapi (1) (1).yaml" path="/course/v1/user/enrollment/list/{user-id}" method="get" %}
-[courseenrolmentapi (1) (1).yaml](<../../../.gitbook/assets/courseenrolmentapi (1) (1).yaml>)
+{% swagger src="../../../.gitbook/assets/courseenrolmentapi (1) (2).yaml" path="/course/v1/user/enrollment/list/{user-id}" method="get" %}
+[courseenrolmentapi (1) (2).yaml](<../../../.gitbook/assets/courseenrolmentapi (1) (2).yaml>)
 {% endswagger %}
 
 **Reference:** [Course Progress APIs](http://docs.sunbird.org/latest/apis/courseprogressapi/)

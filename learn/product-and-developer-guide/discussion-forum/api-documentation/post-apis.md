@@ -8,8 +8,8 @@
 [DF-API.yaml](../../../../.gitbook/assets/DF-API.yaml)
 {% endswagger %}
 
-{% swagger src="../../../../.gitbook/assets/openapi (1) (1).yaml" path="undefined" method="undefined" %}
-[openapi (1) (1).yaml](<../../../../.gitbook/assets/openapi (1) (1).yaml>)
+{% swagger src="../../../../.gitbook/assets/openapi (1) (1) (2).yaml" path="undefined" method="undefined" %}
+[openapi (1) (1) (2).yaml](<../../../../.gitbook/assets/openapi (1) (1) (2).yaml>)
 {% endswagger %}
 
 {% swagger src="../../../../.gitbook/assets/openapi.json" path="/discussion/v2/posts/{pid}" method="delete" %}
