@@ -20,8 +20,8 @@ Course Batch Management APIs are listed below:
 [coursebatchmanapi (1) (3).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (3).yaml>)
 {% endswagger %}
 
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1).yaml" path="/course/v1/batch/create" method="post" %}
-[coursebatchmanapi (1).yaml](<../../../.gitbook/assets/coursebatchmanapi (1).yaml>)
+{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (4).yaml" path="/course/v1/batch/create" method="post" %}
+[coursebatchmanapi (1) (4).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (4).yaml>)
 {% endswagger %}
 
 **Reference:** [Course Enrolment APIs](http://docs.sunbird.org/latest/apis/courseenrolmentapi/)
