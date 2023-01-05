@@ -14,6 +14,6 @@ The API management microservice provides services to create, manage and validate
 [refreshtokenapi.yml](../../../../.gitbook/assets/refreshtokenapi.yml)
 {% endswagger %}
 
-{% swagger src="../../../../.gitbook/assets/deviceregistry (1).yaml" path="/api-manager/v2/consumer/desktop_device/credential/register" method="post" %}
-[deviceregistry (1).yaml](<../../../../.gitbook/assets/deviceregistry (1).yaml>)
+{% swagger src="../../../../.gitbook/assets/deviceregistry.yaml" path="/api-manager/v2/consumer/desktop_device/credential/register" method="post" %}
+[deviceregistry.yaml](../../../../.gitbook/assets/deviceregistry.yaml)
 {% endswagger %}

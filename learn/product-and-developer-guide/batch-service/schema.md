@@ -4,7 +4,7 @@
 
 **ER Diagram**
 
-![Sunbird Courses](../../../.gitbook/assets/sunbird\_courses.png)
+![Sunbird Courses](<../../../.gitbook/assets/sunbird\_courses (1).png>)
 
 Following KeySpace and Tables were being used:
 

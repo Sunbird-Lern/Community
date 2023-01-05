@@ -1,0 +1,2056 @@
+openapi: 3.0.1
+info:
+  title: Course Enrolment APIs
+  description: "The Course Enrolment APIs contains User enrol, unenrol, enrolmentList and AddToCourseBatch and RemoveFromCourseBatch apis. \n\nThe URL for Course Enrolment Apis is /course/v1.\n\n - The backend URL for Course Enrolment Apis is /v1/course. \n\n - [TestCases](https://app.getpostman.com/run-collection/cc8fab00d29cd77562ff)"
+  termsOfService: https://github.com/project-sunbird/sunbird-commons/blob/master/LICENSE
+  contact:
+    email: info@sunbird.org
+  version: '1.0'
+servers:
+  - url: 'https://staging.open-sunbird.org/api'
+paths:
+  /course/v1/enrol:
+    post:
+      tags:
+        - Course Enrolment APIs
+      summary: Course Enrol
+      description: >+
+        The API associated with user enrolment into a courseBatch.
+
+        The endpoint for Course Enrol is /enrol
+
+
+        The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+
+      operationId: CourseEnrol
+      parameters:
+        - name: Authorization
+          in: header
+          description: To make use of the API, you require authorization. Raise a request to the administrator for the use of the API. You will receive the authorization key. Specify the key received, here.
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+        - name: x-authenticated-user-token
+          in: header
+          description: The alphanumeric string for accessing the API
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/courseenrolmentapiCourseEnrolRequest'
+            example:
+              request:
+                courseId: '{{course-id}}'
+                batchId: '{{batch-id}}'
+                userId: '{{user-id}}'
+        required: true
+      responses:
+        200:
+          description: 'SUCCESS. The "Course Enrol Request" operation was successful!'
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseenrolmentapiCourseEnrol-success'
+              example:
+                id: api.course.enroll
+                ver: v1
+                ts: 2020-12-03 04:24:19:186+0000
+                params:
+                  resmsgid:
+                  msgid: d8e54177-acb2-4351-8dcc-a7e6fc5c8a2f
+                  err:
+                  status: success
+                  errmsg:
+                responseCode: OK
+                result:
+                  response: SUCCESS
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseenrolmentapiCourseBatchUserRemove-Enrollmenttypevalidation'
+              example:
+                id: api.course.enroll
+                ver: v1
+                ts: 2020-12-03 04:44:14:386+0000
+                params:
+                  resmsgid:
+                  msgid: 75199913-1346-49cc-b486-0810ce706a4e
+                  err: INVALID_COURSE_BATCH_ID
+                  status: INVALID_COURSE_BATCH_ID
+                  errmsg: 'Invalid course batch id '
+                responseCode: CLIENT_ERROR
+                result: {}
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseenrolmentapiUserEnrolmentList-500InternalServerError'
+              example:
+                id: api.course.enroll
+                ver: v1
+                ts: 2020-11-23 15:15:18:331+0000
+                params:
+                  resmsgid:
+                  msgid:
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: Process failed,please try again later.
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /course/v1/unenrol:
+    post:
+      tags:
+        - Course Enrolment APIs
+      summary: Course Unenrol
+      description: >+
+        The Course Unenrol API is associated with unenrol of a user from a CourseBatch.
+
+        The endpoint for Course Unenrol is /unenrol
+
+
+        The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+
+      operationId: CourseUnenrol
+      parameters:
+        - name: Authorization
+          in: header
+          description: To make use of the API, you require authorization. Raise a request to the administrator for the use of the API. You will receive the authorization key. Specify the key received, here.
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+        - name: x-authenticated-user-token
+          in: header
+          description: The alphanumeric string for accessing the API
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/courseenrolmentapiCourseUnenrolRequest'
+            example:
+              request:
+                courseId: '{{course-id}}'
+                batchId: '{{batch-id}}'
+                userId: '{{user-id}}'
+        required: true
+      responses:
+        200:
+          description: 'SUCCESS. The "Course Unenrol Request" operation was successful!'
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseenrolmentapiCourseUnenrol-success'
+              example:
+                id: api.course.unenroll
+                ver: v1
+                ts: 2020-12-03 06:33:38:843+0000
+                params:
+                  resmsgid:
+                  msgid: 728efae3-8352-4886-8cb2-34b7b3fc41cc
+                  err:
+                  status: success
+                  errmsg:
+                responseCode: OK
+                result:
+                  response: SUCCESS
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseenrolmentapiCourseBatchUserRemove-Enrollmenttypevalidation'
+              example:
+                id: api.course.unenroll
+                ver: v1
+                ts: 2020-12-03 04:08:02:757+0000
+                params:
+                  resmsgid:
+                  msgid: 9837db38-2eff-4415-85d1-5404ddc16892
+                  err: COURSE_BATCH_ALREADY_COMPLETED
+                  status: COURSE_BATCH_ALREADY_COMPLETED
+                  errmsg: Course batch is already completed.
+                responseCode: CLIENT_ERROR
+                result: {}
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseenrolmentapiUserEnrolmentList-500InternalServerError'
+              example:
+                id: api.course.unenroll
+                ver: v1
+                ts: 2020-11-23 15:15:18:331+0000
+                params:
+                  resmsgid:
+                  msgid:
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: Process failed,please try again later.
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /course/v1/user/enrollment/list/{user-id}:
+    get:
+      tags:
+        - Course Enrolment APIs
+      summary: UserEnrolment List
+      description: >
+        The UserEnrolmentList api provides the detail of a user's all enrolled CourseBatches
+
+        The endpoint for UserEnrolment List is /user/enrollment/list/{{user-id}}
+
+
+        The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+      operationId: UserEnrolmentList
+      parameters:
+        - name: orgdetails
+          in: query
+          description: 'Org details related with course'
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: orgName,email
+        - name: licenseDetails
+          in: query
+          description: 'License details related with course'
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: name,description,url
+        - name: fields
+          in: query
+          description: 'Different course related details can be passed'
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: contentType,topic,name,channel
+        - name: batchDetails
+          in: query
+          description: 'Batch details can be passed to filter'
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: name,endDate,startDate,status,enrollmentType,createdBy,certificates
+        - name: cache
+          in: query
+          description: 'The batch data got updated in cache after sometime to get updated details immediately we can pass cache false'
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: cache=false
+        - name: Content-Type
+          in: header
+          description: >-
+            The Content Type entity is the media type of the resource.Possible media types can be:-
+
+            Application/json
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          description: To make use of the API, you require authorization. Raise a request to the administrator for the use of the API. You will receive the authorization key. Specify the key received, here.
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+        - name: x-authenticated-user-token
+          in: header
+          description: The alphanumeric string for accessing the API
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+        - name: user-id
+          in: path
+          description: 'Id of user for whom enrolment details we want'
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'SUCCESS. The "User Enrolment List" operation was successful!'
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseenrolmentapiUserEnrolmentList-Success'
+              example:
+                id: api.user.courses.list
+                ver: v1
+                ts: 2020-12-03 06:56:38:376+0000
+                params:
+                  resmsgid:
+                  msgid: 83f3347f-0d7a-4369-bde2-daae13aa5938
+                  err:
+                  status: success
+                  errmsg:
+                responseCode: OK
+                result:
+                  courses:
+                    - dateTime: 1594191696100
+                      lastReadContentStatus: 2
+                      enrolledDate: 2020-07-08 07:01:36:100+0000
+                      addedBy:
+                      contentId: do_11305961646828748812224
+                      active: true
+                      description: Enter description for Course
+                      courseLogoUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/06_maths_book_1566813333849_1580197829074.thumb.jpg
+                      batchId: 01305961938705612812
+                      userId: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+                      content:
+                        ownershipType:
+                          - createdBy
+                        copyright: Sunbird
+                        channel: b00bc992ef25f1a9a8d63291e20efc8d
+                        downloadUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+                        organisation:
+                          - Sunbird
+                        language:
+                          - English
+                        mimeType: application/vnd.ekstep.content-collection
+                        variants:
+                          online:
+                            ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511612_do_11305961646828748812224_1.0_online.ecar
+                            size: 4936
+                          spine:
+                            ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+                            size: 76289
+                        leafNodes:
+                          - do_11305605610466508811
+                        c_sunbird_dev_private_batch_count: 0
+                        objectType: Content
+                        appIcon: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/06_maths_book_1566813333849_1580197829074.thumb.jpg
+                        children:
+                          - do_11305605610466508811
+                        primaryCategory: Course
+                        appId: dev.sunbird.portal
+                        contentEncoding: gzip
+                        lockKey: 097e65a0-9c65-4198-b65c-269de9ae6072
+                        totalCompressedSize: 499149
+                        mimeTypesCount: '{"application/vnd.ekstep.content-collection":1,"application/vnd.ekstep.ecml-archive":1}'
+                        contentType: Course
+                        trackable:
+                          enabled: Yes
+                          autoBatch: Yes
+                        identifier: do_11305961646828748812224
+                        lastUpdatedBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+                        audience:
+                          - Teacher
+                        visibility: Default
+                        toc_url: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/do_11305961646828748812224_toc.json
+                        contentTypesCount: '{"CourseUnit":1,"Resource":1}'
+                        consumerId: 6533af82-f38b-429a-bcfb-681ed02a62e3
+                        childNodes:
+                          - do_11305961679918694412225
+                          - do_11305605610466508811
+                        mediaType: content
+                        osId: org.ekstep.quiz.app
+                        graph_id: domain
+                        nodeType: DATA_NODE
+                        lastPublishedBy: Ekstep
+                        version: 2
+                        license: CC BY 4.0
+                        prevState: Draft
+                        size: 76289
+                        lastPublishedOn: 2020-07-08T06:58:31.132+00:00
+                        IL_FUNC_OBJECT_TYPE: Content
+                        name: Test-auto-certificate-8thjuly
+                        status: Live
+                        code: org.sunbird.DuGnxI
+                        credentials:
+                          enabled: Yes
+                        prevStatus: Processing
+                        description: Enter description for Course
+                        idealScreenSize: normal
+                        posterImage: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11294498061374259215/artifact/06_maths_book_1566813333849_1580197829074.jpg
+                        createdOn: 2020-07-08T06:57:43.417+00:00
+                        reservedDialcodes: '{"U6K9M6":0}'
+                        batches:
+                          - createdFor:
+                              - ORG_001
+                            endDate:
+                            name: Test-auto-certificate-8thjuly
+                            batchId: 01305961938705612812
+                            enrollmentType: open
+                            enrollmentEndDate:
+                            startDate: 2020-07-08
+                            status: 1
+                          - createdFor:
+                              - ORG_001
+                            endDate:
+                            name: Test-auto-certificate-8thjuly
+                            batchId: 01306956038530662417
+                            enrollmentType: open
+                            enrollmentEndDate:
+                            startDate: 2020-07-22
+                            status: 1
+                        copyrightYear: 2020
+                        contentDisposition: inline
+                        lastUpdatedOn: 2020-07-08T06:58:30.585+00:00
+                        licenseterms: By creating and uploading content on DIKSHA, you consent to publishing this content under the Creative Commons Framework, specifically under the CC-BY-SA 4.0 license.
+                        SYS_INTERNAL_LAST_UPDATED_ON: 2020-07-23T12:24:29.5+00:00
+                        dialcodeRequired: No
+                        createdFor:
+                          - ORG_001
+                        lastStatusChangedOn: 2020-07-08T06:58:31.95+00:00
+                        creator: Mentor First User
+                        IL_SYS_NODE_TYPE: DATA_NODE
+                        os:
+                          - All
+                        pkgVersion: 1
+                        versionKey: 1594191510585
+                        idealScreenDensity: hdpi
+                        framework: TPD
+                        depth: 0
+                        s3Key: ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+                        dialcodes:
+                          - U6K9M6
+                        createdBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+                        compatibilityLevel: 4
+                        leafNodesCount: 1
+                        IL_UNIQUE_ID: do_11305961646828748812224
+                        resourceType: Course
+                        node_id: 452442
+                        c_sunbird_dev_open_batch_count: 2
+                      contentStatus:
+                        do_11305605610466508811: 2
+                      issuedCertificates: []
+                      completionPercentage: 100
+                      courseName: Test-auto-certificate-8thjuly
+                      certificates:
+                        - id: fe2aadc6-5065-460a-98ed-4de17bc13f62
+                          lastIssuedOn: 2020-07-22T12:57:44.335+00:00
+                          name: Course completion certificate prad
+                          token: A8T4Q7
+                          url: https://dev.sunbirded.org/certs/ORG_001_01305961938705612812/eedc6a60-cc1a-11ea-bff5-c98df349f522.pdf
+                      completedOn: 1595422613486
+                      leafNodesCount: 1
+                      progress: 1
+                      lastReadContentId: do_11305605610466508811
+                      courseId: do_11305961646828748812224
+                      collectionId: do_11305961646828748812224
+                      status: 2
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseenrolmentapiUserEnrolmentList-500InternalServerError'
+              example:
+                id: api.user.courses.list
+                ver: v1
+                ts: 2020-11-23 15:15:18:331+0000
+                params:
+                  resmsgid:
+                  msgid:
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: Process failed,please try again later.
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+components:
+  schemas:
+    courseenrolmentapiCourseEnrolRequest:
+      title: CourseEnrolRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/courseenrolmentapiRequest'
+      example:
+        request:
+          courseId: '{{course-id}}'
+          batchId: '{{batch-id}}'
+          userId: '{{user-id}}'
+    courseenrolmentapiRequest:
+      title: Request
+      required:
+        - courseId
+        - batchId
+        - userId
+      type: object
+      properties:
+        courseId:
+          type: string
+          description: 'Identifier of the course which user want to enroll'
+        batchId:
+          type: string
+          description: 'The identifier of the batch to which the course belongs.'
+        userId:
+          type: string
+          description: 'This identifier uniquely identifies a user'
+      example:
+        courseId: '{{course-id}}'
+        batchId: '{{batch-id}}'
+        userId: '{{user-id}}'
+    courseenrolmentapiParams:
+      title: Params
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+        err:
+          type: string
+        status:
+          type: string
+        errmsg:
+          type: string
+      example:
+        resmsgid:
+        msgid: 75199913-1346-49cc-b486-0810ce706a4e
+        err: INVALID_COURSE_BATCH_ID
+        status: INVALID_COURSE_BATCH_ID
+        errmsg: 'Invalid course batch id '
+    courseenrolmentapiParams1:
+      title: Params1
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+          nullable: true
+        err:
+          type: string
+        status:
+          type: string
+        errmsg:
+          type: string
+      example:
+        resmsgid:
+        msgid:
+        err: INTERNAL_ERROR
+        status: SERVER_ERROR
+        errmsg: Process failed,please try again later.
+    courseenrolmentapiCourseEnrol-success:
+      title: CourseEnrol-success
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/courseenrolmentapiParams4'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/courseenrolmentapiResult'
+      example:
+        id: api.course.enroll
+        ver: v1
+        ts: 2020-12-03 04:24:19:186+0000
+        params:
+          resmsgid:
+          msgid: d8e54177-acb2-4351-8dcc-a7e6fc5c8a2f
+          err:
+          status: success
+          errmsg:
+        responseCode: OK
+        result:
+          response: SUCCESS
+    courseenrolmentapiParams4:
+      title: Params4
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+        err:
+          type: string
+          nullable: true
+        status:
+          type: string
+        errmsg:
+          type: string
+          nullable: true
+      example:
+        resmsgid:
+        msgid: d8e54177-acb2-4351-8dcc-a7e6fc5c8a2f
+        err:
+        status: success
+        errmsg:
+    courseenrolmentapiResult:
+      title: Result
+      required:
+        - response
+      type: object
+      properties:
+        response:
+          type: string
+      example:
+        response: SUCCESS
+    courseenrolmentapiCourseUnenrolRequest:
+      title: CourseUnenrolRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/courseenrolmentapiRequest'
+      example:
+        request:
+          courseId: '{{course-id}}'
+          batchId: '{{batch-id}}'
+          userId: '{{user-id}}'
+    courseenrolmentapiCourseUnenrol-success:
+      title: CourseUnenrol-success
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/courseenrolmentapiParams4'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/courseenrolmentapiResult'
+      example:
+        id: api.course.unenroll
+        ver: v1
+        ts: 2020-12-03 06:33:38:843+0000
+        params:
+          resmsgid:
+          msgid: 728efae3-8352-4886-8cb2-34b7b3fc41cc
+          err:
+          status: success
+          errmsg:
+        responseCode: OK
+        result:
+          response: SUCCESS
+    courseenrolmentapiUserEnrolmentList-Success:
+      title: UserEnrolmentList-Success
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/courseenrolmentapiParams4'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/courseenrolmentapiResult2'
+      example:
+        id: api.user.courses.list
+        ver: v1
+        ts: 2020-12-03 06:56:38:376+0000
+        params:
+          resmsgid:
+          msgid: 83f3347f-0d7a-4369-bde2-daae13aa5938
+          err:
+          status: success
+          errmsg:
+        responseCode: OK
+        result:
+          courses:
+            - dateTime: 1594191696100
+              lastReadContentStatus: 2
+              enrolledDate: 2020-07-08 07:01:36:100+0000
+              addedBy:
+              contentId: do_11305961646828748812224
+              active: true
+              description: Enter description for Course
+              courseLogoUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/06_maths_book_1566813333849_1580197829074.thumb.jpg
+              batchId: 01305961938705612812
+              userId: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+              content:
+                ownershipType:
+                  - createdBy
+                copyright: Sunbird
+                channel: b00bc992ef25f1a9a8d63291e20efc8d
+                downloadUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+                organisation:
+                  - Sunbird
+                language:
+                  - English
+                mimeType: application/vnd.ekstep.content-collection
+                variants:
+                  online:
+                    ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511612_do_11305961646828748812224_1.0_online.ecar
+                    size: 4936
+                  spine:
+                    ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+                    size: 76289
+                leafNodes:
+                  - do_11305605610466508811
+                c_sunbird_dev_private_batch_count: 0
+                objectType: Content
+                appIcon: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/06_maths_book_1566813333849_1580197829074.thumb.jpg
+                children:
+                  - do_11305605610466508811
+                primaryCategory: Course
+                appId: dev.sunbird.portal
+                contentEncoding: gzip
+                lockKey: 097e65a0-9c65-4198-b65c-269de9ae6072
+                totalCompressedSize: 499149
+                mimeTypesCount: '{"application/vnd.ekstep.content-collection":1,"application/vnd.ekstep.ecml-archive":1}'
+                contentType: Course
+                trackable:
+                  enabled: Yes
+                  autoBatch: Yes
+                identifier: do_11305961646828748812224
+                lastUpdatedBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+                audience:
+                  - Teacher
+                visibility: Default
+                toc_url: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/do_11305961646828748812224_toc.json
+                contentTypesCount: '{"CourseUnit":1,"Resource":1}'
+                consumerId: 6533af82-f38b-429a-bcfb-681ed02a62e3
+                childNodes:
+                  - do_11305961679918694412225
+                  - do_11305605610466508811
+                mediaType: content
+                osId: org.ekstep.quiz.app
+                graph_id: domain
+                nodeType: DATA_NODE
+                lastPublishedBy: Ekstep
+                version: 2
+                license: CC BY 4.0
+                prevState: Draft
+                size: 76289
+                lastPublishedOn: 2020-07-08T06:58:31.132+00:00
+                IL_FUNC_OBJECT_TYPE: Content
+                name: Test-auto-certificate-8thjuly
+                status: Live
+                code: org.sunbird.DuGnxI
+                credentials:
+                  enabled: Yes
+                prevStatus: Processing
+                description: Enter description for Course
+                idealScreenSize: normal
+                posterImage: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11294498061374259215/artifact/06_maths_book_1566813333849_1580197829074.jpg
+                createdOn: 2020-07-08T06:57:43.417+00:00
+                reservedDialcodes: '{"U6K9M6":0}'
+                batches:
+                  - createdFor:
+                      - ORG_001
+                    endDate:
+                    name: Test-auto-certificate-8thjuly
+                    batchId: 01305961938705612812
+                    enrollmentType: open
+                    enrollmentEndDate:
+                    startDate: 2020-07-08
+                    status: 1
+                  - createdFor:
+                      - ORG_001
+                    endDate:
+                    name: Test-auto-certificate-8thjuly
+                    batchId: 01306956038530662417
+                    enrollmentType: open
+                    enrollmentEndDate:
+                    startDate: 2020-07-22
+                    status: 1
+                copyrightYear: 2020
+                contentDisposition: inline
+                lastUpdatedOn: 2020-07-08T06:58:30.585+00:00
+                licenseterms: By creating and uploading content on DIKSHA, you consent to publishing this content under the Creative Commons Framework, specifically under the CC-BY-SA 4.0 license.
+                SYS_INTERNAL_LAST_UPDATED_ON: 2020-07-23T12:24:29.5+00:00
+                dialcodeRequired: No
+                createdFor:
+                  - ORG_001
+                lastStatusChangedOn: 2020-07-08T06:58:31.95+00:00
+                creator: Mentor First User
+                IL_SYS_NODE_TYPE: DATA_NODE
+                os:
+                  - All
+                pkgVersion: 1
+                versionKey: 1594191510585
+                idealScreenDensity: hdpi
+                framework: TPD
+                depth: 0
+                s3Key: ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+                dialcodes:
+                  - U6K9M6
+                createdBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+                compatibilityLevel: 4
+                leafNodesCount: 1
+                IL_UNIQUE_ID: do_11305961646828748812224
+                resourceType: Course
+                node_id: 452442
+                c_sunbird_dev_open_batch_count: 2
+              contentStatus:
+                do_11305605610466508811: 2
+              issuedCertificates: []
+              completionPercentage: 100
+              courseName: Test-auto-certificate-8thjuly
+              certificates:
+                - id: fe2aadc6-5065-460a-98ed-4de17bc13f62
+                  lastIssuedOn: 2020-07-22T12:57:44.335+00:00
+                  name: Course completion certificate prad
+                  token: A8T4Q7
+                  url: https://dev.sunbirded.org/certs/ORG_001_01305961938705612812/eedc6a60-cc1a-11ea-bff5-c98df349f522.pdf
+              completedOn: 1595422613486
+              leafNodesCount: 1
+              progress: 1
+              lastReadContentId: do_11305605610466508811
+              courseId: do_11305961646828748812224
+              collectionId: do_11305961646828748812224
+              status: 2
+    courseenrolmentapiResult2:
+      title: Result2
+      required:
+        - courses
+      type: object
+      properties:
+        courses:
+          type: array
+          items:
+            $ref: '#/components/schemas/courseenrolmentapiCourse'
+          description: ''
+      example:
+        courses:
+          - dateTime: 1594191696100
+            lastReadContentStatus: 2
+            enrolledDate: 2020-07-08 07:01:36:100+0000
+            addedBy:
+            contentId: do_11305961646828748812224
+            active: true
+            description: Enter description for Course
+            courseLogoUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/06_maths_book_1566813333849_1580197829074.thumb.jpg
+            batchId: 01305961938705612812
+            userId: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+            content:
+              ownershipType:
+                - createdBy
+              copyright: Sunbird
+              channel: b00bc992ef25f1a9a8d63291e20efc8d
+              downloadUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+              organisation:
+                - Sunbird
+              language:
+                - English
+              mimeType: application/vnd.ekstep.content-collection
+              variants:
+                online:
+                  ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511612_do_11305961646828748812224_1.0_online.ecar
+                  size: 4936
+                spine:
+                  ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+                  size: 76289
+              leafNodes:
+                - do_11305605610466508811
+              c_sunbird_dev_private_batch_count: 0
+              objectType: Content
+              appIcon: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/06_maths_book_1566813333849_1580197829074.thumb.jpg
+              children:
+                - do_11305605610466508811
+              primaryCategory: Course
+              appId: dev.sunbird.portal
+              contentEncoding: gzip
+              lockKey: 097e65a0-9c65-4198-b65c-269de9ae6072
+              totalCompressedSize: 499149
+              mimeTypesCount: '{"application/vnd.ekstep.content-collection":1,"application/vnd.ekstep.ecml-archive":1}'
+              contentType: Course
+              trackable:
+                enabled: Yes
+                autoBatch: Yes
+              identifier: do_11305961646828748812224
+              lastUpdatedBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+              audience:
+                - Teacher
+              visibility: Default
+              toc_url: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/do_11305961646828748812224_toc.json
+              contentTypesCount: '{"CourseUnit":1,"Resource":1}'
+              consumerId: 6533af82-f38b-429a-bcfb-681ed02a62e3
+              childNodes:
+                - do_11305961679918694412225
+                - do_11305605610466508811
+              mediaType: content
+              osId: org.ekstep.quiz.app
+              graph_id: domain
+              nodeType: DATA_NODE
+              lastPublishedBy: Ekstep
+              version: 2
+              license: CC BY 4.0
+              prevState: Draft
+              size: 76289
+              lastPublishedOn: 2020-07-08T06:58:31.132+00:00
+              IL_FUNC_OBJECT_TYPE: Content
+              name: Test-auto-certificate-8thjuly
+              status: Live
+              code: org.sunbird.DuGnxI
+              credentials:
+                enabled: Yes
+              prevStatus: Processing
+              description: Enter description for Course
+              idealScreenSize: normal
+              posterImage: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11294498061374259215/artifact/06_maths_book_1566813333849_1580197829074.jpg
+              createdOn: 2020-07-08T06:57:43.417+00:00
+              reservedDialcodes: '{"U6K9M6":0}'
+              batches:
+                - createdFor:
+                    - ORG_001
+                  endDate:
+                  name: Test-auto-certificate-8thjuly
+                  batchId: 01305961938705612812
+                  enrollmentType: open
+                  enrollmentEndDate:
+                  startDate: 2020-07-08
+                  status: 1
+                - createdFor:
+                    - ORG_001
+                  endDate:
+                  name: Test-auto-certificate-8thjuly
+                  batchId: 01306956038530662417
+                  enrollmentType: open
+                  enrollmentEndDate:
+                  startDate: 2020-07-22
+                  status: 1
+              copyrightYear: 2020
+              contentDisposition: inline
+              lastUpdatedOn: 2020-07-08T06:58:30.585+00:00
+              licenseterms: By creating and uploading content on DIKSHA, you consent to publishing this content under the Creative Commons Framework, specifically under the CC-BY-SA 4.0 license.
+              SYS_INTERNAL_LAST_UPDATED_ON: 2020-07-23T12:24:29.5+00:00
+              dialcodeRequired: No
+              createdFor:
+                - ORG_001
+              lastStatusChangedOn: 2020-07-08T06:58:31.95+00:00
+              creator: Mentor First User
+              IL_SYS_NODE_TYPE: DATA_NODE
+              os:
+                - All
+              pkgVersion: 1
+              versionKey: 1594191510585
+              idealScreenDensity: hdpi
+              framework: TPD
+              depth: 0
+              s3Key: ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+              dialcodes:
+                - U6K9M6
+              createdBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+              compatibilityLevel: 4
+              leafNodesCount: 1
+              IL_UNIQUE_ID: do_11305961646828748812224
+              resourceType: Course
+              node_id: 452442
+              c_sunbird_dev_open_batch_count: 2
+            contentStatus:
+              do_11305605610466508811: 2
+            issuedCertificates: []
+            completionPercentage: 100
+            courseName: Test-auto-certificate-8thjuly
+            certificates:
+              - id: fe2aadc6-5065-460a-98ed-4de17bc13f62
+                lastIssuedOn: 2020-07-22T12:57:44.335+00:00
+                name: Course completion certificate prad
+                token: A8T4Q7
+                url: https://dev.sunbirded.org/certs/ORG_001_01305961938705612812/eedc6a60-cc1a-11ea-bff5-c98df349f522.pdf
+            completedOn: 1595422613486
+            leafNodesCount: 1
+            progress: 1
+            lastReadContentId: do_11305605610466508811
+            courseId: do_11305961646828748812224
+            collectionId: do_11305961646828748812224
+            status: 2
+    courseenrolmentapiCourse:
+      title: Course
+      required:
+        - dateTime
+        - lastReadContentStatus
+        - enrolledDate
+        - addedBy
+        - contentId
+        - active
+        - description
+        - courseLogoUrl
+        - batchId
+        - userId
+        - content
+        - contentStatus
+        - issuedCertificates
+        - completionPercentage
+        - courseName
+        - certificates
+        - completedOn
+        - leafNodesCount
+        - progress
+        - lastReadContentId
+        - courseId
+        - collectionId
+        - status
+      type: object
+      properties:
+        dateTime:
+          type: integer
+          format: int64
+        lastReadContentStatus:
+          type: integer
+          format: int32
+        enrolledDate:
+          type: string
+        addedBy:
+          type: string
+          nullable: true
+        contentId:
+          type: string
+        active:
+          type: boolean
+        description:
+          type: string
+        courseLogoUrl:
+          type: string
+        batchId:
+          type: string
+        userId:
+          type: string
+        content:
+          $ref: '#/components/schemas/courseenrolmentapiContent'
+        contentStatus:
+          $ref: '#/components/schemas/courseenrolmentapiContentStatus'
+        issuedCertificates:
+          type: array
+          items:
+            type: string
+          description: ''
+        completionPercentage:
+          type: integer
+          format: int32
+        courseName:
+          type: string
+        certificates:
+          type: array
+          items:
+            $ref: '#/components/schemas/courseenrolmentapiCertificate'
+          description: ''
+        completedOn:
+          type: integer
+          format: int64
+        leafNodesCount:
+          type: integer
+          format: int32
+        progress:
+          type: integer
+          format: int32
+        lastReadContentId:
+          type: string
+        courseId:
+          type: string
+        collectionId:
+          type: string
+        status:
+          type: integer
+          format: int32
+      example:
+        dateTime: 1594191696100
+        lastReadContentStatus: 2
+        enrolledDate: 2020-07-08 07:01:36:100+0000
+        addedBy:
+        contentId: do_11305961646828748812224
+        active: true
+        description: Enter description for Course
+        courseLogoUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/06_maths_book_1566813333849_1580197829074.thumb.jpg
+        batchId: 01305961938705612812
+        userId: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+        content:
+          ownershipType:
+            - createdBy
+          copyright: Sunbird
+          channel: b00bc992ef25f1a9a8d63291e20efc8d
+          downloadUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+          organisation:
+            - Sunbird
+          language:
+            - English
+          mimeType: application/vnd.ekstep.content-collection
+          variants:
+            online:
+              ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511612_do_11305961646828748812224_1.0_online.ecar
+              size: 4936
+            spine:
+              ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+              size: 76289
+          leafNodes:
+            - do_11305605610466508811
+          c_sunbird_dev_private_batch_count: 0
+          objectType: Content
+          appIcon: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/06_maths_book_1566813333849_1580197829074.thumb.jpg
+          children:
+            - do_11305605610466508811
+          primaryCategory: Course
+          appId: dev.sunbird.portal
+          contentEncoding: gzip
+          lockKey: 097e65a0-9c65-4198-b65c-269de9ae6072
+          totalCompressedSize: 499149
+          mimeTypesCount: '{"application/vnd.ekstep.content-collection":1,"application/vnd.ekstep.ecml-archive":1}'
+          contentType: Course
+          trackable:
+            enabled: Yes
+            autoBatch: Yes
+          identifier: do_11305961646828748812224
+          lastUpdatedBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+          audience:
+            - Teacher
+          visibility: Default
+          toc_url: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/do_11305961646828748812224_toc.json
+          contentTypesCount: '{"CourseUnit":1,"Resource":1}'
+          consumerId: 6533af82-f38b-429a-bcfb-681ed02a62e3
+          childNodes:
+            - do_11305961679918694412225
+            - do_11305605610466508811
+          mediaType: content
+          osId: org.ekstep.quiz.app
+          graph_id: domain
+          nodeType: DATA_NODE
+          lastPublishedBy: Ekstep
+          version: 2
+          license: CC BY 4.0
+          prevState: Draft
+          size: 76289
+          lastPublishedOn: 2020-07-08T06:58:31.132+00:00
+          IL_FUNC_OBJECT_TYPE: Content
+          name: Test-auto-certificate-8thjuly
+          status: Live
+          code: org.sunbird.DuGnxI
+          credentials:
+            enabled: Yes
+          prevStatus: Processing
+          description: Enter description for Course
+          idealScreenSize: normal
+          posterImage: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11294498061374259215/artifact/06_maths_book_1566813333849_1580197829074.jpg
+          createdOn: 2020-07-08T06:57:43.417+00:00
+          reservedDialcodes: '{"U6K9M6":0}'
+          batches:
+            - createdFor:
+                - ORG_001
+              endDate:
+              name: Test-auto-certificate-8thjuly
+              batchId: 01305961938705612812
+              enrollmentType: open
+              enrollmentEndDate:
+              startDate: 2020-07-08
+              status: 1
+            - createdFor:
+                - ORG_001
+              endDate:
+              name: Test-auto-certificate-8thjuly
+              batchId: 01306956038530662417
+              enrollmentType: open
+              enrollmentEndDate:
+              startDate: 2020-07-22
+              status: 1
+          copyrightYear: 2020
+          contentDisposition: inline
+          lastUpdatedOn: 2020-07-08T06:58:30.585+00:00
+          licenseterms: By creating and uploading content on DIKSHA, you consent to publishing this content under the Creative Commons Framework, specifically under the CC-BY-SA 4.0 license.
+          SYS_INTERNAL_LAST_UPDATED_ON: 2020-07-23T12:24:29.5+00:00
+          dialcodeRequired: No
+          createdFor:
+            - ORG_001
+          lastStatusChangedOn: 2020-07-08T06:58:31.95+00:00
+          creator: Mentor First User
+          IL_SYS_NODE_TYPE: DATA_NODE
+          os:
+            - All
+          pkgVersion: 1
+          versionKey: 1594191510585
+          idealScreenDensity: hdpi
+          framework: TPD
+          depth: 0
+          s3Key: ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+          dialcodes:
+            - U6K9M6
+          createdBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+          compatibilityLevel: 4
+          leafNodesCount: 1
+          IL_UNIQUE_ID: do_11305961646828748812224
+          resourceType: Course
+          node_id: 452442
+          c_sunbird_dev_open_batch_count: 2
+        contentStatus:
+          do_11305605610466508811: 2
+        issuedCertificates: []
+        completionPercentage: 100
+        courseName: Test-auto-certificate-8thjuly
+        certificates:
+          - id: fe2aadc6-5065-460a-98ed-4de17bc13f62
+            lastIssuedOn: 2020-07-22T12:57:44.335+00:00
+            name: Course completion certificate prad
+            token: A8T4Q7
+            url: https://dev.sunbirded.org/certs/ORG_001_01305961938705612812/eedc6a60-cc1a-11ea-bff5-c98df349f522.pdf
+        completedOn: 1595422613486
+        leafNodesCount: 1
+        progress: 1
+        lastReadContentId: do_11305605610466508811
+        courseId: do_11305961646828748812224
+        collectionId: do_11305961646828748812224
+        status: 2
+    courseenrolmentapiContent:
+      title: Content
+      required:
+        - ownershipType
+        - copyright
+        - channel
+        - downloadUrl
+        - organisation
+        - language
+        - mimeType
+        - variants
+        - leafNodes
+        - c_sunbird_dev_private_batch_count
+        - objectType
+        - appIcon
+        - children
+        - primaryCategory
+        - appId
+        - contentEncoding
+        - lockKey
+        - totalCompressedSize
+        - mimeTypesCount
+        - contentType
+        - trackable
+        - identifier
+        - lastUpdatedBy
+        - audience
+        - visibility
+        - toc_url
+        - contentTypesCount
+        - consumerId
+        - childNodes
+        - mediaType
+        - osId
+        - graph_id
+        - nodeType
+        - lastPublishedBy
+        - version
+        - license
+        - prevState
+        - size
+        - lastPublishedOn
+        - IL_FUNC_OBJECT_TYPE
+        - name
+        - status
+        - code
+        - credentials
+        - prevStatus
+        - description
+        - idealScreenSize
+        - posterImage
+        - createdOn
+        - reservedDialcodes
+        - batches
+        - copyrightYear
+        - contentDisposition
+        - lastUpdatedOn
+        - licenseterms
+        - SYS_INTERNAL_LAST_UPDATED_ON
+        - dialcodeRequired
+        - createdFor
+        - lastStatusChangedOn
+        - creator
+        - IL_SYS_NODE_TYPE
+        - os
+        - pkgVersion
+        - versionKey
+        - idealScreenDensity
+        - framework
+        - depth
+        - s3Key
+        - dialcodes
+        - createdBy
+        - compatibilityLevel
+        - leafNodesCount
+        - IL_UNIQUE_ID
+        - resourceType
+        - node_id
+        - c_sunbird_dev_open_batch_count
+      type: object
+      properties:
+        ownershipType:
+          type: array
+          items:
+            type: string
+          description: ''
+        copyright:
+          type: string
+        channel:
+          type: string
+        downloadUrl:
+          type: string
+        organisation:
+          type: array
+          items:
+            type: string
+          description: ''
+        language:
+          type: array
+          items:
+            type: string
+          description: ''
+        mimeType:
+          type: string
+        variants:
+          $ref: '#/components/schemas/courseenrolmentapiVariants'
+        leafNodes:
+          type: array
+          items:
+            type: string
+          description: ''
+        c_sunbird_dev_private_batch_count:
+          type: integer
+          format: int32
+        objectType:
+          type: string
+        appIcon:
+          type: string
+        children:
+          type: array
+          items:
+            type: string
+          description: ''
+        primaryCategory:
+          type: string
+        appId:
+          type: string
+        contentEncoding:
+          type: string
+        lockKey:
+          type: string
+        totalCompressedSize:
+          type: integer
+          format: int32
+        mimeTypesCount:
+          type: string
+        contentType:
+          type: string
+        trackable:
+          $ref: '#/components/schemas/courseenrolmentapiTrackable'
+        identifier:
+          type: string
+        lastUpdatedBy:
+          type: string
+        audience:
+          type: array
+          items:
+            type: string
+          description: ''
+        visibility:
+          type: string
+        toc_url:
+          type: string
+        contentTypesCount:
+          type: string
+        consumerId:
+          type: string
+        childNodes:
+          type: array
+          items:
+            type: string
+          description: ''
+        mediaType:
+          type: string
+        osId:
+          type: string
+        graph_id:
+          type: string
+        nodeType:
+          type: string
+        lastPublishedBy:
+          type: string
+        version:
+          type: integer
+          format: int32
+        license:
+          type: string
+        prevState:
+          type: string
+        size:
+          type: integer
+          format: int32
+        lastPublishedOn:
+          type: string
+        IL_FUNC_OBJECT_TYPE:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        code:
+          type: string
+        credentials:
+          $ref: '#/components/schemas/courseenrolmentapiCredentials'
+        prevStatus:
+          type: string
+        description:
+          type: string
+        idealScreenSize:
+          type: string
+        posterImage:
+          type: string
+        createdOn:
+          type: string
+        reservedDialcodes:
+          type: string
+        batches:
+          type: array
+          items:
+            $ref: '#/components/schemas/courseenrolmentapiBatch'
+          description: ''
+        copyrightYear:
+          type: integer
+          format: int32
+        contentDisposition:
+          type: string
+        lastUpdatedOn:
+          type: string
+        licenseterms:
+          type: string
+        SYS_INTERNAL_LAST_UPDATED_ON:
+          type: string
+        dialcodeRequired:
+          type: string
+        createdFor:
+          type: array
+          items:
+            type: string
+          description: ''
+        lastStatusChangedOn:
+          type: string
+        creator:
+          type: string
+        IL_SYS_NODE_TYPE:
+          type: string
+        os:
+          type: array
+          items:
+            type: string
+          description: ''
+        pkgVersion:
+          type: integer
+          format: int32
+        versionKey:
+          type: string
+        idealScreenDensity:
+          type: string
+        framework:
+          type: string
+        depth:
+          type: integer
+          format: int32
+        s3Key:
+          type: string
+        dialcodes:
+          type: array
+          items:
+            type: string
+          description: ''
+        createdBy:
+          type: string
+        compatibilityLevel:
+          type: integer
+          format: int32
+        leafNodesCount:
+          type: integer
+          format: int32
+        IL_UNIQUE_ID:
+          type: string
+        resourceType:
+          type: string
+        node_id:
+          type: integer
+          format: int32
+        c_sunbird_dev_open_batch_count:
+          type: integer
+          format: int32
+      example:
+        ownershipType:
+          - createdBy
+        copyright: Sunbird
+        channel: b00bc992ef25f1a9a8d63291e20efc8d
+        downloadUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+        organisation:
+          - Sunbird
+        language:
+          - English
+        mimeType: application/vnd.ekstep.content-collection
+        variants:
+          online:
+            ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511612_do_11305961646828748812224_1.0_online.ecar
+            size: 4936
+          spine:
+            ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+            size: 76289
+        leafNodes:
+          - do_11305605610466508811
+        c_sunbird_dev_private_batch_count: 0
+        objectType: Content
+        appIcon: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/06_maths_book_1566813333849_1580197829074.thumb.jpg
+        children:
+          - do_11305605610466508811
+        primaryCategory: Course
+        appId: dev.sunbird.portal
+        contentEncoding: gzip
+        lockKey: 097e65a0-9c65-4198-b65c-269de9ae6072
+        totalCompressedSize: 499149
+        mimeTypesCount: '{"application/vnd.ekstep.content-collection":1,"application/vnd.ekstep.ecml-archive":1}'
+        contentType: Course
+        trackable:
+          enabled: Yes
+          autoBatch: Yes
+        identifier: do_11305961646828748812224
+        lastUpdatedBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+        audience:
+          - Teacher
+        visibility: Default
+        toc_url: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11305961646828748812224/artifact/do_11305961646828748812224_toc.json
+        contentTypesCount: '{"CourseUnit":1,"Resource":1}'
+        consumerId: 6533af82-f38b-429a-bcfb-681ed02a62e3
+        childNodes:
+          - do_11305961679918694412225
+          - do_11305605610466508811
+        mediaType: content
+        osId: org.ekstep.quiz.app
+        graph_id: domain
+        nodeType: DATA_NODE
+        lastPublishedBy: Ekstep
+        version: 2
+        license: CC BY 4.0
+        prevState: Draft
+        size: 76289
+        lastPublishedOn: 2020-07-08T06:58:31.132+00:00
+        IL_FUNC_OBJECT_TYPE: Content
+        name: Test-auto-certificate-8thjuly
+        status: Live
+        code: org.sunbird.DuGnxI
+        credentials:
+          enabled: Yes
+        prevStatus: Processing
+        description: Enter description for Course
+        idealScreenSize: normal
+        posterImage: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/do_11294498061374259215/artifact/06_maths_book_1566813333849_1580197829074.jpg
+        createdOn: 2020-07-08T06:57:43.417+00:00
+        reservedDialcodes: '{"U6K9M6":0}'
+        batches:
+          - createdFor:
+              - ORG_001
+            endDate:
+            name: Test-auto-certificate-8thjuly
+            batchId: 01305961938705612812
+            enrollmentType: open
+            enrollmentEndDate:
+            startDate: 2020-07-08
+            status: 1
+          - createdFor:
+              - ORG_001
+            endDate:
+            name: Test-auto-certificate-8thjuly
+            batchId: 01306956038530662417
+            enrollmentType: open
+            enrollmentEndDate:
+            startDate: 2020-07-22
+            status: 1
+        copyrightYear: 2020
+        contentDisposition: inline
+        lastUpdatedOn: 2020-07-08T06:58:30.585+00:00
+        licenseterms: By creating and uploading content on DIKSHA, you consent to publishing this content under the Creative Commons Framework, specifically under the CC-BY-SA 4.0 license.
+        SYS_INTERNAL_LAST_UPDATED_ON: 2020-07-23T12:24:29.5+00:00
+        dialcodeRequired: No
+        createdFor:
+          - ORG_001
+        lastStatusChangedOn: 2020-07-08T06:58:31.95+00:00
+        creator: Mentor First User
+        IL_SYS_NODE_TYPE: DATA_NODE
+        os:
+          - All
+        pkgVersion: 1
+        versionKey: 1594191510585
+        idealScreenDensity: hdpi
+        framework: TPD
+        depth: 0
+        s3Key: ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+        dialcodes:
+          - U6K9M6
+        createdBy: 8454cb21-3ce9-4e30-85b5-fade097880d8
+        compatibilityLevel: 4
+        leafNodesCount: 1
+        IL_UNIQUE_ID: do_11305961646828748812224
+        resourceType: Course
+        node_id: 452442
+        c_sunbird_dev_open_batch_count: 2
+    courseenrolmentapiVariants:
+      title: Variants
+      required:
+        - online
+        - spine
+      type: object
+      properties:
+        online:
+          $ref: '#/components/schemas/courseenrolmentapiOnline'
+        spine:
+          $ref: '#/components/schemas/courseenrolmentapiSpine'
+      example:
+        online:
+          ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511612_do_11305961646828748812224_1.0_online.ecar
+          size: 4936
+        spine:
+          ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+          size: 76289
+    courseenrolmentapiOnline:
+      title: Online
+      required:
+        - ecarUrl
+        - size
+      type: object
+      properties:
+        ecarUrl:
+          type: string
+        size:
+          type: integer
+          format: int32
+      example:
+        ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511612_do_11305961646828748812224_1.0_online.ecar
+        size: 4936
+    courseenrolmentapiSpine:
+      title: Spine
+      required:
+        - ecarUrl
+        - size
+      type: object
+      properties:
+        ecarUrl:
+          type: string
+        size:
+          type: integer
+          format: int32
+      example:
+        ecarUrl: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/ecar_files/do_11305961646828748812224/test-auto-certificate-8thjuly_1594191511275_do_11305961646828748812224_1.0_spine.ecar
+        size: 76289
+    courseenrolmentapiTrackable:
+      title: Trackable
+      required:
+        - enabled
+        - autoBatch
+      type: object
+      properties:
+        enabled:
+          type: string
+        autoBatch:
+          type: string
+      example:
+        enabled: Yes
+        autoBatch: Yes
+    courseenrolmentapiCredentials:
+      title: Credentials
+      required:
+        - enabled
+      type: object
+      properties:
+        enabled:
+          type: string
+      example:
+        enabled: Yes
+    courseenrolmentapiBatch:
+      title: Batch
+      required:
+        - createdFor
+        - endDate
+        - name
+        - batchId
+        - enrollmentType
+        - enrollmentEndDate
+        - startDate
+        - status
+      type: object
+      properties:
+        createdFor:
+          type: array
+          items:
+            type: string
+          description: ''
+        endDate:
+          type: string
+          nullable: true
+        name:
+          type: string
+        batchId:
+          type: string
+        enrollmentType:
+          type: string
+        enrollmentEndDate:
+          type: string
+          nullable: true
+        startDate:
+          type: string
+        status:
+          type: integer
+          format: int32
+      example:
+        createdFor:
+          - ORG_001
+        endDate:
+        name: Test-auto-certificate-8thjuly
+        batchId: 01305961938705612812
+        enrollmentType: open
+        enrollmentEndDate:
+        startDate: 2020-07-08
+        status: 1
+    courseenrolmentapiContentStatus:
+      title: ContentStatus
+      required:
+        - do_11305605610466508811
+      type: object
+      properties:
+        do_11305605610466508811:
+          type: integer
+          format: int32
+      example:
+        do_11305605610466508811: 2
+    courseenrolmentapiCertificate:
+      title: Certificate
+      required:
+        - id
+        - lastIssuedOn
+        - name
+        - token
+        - url
+      type: object
+      properties:
+        id:
+          type: string
+        lastIssuedOn:
+          type: string
+        name:
+          type: string
+        token:
+          type: string
+        url:
+          type: string
+      example:
+        id: fe2aadc6-5065-460a-98ed-4de17bc13f62
+        lastIssuedOn: 2020-07-22T12:57:44.335+00:00
+        name: Course completion certificate prad
+        token: A8T4Q7
+        url: https://dev.sunbirded.org/certs/ORG_001_01305961938705612812/eedc6a60-cc1a-11ea-bff5-c98df349f522.pdf
+    courseenrolmentapiUserEnrolmentList-500InternalServerError:
+      title: UserEnrolmentList-500InternalServerError
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/courseenrolmentapiParams1'
+        responseCode:
+          type: string
+        result:
+          type: object
+      example:
+        id: api.user.courses.list
+        ver: v1
+        ts: 2020-11-23 15:15:18:331+0000
+        params:
+          resmsgid:
+          msgid:
+          err: INTERNAL_ERROR
+          status: SERVER_ERROR
+          errmsg: Process failed,please try again later.
+        responseCode: SERVER_ERROR
+        result: {}
+    courseenrolmentapiCourseBatchUserAddRequest:
+      title: CourseBatchUserAddRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/courseenrolmentapiRequest2'
+      example:
+        request:
+          userIds:
+            - '{{user-id}}'
+    courseenrolmentapiRequest2:
+      title: Request2
+      required:
+        - userIds
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+          description: 'Unique identifiers of users to add into batch'
+      example:
+        userIds:
+          - '{{user-id}}'
+    courseenrolmentapiCourseBatchUserAdd-Success:
+      title: CourseBatchUserAdd-Success
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/courseenrolmentapiParams4'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/courseenrolmentapiResult3'
+      example:
+        id: api.course.batch.users.add
+        ver: v1
+        ts: 2020-12-03 11:19:10:707+0000
+        params:
+          resmsgid:
+          msgid: 3d661d21-b09f-42e2-beb1-46a86c94bd9b
+          err:
+          status: success
+          errmsg:
+        responseCode: OK
+        result:
+          95e4942d-cbe8-477d-aebd-ad8e6de4bfc8: SUCCESS
+    courseenrolmentapiResult3:
+      title: Result3
+      required:
+        - 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+      type: object
+      properties:
+        95e4942d-cbe8-477d-aebd-ad8e6de4bfc8:
+          type: string
+      example:
+        95e4942d-cbe8-477d-aebd-ad8e6de4bfc8: SUCCESS
+    courseenrolmentapiCourseBatchUserRemoveRequest:
+      title: CourseBatchUserRemoveRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/courseenrolmentapiRequest2'
+      example:
+        request:
+          userIds:
+            - '{{user-id}}'
+    courseenrolmentapiCourseBatchUserRemove-Usernotenrolled:
+      title: CourseBatchUserRemove-Usernotenrolled
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/courseenrolmentapiParams4'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/courseenrolmentapiResult3'
+      example:
+        id: api.course.batch.users.remove
+        ver: v1
+        ts: 2020-12-03 11:17:37:055+0000
+        params:
+          resmsgid:
+          msgid: 1ffc170a-68cd-4ea9-9611-fa3e03f6b236
+          err:
+          status: success
+          errmsg:
+        responseCode: OK
+        result:
+          95e4942d-cbe8-477d-aebd-ad8e6de4bfc8: User is not enrolled to given course batch.
+    courseenrolmentapiCourseBatchUserRemove-Enrollmenttypevalidation:
+      title: CourseBatchUserRemove-Enrollmenttypevalidation
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/courseenrolmentapiParams'
+        responseCode:
+          type: string
+        result:
+          type: object
+      example:
+        id: api.course.batch.users.remove
+        ver: v1
+        ts: 2020-12-03 10:34:42:159+0000
+        params:
+          resmsgid:
+          msgid: bf9f2229-1dba-4fef-a3e3-db58b6cd671d
+          err: ENROLLMENT_TYPE_VALIDATION
+          status: ENROLLMENT_TYPE_VALIDATION
+          errmsg: Enrollment type should be invite-only.
+        responseCode: CLIENT_ERROR
+        result: {}
+    courseenrolmentapiCourseBatchUserRemove-500InternalServerError:
+      title: CourseBatchUserRemove-500InternalServerError
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/courseenrolmentapiParams4'
+        responseCode:
+          type: string
+        result:
+          type: object
+      example:
+        id: api.course.batch.users.remove
+        ver: v1
+        ts: 2020-12-03 10:35:48:996+0000
+        params:
+          resmsgid:
+          msgid: 143d06a4-2a13-4b38-84eb-87ae13a0b1c1
+          err:
+          status: SERVER_ERROR
+          errmsg:
+        responseCode: SERVER_ERROR
+        result: {}
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+tags:
+  - name: Course Enrolment APIs
+    description: ''

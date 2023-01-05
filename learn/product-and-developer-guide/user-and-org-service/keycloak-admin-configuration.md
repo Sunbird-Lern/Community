@@ -40,7 +40,7 @@ Following environment variables need to be configured in Sunbird LMS service for
 1\. Enter your Username or email and Password\
 2\. Click Log in to log into the Keycloak admin console
 
-<figure><img src="../../../.gitbook/assets/keycloak_login (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/keycloak_login (1).png" alt=""><figcaption></figcaption></figure>
 
 3\. Click the Realm Selector dropdown from the navigation pane and select the appropriate realm.\
 Note: The Master realm is selected by default
@@ -49,11 +49,11 @@ Note: The Master realm is selected by default
 
 4\. Go to the Configure section and select the Roles tab
 
-<figure><img src="../../../.gitbook/assets/roles_selector (1).PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/roles_selector.PNG" alt=""><figcaption></figcaption></figure>
 
 5\. Go to the Realms Roles tab, click the Add Role button if the administrator role is not available in the Realm Roles table. If the role is available, then proceed to step 5
 
-<figure><img src="../../../.gitbook/assets/add_admin_role (1).PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/add_admin_role.PNG" alt=""><figcaption></figcaption></figure>
 
 6\. Go to the Users tab under the Manage section and search the user in the Lookup tab
 
@@ -61,7 +61,7 @@ Note: The Master realm is selected by default
 
 7\. Click the Role Mappings tab
 
-<figure><img src="../../../.gitbook/assets/user_role_mapping.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/user_role_mapping (1).PNG" alt=""><figcaption></figcaption></figure>
 
 8\. Assign the admin role at realm level
 
@@ -81,7 +81,7 @@ The redirect URI configuration is necessary to redirect user to Sunbird tenantâ€
 
 2\. Click the client corresponding to the user configured in step 8 of above section
 
-<figure><img src="../../../.gitbook/assets/select_user_client (1).PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/select_user_client.PNG" alt=""><figcaption></figcaption></figure>
 
 3\. Select the Settings tab and click the Implicit Flow Enabled toggle button. Once this button is enabled, a Valid Redirect URIs text box is displayed
 
