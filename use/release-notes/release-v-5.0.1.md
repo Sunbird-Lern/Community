@@ -41,9 +41,10 @@
 
 The below environment variable needs to be configured in the devops repo.
 
-| Variable Name             | Values                                   | Comments                   |
-| ------------------------- | ---------------------------------------- | -------------------------- |
-| cloud\_storage\_base\_url | https://sunbirddev.blob.core.windows.net | To store the CSP base path |
+| Variable Name              | Values                                   | Comments                          |
+| -------------------------- | ---------------------------------------- | --------------------------------- |
+| cloud\_storage\_base\_url  | https://sunbirddev.blob.core.windows.net | To store the CSP base path        |
+| cloud\_storage\_cname\_url | https://obj.dev.sunbirded.org            | To store the cname url of the CSP |
 
 <details>
 
