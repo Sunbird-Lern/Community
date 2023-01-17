@@ -4,27 +4,27 @@
 
 UserOrg Service
 
-{% embed url="https://github.com/project-sunbird/sunbird-lms-service" %}
+{% embed url="https://github.com/Sunbird-Lern/sunbird-lms-service" %}
 
 Authentication - Keycloak SPI
 
-{% embed url="https://github.com/project-sunbird/sunbird-auth" %}
+{% embed url="https://github.com/Sunbird-Lern/sunbird-auth" %}
 
 API Manager Util
 
-{% embed url="https://github.com/project-sunbird/sunbird-apimanager-util" %}
+{% embed url="https://github.com/Sunbird-Lern/sunbird-apimanager-util" %}
 
-Supporting Jobs
+Supporting Jobs (This repo is deprecated after release-5.0.0)
 
 {% embed url="https://github.com/project-sunbird/sunbird-lms-jobs" %}
 
 Report Jobs : Geo report, User-consent report
 
-{% embed url="https://github.com/Sunbird-Ed/sunbird-data-products" %}
+{% embed url="https://github.com/Sunbird-Lern/data-products/tree/master/lern-data-products/src/main/scala/org/sunbird/userorg/job/report" %}
 
-[StateAdminGeoReportJob.scala](https://github.com/Sunbird-Ed/sunbird-data-products/blob/master/data-products/src/main/scala/org/sunbird/analytics/job/report/StateAdminGeoReportJob.scala), [StateAdminReportJob.scala](https://github.com/Sunbird-Ed/sunbird-data-products/blob/master/data-products/src/main/scala/org/sunbird/analytics/job/report/StateAdminReportJob.scala)
+StateAdminGeoReportJob.scala, StateAdminReportJob.scala
 
-{% embed url="https://github.com/Sunbird-Ed/sunbird-data-products/tree/master/data-products/src/main/scala/org/sunbird/analytics/job/report" %}
+{% embed url="https://github.com/Sunbird-Lern/data-products/tree/master/lern-data-products/src/main/scala/org/sunbird/lms" %}
 
 Environment and API Configurations
 
