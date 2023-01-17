@@ -10,13 +10,13 @@ Batch service requires few configurations to be set in properties file. Some of 
 
 * Application functional configurations and dependency service configurations has to be mentioned in externalresource.properties file
 
-{% embed url="https://github.com/project-sunbird/sunbird-course-service/tree/release-4.5.0/course-mw/sunbird-util/sunbird-platform-core/common-util/src/main/resources" %}
+{% embed url="https://github.com/sunbird-lern/sunbird-course-service/tree/release-4.5.0/course-mw/sunbird-util/sunbird-platform-core/common-util/src/main/resources" %}
 
-* Cassandra Migration in [sunbird-utils](https://github.com/project-sunbird/sunbird-utils) needs to be run before batch service run to create necessary tables required. Database details need to be configured in dbconfig.propeties file.
+* Cassandra Migration in [sunbird-utils](https://github.com/sunbird-lern/sunbird-utils) needs to be run before batch service run to create necessary tables required. Database details need to be configured in dbconfig.propeties file.
 
-{% embed url="https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra" %}
+{% embed url="https://github.com/sunbird-lern/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra" %}
 
-*   Elastic search need to be setup with indices and mappings from [sunbird-utils](https://github.com/project-sunbird/sunbird-utils). Elastic search details need to be configured in elasticsearch.config.properties
+*   Elastic search need to be setup with indices and mappings from [sunbird-utils](https://github.com/sunbird-lern/sunbird-utils). Elastic search details need to be configured in elasticsearch.config.properties
 
     Pick all the indices and mappings from these folders and create index and mapping using postman.
 
@@ -24,11 +24,11 @@ Batch service requires few configurations to be set in properties file. Some of 
 
     PUT http://localhost:9200/\<indices\_name>/\_mapping/\_doc Body : \<mapping\_json\_content>
 
-{% embed url="https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-es-utils/src/main/resources" %}
+{% embed url="https://github.com/sunbird-lern/sunbird-utils/tree/master/sunbird-es-utils/src/main/resources" %}
 
 **Installation :**
 
-* [ ] Fork https://github.com/project-sunbird/sunbird-course-service and clone the latest release branch
+* [ ] Fork https://github.com/sunbird-lern/sunbird-course-service and clone the latest release branch
 * [ ] Download all the files at https://drive.google.com/drive/folders/1VSu3wa70E7zbwtBw-dUAKa7qgL\_yrMUW?usp=sharing
 * [ ] Export all in lms-config.sh
 * [ ] Create cassandra keyspace and tables using courses\_db.cql

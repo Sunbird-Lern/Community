@@ -6,7 +6,7 @@ This service is used to validate a user while authenticating using keycloak. Key
 
 **GitHub Repository:**
 
-[GitHub - project-sunbird/sunbird-auth: Repository for sunbird authentication service](https://github.com/project-sunbird/sunbird-auth)
+[GitHub - sunbird-lern/sunbird-auth: Repository for sunbird authentication service](https://github.com/sunbird-lern/sunbird-auth)
 
 **Adopters:** Diksha
 
@@ -22,7 +22,7 @@ Wrapper for Kong admin util. This wrapper exposes APIs which can be used to regi
 
 **GitHub Repository:**
 
-[GitHub - project-sunbird/sunbird-apimanager-util: Wrapper for Kong admin util](https://github.com/project-sunbird/sunbird-apimanager-util)
+[GitHub - sunbird-lern/sunbird-apimanager-util: Wrapper for Kong admin util](https://github.com/sunbird-lern/sunbird-apimanager-util)
 
 **Adopters:** Diksha
 
@@ -38,7 +38,7 @@ This repository is for event driven jobs user in Sunbird User & Org Service
 
 **GitHub Repository:**
 
-[GitHub - project-sunbird/sunbird-lms-jobs: Repository for background jobs in Sunbird LMS](https://github.com/project-sunbird/sunbird-lms-jobs)
+[GitHub - project-sunbird/sunbird-lms-jobs: Repository for background jobs in Sunbird LMS](https://github.com/Sunbird-Lern/data-pipeline/tree/master/lms-jobs)
 
 **Adopters:** Diksha
 

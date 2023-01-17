@@ -4,15 +4,15 @@
 
 UserOrg Service
 
-{% embed url="https://github.com/project-sunbird/sunbird-lms-service" %}
+{% embed url="https://github.com/sunbird-lern/sunbird-lms-service" %}
 
 Authentication - Keycloak SPI
 
-{% embed url="https://github.com/project-sunbird/sunbird-auth" %}
+{% embed url="https://github.com/sunbird-lern/sunbird-auth" %}
 
 API Manager Util
 
-{% embed url="https://github.com/project-sunbird/sunbird-apimanager-util" %}
+{% embed url="https://github.com/sunbird-lern/sunbird-apimanager-util" %}
 
 Supporting Jobs
 
@@ -32,7 +32,7 @@ Environment and API Configurations
 
 Database setup:
 
-{% embed url="https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra" %}
+{% embed url="https://github.com/sunbird-lern/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra" %}
 
 ES Mappings:
 

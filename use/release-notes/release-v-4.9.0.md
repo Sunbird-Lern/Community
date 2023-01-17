@@ -10,8 +10,8 @@
 
 | Component         | Tag                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Batch Service     | [**release-4.9.0\_RC4**](https://github.com/project-sunbird/sunbird-course-service/releases/tag/release-4.9.0\_RC4) |
-| User\&Org Service | [**release-4.9.0\_RC1**](https://github.com/project-sunbird/sunbird-lms-service/releases/tag/release-4.9.0\_RC1)    |
+| Batch Service     | [**release-4.9.0\_RC4**](https://github.com/sunbird-lern/sunbird-course-service/releases/tag/release-4.9.0\_RC4) |
+| User\&Org Service | [**release-4.9.0\_RC1**](https://github.com/sunbird-lern/sunbird-lms-service/releases/tag/release-4.9.0\_RC1)    |
 
 ### **Summary of the Changes** <a href="#1.-summary-of-the-changes" id="1.-summary-of-the-changes"></a>
 

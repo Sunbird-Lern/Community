@@ -57,13 +57,13 @@ In the console see which migration version has failed and update the success fla
 
 ### Elastic Search:
 
-Post installation, Elastic search needs to be setup with indices and mappings from [sunbird-utils](https://github.com/project-sunbird/sunbird-utils).
+Post installation, Elastic search needs to be setup with indices and mappings from [sunbird-utils](https://github.com/sunbird-lern/sunbird-utils).
 
 Pick all the indices and mappings from \*\* \*\*<mark style="color:green;">**sunbird-utils/sunbird-es-utils/src/main/resources**</mark> folders and create index and mapping using postman.
 
 Create index and mapping mainly for **user, userfeed, usernotes, org,** and **location** JSON files.
 
-{% embed url="https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-es-utils/src/main/resources" %}
+{% embed url="https://github.com/sunbird-lern/sunbird-utils/tree/master/sunbird-es-utils/src/main/resources" %}
 
 PUT http://localhost:9200/\<indices\_name> Body : \<indices\_json\_content>
 

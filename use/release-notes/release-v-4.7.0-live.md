@@ -10,7 +10,7 @@
 
 | Component         | Tag                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- |
-| User\&Org Service | [**release-4.9.0\_RC4**](https://github.com/project-sunbird/sunbird-course-service/releases/tag/release-4.9.0\_RC4) |
+| User\&Org Service | [**release-4.9.0\_RC4**](https://github.com/sunbird-lern/sunbird-course-service/releases/tag/release-4.9.0\_RC4) |
 | Discussion Forum  | [**release-4.7.0\_RC4**](https://github.com/Sunbird-Lern/discussions-middleware/releases/tag/release-4.7.0\_RC4)    |
 
 ### **Summary of the Changes** <a href="#1.-summary-of-the-changes" id="1.-summary-of-the-changes"></a>
