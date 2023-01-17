@@ -4,6 +4,17 @@
 
 This section describes how to install and start User\&Org Service and set up the default organisation & user creation. Prior to installation refer to [Tech Stack](tech-stack.md) and install the softwares.
 
+#### Project setup:
+
+Fork the below projects and clone it from git,
+
+`git clone` [`https://github.com/project-sunbird/sunbird-lms-service`](https://github.com/project-sunbird/sunbird-lms-service) **(latest release branch)**
+
+`git clone` [`https://github.com/project-sunbird/sunbird-utils`](https://github.com/project-sunbird/sunbird-utils)
+
+Run,\
+`mvn clean install -DskipTests` in[ sunbird-utils](https://github.com/project-sunbird/sunbird-utils) & in[ sunbird-lms-service](https://github.com/project-sunbird/sunbird-lms-service)
+
 #### **Installation Configuration:**
 
 User\&Org service requires few configurations to be set in properties file. Some of these properties can also be set as environment variables.
@@ -16,18 +27,7 @@ User\&Org service requires few configurations to be set in properties file. Some
 
 Kindly check the latest environment properties file to ensure any new properties that needs to be added is configured. Refer [Installation Configuration](installation-guide.md#installation-configuration).
 
-#### Project setup:
-
-Fork the below projects and clone it from git,
-
-`git clone` [`https://github.com/project-sunbird/sunbird-lms-service`](https://github.com/project-sunbird/sunbird-lms-service) **(latest release branch)**
-
-`git clone` [`https://github.com/project-sunbird/sunbird-utils`](https://github.com/project-sunbird/sunbird-utils)
-
-Run,\
-`mvn clean install -DskipTests` in[ sunbird-utils](https://github.com/project-sunbird/sunbird-utils) & in[ sunbird-lms-service](https://github.com/project-sunbird/sunbird-lms-service)\
-\
-**Cassandra** **Migration**:
+#### **Cassandra** **Migration**:
 
 Before starting with migration please ensure to set the env variables In terminal, \
 execute following commands for cassandra migration: \
