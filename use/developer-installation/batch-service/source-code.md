@@ -2,23 +2,23 @@
 
 #### Source Code:
 
-Batch Service - [https://github.com/project-sunbird/sunbird-course-service](https://github.com/project-sunbird/sunbird-course-service)
+Batch Service - [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/project-sunbird/sunbird-course-service)
 
-Certification Service - [https://github.com/project-sunbird/cert-service](https://github.com/project-sunbird/cert-service)
+Certification Service - [https://github.com/](https://github.com/project-sunbird/cert-service)[Sunbird-Lern](https://github.com/project-sunbird/sunbird-course-service)[/cert-service](https://github.com/project-sunbird/cert-service)
 
-Certificate Registry - [https://github.com/project-sunbird/certificate-registry](https://github.com/project-sunbird/certificate-registry)
+Certificate Registry - [https://github.com/](https://github.com/project-sunbird/certificate-registry)[Sunbird-Lern](https://github.com/project-sunbird/sunbird-course-service)[/certificate-registry](https://github.com/project-sunbird/certificate-registry)
 
-Environment and API Configurations - [https://github.com/project-sunbird/sunbird-devops](https://github.com/project-sunbird/sunbird-devops)
+Environment and API Configurations - [https://github.com/](https://github.com/project-sunbird/sunbird-devops)[Sunbird-Lern](https://github.com/project-sunbird/sunbird-course-service)[/sunbird-devops](https://github.com/project-sunbird/sunbird-devops)
 
 Database setup:
 
-[https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra](https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra)
+[https://github.com/](https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra)[Sunbird-Lern](https://github.com/project-sunbird/sunbird-course-service)[/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra](https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra)
 
 KP Flink Jobs:
 
 Activity aggregate updater, Cert-preprocessor, Cert-generator, Relational cache updater
 
-[https://github.com/project-sunbird/knowledge-platform-jobs](https://github.com/project-sunbird/knowledge-platform-jobs)
+[https://github.com/](https://github.com/project-sunbird/knowledge-platform-jobs)[Sunbird-Lern](https://github.com/project-sunbird/sunbird-course-service)[/knowledge-platform-jobs](https://github.com/project-sunbird/knowledge-platform-jobs)
 
 Assessment aggregate updater
 
