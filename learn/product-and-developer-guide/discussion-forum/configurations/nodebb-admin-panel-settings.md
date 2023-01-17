@@ -32,7 +32,7 @@ You see this page. click on gear icon to navigate to nodebb admin panel.
 
 After that you will land on this page. Use settings tab to change the below option which is mention in table.
 
-![](<../../../../.gitbook/assets/image (3).png>)
+![](<../../../../.gitbook/assets/image (3) (1).png>)
 
 |    | **Column name**                                                 | **Value**        | **Location**                                                                             |
 | -- | --------------------------------------------------------------- | ---------------- | ---------------------------------------------------------------------------------------- |
