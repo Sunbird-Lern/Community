@@ -8,12 +8,12 @@ This section describes how to install and start User\&Org Service and set up the
 
 Fork the below projects and clone it from git,
 
-`git clone` [`https://github.com/project-sunbird/sunbird-lms-service`](https://github.com/project-sunbird/sunbird-lms-service) **(latest release branch)**
+`git clone` [`https://github.com/Sunbird-Lern/sunbird-lms-service/`](https://github.com/Sunbird-Lern/sunbird-lms-service/)**(latest release branch)**
 
-`git clone` [`https://github.com/project-sunbird/sunbird-utils`](https://github.com/project-sunbird/sunbird-utils)
+`git clone` [`https://github.com/Sunbird-Lern/sunbird-utils`](https://github.com/Sunbird-Lern/sunbird-utils)``
 
 Run,\
-`mvn clean install -DskipTests` in[ sunbird-utils](https://github.com/project-sunbird/sunbird-utils) & in[ sunbird-lms-service](https://github.com/project-sunbird/sunbird-lms-service)
+`mvn clean install -DskipTests` in sunbird-utils & in sunbird-lms-service
 
 #### **Installation Configuration:**
 
