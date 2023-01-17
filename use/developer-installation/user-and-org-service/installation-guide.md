@@ -25,7 +25,7 @@ User\&Org service requires few configurations to be set in properties file. Some
 
 #### Environment Variables Setup
 
-Kindly check the latest environment properties file to ensure any new properties that needs to be added is configured. Refer [Installation Configuration](installation-guide.md#installation-configuration).
+Kindly check the latest environment properties file to ensure any new properties that need to be added are configured. Refer [Installation Configuration](https://lern.sunbird.org/use/developer-installation/user-and-org-service/installation-configuration).
 
 #### **Cassandra** **Migration**:
 
