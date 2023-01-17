@@ -32,7 +32,7 @@ Environment and API Configurations
 
 Database setup:
 
-{% embed url="https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra" %}
+{% embed url="https://github.com/Sunbird-Lern/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra" %}
 
 ES Mappings:
 
