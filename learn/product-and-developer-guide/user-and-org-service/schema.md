@@ -10,7 +10,7 @@
 CREATE KEYSPACE IF NOT EXISTS sunbird WITH replication = {'class':'SimpleStrategy','replication_factor':1};CREATE TABLE IF NOT EXISTS  sunbird.user(id text,userId text,userName text, email text,phone text,aadhaarNo text,createdDate text,updatedDate text,updatedBy text,
 ```
 
-Cassandra Migration in [sunbird-utils](https://github.com/project-sunbird/sunbird-utils) needs to be run before user\&org service run to create necessary tables required in sunbird keyspace.
+Cassandra Migration in [sunbird-utils](https://github.com/sunbird-lern/sunbird-utils) needs to be run before user\&org service run to create necessary tables required in sunbird keyspace.
 
 ### **Table Creation in Cassandra**
 

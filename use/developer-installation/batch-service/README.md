@@ -6,7 +6,7 @@ Please refer to the Sunbird documentation link [Courses](http://docs.sunbird.org
 
 Please refer to the github readme document.
 
-{% embed url="https://github.com/project-sunbird/sunbird-course-service/blob/release-4.5.0/README.md" %}
+{% embed url="https://github.com/sunbird-lern/sunbird-course-service/blob/release-4.5.0/README.md" %}
 
 Flink Certificate Issue and Generate events
 
