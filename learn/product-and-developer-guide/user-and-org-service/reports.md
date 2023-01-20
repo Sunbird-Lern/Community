@@ -2,10 +2,10 @@
 
 There are two reports which comes under ‘MANAGE’ page in Sunbird Ed for 'ORG\_ADMIN' role. There reports are fetched from azure blob and details are displayed. Also allows to download in .csv format.
 
-1. Geo-report
-2. User-consent report
+### **1. Geo-report:**
 
-### **Geo-report:**
+* geo-summary shows the number of schools, districts and blocks in a particular channel.
+* geo-summary-district shows the data with respect to district.
 
 StateAdminGeoReportJob generates three folders in azure blob : geo-detail, geo-summary, geo-summary-district&#x20;
 
@@ -17,9 +17,9 @@ StateAdminGeoReportJob generates three folders in azure blob : geo-detail, geo-s
 \
 **geo-summary-district** provides the data with respect to district. Example: \[{"index":1,"districtName":"ARIYALUR","blocks":6,"schools":796},{"index":2,"districtName":"CHENNAI","blocks":10,"schools":1472},]
 
-### User-consent report:
+### 2. User-consent report:
 
-StateAdminReportJob generates a folder declared\_user\_detail which contains the user declared consent and user details. It is generated in csv format with respect to channel name.
+Consent Report gives the user info channel-wise as per the consent given by user. StateAdminReportJob generates a folder declared\_user\_detail which contains the user declared consent and user details. It is generated in csv format with respect to channel name.
 
 Consent report CSV content:
 
