@@ -4,7 +4,7 @@
 
 Group UI - [https://github.com/Sunbird-Ed/SunbirdEd-portal](https://github.com/Sunbird-Ed/SunbirdEd-portal)
 
-Group Service - [https://github.com/Sunbird-Lern/groups-service](https://github.com/Sunbird-Lern/groups-service)
+Group Service - [GitHub - project-sunbird/groups-service](https://github.com/project-sunbird/groups-service)
 
 Environment and API Configurations
 
@@ -12,4 +12,4 @@ Environment and API Configurations
 
 Database setup:
 
-[https://github.com/Sunbird-Lern/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra](https://github.com/Sunbird-Lern/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra)
+[https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra](https://github.com/project-sunbird/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra)
