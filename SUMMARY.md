@@ -26,6 +26,7 @@
       * [Notification APIs](learn/product-and-developer-guide/user-and-org-service/api-documentation/notification-apis.md)
     * [Features/Core capabilities](learn/product-and-developer-guide/user-and-org-service/features-core-capabilities.md)
     * [Functional Configurations](learn/product-and-developer-guide/user-and-org-service/functional-configurations.md)
+    * [Reports](learn/product-and-developer-guide/user-and-org-service/reports.md)
     * [Dependencies](learn/product-and-developer-guide/user-and-org-service/dependencies.md)
     * [Schema](learn/product-and-developer-guide/user-and-org-service/schema.md)
     * [Telemetry Events](learn/product-and-developer-guide/user-and-org-service/telemetry-events.md)
