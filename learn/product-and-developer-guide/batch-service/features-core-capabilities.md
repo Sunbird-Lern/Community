@@ -9,6 +9,47 @@ The following are a few sample functionalities that the Batch Service APIs can b
 
 ![](<../../../.gitbook/assets/image (16).png>)
 
+#### What is a Course?
+
+A Course is any collection which has trackable.enable=true
+
+#### Course Batch
+
+A batch is created to enable users to enrol to a course and consume. Batch and course have 1:1 relationship. While a course can have multiple batches. Batch also enables course admin or creator to issue certificates.
+
+#### Who can update a batch?
+
+Creator or mentors can update the batch. Once the batch is IN-Progress, we cannot update the startDate.
+
+#### How is the batch status updated?
+
+Batch status is updated by a data product CourseBatchStatusUpdater which runs every 30 mins.\
+
+
+Batch Metadata:
+
+Startdate: Beginning date of the batch. Users can consume the course from this date.
+
+EndDate: End date of the batch
+
+EnrollmentEndate: This date cannot be beyond endDate. By Deafult, it is one day before endDate if not defined.
+
+CreatedBy: Batch creator, only this user can update the batch
+
+Mentors: Has permission to update the batch
+
+CreatedFor: Organisation for which the batch is created
+
+Status: 0 = The batch is not started : Upcoming Batches
+
+&#x20;            1 = In Progress : Ongoing Batches
+
+&#x20;            2= Batch ended.
+
+EnrollmentType: Open, invite-only(private)
+
+
+
 #### Trackable Collections - Exhaust <a href="#title-text" id="title-text"></a>
 
 Following are the available exhausts for a trackable collection:
