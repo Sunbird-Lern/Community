@@ -5,8 +5,6 @@
 There is a dependency with Content Service to read the course metadata by using the API calls.\
 \
 **Dependency API:**\
-\
-/content/course/v1/content/state/read\
 /content/v3/read\
 /content/v3/search\
 /content/v3/hierarchy/\
@@ -26,7 +24,7 @@ There is a dependency with Search Service in order to perform a composite search
 {% endtab %}
 
 {% tab title="Sunbird Inquiry" %}
-There is a dependency with Inquiry for fetching the metadata of QuestionSet.There is a dependency with Content Service to read the course metadata by using the API calls.\
+There is a dependency with Inquiry for fetching the metadata of QuestionSet. There is a dependency with Content Service to read the course metadata by using the API calls.\
 There is a dependency with Content Service to read the course metadata by using the API calls.\
 
 {% endtab %}
