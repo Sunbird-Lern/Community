@@ -14,17 +14,15 @@ API Manager Util
 
 {% embed url="https://github.com/sunbird-lern/sunbird-apimanager-util" %}
 
-Supporting Jobs
+Report Jobs  and other adhoc scripts: Geo report, User-consent report  (before release-5.0.0)
 
-{% embed url="https://github.com/project-sunbird/sunbird-lms-jobs" %}
-
-Report Jobs : Geo report, User-consent report
-
-{% embed url="https://github.com/Sunbird-Ed/sunbird-data-products" %}
-
-[StateAdminGeoReportJob.scala](https://github.com/Sunbird-Ed/sunbird-data-products/blob/master/data-products/src/main/scala/org/sunbird/analytics/job/report/StateAdminGeoReportJob.scala), [StateAdminReportJob.scala](https://github.com/Sunbird-Ed/sunbird-data-products/blob/master/data-products/src/main/scala/org/sunbird/analytics/job/report/StateAdminReportJob.scala)
+[StateAdminGeoReportJob.scala](https://github.com/Sunbird-Ed/sunbird-data-products/blob/master/data-products/src/main/scala/org/sunbird/analytics/job/report/StateAdminGeoReportJob.scala), [StateAdminReportJob.scala](https://github.com/Sunbird-Ed/sunbird-data-products/blob/master/data-products/src/main/scala/org/sunbird/analytics/job/report/StateAdminReportJob.scala) &#x20;
 
 {% embed url="https://github.com/Sunbird-Ed/sunbird-data-products/tree/master/data-products/src/main/scala/org/sunbird/analytics/job/report" %}
+
+Report Jobs  and other adhoc scripts: (after release-5.0.0)
+
+{% embed url="https://github.com/Sunbird-Lern/data-products/tree/master/lern-data-products/src/main/scala/org/sunbird/userorg/job/report" %}
 
 Environment and API Configurations
 

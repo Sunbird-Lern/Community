@@ -14,10 +14,3 @@
 | Backend Services               | Admins can upload master data in to location, organisation. This service allows to create users and update user information.                                                        |
 | <p><br>System Settings</p>     | This service is used to configure system / application settings like default organisation, various T\&C etc                                                                         |
 
-Reports generated :
-
-1. Geo-report
-   * geo-summary shows the number of schools, districts and blocks in a particular channel.
-   * geo-summary-district shows the data with respect to district.
-2. User-consent report
-   * Consent Report gives the user info channel-wise as per the consent given by user

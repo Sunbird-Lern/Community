@@ -37,21 +37,24 @@ This service provides a set of APIs to manage the user, organisation, and locati
 
 #### Tenant Organisation
 
-* While creating a tenant organisation in learner service, organisationid is passed to channel API to register it as a channel in content service.
+* It is an entity in UserOrg service against which all users are mapped.
+* Main properties are id, name, organisationtype, orglocation, isTenant, slug, channel, externalid.
+* Slug and channel are abbreviation of organisation name, where slug is URL compatible, while channel is not.
+* A default tenant organisation needs to be created in sunbird, which is termed as custodian org, with a unique slug and channel.
+* While creating org, assigning a channel is mandatory. If tenant org needs to be created, then the channel should be registered in content-service, also it should be unique. Organisationid is passed to channel API to register it as a channel in content service.
 * If the channel is already existing in content service then use the channel id/code as the organisation id.
-* If tenant org needs to be created, then the channel should be registered in content-service, also it should be unique.
-* Portal searches the tenant organisation using slug and this organisation id is passed in channel/v1/read to get the channel configurations and details from content-service.
-* Tenant org and channel both are the same for the portal, only that different areas of the channel are handled by content-service(content, framework, BGMS) and learner service(user, location, user details).
+* Sunbird Ed searches the tenant organisation using slug and get the organisation id. This is passed in channel/v1/read to get the channel configurations and details from content-service.
+* Tenant org and channel both are the same for the Sunbird-Ed, only that different properties of the channel like content, framework, BGMS are handled by content-service and user, location, user details are handled by userOrg service.
 
 #### Non-Tenant Organisation
 
 * While creating a non-tenant organisation, mention an existing tenant's channel. This channel's org id is searched before creating a new organisation.
 * If it is not a tenant org, then the channel should be internally mapped to a tenantOrg by specifying the tenant org channel.
-* Non-tenant organisation - channel relation is not used in the portal
+* Non-tenant organisation - channel relation is not used in the Sunbird-Ed
 
 #### Org External Id
 
-* Org External Id is a unique id of the external organisation.&#x20;
+* Org External Id is a unique id of the organisation.&#x20;
 
 #### Organisation Type
 
@@ -68,16 +71,15 @@ This service provides a set of APIs to manage the user, organisation, and locati
 #### RootOrg Vs Tenant Org
 
 * Most often the rootOrg and the tenant org are the same for representing the board, but it is not guaranteed.&#x20;
-* RootOrg is a list of IDs of root organisations, and it is a list\<varChar>.
 
 #### Tenant Association
 
-* There are two tenant associations possible one is for the board and another one is for the school.
+* There is only one tenant association possible for a user.
 
 #### Non-Tenant Association
 
-* Non-Tenant Associations will be declared as a custodian.
-* and it's removed by hard delete.
+* There can only be one active non-tenant association as of now for a user.
+* When a new association is added, the old one is made inactive.
 
 
 

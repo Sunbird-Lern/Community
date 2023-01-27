@@ -137,3 +137,4 @@
   * [Release V 4.7.0](use/release-notes/release-v-4.7.0-live.md)
 * [Release Calendar](use/release-calendar.md)
 * [Raise an Issue](https://github.com/Sunbird-Lern/Community/discussions/10)
+* [Contribute to Sunbird Lern](use/contribute-to-sunbird-lern.md)
