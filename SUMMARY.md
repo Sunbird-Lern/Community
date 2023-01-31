@@ -129,6 +129,7 @@
       * [Sunbird-lern portal for DF](use/developer-installation/discussion-forum/installation-guide/sunbird-lern-portal-for-df.md)
     * [Source Code](use/developer-installation/discussion-forum/source-code.md)
 * [Release Notes](use/release-notes/README.md)
+  * [Release V 5.1.0](use/release-notes/release-v-5.1.0.md)
   * [Release V 5.0.1](use/release-notes/release-v-5.0.1.md)
   * [Release V 5.0.0](use/release-notes/release-v-5.0.0-latest.md)
   * [Release V 4.10.0](use/release-notes/release-v-4.10.0-latest.md)
