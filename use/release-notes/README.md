@@ -25,3 +25,7 @@ In the subsequent pages you will find detailed documentation of these releases:
 {% content-ref url="release-v-5.0.1.md" %}
 [release-v-5.0.1.md](release-v-5.0.1.md)
 {% endcontent-ref %}
+
+{% content-ref url="release-v-5.1.0.md" %}
+[release-v-5.1.0.md](release-v-5.1.0.md)
+{% endcontent-ref %}
