@@ -43,12 +43,3 @@
 
 [LR-131](https://project-sunbird.atlassian.net/browse/LR-131) BatchService: Refactoring of SB Lern Batch Service
 
-
-
-### Data Migrations: (Run these scripts after service deployment)
-
-* **This script is to migrating existing certificate in to RC.**
-
-Design Document:
-
-[https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3117416449/LR-4+Design+of+migrating+existing+certificate+in+to+RC](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3117416449/LR-4+Design+of+migrating+existing+certificate+in+to+RC)
