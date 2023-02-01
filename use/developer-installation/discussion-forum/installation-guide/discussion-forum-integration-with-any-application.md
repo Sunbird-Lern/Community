@@ -32,7 +32,7 @@ We need to create a categories in Nodebb.
 1. click on “Manage“ tab and select “Categories“
 2. You can see “**+**“ icon at right side bottom, click on that, It will open a popup. Enter Category name and click on Save. It will create a category “**Covid 19 Guidelines”**
 
-![](<../../../../.gitbook/assets/image (22).png>)
+![](<../../../../.gitbook/assets/image (17).png>)
 
 ![](../../../../.gitbook/assets/image-20220120-101751.png)
 

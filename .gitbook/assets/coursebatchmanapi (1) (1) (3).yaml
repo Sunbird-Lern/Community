@@ -1,0 +1,1795 @@
+openapi: 3.0.1
+info:
+  title: Course Batch Management APIs
+  description: |-
+    The Course Batch Management API allows you to manage course batches on the Sunbird platform. A batch is used to arrange courses for specific sets or groups.The basic operations for this API include Create, Update, Read, List(Search).
+
+    The URL for Coure Batch Management API(s) is /course/v1/batch.
+    - The backend URL for Coure Batch Management API(s) is /v1/course/batch.
+    - [TestCases](https://app.getpostman.com/run-collection/1122b59b7dc69b2b370b)
+  termsOfService: https://github.com/project-sunbird/sunbird-commons/blob/master/LICENSE
+  contact:
+    email: info@sunbird.org
+  version: '1.0'
+servers:
+  - url: 'https://staging.open-sunbird.org/api'
+paths:
+  '/course/v1/batch/read/{batch-id}':
+    get:
+      tags:
+        - Course Batch APIs
+      summary: CourseBatch Read
+      description: |-
+        Fetch a particular Batch
+        This API is associated with fetching a particular batch on the Sunbird Platform.
+        The endpoint for Fetch a particular Batch is /batch/read/{Batch_ID}
+        The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+      operationId: CourseBatchRead
+      parameters:
+        - name: Authorization
+          in: header
+          description: 'To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received, here.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+        - name: x-authenticated-user-token
+          in: header
+          description: 'The alphanumeric string to access the API'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+        - name: Content-Type
+          in: header
+          description: 'The Content Type entity is the media type of the resource.Possible\
+          \ media types can be:- \n  - application/json'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: batch-id
+          in: path
+          description: 'Append a valid Batch ID To the Request URL'
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'SUCCESS. The **Fetch a batch** operation was successful!'
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchRead-200OK'
+              example:
+                id: api.course.batch.read
+                ver: v1
+                ts: '2020-11-23 15:10:45:215+0000'
+                params:
+                  resmsgid: null
+                  msgid: aa240e09-4481-4cbd-a832-617a15e8e872
+                  err: null
+                  status: success
+                  errmsg: null
+                responseCode: OK
+                result:
+                  response:
+                    identifier: 0131439667998310406
+                    createdFor: []
+                    endDate: 2020-12-30
+                    description: batch description1
+                    updatedDate:
+                    cert_templates:
+                      Test_Template_4:
+                        identifier: Test_Template_4
+                        criteria:
+                          enrollment:
+                            status: 2
+                        name: Test_Template_4
+                        notifyTemplate:
+                          emailTemplateType: defaultCertTemp
+                          subject: Completion certificate
+                          stateImgUrl: https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png
+                          regards: Minister of Gujarat
+                          regardsperson: Chairperson
+                        issuer:
+                          name: Gujarat Council of Educational Research and Training
+                          url: https://gcert.gujarat.gov.in/gcert/
+                        url: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_4/artifact/cbse.svg
+                        signatoryList:
+                          - image: https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg
+                            name: CEO Gujarat
+                            id: CEO
+                            designation: CEO
+                      Test_Template_prad:
+                        identifier: Test_Template_prad
+                        criteria:
+                          enrollment:
+                            status: 2
+                        name: Updated Asset
+                        notifyTemplate:
+                          emailTemplateType: defaultCertTemp
+                          subject: Completion certificate
+                          stateImgUrl: https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png
+                          regards: Minister of Gujarat
+                          regardsperson: Chairperson
+                        issuer:
+                          name: Gujarat Council of Educational Research and Training
+                          url: https://gcert.gujarat.gov.in/gcert/
+                        url: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg
+                        signatoryList:
+                          - image: https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg
+                            name: CEO Gujarat
+                            id: CEO
+                            designation: CEO
+                      template_01_dev_001:
+                        identifier: template_01_dev_001
+                        criteria:
+                          enrollment:
+                            status: 2
+                        name: Course merit certificate
+                        notifyTemplate:
+                          emailTemplateType: defaultCertTemp
+                          subject: Completion certificate
+                          stateImgUrl: https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png
+                          regards: Minister of Gujarat
+                          regardsperson: Chairperson
+                        issuer:
+                          name: Gujarat Council of Educational Research and Training
+                          url: https://gcert.gujarat.gov.in/gcert/
+                        url: ''
+                        signatoryList:
+                          - image: https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg
+                            name: CEO Gujarat
+                            id: CEO
+                            designation: CEO
+                    batchId: 0131439667998310406
+                    tandc:
+                    createdDate: 2020-11-04 10:54:31:731+0000
+                    createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+                    mentors: []
+                    name: test cert scalability
+                    id: 0131439667998310406
+                    enrollmentType: open
+                    enrollmentEndDate:
+                    courseId: do_1131396442662912001425
+                    collectionId: do_1131396442662912001425
+                    startDate: 2020-11-04
+                    status: 1
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreate-400BadRequest-InvalidCourseId'
+              example:
+                id: api.course.batch.read
+                ver: v1
+                ts: '2020-11-23 06:48:19:128+0000'
+                params:
+                  resmsgid: null
+                  msgid: 50f76a53-4710-4333-936f-c043031eec03
+                  err: SERVER_ERROR
+                  status: SERVER_ERROR
+                  errmsg: SERVER_ERROR
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /course/v1/batch/update:
+    patch:
+      tags:
+        - Course Batch APIs
+      summary: CourseBatch Update
+      description: |-
+        This API is associated with updating a batch on the Sunbird Platform.
+        The endpoint for Course Batch Update is /batch/update
+        The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+      operationId: CourseBatchUpdate
+      parameters:
+        - name: Content-Type
+          in: header
+          description: 'The Content Type entity is the media type of the resource.Possible\
+          \ media types can be:- \n  - application/json'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: x-authenticated-user-token
+          in: header
+          description: 'The alphanumeric string for accessing the API'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+        - name: Authorization
+          in: header
+          description: 'To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received, here.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+      requestBody:
+        description: 'The body refers to the format of the request.
+            - The body contains metadata about the batch to be updated.'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/coursebatchmanapiCourseBatchUpdateRequest'
+            example:
+              request:
+                enrollmentType: open
+                startDate: '2020-11-23'
+                enrollmentEndDate: '2021-12-30'
+                status: 1
+                courseId: '{{course-id}}'
+                id: '{{batch-id}}'
+        required: true
+      responses:
+        '200':
+          description: 'SUCCESS. The **Update a batch** operation was successful!'
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchUpdate-200OK'
+              example:
+                id: api.course.batch.update
+                ver: v1
+                ts: '2020-11-23 06:59:52:152+0000'
+                params:
+                  resmsgid: null
+                  msgid: 8e27cbf5-e299-43b0-bca7-8347f7e5abcf
+                  err: null
+                  status: success
+                  errmsg: null
+                responseCode: OK
+                result: {}
+        '400':
+          description: BAD REQUEST,**Update a batch** operation failed !The possible
+            reason for failure is that you may have missed providing input for a mandatory
+            parameter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreate-400BadRequest-InvalidCourseId'
+              example:
+                id: api.course.batch.update
+                ver: v1
+                ts: '2020-11-23 06:57:38:160+0000'
+                params:
+                  resmsgid: null
+                  msgid: 8e27cbf5-e299-43b0-bca7-8347f7e5abcf
+                  err: INVALID_BATCH_START_DATE_ERROR
+                  status: INVALID_BATCH_START_DATE_ERROR
+                  errmsg: Please provide valid Start Date.
+                responseCode: CLIENT_ERROR
+                result: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreate-500InternalServerError'
+              example:
+                id: api.course.batch.update
+                ver: v1
+                ts: '2020-11-23 15:15:18:331+0000'
+                params:
+                  resmsgid: null
+                  msgid: null
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: 'Process failed,please try again later.'
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /course/v1/batch/list:
+    post:
+      tags:
+        - Course Batch APIs
+      summary: CourseBatch Search
+      description: |-
+        Lists the existing batches
+        This API is associated with fetching and listing existing batches
+        The endpoint for Lists the existing batches is /batch/list
+        The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+      operationId: CourseBatchSearch
+      parameters:
+        - in: query
+          name: orgdetails
+          description: 'Extra data can be passed in query parameter with above mentioned key and comma separated value. Example,?orgdetails=email,name. Sunbird will take this query parameter and pass to content service as it is, and content service does the needful.'
+          schema:
+            type: string
+          required: true
+        - name: Content-Type
+          in: header
+          description: 'The Content Type entity is the media type of the resource.Possible\
+          \ media types can be:- \n  - application/json'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          description: 'To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received, here.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+        - name: x-authenticated-user-token
+          in: header
+          description: 'The alphanumeric string for accessing the API'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+      requestBody:
+        description: 'The body refers to the format of the request.'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/coursebatchmanapiCourseBatchSearchRequest'
+            example:
+              request:
+                filters:
+                  courseId: '{{course-id}}'
+                limit: 2
+        required: true
+      responses:
+        '200':
+          description: 'SUCCESS. The **Lists the existing batches** operation was successful!'
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchSearch-200OK'
+              example:
+                id: api.course.batch.search
+                ver: v1
+                ts: '2020-11-23 15:31:47:895+0000'
+                params:
+                  resmsgid: null
+                  msgid: 3b07f74d-59af-494c-8d41-c8b665fa75ea
+                  err: null
+                  status: success
+                  errmsg: null
+                responseCode: OK
+                result:
+                  response:
+                    count: 15
+                    content:
+                      - identifier: 0131440087048683528
+                        createdFor: []
+                        endDate: '2020-11-30'
+                        description: batch description1
+                        updatedDate: null
+                        cert_templates:
+                          Test_Template_prad:
+                            identifier: Test_Template_prad
+                            criteria:
+                              enrollment:
+                                status: 2
+                            name: Updated Asset
+                            notifyTemplate:
+                              emailTemplateType: defaultCertTemp
+                              subject: Completion certificate
+                              stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+                              regards: Minister of Gujarat
+                              regardsperson: Chairperson
+                            issuer:
+                              name: Gujarat Council of Educational Research and Training
+                              url: 'https://gcert.gujarat.gov.in/gcert/'
+                            url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+                            signatoryList:
+                              - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+                                name: CEO Gujarat
+                                id: CEO
+                                designation: CEO
+                        batchId: 0131440087048683528
+                        tandc: null
+                        createdDate: '2020-11-04 12:26:38:668+0000'
+                        createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+                        mentors: []
+                        name: test cert scalability
+                        id: 0131440087048683528
+                        enrollmentType: open
+                        enrollmentEndDate: null
+                        courseId: do_1131396442662912001425
+                        collectionId: do_1131396442662912001425
+                        startDate: '2020-11-04'
+                        status: 1
+                      - identifier: 0131439524674273284
+                        createdFor: []
+                        endDate: '2020-12-30'
+                        description: batch description1
+                        updatedDate: null
+                        cert_templates:
+                          Test_Template_prad:
+                            identifier: Test_Template_prad
+                            criteria:
+                              enrollment:
+                                status: 2
+                            name: Updated Asset
+                            notifyTemplate:
+                              emailTemplateType: defaultCertTemp
+                              subject: Completion certificate
+                              stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+                              regards: Minister of Gujarat
+                              regardsperson: Chairperson
+                            issuer:
+                              name: Gujarat Council of Educational Research and Training
+                              url: 'https://gcert.gujarat.gov.in/gcert/'
+                            url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+                            signatoryList:
+                              - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+                                name: CEO Gujarat
+                                id: CEO
+                                designation: CEO
+                        batchId: 0131439524674273284
+                        tandc: null
+                        createdDate: '2020-11-04 10:24:25:778+0000'
+                        createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+                        mentors: []
+                        name: test cert scalability
+                        id: 0131439524674273284
+                        enrollmentType: open
+                        enrollmentEndDate: null
+                        courseId: do_1131396442662912001425
+                        collectionId: do_1131396442662912001425
+                        startDate: '2020-11-04'
+                        status: 1
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreate-500InternalServerError'
+              example:
+                id: api.course.batch.search
+                ver: v1
+                ts: '2020-11-23 15:15:18:331+0000'
+                params:
+                  resmsgid: null
+                  msgid: null
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: 'Process failed,please try again later.'
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /course/v1/batch/create:
+    post:
+      tags:
+        - Course Batch APIs
+      summary: CourseBatch Create
+      description: |-
+        This API is associated with batch creation
+        The endpoint for Creates a Batch is /batch/create
+        The fields marked with an asterisk (*) are mandatory. They cannot be null or empty.
+      operationId: CourseBatchCreate
+      parameters:
+        - name: Content-Type
+          in: header
+          description: 'The Content Type entity is the media type of the resource.Possible\
+          \ media types can be:- \n  - application/json'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: x-authenticated-user-token
+          in: header
+          description: 'The alphanumeric string to access the API'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{authToken}}'
+        - name: Authorization
+          in: header
+          description: 'To make use of the API, you require authorization. Raise a request
+          to the administrator for the use of the API. You will receive the authorization
+          key. Specify the key received, here.'
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{api-key}}'
+      requestBody:
+        description: The body refers to the format of the request.
+          - The body contains metadata about the new batch to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreateRequest'
+            example:
+              request:
+                courseId: '{{course-id}}'
+                name: test cert scalability
+                description: batch description1
+                enrollmentType: open
+                startDate: '2020-11-23'
+                endDate: '2021-12-30'
+        required: true
+      responses:
+        '200':
+          description: Success example for batch create
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreate-200OK'
+              example:
+                id: api.course.batch.create
+                ver: v1
+                ts: '2020-11-23 06:42:39:001+0000'
+                params:
+                  resmsgid: null
+                  msgid: 8c244093-e19d-4694-a4ba-342bc0f8b721
+                  err: null
+                  status: success
+                  errmsg: null
+                responseCode: OK
+                result:
+                  response: SUCCESS
+                  batchId: 01315728917531852810
+        '400':
+          description: BAD REQUEST,**create batch** operation failed !The possible
+            reason for failure is that you may have missed providing input for a mandatory
+            parameter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreate-400BadRequest-InvalidCourseId'
+              examples:
+                a:
+                  summary: Invalid_CourseId
+                  description: Response example when invalid course id got passed into request
+                  value:
+                    id: api.course.batch.create
+                    ver: v1
+                    ts: '2020-11-23 06:40:48:878+0000'
+                    params:
+                      resmsgid: null
+                      msgid: e85a4592-7458-4506-a3e3-0dc00d923616
+                      err: INVALID_COURSE_ID
+                      status: INVALID_COURSE_ID
+                      errmsg: Course doesnot exist. Please provide a valid course identifier
+                    responseCode: CLIENT_ERROR
+                    result: {}
+                b:
+                  summary: Mandatory_Parameter_Missing
+                  description: Response example for any parameter is missing into request
+                  value:
+                    id: api.course.batch.create
+                    ver: v1
+                    ts: '2020-11-23 06:40:48:878+0000'
+                    params:
+                      resmsgid: null
+                      msgid: 4bc18ba9-0f3a-44ad-884a-d8b15c5680d1
+                      err: MANDATORY_PARAMETER_MISSING
+                      status: MANDATORY_PARAMETER_MISSING
+                      errmsg: Mandatory parameter courseId/collectionId is missing.
+                    responseCode: CLIENT_ERROR
+                    result: {}
+                c:
+                  summary: Invalid_Batch_Start_Date
+                  description: Response example for invalid batch start date
+                  value:
+                    id: api.course.batch.create
+                    ver: v1
+                    ts: '2020-11-23 06:40:48:878+0000'
+                    params:
+                      resmsgid: null
+                      msgid: 358e9376-0eb4-426b-903f-42a0a5235c39
+                      err: COURSE_BATCH_START_DATE_INVALID
+                      status: COURSE_BATCH_START_DATE_INVALID
+                      errmsg: Batch start date should be either today or future date.
+                    responseCode: CLIENT_ERROR
+                    result: {}
+                d:
+                  summary: Invalid_Batch_End_Date
+                  description: Response example for invalid batch end date
+                  value:
+                    id: api.course.batch.create
+                    ver: v1
+                    ts: '2020-11-23 06:40:48:878+0000'
+                    params:
+                      resmsgid: null
+                      msgid: 40e5e6c9-3777-4a15-b820-124f974dc202
+                      err: END_DATE_ERROR
+                      status: END_DATE_ERROR
+                      errmsg: End date should be greater than start date.
+                    responseCode: CLIENT_ERROR
+                    result: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreate-500InternalServerError'
+              example:
+                id: api.course.batch.create
+                ver: v1
+                ts: '2020-11-23 15:15:18:331+0000'
+                params:
+                  resmsgid: null
+                  msgid: null
+                  err: INTERNAL_ERROR
+                  status: SERVER_ERROR
+                  errmsg: 'Process failed,please try again later.'
+                responseCode: SERVER_ERROR
+                result: {}
+      deprecated: false
+      security:
+        - bearer: []
+components:
+  schemas:
+    coursebatchmanapiCourseBatchRead-200OK:
+      title: CourseBatchRead-200OK
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/coursebatchmanapiParams1'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/coursebatchmanapiResult'
+      example:
+        id: api.course.batch.read
+        ver: v1
+        ts: 2020-11-23 04:48:35:260+0000
+        params:
+          resmsgid:
+          msgid: 16824a40-389e-4008-aecc-f1d86be693c9
+          err:
+          status: success
+          errmsg:
+        responseCode: OK
+        result:
+          response:
+            identifier: 0131439667998310406
+            createdFor: []
+            endDate: 2020-12-30
+            description: batch description1
+            updatedDate:
+            cert_templates:
+              Test_Template_4:
+                identifier: Test_Template_4
+                criteria:
+                  enrollment:
+                    status: 2
+                name: Test_Template_4
+                notifyTemplate:
+                  emailTemplateType: defaultCertTemp
+                  subject: Completion certificate
+                  stateImgUrl: https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png
+                  regards: Minister of Gujarat
+                  regardsperson: Chairperson
+                issuer:
+                  name: Gujarat Council of Educational Research and Training
+                  url: https://gcert.gujarat.gov.in/gcert/
+                url: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_4/artifact/cbse.svg
+                signatoryList:
+                  - image: https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg
+                    name: CEO Gujarat
+                    id: CEO
+                    designation: CEO
+              Test_Template_prad:
+                identifier: Test_Template_prad
+                criteria:
+                  enrollment:
+                    status: 2
+                name: Updated Asset
+                notifyTemplate:
+                  emailTemplateType: defaultCertTemp
+                  subject: Completion certificate
+                  stateImgUrl: https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png
+                  regards: Minister of Gujarat
+                  regardsperson: Chairperson
+                issuer:
+                  name: Gujarat Council of Educational Research and Training
+                  url: https://gcert.gujarat.gov.in/gcert/
+                url: https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg
+                signatoryList:
+                  - image: https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg
+                    name: CEO Gujarat
+                    id: CEO
+                    designation: CEO
+              template_01_dev_001:
+                identifier: template_01_dev_001
+                criteria:
+                  enrollment:
+                    status: 2
+                name: Course merit certificate
+                notifyTemplate:
+                  emailTemplateType: defaultCertTemp
+                  subject: Completion certificate
+                  stateImgUrl: https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png
+                  regards: Minister of Gujarat
+                  regardsperson: Chairperson
+                issuer:
+                  name: Gujarat Council of Educational Research and Training
+                  url: https://gcert.gujarat.gov.in/gcert/
+                url: ''
+                signatoryList:
+                  - image: https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg
+                    name: CEO Gujarat
+                    id: CEO
+                    designation: CEO
+            batchId: 0131439667998310406
+            tandc:
+            createdDate: 2020-11-04 10:54:31:731+0000
+            createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+            mentors: []
+            name: test cert scalability
+            id: 0131439667998310406
+            enrollmentType: open
+            enrollmentEndDate:
+            courseId: do_1131396442662912001425
+            collectionId: do_1131396442662912001425
+            startDate: 2020-11-04
+            status: 1
+    coursebatchmanapiCourseBatchRead-200InvalidBatchID:
+      title: CourseBatchRead-200InvalidBatchID
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/coursebatchmanapiParams'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/coursebatchmanapiResult'
+      example:
+        id: api.course.batch.read
+        ver: v1
+        ts: '2020-11-23 15:10:45:215+0000'
+        params:
+          resmsgid: null
+          msgid: aa240e09-4481-4cbd-a832-617a15e8e872
+          err: null
+          status: success
+          errmsg: null
+        responseCode: OK
+        result:
+          response: {}
+    coursebatchmanapiParams:
+      title: Params
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+        err:
+          type: string
+          nullable: true
+        status:
+          type: string
+        errmsg:
+          type: string
+          nullable: true
+      example:
+        resmsgid: null
+        msgid: aa240e09-4481-4cbd-a832-617a15e8e872
+        err: null
+        status: success
+        errmsg: null
+    coursebatchmanapiResult:
+      title: Result
+      required:
+        - response
+      type: object
+      properties:
+        response:
+          type: object
+      example:
+        response: {}
+    coursebatchmanapiParams1:
+      title: Params1
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+        err:
+          type: string
+        status:
+          type: string
+        errmsg:
+          type: string
+    coursebatchmanapiCourseBatchUpdateRequest:
+      title: CourseBatchUpdateRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/coursebatchmanapiRequest'
+      example:
+        request:
+          enrollmentType: open
+          startDate: '2020-11-23'
+          enrollmentEndDate: '2021-12-30'
+          status: 1
+          courseId: '{{course-id}}'
+          id: '{{batch-id}}'
+    coursebatchmanapiRequest:
+      title: Request
+      required:
+        - startDate
+        - status
+        - courseId
+        - id
+      type: object
+      properties:
+        enrollmentType:
+          type: string
+          description: 'possible values are {invite-only and open}'
+        startDate:
+          type: string
+          description: 'Batch start date'
+        enrollmentEndDate:
+          type: string
+          description: 'Batch enrollment end date'
+        status:
+          type: integer
+          format: int32
+          description: 'Status of batch possible values are {0, 1 or 2}'
+        courseId:
+          type: string
+          description: 'Course id for which the user wants to update the batch'
+        id:
+          type: string
+          description: 'Batch id which the user wants to update'
+        endDate:
+          description: 'Batch end date can be updated if end date hasnt expired'
+          type: string
+      example:
+        enrollmentType: open
+        startDate: '2020-11-23'
+        enrollmentEndDate: '2021-12-30'
+        status: 1
+        courseId: '{{course-id}}'
+        id: '{{batch-id}}'
+    coursebatchmanapiParams2:
+      title: Params2
+      required:
+        - resmsgid
+        - msgid
+        - err
+        - status
+        - errmsg
+      type: object
+      properties:
+        resmsgid:
+          type: string
+          nullable: true
+        msgid:
+          type: string
+          nullable: true
+        err:
+          type: string
+        status:
+          type: string
+        errmsg:
+          type: string
+    coursebatchmanapiCourseBatchUpdate-200OK:
+      title: CourseBatchUpdate-200OK
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/coursebatchmanapiParams'
+        responseCode:
+          type: string
+        result:
+          type: object
+      example:
+        id: api.course.batch.update
+        ver: v1
+        ts: '2020-11-23 06:59:52:152+0000'
+        params:
+          resmsgid: null
+          msgid: 8e27cbf5-e299-43b0-bca7-8347f7e5abcf
+          err: null
+          status: success
+          errmsg: null
+        responseCode: OK
+        result: {}
+    coursebatchmanapiCourseBatchSearchRequest:
+      title: CourseBatchSearchRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/coursebatchmanapiRequest1'
+      example:
+        request:
+          filters:
+            courseId: '{{course-id}}'
+          limit: 2
+    coursebatchmanapiRequest1:
+      title: Request1
+      required:
+        - filters
+      type: object
+      properties:
+        query:
+          type: string
+          description: 'any text, it will do free text search eg. creatorDetails&orgDetails'
+        filters:
+          $ref: '#/components/schemas/coursebatchmanapiFilters'
+        limit:
+          type: integer
+          description: 'Number of batch user want in response'
+          format: int32
+      example:
+        filters:
+          courseId: '{{course-id}}'
+        limit: 2
+    coursebatchmanapiFilters:
+      title: Filters
+      required:
+        - courseId
+      type: object
+      description: 'here you can pass the attribute and values'
+      properties:
+        courseId:
+          type: string
+      example:
+        courseId: '{{course-id}}'
+    coursebatchmanapiCourseBatchSearch-200OK:
+      title: CourseBatchSearch-200OK
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/coursebatchmanapiParams'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/coursebatchmanapiResult1'
+      example:
+        id: api.course.batch.search
+        ver: v1
+        ts: '2020-11-23 15:31:47:895+0000'
+        params:
+          resmsgid: null
+          msgid: 3b07f74d-59af-494c-8d41-c8b665fa75ea
+          err: null
+          status: success
+          errmsg: null
+        responseCode: OK
+        result:
+          response:
+            count: 15
+            content:
+              - identifier: 0131440087048683528
+                createdFor: []
+                endDate: '2020-11-30'
+                description: batch description1
+                updatedDate: null
+                cert_templates:
+                  Test_Template_prad:
+                    identifier: Test_Template_prad
+                    criteria:
+                      enrollment:
+                        status: 2
+                    name: Updated Asset
+                    notifyTemplate:
+                      emailTemplateType: defaultCertTemp
+                      subject: Completion certificate
+                      stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+                      regards: Minister of Gujarat
+                      regardsperson: Chairperson
+                    issuer:
+                      name: Gujarat Council of Educational Research and Training
+                      url: 'https://gcert.gujarat.gov.in/gcert/'
+                    url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+                    signatoryList:
+                      - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+                        name: CEO Gujarat
+                        id: CEO
+                        designation: CEO
+                batchId: 0131440087048683528
+                tandc: null
+                createdDate: '2020-11-04 12:26:38:668+0000'
+                createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+                mentors: []
+                name: test cert scalability
+                id: 0131440087048683528
+                enrollmentType: open
+                enrollmentEndDate: null
+                courseId: do_1131396442662912001425
+                collectionId: do_1131396442662912001425
+                startDate: '2020-11-04'
+                status: 1
+              - identifier: 0131439524674273284
+                createdFor: []
+                endDate: '2020-12-30'
+                description: batch description1
+                updatedDate: null
+                cert_templates:
+                  Test_Template_prad:
+                    identifier: Test_Template_prad
+                    criteria:
+                      enrollment:
+                        status: 2
+                    name: Updated Asset
+                    notifyTemplate:
+                      emailTemplateType: defaultCertTemp
+                      subject: Completion certificate
+                      stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+                      regards: Minister of Gujarat
+                      regardsperson: Chairperson
+                    issuer:
+                      name: Gujarat Council of Educational Research and Training
+                      url: 'https://gcert.gujarat.gov.in/gcert/'
+                    url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+                    signatoryList:
+                      - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+                        name: CEO Gujarat
+                        id: CEO
+                        designation: CEO
+                batchId: 0131439524674273284
+                tandc: null
+                createdDate: '2020-11-04 10:24:25:778+0000'
+                createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+                mentors: []
+                name: test cert scalability
+                id: 0131439524674273284
+                enrollmentType: open
+                enrollmentEndDate: null
+                courseId: do_1131396442662912001425
+                collectionId: do_1131396442662912001425
+                startDate: '2020-11-04'
+                status: 1
+    coursebatchmanapiResult1:
+      title: Result1
+      required:
+        - response
+      type: object
+      properties:
+        response:
+          $ref: '#/components/schemas/coursebatchmanapiResponse'
+      example:
+        response:
+          count: 15
+          content:
+            - identifier: 0131440087048683528
+              createdFor: []
+              endDate: '2020-11-30'
+              description: batch description1
+              updatedDate: null
+              cert_templates:
+                Test_Template_prad:
+                  identifier: Test_Template_prad
+                  criteria:
+                    enrollment:
+                      status: 2
+                  name: Updated Asset
+                  notifyTemplate:
+                    emailTemplateType: defaultCertTemp
+                    subject: Completion certificate
+                    stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+                    regards: Minister of Gujarat
+                    regardsperson: Chairperson
+                  issuer:
+                    name: Gujarat Council of Educational Research and Training
+                    url: 'https://gcert.gujarat.gov.in/gcert/'
+                  url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+                  signatoryList:
+                    - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+                      name: CEO Gujarat
+                      id: CEO
+                      designation: CEO
+              batchId: 0131440087048683528
+              tandc: null
+              createdDate: '2020-11-04 12:26:38:668+0000'
+              createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+              mentors: []
+              name: test cert scalability
+              id: 0131440087048683528
+              enrollmentType: open
+              enrollmentEndDate: null
+              courseId: do_1131396442662912001425
+              collectionId: do_1131396442662912001425
+              startDate: '2020-11-04'
+              status: 1
+            - identifier: 0131439524674273284
+              createdFor: []
+              endDate: '2020-12-30'
+              description: batch description1
+              updatedDate: null
+              cert_templates:
+                Test_Template_prad:
+                  identifier: Test_Template_prad
+                  criteria:
+                    enrollment:
+                      status: 2
+                  name: Updated Asset
+                  notifyTemplate:
+                    emailTemplateType: defaultCertTemp
+                    subject: Completion certificate
+                    stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+                    regards: Minister of Gujarat
+                    regardsperson: Chairperson
+                  issuer:
+                    name: Gujarat Council of Educational Research and Training
+                    url: 'https://gcert.gujarat.gov.in/gcert/'
+                  url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+                  signatoryList:
+                    - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+                      name: CEO Gujarat
+                      id: CEO
+                      designation: CEO
+              batchId: 0131439524674273284
+              tandc: null
+              createdDate: '2020-11-04 10:24:25:778+0000'
+              createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+              mentors: []
+              name: test cert scalability
+              id: 0131439524674273284
+              enrollmentType: open
+              enrollmentEndDate: null
+              courseId: do_1131396442662912001425
+              collectionId: do_1131396442662912001425
+              startDate: '2020-11-04'
+              status: 1
+    coursebatchmanapiResponse:
+      title: Response
+      required:
+        - count
+        - content
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/coursebatchmanapiContent'
+          description: ''
+      example:
+        count: 15
+        content:
+          - identifier: 0131440087048683528
+            createdFor: []
+            endDate: '2020-11-30'
+            description: batch description1
+            updatedDate: null
+            cert_templates:
+              Test_Template_prad:
+                identifier: Test_Template_prad
+                criteria:
+                  enrollment:
+                    status: 2
+                name: Updated Asset
+                notifyTemplate:
+                  emailTemplateType: defaultCertTemp
+                  subject: Completion certificate
+                  stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+                  regards: Minister of Gujarat
+                  regardsperson: Chairperson
+                issuer:
+                  name: Gujarat Council of Educational Research and Training
+                  url: 'https://gcert.gujarat.gov.in/gcert/'
+                url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+                signatoryList:
+                  - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+                    name: CEO Gujarat
+                    id: CEO
+                    designation: CEO
+            batchId: 0131440087048683528
+            tandc: null
+            createdDate: '2020-11-04 12:26:38:668+0000'
+            createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+            mentors: []
+            name: test cert scalability
+            id: 0131440087048683528
+            enrollmentType: open
+            enrollmentEndDate: null
+            courseId: do_1131396442662912001425
+            collectionId: do_1131396442662912001425
+            startDate: '2020-11-04'
+            status: 1
+          - identifier: 0131439524674273284
+            createdFor: []
+            endDate: '2020-12-30'
+            description: batch description1
+            updatedDate: null
+            cert_templates:
+              Test_Template_prad:
+                identifier: Test_Template_prad
+                criteria:
+                  enrollment:
+                    status: 2
+                name: Updated Asset
+                notifyTemplate:
+                  emailTemplateType: defaultCertTemp
+                  subject: Completion certificate
+                  stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+                  regards: Minister of Gujarat
+                  regardsperson: Chairperson
+                issuer:
+                  name: Gujarat Council of Educational Research and Training
+                  url: 'https://gcert.gujarat.gov.in/gcert/'
+                url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+                signatoryList:
+                  - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+                    name: CEO Gujarat
+                    id: CEO
+                    designation: CEO
+            batchId: 0131439524674273284
+            tandc: null
+            createdDate: '2020-11-04 10:24:25:778+0000'
+            createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+            mentors: []
+            name: test cert scalability
+            id: 0131439524674273284
+            enrollmentType: open
+            enrollmentEndDate: null
+            courseId: do_1131396442662912001425
+            collectionId: do_1131396442662912001425
+            startDate: '2020-11-04'
+            status: 1
+    coursebatchmanapiContent:
+      title: Content
+      required:
+        - identifier
+        - createdFor
+        - endDate
+        - description
+        - updatedDate
+        - cert_templates
+        - batchId
+        - tandc
+        - createdDate
+        - createdBy
+        - mentors
+        - name
+        - id
+        - enrollmentType
+        - enrollmentEndDate
+        - courseId
+        - collectionId
+        - startDate
+        - status
+      type: object
+      properties:
+        identifier:
+          type: string
+        createdFor:
+          type: array
+          items:
+            type: string
+          description: ''
+        endDate:
+          type: string
+        description:
+          type: string
+        updatedDate:
+          type: string
+          nullable: true
+        cert_templates:
+          $ref: '#/components/schemas/coursebatchmanapiCertTemplates'
+        batchId:
+          type: string
+        tandc:
+          type: string
+          nullable: true
+        createdDate:
+          type: string
+        createdBy:
+          type: string
+        mentors:
+          type: array
+          items:
+            type: string
+          description: ''
+        name:
+          type: string
+        id:
+          type: string
+        enrollmentType:
+          type: string
+        enrollmentEndDate:
+          type: string
+          nullable: true
+        courseId:
+          type: string
+        collectionId:
+          type: string
+        startDate:
+          type: string
+        status:
+          type: integer
+          format: int32
+      example:
+        identifier: 0131440087048683528
+        createdFor: []
+        endDate: '2020-11-30'
+        description: batch description1
+        updatedDate: null
+        cert_templates:
+          Test_Template_prad:
+            identifier: Test_Template_prad
+            criteria:
+              enrollment:
+                status: 2
+            name: Updated Asset
+            notifyTemplate:
+              emailTemplateType: defaultCertTemp
+              subject: Completion certificate
+              stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+              regards: Minister of Gujarat
+              regardsperson: Chairperson
+            issuer:
+              name: Gujarat Council of Educational Research and Training
+              url: 'https://gcert.gujarat.gov.in/gcert/'
+            url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+            signatoryList:
+              - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+                name: CEO Gujarat
+                id: CEO
+                designation: CEO
+        batchId: 0131440087048683528
+        tandc: null
+        createdDate: '2020-11-04 12:26:38:668+0000'
+        createdBy: 95e4942d-cbe8-477d-aebd-ad8e6de4bfc8
+        mentors: []
+        name: test cert scalability
+        id: 0131440087048683528
+        enrollmentType: open
+        enrollmentEndDate: null
+        courseId: do_1131396442662912001425
+        collectionId: do_1131396442662912001425
+        startDate: '2020-11-04'
+        status: 1
+    coursebatchmanapiCertTemplates:
+      title: CertTemplates
+      required:
+        - Test_Template_prad
+      type: object
+      properties:
+        Test_Template_prad:
+          $ref: '#/components/schemas/coursebatchmanapiTestTemplatePrad'
+      example:
+        Test_Template_prad:
+          identifier: Test_Template_prad
+          criteria:
+            enrollment:
+              status: 2
+          name: Updated Asset
+          notifyTemplate:
+            emailTemplateType: defaultCertTemp
+            subject: Completion certificate
+            stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+            regards: Minister of Gujarat
+            regardsperson: Chairperson
+          issuer:
+            name: Gujarat Council of Educational Research and Training
+            url: 'https://gcert.gujarat.gov.in/gcert/'
+          url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+          signatoryList:
+            - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+              name: CEO Gujarat
+              id: CEO
+              designation: CEO
+    coursebatchmanapiTestTemplatePrad:
+      title: TestTemplatePrad
+      required:
+        - identifier
+        - criteria
+        - name
+        - notifyTemplate
+        - issuer
+        - url
+        - signatoryList
+      type: object
+      properties:
+        identifier:
+          type: string
+        criteria:
+          $ref: '#/components/schemas/coursebatchmanapiCriteria'
+        name:
+          type: string
+        notifyTemplate:
+          $ref: '#/components/schemas/coursebatchmanapiNotifyTemplate'
+        issuer:
+          $ref: '#/components/schemas/coursebatchmanapiIssuer'
+        url:
+          type: string
+        signatoryList:
+          type: array
+          items:
+            $ref: '#/components/schemas/coursebatchmanapiSignatoryList'
+          description: ''
+      example:
+        identifier: Test_Template_prad
+        criteria:
+          enrollment:
+            status: 2
+        name: Updated Asset
+        notifyTemplate:
+          emailTemplateType: defaultCertTemp
+          subject: Completion certificate
+          stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+          regards: Minister of Gujarat
+          regardsperson: Chairperson
+        issuer:
+          name: Gujarat Council of Educational Research and Training
+          url: 'https://gcert.gujarat.gov.in/gcert/'
+        url: 'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/content/test_template_prad/artifact/file-0130860005482086401.svg'
+        signatoryList:
+          - image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+            name: CEO Gujarat
+            id: CEO
+            designation: CEO
+    coursebatchmanapiCriteria:
+      title: Criteria
+      required:
+        - enrollment
+      type: object
+      properties:
+        enrollment:
+          $ref: '#/components/schemas/coursebatchmanapiEnrollment'
+      example:
+        enrollment:
+          status: 2
+    coursebatchmanapiEnrollment:
+      title: Enrollment
+      required:
+        - status
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+      example:
+        status: 2
+    coursebatchmanapiNotifyTemplate:
+      title: NotifyTemplate
+      required:
+        - emailTemplateType
+        - subject
+        - stateImgUrl
+        - regards
+        - regardsperson
+      type: object
+      properties:
+        emailTemplateType:
+          type: string
+        subject:
+          type: string
+        stateImgUrl:
+          type: string
+        regards:
+          type: string
+        regardsperson:
+          type: string
+      example:
+        emailTemplateType: defaultCertTemp
+        subject: Completion certificate
+        stateImgUrl: 'https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png'
+        regards: Minister of Gujarat
+        regardsperson: Chairperson
+    coursebatchmanapiIssuer:
+      title: Issuer
+      required:
+        - name
+        - url
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+      example:
+        name: Gujarat Council of Educational Research and Training
+        url: 'https://gcert.gujarat.gov.in/gcert/'
+    coursebatchmanapiSignatoryList:
+      title: SignatoryList
+      required:
+        - image
+        - name
+        - id
+        - designation
+      type: object
+      properties:
+        image:
+          type: string
+        name:
+          type: string
+        id:
+          type: string
+        designation:
+          type: string
+      example:
+        image: 'https://cdn.pixabay.com/photo/2014/11/09/08/06/signature-523237__340.jpg'
+        name: CEO Gujarat
+        id: CEO
+        designation: CEO
+    coursebatchmanapiCourseBatchCreateRequest:
+      title: CourseBatchCreateRequest
+      required:
+        - request
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreate-Request'
+      example:
+        request:
+          courseId: '{{course-id}}'
+          name: test cert scalability
+          description: batch description1
+          enrollmentType: open
+          startDate: '2020-11-23'
+          endDate: '2021-12-30'
+    coursebatchmanapiCourseBatchCreate-Request:
+      title: CourseBatchCreate-Request
+      required:
+        - courseId
+        - name
+        - description
+        - enrollmentType
+        - startDate
+        - endDate
+      type: object
+      properties:
+        courseId:
+          type: string
+          description: 'Content id for which user want to create a course'
+        name:
+          type: string
+          description: 'Name of the course'
+        description:
+          type: string
+          description: 'About courses'
+        enrollmentType:
+          type: string
+          description: 'Possible values are {invite-only and open}'
+        startDate:
+          type: string
+          description: 'Start data of the batch valid format is yyyy-mm-dd'
+        endDate:
+          type: string
+          description: 'End data of batch valid format is yyyy-mm-dd'
+        createdFor:
+          type: array
+          description: 'This will hold list of organisations id. This is mandatory in case of invite-only badge'
+          items:
+            type: string
+        mentors:
+          type: array
+          description: 'List of user id who will take care of course'
+          items:
+            type: string
+      example:
+        courseId: '{{course-id}}'
+        name: test cert scalability
+        description: batch description1
+        enrollmentType: open
+        startDate: '2020-11-23'
+        endDate: '2021-12-30'
+    coursebatchmanapiCourseBatchCreate-400BadRequest-InvalidCourseId:
+      title: CourseBatchCreate-400BadRequest-InvalidCourseId
+      description: CourseBatchCreate-400BadRequest-InvalidCourseId
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/coursebatchmanapiParams1'
+        responseCode:
+          type: string
+        result:
+          type: object
+      example:
+        id: api.course.batch.create
+        ver: v1
+        ts: '2020-11-23 06:40:48:878+0000'
+        params:
+          resmsgid: null
+          msgid: e85a4592-7458-4506-a3e3-0dc00d923616
+          err: INVALID_COURSE_ID
+          status: INVALID_COURSE_ID
+          errmsg: Course doesnot exist. Please provide a valid course identifier
+        responseCode: CLIENT_ERROR
+        result: {}
+    coursebatchmanapiCourseBatchCreate-500InternalServerError:
+      title: CourseBatchCreate-500InternalServerError
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/coursebatchmanapiParams2'
+        responseCode:
+          type: string
+        result:
+          type: object
+      example:
+        id: api.course.batch.create
+        ver: v1
+        ts: '2020-11-23 15:15:18:331+0000'
+        params:
+          resmsgid: null
+          msgid: null
+          err: INTERNAL_ERROR
+          status: SERVER_ERROR
+          errmsg: 'Process failed,please try again later.'
+        responseCode: SERVER_ERROR
+        result: {}
+    coursebatchmanapiCourseBatchCreate-200OK:
+      title: CourseBatchCreate-200OK
+      required:
+        - id
+        - ver
+        - ts
+        - params
+        - responseCode
+        - result
+      type: object
+      properties:
+        id:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: string
+        params:
+          $ref: '#/components/schemas/coursebatchmanapiParams'
+        responseCode:
+          type: string
+        result:
+          $ref: '#/components/schemas/coursebatchmanapiCourseBatchCreate-Result'
+      example:
+        id: api.course.batch.create
+        ver: v1
+        ts: '2020-11-23 06:42:39:001+0000'
+        params:
+          resmsgid: null
+          msgid: 8c244093-e19d-4694-a4ba-342bc0f8b721
+          err: null
+          status: success
+          errmsg: null
+        responseCode: OK
+        result:
+          response: SUCCESS
+          batchId: 01315728917531852810
+    coursebatchmanapiCourseBatchCreate-Result:
+      title: Result2
+      required:
+        - response
+        - batchId
+      type: object
+      properties:
+        response:
+          type: string
+        batchId:
+          type: string
+      example:
+        response: SUCCESS
+        batchId: 01315728917531852810
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+tags:
+  - name: Course Batch APIs
+    description: ''
