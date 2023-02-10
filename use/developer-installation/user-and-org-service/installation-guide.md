@@ -10,7 +10,7 @@ Fork the below projects and clone it from git,
 
 `git clone` [`https://github.com/Sunbird-Lern/sunbird-lms-service/`](https://github.com/Sunbird-Lern/sunbird-lms-service/)**(latest release branch)**
 
-`git clone` [`https://github.com/Sunbird-Lern/sunbird-utils`](https://github.com/Sunbird-Lern/sunbird-utils)``
+`git clone` [`https://github.com/Sunbird-Lern/sunbird-utils`](https://github.com/Sunbird-Lern/sunbird-utils)\`\`
 
 Run,\
 `mvn clean install -DskipTests` in sunbird-utils & in sunbird-lms-service
@@ -29,31 +29,30 @@ Kindly check the latest environment properties file to ensure any new properties
 
 #### **Cassandra** **Migration**:
 
-Before starting with migration please ensure to set the env variables In terminal, \
-execute following commands for cassandra migration: \
+Before starting with migration please ensure to set the env variables In terminal,\
+execute following commands for cassandra migration:\
 \
-`sudo docker exec -it sunbird_cassandra sh` \
-`cqlsh -f /sunbird-lms-service/service/src/main/resources/cassandra.cql` \
+`sudo docker exec -it sunbird_cassandra sh`\
+`cqlsh -f /sunbird-lms-service/service/src/main/resources/cassandra.cql`\
 \
 Open a new Terminal In the path **\<Project base path>**/sunbird-utils,\
 Run the below command,\
-`mvn clean install -DskipTests`&#x20;
+`mvn clean install -DskipTests`
 
 Make sure the build is **success** and then,\
 open a new Terminal In the path, **\<Project base path>/sunbird-utils/sunbird-cassandra-migration/cassandra-migration**,\
 Run below command,\
-`mvn clean install -DskipTests` \
+`mvn clean install -DskipTests`\
 `mvn exec:java`
 
-In the console see which migration version has failed and update the success flag to true for that version using below query, \
+In the console see which migration version has failed and update the success flag to true for that version using below query,\
 `update cassandra_migration_version set success = True where version='1.86';` //Give the failed version number in the query.
 
-``\
-``Once the migration is done successfully, check for the below success message,\
-**sunbird is up to date. No migration necessary.** \
+`\` Once the migration is done successfully, check for the below success message,\
+**sunbird is up to date. No migration necessary.**\
 **Migration Completed at ==1672910353402**
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption><p>Migration successful message</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption><p>Migration successful message</p></figcaption></figure>
 
 ### Elastic Search:
 
@@ -74,11 +73,11 @@ After creating the indices and mappings, add respective org index to org\_alias 
 Elastic search details need to be configured in elasticsearch.config.properties
 
 **Steps to Deploy and Run user org service in your system:**\
-****\
-****1. Open a new command line terminal in your system in the path,\
+\*\*\*\*\
+\*\*\*\*1. Open a new command line terminal in your system in the path,\
 **\<Project base path>/sunbird-lms-service** and fire the below command,\
 `mvn clean install -DskipTests`\
-``Please ensure the build is success before firing the below command, if the build is not success then the project might not be imported properly and there is some configuration issues, fix the same and rebuild until it is successful. Post release-5.1.0 just go to **application.conf** and make the flag **AuthenticationEnabled** as **false , t**his will enable you to access all API's locally by declaring you as anonymous.
+\`\`Please ensure the build is success before firing the below command, if the build is not success then the project might not be imported properly and there is some configuration issues, fix the same and rebuild until it is successful. Post release-5.1.0 just go to **application.conf** and make the flag **AuthenticationEnabled** as **false , t**his will enable you to access all API's locally by declaring you as anonymous.
 
 2\. Then go to the path,\
 **\<Project base path>/sunbird-lms-service/controller** and fire the below command,\
@@ -191,7 +190,7 @@ curl --location --request POST 'localhost:9000/v1/org/create' \
 ```
 
 \
-Use below **request body/curl** to setup the pre-required system settings like **custodian channel**, **custodian org id** , **user profile config** and **org profile config.**Please ensure you get a <mark style="color:green;">**200 OK**</mark> response after creation.
+Use below **request body/curl** to setup the pre-required system settings like **custodian channel**, **custodian org id** , **user profile config** and \*\*org profile config.\*\*Please ensure you get a <mark style="color:green;">**200 OK**</mark> response after creation.
 
 {% code overflow="wrap" %}
 ```json
@@ -313,8 +312,6 @@ curl --location --request POST 'localhost:9000/v1/system/settings/set' \
 }'
 ```
 {% endcode %}
-
-
 
 Once the setup done, create user using below APIs
 
