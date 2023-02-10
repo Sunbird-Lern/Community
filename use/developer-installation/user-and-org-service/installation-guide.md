@@ -52,7 +52,7 @@ In the console see which migration version has failed and update the success fla
 **sunbird is up to date. No migration necessary.**\
 **Migration Completed at ==1672910353402**
 
-<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption><p>Migration successful message</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption><p>Migration successful message</p></figcaption></figure>
 
 ### Elastic Search:
 
