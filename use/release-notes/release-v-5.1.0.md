@@ -33,8 +33,6 @@
 
 [LR-4 ](https://project-sunbird.atlassian.net/browse/LR-4)Design on Migration of existing certificate in to RC
 
-[LR-6](https://project-sunbird.atlassian.net/browse/LR-6) Migration of existing certificate in to RC
-
 [LR-241 ](https://project-sunbird.atlassian.net/browse/LR-241)UserOrg: Identity manager should be optional for setup
 
 [LR-242](https://project-sunbird.atlassian.net/browse/LR-242) UserOrg:Decoupling the external dependencies so that installation is easier like configuring the form api validation to Sunbird Ed
