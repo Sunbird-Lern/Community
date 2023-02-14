@@ -37,6 +37,7 @@
     * [How to Guide](learn/product-and-developer-guide/user-and-org-service/how-to-guide/README.md)
       * [Create Organization](learn/product-and-developer-guide/user-and-org-service/how-to-guide/create-organization.md)
       * [Create User](learn/product-and-developer-guide/user-and-org-service/how-to-guide/create-user.md)
+    * [Caching and Denormalising User Metadata](learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata.md)
   * [BATCH SERVICE](learn/product-and-developer-guide/batch-service/README.md)
     * [Architecture](learn/product-and-developer-guide/batch-service/architecture.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/batch-service/features-core-capabilities.md)
