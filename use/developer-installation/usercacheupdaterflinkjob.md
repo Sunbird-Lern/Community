@@ -19,8 +19,9 @@ Reference Wiki Links:
 
 ![](blob:https://project-sunbird.atlassian.net/4576cfc6-d4bf-4cad-b0a5-b217e77358ed#media-blob-url=true\&id=2da0751c-f2f3-4ec6-9a84-917fce115f47\&collection=contentId-1520074753\&contextId=1520074753\&height=551\&width=501\&alt=)Design for the fields to be fetched:
 
-| **User-ID**           | String        | userId                                                 | It indicates user unique Identifier                                              |
+| Field Name            | Type          | Logic to fetch                                         | Description                                                                      |
 | --------------------- | ------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| **User-ID**           | String        | userId                                                 | It indicates user unique Identifier                                              |
 | **Mobile Number**     | String        | encPhone                                               | User phone number in an encrypted format                                         |
 | **Email ID**          | String        | encEmail                                               | User mail id in an encrypted format                                              |
 | First Name            | String        | firstName                                              | User first name                                                                  |

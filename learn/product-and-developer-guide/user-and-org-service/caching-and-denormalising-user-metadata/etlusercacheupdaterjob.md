@@ -38,8 +38,9 @@ CREATE TABLE sunbird.organisation ( id text PRIMARY KEY, addressid text, approve
 
 &#x20;
 
-| <p><br><br></p> | ****                  | ****          | ****                                                                                         |                                                                                                                                            |
+|                 | Field Name            |  Type         | Table Name                                                                                   | Description                                                                                                                                |
 | --------------- | --------------------- | ------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| <p><br><br></p> | ****                  | ****          | ****                                                                                         |                                                                                                                                            |
 | 1               | **Block Name**        | String        | <p>USER - get locationids from USER.profilelocation[*].id</p><p>LOCATION - LOCATION.name</p> | <p>User’s Block Name.<br>USER.profilelocation.{id}=LOCATION.id and LOCATION.type='block' and fetch the { name } as block_name</p>          |
 | 2               | Board                 | String        | USER.framework.{ board }                                                                     | <p>User’s board<br>Assumption: It is single valued</p>                                                                                     |
 | 3               | **Cluster Name**      | String        | <p>USER - get locationids from USER.profilelocation[*].id</p><p>LOCATION - LOCATION.name</p> | <p>User’s Cluster Name.<br>USER.profilelocation.{id}=LOCATION.id and LOCATION.type='cluster' and fetch the { name } as cluster_name</p>    |
@@ -64,7 +65,8 @@ CREATE TABLE sunbird.organisation ( id text PRIMARY KEY, addressid text, approve
 
 **Properties to be Deleted:**
 
-| Externalid | String | user\_declaration | The **externalid** will be removed from userinfo-exhaust report |
-| ---------- | ------ | ----------------- | --------------------------------------------------------------- |
+| Field Namee | Type   | Table Name        | Description                                                     |
+| ----------- | ------ | ----------------- | --------------------------------------------------------------- |
+| Externalid  | String | user\_declaration | The **externalid** will be removed from userinfo-exhaust report |
 
 \
