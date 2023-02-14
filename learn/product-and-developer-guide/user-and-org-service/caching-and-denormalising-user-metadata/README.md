@@ -6,7 +6,7 @@ Various data products in sunbird depends on the user metadata which are generate
 
 Fetch the information from cassandra table, compute all the required fields in the flink job (user-cache-updater job) and update all the fields to the redis cache.
 
-<figure><img src="../../../.gitbook/assets/image-20200629-050537.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image-20200629-050537.png" alt=""><figcaption></figcaption></figure>
 
 #### Design for the fields to be fetched: <a href="#design-for-the-fields-to-be-fetched" id="design-for-the-fields-to-be-fetched"></a>
 

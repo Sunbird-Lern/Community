@@ -11,11 +11,11 @@ Reference Wiki Links:
 
 **Current Design Implementation:**
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Proposed Design Implementation:**
 
-<figure><img src="../../.gitbook/assets/image (24).png" alt="usercacheupdaterflinkdesign"><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (24).png" alt="usercacheupdaterflinkdesign"><figcaption></figcaption></figure>
 
 ![](blob:https://project-sunbird.atlassian.net/4576cfc6-d4bf-4cad-b0a5-b217e77358ed#media-blob-url=true\&id=2da0751c-f2f3-4ec6-9a84-917fce115f47\&collection=contentId-1520074753\&contextId=1520074753\&height=551\&width=501\&alt=)Design for the fields to be fetched:
 
