@@ -6,6 +6,12 @@ The Discussions Forum allows users to participate in multiple discussions on the
 * post the questions, reply to posts, upvote or downvote posts
 * create topics, forum, groups, users and manage them
 * Tag categories and update privileges
+* &#x20;The user will be able to edit and delete the topic and post
+* &#x20; If the user once disables and enables the Discussion Forum the old topics and posts should not be there.
+* Once the user clicks the forum icon he would be able to see 3 tabs,
+  * Categories
+  * Tags
+  * My Discussion
 
 ### Hierarchy of discussions <a href="#hierarchy-of-discussions" id="hierarchy-of-discussions"></a>
 

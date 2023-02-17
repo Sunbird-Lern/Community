@@ -28,10 +28,6 @@ You can refer to \*\*\*\* the below API documentation to see all the Groups APIs
 [group.yaml](../../../.gitbook/assets/group.yaml)
 {% endswagger %}
 
-{% swagger src="../../../.gitbook/assets/group.yaml" path="/group/membership/v1/update" method="post" %}
-[group.yaml](../../../.gitbook/assets/group.yaml)
-{% endswagger %}
-
 **Activity Related API**
 
 {% swagger src="../../../.gitbook/assets/activity.yaml" path="undefined" method="undefined" %}

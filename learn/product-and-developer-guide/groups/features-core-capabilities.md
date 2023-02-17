@@ -11,3 +11,5 @@
 7. Group-related in-app notifications are enabled with the help of Sunbird Lern - Notification service.
 8. Redis cache support can be enabled for caching groups list and the group details using configuration. For a user group list, the default caching time is 3600 seconds and that of each group detail is 86400 seconds.
 9. Groups can be deleted only by the creator, not by the admin.
+10. The user can activate or deactivate the group
+11. The user can also edit and update the group based on the need
