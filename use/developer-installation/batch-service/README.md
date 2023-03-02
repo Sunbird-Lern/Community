@@ -6,8 +6,8 @@ Please refer to the Sunbird documentation link [Courses](http://docs.sunbird.org
 
 Please refer to the github readme document.
 
-{% embed url="https://github.com/sunbird-lern/sunbird-course-service/blob/release-4.5.0/README.md" %}
+{% embed url="https://github.com/Sunbird-Lern/sunbird-course-service/blob/bootcamp/README.md" %}
 
-Flink Certificate Issue and Generate events
+Generate Certificates and Generate events
 
 {% embed url="https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/1782087720/Flink+jobs+for+certificates+generation+and+processing" %}

@@ -8,35 +8,57 @@ This section describes how to install and run Batch Service
 
 Batch service requires few configurations to be set in properties file. Some of these properties can also be set as environment variables.
 
-* Application functional configurations and dependency service configurations has to be mentioned in externalresource.properties file
+#### Create a folder structure to organise the data
 
-{% embed url="https://github.com/sunbird-lern/sunbird-course-service/tree/release-4.5.0/course-mw/sunbird-util/sunbird-platform-core/common-util/src/main/resources" %}
+| Command      | <p>mkdir -p ~/sunbird-dbs/cassandra ~/sunbird-dbs/es </p><p>export sunbird_dbs_path=~/sunbird-dbs</p> |
+| ------------ | ----------------------------------------------------------------------------------------------------- |
+| Verification | echo $sunbird\_dbs\_path                                                                              |
 
-* Cassandra Migration in [sunbird-utils](https://github.com/sunbird-lern/sunbird-utils) needs to be run before batch service run to create necessary tables required. Database details need to be configured in dbconfig.propeties file.
+#### Setup Cassandra
 
-{% embed url="https://github.com/sunbird-lern/sunbird-utils/tree/master/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra" %}
+| Pull Cassandra docker image      | docker pull cassandra:3.11.6                                                                                                                                                                                                                                                  |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Create a docker network          | docker network create sunbird\_db\_network                                                                                                                                                                                                                                    |
+| Start Cassandra docker container | docker run -p 9042:9042 --name sunbird\_cassandra -v $sunbird\_dbs\_path/cassandra/data:/var/lib/cassandra -v $sunbird\_dbs\_path/cassandra/logs:/opt/cassandra/logs -v $sunbird\_dbs\_path/cassandra/backups:/mnt/backups --network sunbird\_db\_network -d cassandra:3.11.6 |
+| Validate                         | docker ps -a \| grep cassandra                                                                                                                                                                                                                                                |
 
-*   Elastic search need to be setup with indices and mappings from [sunbird-utils](https://github.com/sunbird-lern/sunbird-utils). Elastic search details need to be configured in elasticsearch.config.properties
+**Seed data to Cassandra**
 
-    Pick all the indices and mappings from these folders and create index and mapping using postman.
+| Provide permission to the  sunbird-dbs/cassandra folder                                  | chmod -R 777 sunbird-dbs/cassandra                                                                                                                                      |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Copy the sunbird\_courses.cql file from github to /sunbird-dbs/cassandra/backups folder. | wget -O sunbird-dbs/cassandra/backups/sunbird\_courses.cql" https://raw.githubusercontent.com/Sunbird-Lern/sunbird-course-service/bootcamp/scripts/sunbird\_courses.cql |
+| Start the Cassandra cypher shell                                                         | docker exec -it sunbird\_cassandra cqlsh                                                                                                                                |
+| Load database schema                                                                     | source '/mnt/backups/sunbird\_courses.cql'                                                                                                                              |
 
-    PUT http://localhost:9200/\<indices\_name> Body : \<indices\_json\_content>
+#### Setup Elasticsearch
 
-    PUT http://localhost:9200/\<indices\_name>/\_mapping/\_doc Body : \<mapping\_json\_content>
+| Pull Elasticsearch docker image                    | docker pull elasticsearch:6.8.11                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Start Elasticsearch docker container               | docker run -p 9200:9200 --name sunbird\_es -v $sunbird\_dbs\_path/es/data:/usr/share/elasticsearch/data -v $sunbird\_dbs\_path/es/logs://usr/share/elasticsearch/logs -v $sunbird\_dbs\_path/es/backups:/opt/elasticsearch/backup -e "discovery.type=single-node" --network sunbird\_db\_network -d docker.elastic.co/elasticsearch/elasticsearch:6.8.11                                                                                                                         |
+| Validate                                           | docker ps -a \| grep es                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Change permissions for the folder                  | <p>chmod -R 777 sunbird-dbs/es</p><p><br></p>                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Create “course-batch” index and update the mapping | <p>Get the index and mapping from these folders and create them using postman.</p><p><a href="https://github.com/project-sunbird/sunbird-devops/tree/master/ansible/roles/es-mapping">https://github.com/project-sunbird/sunbird-devops/tree/master/ansible/roles/es-mapping</a></p><p>PUT http://localhost:9200/&#x3C;indices_name> Body : &#x3C;indices_json_content></p><p>PUT http://localhost:9200/&#x3C;indices_name>/_mapping/_doc Body : &#x3C;mapping_json_content></p> |
 
-{% embed url="https://github.com/sunbird-lern/sunbird-utils/tree/master/sunbird-es-utils/src/main/resources" %}
+#### Setup Redis
 
-**Installation :**
+| Pull Redis docker image       | docker pull redis:4.0.0                                      |
+| ----------------------------- | ------------------------------------------------------------ |
+| Start Redis docker container  | docker run --name sunbird\_redis -d -p 6379:6379 redis:4.0.0 |
+| Validate                      | docker ps -a \| grep redis                                   |
+| SSH to Redis docker container | docker exec -it sunbird\_redis bash                          |
 
-* [ ] Fork https://github.com/sunbird-lern/sunbird-course-service and clone the latest release branch
-* [ ] Download all the files at https://drive.google.com/drive/folders/1VSu3wa70E7zbwtBw-dUAKa7qgL\_yrMUW?usp=sharing
-* [ ] Export all in lms-config.sh
-* [ ] Create cassandra keyspace and tables using courses\_db.cql
-* [ ] Create ES index using course-batch.json and course-batch-mapping.json
-* [ ] Build course-service with maven clean install -DskipTests
-* [ ] cd service
-* [ ] To run the service, maven play2:run
-* [ ] To Debug the service, mvnDebug play2:run
+Batch Service Setup
+
+| Clone Repository                 | git clone https://github.com/\<YOUR\_FORK>/sunbird-course-service.git                                                                                                                                                                                                                                                                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Checkout branch                  | <p>cd sunbird-course-service</p><p>git remote -v</p><p>git remote remove origin</p><p>git remote add origin git@github.com:&#x3C;user_github_id>/sunbird-course-service.git</p><p>git remote add upstream </p><p>git@github.com:sunbird-lern/sunbird-course-service.git</p><p>git checkout -b &#x3C;release branch></p><p>git pull upstream &#x3C;release branch></p> |
+| Export the configuration         | Update the lms-service.sh file in the scripts folder with configuration values to setup environment variables. Copy and run it to export the values                                                                                                                                                                                                                   |
+| Verify the configuration         | echo $sunbird\_es\_host                                                                                                                                                                                                                                                                                                                                               |
+| Build the code base              | <p>cd sunbird-course-service</p><p>mvn clean install -DskipTests</p>                                                                                                                                                                                                                                                                                                  |
+| Run the service                  | <p>cd service</p><p>mvn play2:run</p><p><br></p>                                                                                                                                                                                                                                                                                                                      |
+| Check the setup using health API | curl --location --request GET 'http://localhost:9000/health’                                                                                                                                                                                                                                                                                                          |
+
+
 
 **How to run Flink?**
 
