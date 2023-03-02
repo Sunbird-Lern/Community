@@ -4,9 +4,7 @@
 
 This section describes how to install and run Batch Service
 
-#### **Installation Configuration:**
-
-Batch service requires few configurations to be set in properties file. Some of these properties can also be set as environment variables.
+#### **Installation :**
 
 #### Create a folder structure to organise the data
 
@@ -47,7 +45,7 @@ Batch service requires few configurations to be set in properties file. Some of 
 | Validate                      | docker ps -a \| grep redis                                   |
 | SSH to Redis docker container | docker exec -it sunbird\_redis bash                          |
 
-Batch Service Setup
+**Batch Service Setup**
 
 | Clone Repository                 | git clone https://github.com/\<YOUR\_FORK>/sunbird-course-service.git                                                                                                                                                                                                                                                                                                 |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
