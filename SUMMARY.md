@@ -131,6 +131,7 @@
       * [Discussion-UI setup along with demo application.](use/developer-installation/discussion-forum/installation-guide/discussion-ui-setup-along-with-demo-application..md)
       * [Sunbird-lern portal for DF](use/developer-installation/discussion-forum/installation-guide/sunbird-lern-portal-for-df.md)
     * [Source Code](use/developer-installation/discussion-forum/source-code.md)
+* [Dependency setup](use/dependency-setup.md)
 * [Release Notes](use/release-notes/README.md)
   * [Release V 5.1.0](use/release-notes/release-v-5.1.0.md)
   * [Release V 5.0.1](use/release-notes/release-v-5.0.1.md)
