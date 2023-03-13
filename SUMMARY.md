@@ -133,6 +133,7 @@
     * [Source Code](use/developer-installation/discussion-forum/source-code.md)
 * [Dependency setup](use/dependency-setup.md)
 * [Release Notes](use/release-notes/README.md)
+  * [Release V 5.2.0](use/release-notes/release-v-5.2.0.md)
   * [Release V 5.1.0](use/release-notes/release-v-5.1.0.md)
   * [Release V 5.0.1](use/release-notes/release-v-5.0.1.md)
   * [Release V 5.0.0](use/release-notes/release-v-5.0.0-latest.md)
