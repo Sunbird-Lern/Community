@@ -46,4 +46,7 @@ Addition of user cache and user cache indexer job to data products\
 [LR-328](https://project-sunbird.atlassian.net/browse/LR-328) POC on OIDC support using keycloak \
 [LR-330](https://project-sunbird.atlassian.net/browse/LR-330) Certificate font change after CSP migration \
 [LR-323](https://project-sunbird.atlassian.net/browse/LR-323) Course Progress Exhaust to capture the number of attempts \
-[LR-360](https://project-sunbird.atlassian.net/browse/LR-360) CLONE - Migration of existing certificate into RC
+[LR-360](https://project-sunbird.atlassian.net/browse/LR-360) CLONE - Migration of existing certificate into RC\
+[LR-101](https://project-sunbird.atlassian.net/browse/LR-101) Bring in cassandra migration and csqls to respective component repos
+
+[LR-122](https://project-sunbird.atlassian.net/browse/LR-122) Lern repo and pod name correction to match the component name
