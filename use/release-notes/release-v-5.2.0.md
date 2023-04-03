@@ -8,13 +8,13 @@
 
 ### Details of Released Tag
 
-| Components        | Jenkins Job                          | Deploy Tags (Devops) | Build Tags (Github Repo Tags)               | Github Repository                                                                                                | Comments |
-| ----------------- | ------------------------------------ | -------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- |
-| Batch Service     | Build/Core/Lms                       | release-5.2.0        | <p>sunbird-course-service : </p><p><br></p> | [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/Sunbird-Lern/sunbird-course-service) |          |
-| Batch Service     | Build/job/Lern/job/FlinkJobs         | release-5.2.0        | <p>data-pipeline : <br></p>                 | [https://github.com/Sunbird-Lern/data-pipeline](https://github.com/Sunbird-Lern/data-pipeline)                   |          |
-| User\&Org Service | Build/Core/Learner                   | release-5.2.0        | sunbird-lms-service :                       | [https://github.com/Sunbird-Lern/sunbird-lms-service](https://github.com/Sunbird-Lern/sunbird-lms-service)       |          |
-| Data Products     | Build/job/Lern/job/LernDataProducts/ | release-5.2.0        | data-products :                             | [https://github.com/Sunbird-Lern/data-products](https://github.com/Sunbird-Lern/data-products)                   |          |
-|                   |                                      |                      |                                             |                                                                                                                  |          |
+| Components          | Jenkins Job                          | Deploy Tags (Devops) | Build Tags (Github Repo Tags)               | Github Repository                                                                                                | Comments |
+| ------------------- | ------------------------------------ | -------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- |
+| Batch Service       | Build/Core/Lms                       | release-5.2.0        | <p>sunbird-course-service : </p><p><br></p> | [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/Sunbird-Lern/sunbird-course-service) |          |
+| Batch Service       | Build/job/Lern/job/FlinkJobs         | release-5.2.0        | <p>data-pipeline : <br></p>                 | [https://github.com/Sunbird-Lern/data-pipeline](https://github.com/Sunbird-Lern/data-pipeline)                   |          |
+| User\&Org Service   | Build/Core/Learner                   | release-5.2.0        | sunbird-lms-service :                       | [https://github.com/Sunbird-Lern/sunbird-lms-service](https://github.com/Sunbird-Lern/sunbird-lms-service)       |          |
+| Data Products       | Build/job/Lern/job/LernDataProducts/ | release-5.2.0        | data-products :                             | [https://github.com/Sunbird-Lern/data-products](https://github.com/Sunbird-Lern/data-products)                   |          |
+| Cassandra Migration |                                      |                      |                                             |                                                                                                                  |          |
 
 ### Env Configurations (Needs to be done before service deployment):
 
