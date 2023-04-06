@@ -8,12 +8,37 @@
 
 ### Details of Released Tag
 
-| Components        | Jenkins Job                          | Deploy Tags (Devops) | Build Tags (Github Repo Tags)                                                                                                                                                 | Github Repository                                                                                                | Comments |
-| ----------------- | ------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- |
-| Batch Service     | Build/Core/Lms                       | release-5.2.0        | <p>sunbird-course-service : <a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.2.0_RC2">release-5.2.0_RC2</a></p><p><br></p>              | [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/Sunbird-Lern/sunbird-course-service) |          |
-| Data pipeline     | Build/job/Lern/job/FlinkJobs         | release-5.2.0        | <p>data-pipeline : <br><a href="https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.2.0_RC1">release-5.2.0_RC1</a></p>                                       | [https://github.com/Sunbird-Lern/data-pipeline](https://github.com/Sunbird-Lern/data-pipeline)                   |          |
-| User\&Org Service | Build/Core/Learner                   | release-5.2.0        | sunbird-lms-service : [release-5.2.0\_RC1](http://localhost:5000/s/aQ7wCJOT0ZaejHUiD6sb/about/product-and-developer-guide/adapters/file-adapter/excel-ftp-and-sftp-handler)   | [https://github.com/Sunbird-Lern/sunbird-lms-service](https://github.com/Sunbird-Lern/sunbird-lms-service)       |          |
-| Data Products     | Build/job/Lern/job/LernDataProducts/ | release-5.2.0        | <p>data-products : <br><a href="https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.2.0_RC1">release-5.2.0_RC1</a></p>                                       | [https://github.com/Sunbird-Lern/data-products](https://github.com/Sunbird-Lern/data-products)                   |          |
+| Components        | Jenkins Job                  | Deploy Tags (Devops) | Build Tags (Github Repo Tags)                                                                                                                                                 | Github Repository                                                                                                | Comments |
+| ----------------- | ---------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- |
+| Batch Service     | Build/Core/Lms               | release-5.2.0        | <p>sunbird-course-service : <a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.2.0_RC2">release-5.2.0_RC2</a></p><p><br></p>              | [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/Sunbird-Lern/sunbird-course-service) |          |
+| Data pipeline     | Build/Lern/FlinkJobs         | release-5.2.0        | <p>data-pipeline : <br><a href="https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.2.0_RC1">release-5.2.0_RC1</a></p>                                       | [https://github.com/Sunbird-Lern/data-pipeline](https://github.com/Sunbird-Lern/data-pipeline)                   |          |
+| User\&Org Service | Build/Core/Learner           | release-5.2.0        | sunbird-lms-service : [release-5.2.0\_RC1](http://localhost:5000/s/aQ7wCJOT0ZaejHUiD6sb/about/product-and-developer-guide/adapters/file-adapter/excel-ftp-and-sftp-handler)   | [https://github.com/Sunbird-Lern/sunbird-lms-service](https://github.com/Sunbird-Lern/sunbird-lms-service)       |          |
+| Data Products     | Build/Lern/LernDataProducts/ | release-5.2.0        | <p>data-products : <br><a href="https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.2.0_RC1">release-5.2.0_RC1</a></p>                                       | [https://github.com/Sunbird-Lern/data-products](https://github.com/Sunbird-Lern/data-products)                   |          |
+|                   |                              | reease-5.2.0         | sunbird-utils : [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/sunbird-utils/releases/tag/release-5.2.0\_RC1)                                                           | [https://github.com/Sunbird-Lern/sunbird-utils](https://github.com/Sunbird-Lern/sunbird-utils)                   |          |
+
+**Summary of the Changes**
+
+* **Refactoring of Dial code dependency**: An API was developed to fetch QR code image URLs and resolve relative paths from the DIAL service instead of the current connection to the Cassandra table.
+* **API automation using Postman for P0 APIs**
+* **Movement of UserCache and UserCacheIndexer in Data Pipeline to Lern**
+* **Test Automation for CSP**
+* **Cassandra migration and grouping cql scripts with respect to keyspaces**
+* **User detail report for programs**
+
+\
+**Bug Fixes** - click [here](https://project-sunbird.atlassian.net/browse/LR-405?jql=created%20%3E%3D%202023-02-22%20AND%20created%20%3C%3D%202023-03-22%20AND%20project%20%3D%20LR%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20\(%22Failed%20Validation%22%2C%20%22In%20Development%22%2C%20%22In%20Validation%22%2C%20Open%2C%20%22Selected%20for%20Contribution%22\)%20AND%20affectedVersion%20in%20\(5.2.0%2C%205.2.0.0\)%20AND%20labels%20%3D%20External\_BB\_Issue%20ORDER%20BY%20created%20DESC) to see the list of bugs fixed as a part of this release.\
+\
+**Details of the Changes:**\
+[LR-301](https://project-sunbird.atlassian.net/browse/LR-301) API automation using Postman for P0 APIs\
+[LR-302](https://project-sunbird.atlassian.net/browse/LR-302) Movement of UserCacheIndexer Data Product to Lern \
+[LR-303](https://project-sunbird.atlassian.net/browse/LR-303) Movement of UserCache in Data Pipeline to Lern\
+[LR-306](https://project-sunbird.atlassian.net/browse/LR-306) Test Automation for CSP \
+[LR-322](https://project-sunbird.atlassian.net/browse/LR-322) API automation using Newman for P0 APIs\
+[LR-325](https://project-sunbird.atlassian.net/browse/LR-325) BatchService: Refactoring of SB Lern Batch Service - DialCode Dependency \
+[LR-101](https://project-sunbird.atlassian.net/browse/LR-101) Cassandra migration and grouping cql scripts with respect to keyspaces\
+[LR-307](https://project-sunbird.atlassian.net/browse/LR-307) Setting up a complete testing env for Lern with all other BBs\
+[LR-285](https://project-sunbird.atlassian.net/browse/LR-285) User detail report for programs\
+[LR-122](https://project-sunbird.atlassian.net/browse/LR-122) Lern repo and pod name correction to match the component name
 
 ### Env Configurations (Needs to be done before service deployment):
 
@@ -44,7 +69,7 @@ CREATE TABLE <keyspace>.cassandra_migration_version_counts ( name text PRIMARY K
 * To export cassandra\_migration\_version table COPY,
 
 ```sql
-<keyspace>.cassandra_migration_version TO '/tmp/cassandra_migration_version.csv';
+sunbird.cassandra_migration_version TO '/tmp/cassandra_migration_version.csv';
 ```
 
 * To import cassandra\_migration\_version table COPY&#x20;
@@ -56,7 +81,7 @@ CREATE TABLE <keyspace>.cassandra_migration_version_counts ( name text PRIMARY K
 * To export cassandra\_migration\_version\_count table COPY&#x20;
 
 ```
-<keyspace>.cassandra_migration_version TO '/tmp/cassandra_migration_version_count.csv';
+sunbird.cassandra_migration_version TO '/tmp/cassandra_migration_version_count.csv';
 ```
 
 * To import cassandra\_migration\_version\_count table COPY&#x20;
@@ -75,7 +100,7 @@ CREATE TABLE <keyspace>.cassandra_migration_version_counts ( name text PRIMARY K
 
 <details>
 
-<summary>LR-302,303 - Movement of User cache indexer data product and flink job from Obsrv to Lern - setup/configuration details</summary>
+<summary><a href="https://project-sunbird.atlassian.net/browse/LR-303">LR-303</a> - Movement of UserCache in Data Pipeline to Lern - setup/configuration details</summary>
 
 Flink **build** Jenkins job name: **/Build/job/Lern/job/FlinkJobs**
 
@@ -83,33 +108,7 @@ Flink **deploy** Jenkins job name:&#x20;
 
 **/Deploy/job/\<environment>/job/Lern/job/FlinkJobs/user-cache-updater-v2**\
 \
-Please define the below configuration in Dataproducts (lern-data-products/src/main/resources/application.conf) for the UserCacheIndexerJob data product to work,
 
-{% code overflow="wrap" %}
-```systemd
-redis.host=__redis_host__
-redis.port="6379"
-redis.connection.max=20
-location.db.redis.key.expiry.seconds=3600
-redis.connection.idle.max=20
-redis.connection.idle.min=10
-redis.connection.minEvictableIdleTimeSeconds=120
-redis.connection.timeBetweenEvictionRunsSeconds=300
-redis.max.pipeline.size="100000"
-#CassandraToRedis Config
-spark.cassandra.connection.host="localhost"
-cassandra.user.keyspace="sunbird"
-cassandra.user.table="user"
-redis.user.database.index="12"
-redis.user.input.index="4"
-redis.user.backup.dir="src/mount/data/analytics/content-snapshot/redisbackup"
-redis.scan.count="100000"
-redis.user.index.source.key="id" # this will be used as key for redis
-cassandra.read.timeoutMS="500000"
-cassandra.query.retry.count="100"
-cassandra.input.consistency.level="LOCAL_QUORUM"
-```
-{% endcode %}
 
 </details>
 
@@ -186,26 +185,40 @@ Jenkins job for **deploying** Cassandra: **/Deploy/job/\<environment>/job/Kubern
 
 </details>
 
-**Summary of the Changes**
+### **Data Product Configurations for Lern:**
 
-* **Refactoring of Dial code dependency**: An API was developed to fetch QR code image URLs and resolve relative paths from the DIAL service instead of the current connection to the Cassandra table.
-* **API automation using Postman for P0 APIs**
-* **Movement of UserCache and UserCacheIndexer in Data Pipeline to Lern**
-* **Test Automation for CSP**
-* **Bringing in Cassandra migration and cqls to respective component repos**
-* **User detail report for programs**
+| DataProduct Name |
+| ---------------- |
+| UserCacheIndexer |
 
-\
-**Bug Fixes** - click [here](https://project-sunbird.atlassian.net/browse/LR-405?jql=created%20%3E%3D%202023-02-22%20AND%20created%20%3C%3D%202023-03-22%20AND%20project%20%3D%20LR%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20\(%22Failed%20Validation%22%2C%20%22In%20Development%22%2C%20%22In%20Validation%22%2C%20Open%2C%20%22Selected%20for%20Contribution%22\)%20AND%20affectedVersion%20in%20\(5.2.0%2C%205.2.0.0\)%20AND%20labels%20%3D%20External\_BB\_Issue%20ORDER%20BY%20created%20DESC) to see the list of bugs fixed as a part of this release.\
-\
-**Details of the Changes:**\
-[LR-301](https://project-sunbird.atlassian.net/browse/LR-301) API automation using Postman for P0 APIs\
-[LR-302](https://project-sunbird.atlassian.net/browse/LR-302) Movement of UserCacheIndexer Data Product to Lern \
-[LR-303](https://project-sunbird.atlassian.net/browse/LR-303) Movement of UserCache in Data Pipeline to Lern\
-[LR-306](https://project-sunbird.atlassian.net/browse/LR-306) Test Automation for CSP \
-[LR-322](https://project-sunbird.atlassian.net/browse/LR-322) API automation using Newman for P0 APIs\
-[LR-325](https://project-sunbird.atlassian.net/browse/LR-325) BatchService: Refactoring of SB Lern Batch Service - DialCode Dependency \
-[LR-101](https://project-sunbird.atlassian.net/browse/LR-101) Bring in Cassandra migration and cqls to respective component repos\
-[LR-307](https://project-sunbird.atlassian.net/browse/LR-307) Setting up a complete testing env for Lern with all other BBs\
-[LR-285](https://project-sunbird.atlassian.net/browse/LR-285) User detail report for programs\
-[LR-122](https://project-sunbird.atlassian.net/browse/LR-122) Lern repo and pod name correction to match the component name
+<details>
+
+<summary><a href="https://project-sunbird.atlassian.net/browse/LR-302">LR-302</a> <a href="https://project-sunbird.atlassian.net/browse/LR-302">Movement of UserCacheIndexer Data Product to Lern</a> - setup/configuration details</summary>
+
+Please define the below configuration in Dataproducts (lern-data-products/src/main/resources/application.conf) for the UserCacheIndexerJob data product to work,
+
+```
+redis.host=__redis_host__
+redis.port="6379"
+redis.connection.max=20
+location.db.redis.key.expiry.seconds=3600
+redis.connection.idle.max=20
+redis.connection.idle.min=10
+redis.connection.minEvictableIdleTimeSeconds=120
+redis.connection.timeBetweenEvictionRunsSeconds=300
+redis.max.pipeline.size="100000"
+#CassandraToRedis Config
+spark.cassandra.connection.host="localhost"
+cassandra.user.keyspace="sunbird"
+cassandra.user.table="user"
+redis.user.database.index="12"
+redis.user.input.index="4"
+redis.user.backup.dir="src/mount/data/analytics/content-snapshot/redisbackup"
+redis.scan.count="100000"
+redis.user.index.source.key="id" # this will be used as key for redis
+cassandra.read.timeoutMS="500000"
+cassandra.query.retry.count="100"
+cassandra.input.consistency.level="LOCAL_QUORUM"
+```
+
+</details>
