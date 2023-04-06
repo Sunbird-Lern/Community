@@ -1,6 +1,6 @@
 # Release V 5.2.0
 
-### Document Release Version <a href="#document-release-version" id="document-release-version"></a>
+### ocument Release Version <a href="#document-release-version" id="document-release-version"></a>
 
 | Project | Release Date | Version |
 | ------- | ------------ | ------- |
@@ -8,13 +8,13 @@
 
 ### Details of Released Tag
 
-| Components        | Jenkins Job                  | Deploy Tags (Devops) | Build Tags (Github Repo Tags)                                                                                                                                                 | Github Repository                                                                                                | Comments |
-| ----------------- | ---------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- |
-| Batch Service     | Build/Core/Lms               | release-5.2.0        | <p>sunbird-course-service : <a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.2.0_RC2">release-5.2.0_RC2</a></p><p><br></p>              | [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/Sunbird-Lern/sunbird-course-service) |          |
-| Data pipeline     | Build/Lern/FlinkJobs         | release-5.2.0        | <p>data-pipeline : <br><a href="https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.2.0_RC1">release-5.2.0_RC1</a></p>                                       | [https://github.com/Sunbird-Lern/data-pipeline](https://github.com/Sunbird-Lern/data-pipeline)                   |          |
-| User\&Org Service | Build/Core/Learner           | release-5.2.0        | sunbird-lms-service : [release-5.2.0\_RC1](http://localhost:5000/s/aQ7wCJOT0ZaejHUiD6sb/about/product-and-developer-guide/adapters/file-adapter/excel-ftp-and-sftp-handler)   | [https://github.com/Sunbird-Lern/sunbird-lms-service](https://github.com/Sunbird-Lern/sunbird-lms-service)       |          |
-| Data Products     | Build/Lern/LernDataProducts/ | release-5.2.0        | <p>data-products : <br><a href="https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.2.0_RC1">release-5.2.0_RC1</a></p>                                       | [https://github.com/Sunbird-Lern/data-products](https://github.com/Sunbird-Lern/data-products)                   |          |
-|                   |                              | reease-5.2.0         | sunbird-utils : [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/sunbird-utils/releases/tag/release-5.2.0\_RC1)                                                           | [https://github.com/Sunbird-Lern/sunbird-utils](https://github.com/Sunbird-Lern/sunbird-utils)                   |          |
+| Components          | Jenkins Job                  | Deploy Tags (Devops) | Build Tags (Github Repo Tags)                                                                                                                                                 | Github Repository                                                                                                |
+| ------------------- | ---------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Batch Service       | Build/Core/Lms               | release-5.2.0        | <p>sunbird-course-service : <a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.2.0_RC2">release-5.2.0_RC2</a></p><p><br></p>              | [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/Sunbird-Lern/sunbird-course-service) |
+| Data pipeline       | Build/Lern/FlinkJobs         | release-5.2.0        | <p>data-pipeline : <br><a href="https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.2.0_RC1">release-5.2.0_RC1</a></p>                                       | [https://github.com/Sunbird-Lern/data-pipeline](https://github.com/Sunbird-Lern/data-pipeline)                   |
+| User\&Org Service   | Build/Core/Learner           | release-5.2.0        | sunbird-lms-service : [release-5.2.0\_RC1](http://localhost:5000/s/aQ7wCJOT0ZaejHUiD6sb/about/product-and-developer-guide/adapters/file-adapter/excel-ftp-and-sftp-handler)   | [https://github.com/Sunbird-Lern/sunbird-lms-service](https://github.com/Sunbird-Lern/sunbird-lms-service)       |
+| Data Products       | Build/Lern/LernDataProducts/ | release-5.2.0        | <p>data-products : <br><a href="https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.2.0_RC1">release-5.2.0_RC1</a></p>                                       | [https://github.com/Sunbird-Lern/data-products](https://github.com/Sunbird-Lern/data-products)                   |
+| Cassandra Migration | Build/Core/Cassandra         | release-5.2.0        | sunbird-utils : [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/sunbird-utils/releases/tag/release-5.2.0\_RC1)                                                           | [https://github.com/Sunbird-Lern/sunbird-utils](https://github.com/Sunbird-Lern/sunbird-utils)                   |
 
 **Summary of the Changes**
 
