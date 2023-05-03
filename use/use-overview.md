@@ -28,9 +28,9 @@ The UserOrg component can be installed independently.&#x20;
 Note: The User update API has a cross building-block dependency Sunbird Ed. It uses the Sunbird Ed form API for user type as well as location type validation, for use cases specific to SB Ed. An adopter can choose to address this dependency on SB Ed by setting up the Form API configs as per their needs and workflows.
 
 \
-_<mark style="color:orange;">**Note :**</mark> For developer installation and setup of individual lern components pls refer to_ [_https://lern.sunbird.org/use/developer-installation_](https://lern.sunbird.org/use/developer-installation)__
+_<mark style="color:orange;">**Note :**</mark> For developer installation and setup of individual lern components pls refer to_ [_https://lern.sunbird.org/use/developer-installation_](https://lern.sunbird.org/use/developer-installation)
 
-__
+
 
 
 

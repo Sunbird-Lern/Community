@@ -17,8 +17,8 @@ There is a dependency with Content Service to read the course metadata by using 
 There is a dependency with Search Service in order to perform a composite search by using the **search** API call. Search will be performed on the Elastic Search database.\
 \
 **Dependency API:**\
-****\
-****composite/v3/search\
+\
+composite/v3/search\
 \
 
 {% endtab %}
@@ -33,7 +33,7 @@ There is a dependency with Content Service to read the course metadata by using 
 There is a dependency with User and Org Service to fetch user information for validating the Batch creator and Mentor (**user/v1/read**)\
 \
 **Dependency API:**\
-****
+
 
 user/v1/read
 {% endtab %}
@@ -43,7 +43,7 @@ There is a dependency on Druid Service  API calls.\
 
 
 **Dependency API:**\
-****
+
 
 /druid/v2/
 {% endtab %}
@@ -62,7 +62,7 @@ There is a dependency with Certificate Registry Service to download the certific
 
 \
 **Dependency API:**\
-****\
-****/cert/v1/template/read
+\
+/cert/v1/template/read
 {% endtab %}
 {% endtabs %}

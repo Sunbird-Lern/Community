@@ -44,8 +44,8 @@ Reference Wiki Links:
 | **Cluster Name**      | String        | Fetch {name} where userLocation\[\*].type = 'cluster'  | <p>User’s Cluster Name.<br>It is fetched from the userLocation Map</p>           |
 
 **User Read API Request**\
-****\
-****curl --location --request GET 'http://{Private LB}/learner/private/user/v1/read/:uuid?fields=locations'\
+\
+curl --location --request GET 'http://{Private LB}/learner/private/user/v1/read/:uuid?fields=locations'\
 \
 **User Read API Response**
 

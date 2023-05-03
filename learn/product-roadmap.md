@@ -6,7 +6,7 @@ Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) :
 
 
 
-<mark style="color:orange;">**Release-5.2.0**</mark> <mark style="color:orange;"></mark><mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 27 Mar '23)**</mark>
+<mark style="color:orange;">**Release-5.2.0**</mark> <mark style="color:orange;">**(Planned release date - 27 Mar '23)**</mark>
 
 [Click here](https://project-sunbird.atlassian.net/issues/?filter=12735) to see the list of issues planned for SB Lern release 5.2.0
 
@@ -14,7 +14,7 @@ Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) :
 
 
 
-<mark style="color:orange;">****</mark>[<mark style="color:orange;">**Release-5.1.0**</mark>](https://project-sunbird.atlassian.net/issues/?filter=12607) <mark style="color:orange;"></mark> <mark style="color:orange;"></mark><mark style="color:orange;">**(Planned release date - 13 Jan '23)**</mark>
+[<mark style="color:orange;">**Release-5.1.0**</mark>](https://project-sunbird.atlassian.net/issues/?filter=12607) <mark style="color:orange;">**(Planned release date - 13 Jan '23)**</mark>
 
 **Project: Making SB Lern Cloud Agnostic**
 
@@ -44,7 +44,7 @@ The current Course progress exhaust is required to be enhanced to capture the nu
 
 There are a few dependencies for the course service APIs and the DB layers that need to be resolved in order to remove the dependecies that Lern has on SB Obsrv and Knowlg.
 
-<mark style="color:orange;">****</mark>
+
 
 **Note :**&#x20;
 

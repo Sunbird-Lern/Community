@@ -1,4 +1,20 @@
+---
+description: This page details about the Flink Jobs created as part of LERN Building block.
+---
+
 # Datapipeline (Flink Jobs)
+
+Flink Jobs in LERN have been to developed to support LMS (Learning Management System) journey of a user. Jobs are used to compute data necessary to calculate user's progress and validate the same against certificate issuance criteria and then trigger Sunbird RC to create and issue certificate to the user.&#x20;
+
+&#x20;
+
+<figure><img src="../../../.gitbook/assets/OVERVIEW - LERN JOBS.drawio.png" alt=""><figcaption><p><strong>Data Flow Overview Diagram</strong></p></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/V3 LERN - CERTIFICATE GENERATION FLOW.drawio.png" alt=""><figcaption></figcaption></figure>
+
+
+
+
 
 1\. [Merge User Courses Job](https://project-sunbird.atlassian.net/wiki/spaces/SLBB/pages/3129704449/SB-28061+Migrate+Merge-User-Courses+samza+to+flink+job)
 

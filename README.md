@@ -30,7 +30,7 @@ Sunbird Lern can be utilized to enable learning solutions that necessitate track
 
 Sunbird Lern is leveraged in DIKSHA - Digital Infrastructure for Knowledge Sharing, the national school education platform of India.
 
-_****_[_**Contribute to Sunbird Lern**_](https://github.com/orgs/Sunbird-Lern/discussions/15)_****_
+[_**Contribute to Sunbird Lern**_](https://github.com/orgs/Sunbird-Lern/discussions/15)
 
 
 
