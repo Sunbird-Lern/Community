@@ -1,6 +1,6 @@
 # Release V 5.2.0
 
-### ocument Release Version <a href="#document-release-version" id="document-release-version"></a>
+### Document Release Version <a href="#document-release-version" id="document-release-version"></a>
 
 | Project | Release Date | Version |
 | ------- | ------------ | ------- |
