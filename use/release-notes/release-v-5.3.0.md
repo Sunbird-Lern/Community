@@ -21,7 +21,8 @@
 
 [LR-436](https://project-sunbird.atlassian.net/browse/LR-436) OldCertificateMigration spark data-product\
 [LR-437](https://project-sunbird.atlassian.net/browse/LR-437) LegacyCertificateMigrator Flink job\
-[LR-438](https://project-sunbird.atlassian.net/browse/LR-438) Sunbird RC changes for updating schema for issued date
+[LR-438](https://project-sunbird.atlassian.net/browse/LR-438) Sunbird RC changes for updating schema for issued date\
+[LR-330](https://project-sunbird.atlassian.net/browse/LR-330) Certificate template font url migration
 
 ### Flink Job Configurations for Lern:
 
@@ -112,3 +113,46 @@ Execution log: `/mount/data/analytics/logs/lern-data-products/{current_date}-job
 
 Verification steps can be found in the design page: [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3117416449/LR-4+Design+of+migrating+existing+certificate+in+to+RC#Verification-steps-for-the-certificate-migration-process](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3117416449/LR-4+Design+of+migrating+existing+certificate+in+to+RC#Verification-steps-for-the-certificate-migration-process)
 
+## Steps to Font URL migration
+
+All the templates are having dev URLs configured for Fonts in all the environments as per our observation. All these font URLs have to be migrated to the new cname URL
+
+**Note:** Before font url migration, make sure all the font files are available at cname mapped account or cloud storage container. To verify, where the font files are available, open any svg template file in editor and check the font URL's host.
+
+Please use java 11 for running the scripts
+
+#### Step 1:
+
+Download SVG file migrator and uploader jars by below command,
+
+```
+cd ~
+mkdir svg_template_migration
+cd svg_template_migration
+wget "https://github.com/kumarks1122/sunbird-utils/raw/release-5.3.0-font-url-migration/svg_template_migration/template-migration/svg-migrator.jar"
+wget "https://github.com/kumarks1122/sunbird-utils/raw/release-5.3.0-font-url-migration/svg_template_migration/template-upload/svg-uploader.jar"
+```
+
+#### Step 2:
+
+Download the svg template files and update the font URLs in the template files.
+
+```
+java -jar svg-migrator.jar "{{ content search host }}" "0" "1000" "font_migration" "{{ Old URL }}" "{{ cname url }}"
+
+#EXAMPLE
+#java -jar svg-migrator.jar "dev.lern.sunbird.org" "0" "1000" "font_migration" "https://sunbirddev.blob.core.windows.net" "https://obj.diksha.gov.in"
+```
+
+_**Note**:_ Before moving to next step, please verify atleast one svg file for whether the font URL got updated.
+
+#### Step 3:
+
+Upload the svg template files back to the cloud storage by below command.
+
+```
+java -jar svg-uploader.jar "{{ content search host }}" "0" "1000" "{{ storage key}}" "{{ storage secret }}" "{{svg file path}}" "{{storage type: (azure,..)}}" "{{ CSP endpoint (based on CSP it is optional) }}" "{{ region (based on CSP it is optional) }}"
+
+#EXAMPLE
+#java -jar svg-uploader.jar "dev.lern.sunbird.org" "0" "5" "sunbirddevbbpublic" "{{ secret }}" "/Users/{{username}}/svg_template_migration" "azure"
+```
