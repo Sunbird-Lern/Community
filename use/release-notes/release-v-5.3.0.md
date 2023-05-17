@@ -8,10 +8,12 @@
 
 ### Details of Released Tag
 
-| Components    | Jenkins Job                  | Deploy Tags (Devops) | Build Tags (Github Repo Tags)                                                                                       |
-| ------------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Data pipeline | Build/Lern/FlinkJobs         | release-5.3.0        | data-pipeline : [release-5.3.0\_RC1](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.3.0\_RC1) |
-| Data Products | Build/Lern/LernDataProducts/ | release-5.3.0        | data-products : [release-5.3.0\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.3.0\_RC1) |
+| Components        | Jenkins Job                  | Deploy Tags (Devops) | Build Tags (Github Repo Tags)                                                                                       | Repository                                                                                                                     |   |
+| ----------------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | - |
+| Data pipeline     | Build/Lern/FlinkJobs         | release-5.3.0        | data-pipeline : [release-5.3.0\_RC1](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.3.0\_RC1) | [https://github.com/Sunbird-Lern/data-pipeline](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.3.0\_RC1) |   |
+| Data Products     | Build/Lern/LernDataProducts/ | release-5.3.0        | data-products : [release-5.3.0\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.3.0\_RC1) | [https://github.com/Sunbird-Lern/data-products](https://github.com/Sunbird-Lern/data-products)                                 |   |
+| Batch Service     | Build/Core/Lms               | release-5.3.0        | <p>sunbird-course-service : <br></p>                                                                                | [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/Sunbird-Lern/sunbird-course-service)               |   |
+| User\&Org Service | Build/Core/Learner           | release-5.3.0        | sunbird-lms-service                                                                                                 | [https://github.com/Sunbird-Lern/sunbird-lms-service](https://github.com/Sunbird-Lern/sunbird-lms-service)                     |   |
 
 **Summary of the Changes**
 
@@ -22,7 +24,9 @@
 [LR-436](https://project-sunbird.atlassian.net/browse/LR-436) OldCertificateMigration spark data-product\
 [LR-437](https://project-sunbird.atlassian.net/browse/LR-437) LegacyCertificateMigrator Flink job\
 [LR-438](https://project-sunbird.atlassian.net/browse/LR-438) Sunbird RC changes for updating schema for issued date\
-[LR-330](https://project-sunbird.atlassian.net/browse/LR-330) Certificate template font url migration
+[LR-330](https://project-sunbird.atlassian.net/browse/LR-330) Certificate template font url migration\
+[LR-465](https://project-sunbird.atlassian.net/browse/LR-465) PII data security\
+
 
 ### Flink Job Configurations for Lern:
 
@@ -59,9 +63,15 @@ Deploy Jenkins job:  **/Deploy/job/\<environment>/job/Lern/job/FlinkJobs**
 **Step 1 : Upload updated schema files.**\
 Deploy Jenkins job: **Deploy/dev/Sunbird-RC/Upload\_RC\_Schema**
 
+**Note**: Since certificate signer service will cache the credential template. please make sure the credential template is updated in the respective path as per below file.
+
+[https://github.com/project-sunbird/sunbird-devops/blob/release-5.3.0-lern/utils/sunbird-RC/schema/credential\_template.json](https://github.com/project-sunbird/sunbird-devops/blob/release-5.3.0-lern/utils/sunbird-RC/schema/credential\_template.json)
+
 **Step 2 : Deploy certificate signer service**
 
 Jenkins Job: **Deploy/dev/Sunbird-RC/CertificateSign**
+
+
 
 
 
