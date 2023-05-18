@@ -8,7 +8,7 @@ Flink Jobs in LERN have been to developed to support LMS (Learning Management Sy
 
 &#x20;
 
-<figure><img src="../../../.gitbook/assets/OVERVIEW - LERN JOBS.drawio (1).png" alt=""><figcaption><p><strong>Data-pipeline Overview Diagram</strong></p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/OVERVIEW - LERN JOBS.drawio (1) (1).png" alt=""><figcaption><p><strong>Data-pipeline Overview Diagram</strong></p></figcaption></figure>
 
 <figure><img src="../../../.gitbook/assets/Untitled Diagram-V2 LERN - CERTIFICATE GENERATION FLOW.drawio.png" alt=""><figcaption><p><strong>Certificate Generation jobs execution flow diagram</strong></p></figcaption></figure>
 

@@ -58,6 +58,12 @@ sunbird_us_org_read_url=/v1/org/read
 LEARNER_SERVICE_PORT=
 ```
 
+### SMS Template config
+
+{% embed url="https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3316809958/How+to+Set+up+SMS" %}
+How to setup SMS template
+{% endembed %}
+
 ### Other Config
 
 ```
