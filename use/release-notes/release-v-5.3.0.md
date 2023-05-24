@@ -8,12 +8,12 @@
 
 ### Details of Released Tag
 
-| Components        | Jenkins Job                  | Deploy Tags (Devops) | Build Tags (Github Repo Tags)                                                                                       | Repository                                                                                                                     |   |
-| ----------------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | - |
-| Data pipeline     | Build/Lern/FlinkJobs         | release-5.3.0        | data-pipeline : [release-5.3.0\_RC1](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.3.0\_RC1) | [https://github.com/Sunbird-Lern/data-pipeline](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.3.0\_RC1) |   |
-| Data Products     | Build/Lern/LernDataProducts/ | release-5.3.0        | data-products : [release-5.3.0\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.3.0\_RC1) | [https://github.com/Sunbird-Lern/data-products](https://github.com/Sunbird-Lern/data-products)                                 |   |
-| Batch Service     | Build/Core/Lms               | release-5.3.0        | <p>sunbird-course-service : <br></p>                                                                                | [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/Sunbird-Lern/sunbird-course-service)               |   |
-| User\&Org Service | Build/Core/Learner           | release-5.3.0        | sunbird-lms-service                                                                                                 | [https://github.com/Sunbird-Lern/sunbird-lms-service](https://github.com/Sunbird-Lern/sunbird-lms-service)                     |   |
+| Components        | Jenkins Job                  | Deploy Tags (Devops) | Build Tags (Github Repo Tags)                                                                                       | Repository                                                                                                                     |
+| ----------------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Data pipeline     | Build/Lern/FlinkJobs         | release-5.3.0        | data-pipeline : [release-5.3.0\_RC1](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.3.0\_RC1) | [https://github.com/Sunbird-Lern/data-pipeline](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.3.0\_RC1) |
+| Data Products     | Build/Lern/LernDataProducts/ | release-5.3.0        | data-products : [release-5.3.0\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.3.0\_RC1) | [https://github.com/Sunbird-Lern/data-products](https://github.com/Sunbird-Lern/data-products)                                 |
+| Batch Service     | Build/Core/Lms               | release-5.3.0        | <p>sunbird-course-service : <br></p>                                                                                | [https://github.com/Sunbird-Lern/sunbird-course-service](https://github.com/Sunbird-Lern/sunbird-course-service)               |
+| User\&Org Service | Build/Core/Learner           | release-5.3.0        | sunbird-lms-service                                                                                                 | [https://github.com/Sunbird-Lern/sunbird-lms-service](https://github.com/Sunbird-Lern/sunbird-lms-service)                     |
 
 **Summary of the Changes**
 
@@ -25,8 +25,17 @@
 [LR-437](https://project-sunbird.atlassian.net/browse/LR-437) LegacyCertificateMigrator Flink job\
 [LR-438](https://project-sunbird.atlassian.net/browse/LR-438) Sunbird RC changes for updating schema for issued date\
 [LR-330](https://project-sunbird.atlassian.net/browse/LR-330) Certificate template font url migration\
-[LR-465](https://project-sunbird.atlassian.net/browse/LR-465) PII data security\
+[LR-465](https://project-sunbird.atlassian.net/browse/LR-465) PII data security
 
+### Env Configurations (Needs to be done before service deployment):
+
+The below environment variable needs to be configured in the dev ops repo.
+
+| Variable Name                  | Values                                                                                                        | Comments                                     |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| exhaust\_api\_base\_url        | \{{ analytics\_service\_url \| default('[http://analytics-service:9000](http://analytics-service:9000/)') \}} | Obsrv exhaust API endpoint for batch service |
+| exhaust\_api\_submit\_endpoint | /request/submit                                                                                               | To submit job request from batch service     |
+| exhaust\_api\_list\_endpoint   | /request/list/                                                                                                | To list job request from batch service       |
 
 ### Flink Job Configurations for Lern:
 
