@@ -175,3 +175,168 @@ java -jar svg-uploader.jar "{{ content search host }}" "0" "1000" "{{ storage ke
 #EXAMPLE
 #java -jar svg-uploader.jar "dev.lern.sunbird.org" "0" "5" "sunbirddevbbpublic" "{{ secret }}" "/Users/{{username}}/svg_template_migration" "azure"
 ```
+
+
+
+### Data Security Policy setup
+
+**Configurations to be done by System admin:**
+
+1. Execute CURL for providing link to download "Decryption Tool"
+
+```
+curl --location --request POST '{{host}}/api/data/v1/system/settings/set' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{api_key}}' \
+--header 'x-authenticated-user-token: {{user_token}}' \
+--data-raw '{
+    "request": {
+        "id": "decryptionToolLink",
+        "field": "decryptionToolLink",
+        "value": "{\"link\":\"<link to download decryption tool>\", \"Comments\": \"To use this tool, run the command with encrypted file and key to decrypt\"}"
+    }
+}'
+```
+
+2. Setup **default** 'Data Security Policy' settings using tenant preference API.&#x20;
+
+```
+curl --location --request POST '{{host}}/api/org/v2/preferences/create' \
+--header 'x-authenticated-user-token: {{user_authentication_token}}' \
+--header 'Authorization: Bearer {{kong_api_token}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "request": {
+        "orgId": "default",
+        "key": "dataSecurityPolicy",
+        "data": {
+            "level": "PLAIN_DATASET",
+            "dataEncrypted": "No",
+            "comments": "Data is not encrypted",
+            "job": {
+                    "progress-exhaust": {
+                        "level": "PASSWORD_PROTECTED_DATASET",
+                        "dataEncrypted": "No",
+                        "comments": "Password protected file."
+                    },
+                    "response-exhaust": {
+                        "level": "PASSWORD_PROTECTED_DATASET",
+                        "dataEncrypted": "No",
+                        "comments": "Password protected file."
+                    },
+                    "userinfo-exhaust": {
+                        "level": "PASSWORD_PROTECTED_DATASET",
+                        "dataEncrypted": "No",
+                        "comments": "Password protected file."
+                    }
+                },
+            "securityLevels": {
+                "PLAIN_DATASET": "Data is present in plain text/zip. Generally applicable to open datasets.",
+                "PASSWORD_PROTECTED_DATASET": "Password protected zip file. Generally applicable to non PII data sets but can contain sensitive information which may not be considered open.",
+                "TEXT_KEY_ENCRYPTED_DATASET": "Data encrypted with a user provided encryption key. Generally applicable to non PII data but can contain sensitive information which may not be considered open.",
+                "PUBLIC_KEY_ENCRYPTED_DATASET": "Data encrypted via an org provided public/private key. Generally applicable to all PII data exhaust."
+            }
+        }
+    }
+}'
+```
+
+3. Setup **default '**PII data security settings' using tenant preference API.
+
+```
+curl --location --request POST '{{host}}/api/org/v2/preferences/create' \
+--header 'x-authenticated-user-token: {{user_authentication_token}}' \
+--header 'Authorization: Bearer {{kong_api_token}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "request": {
+        "orgId": "default",
+        "key": "userPrivateFields",
+        "data": {
+            "PIIFields": [
+                "email",
+                "phone",
+                "userName",
+                "prevUsedEmail",
+                "prevUsedPhone",
+                "recoveryEmail",
+                "recoveryPhone"
+            ]
+        }
+    }
+}'
+```
+
+**Configurations that can be done by Tenants:**
+
+1. Use Tenant preference create API to create tenant specific 'Data Security Policy' settings similar to 'default' Data Security Policy settings but with tenant orgId.&#x20;
+
+```
+Note: 
+a. Tenant level security cannot be lower than 'default' Data Security Policy'.
+b. Job Level security Policy in a Tenant specific configuration cannot be lower than Tenant Level configuration and cannot be lower than job level configuration in 'default' Data Security Policy'.
+c. Below mapping shows the priority/grade of security policies 
+"PLAIN_DATASET" < "PASSWORD_PROTECTED_DATASET" < "TEXT_KEY_ENCRYPTED_DATASET" < "PUBLIC_KEY_ENCRYPTED_DATASET"
+```
+
+2. In order to use "PUBLIC\_KEY\_ENCRYPTED\_DATASET" security configuration for an exhaust report, tenant admin should have uploaded public pem key file using below API.&#x20;
+
+```
+curl --location --request PATCH '{{host}}/api/org/v1/update/encryptionkey' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{kong_api_token}}' \
+--header 'x-authenticated-user-token: {{user_authentication_token}}' \
+--form 'organisationId={{org_id}}' \
+--form 'encryptionKey=@path_to_public_pem_file'
+```
+
+### Steps to generate key pair for setting up Data Security policy configuration:
+
+#### For Linux and Mac OS:
+
+1. To generate Private Key&#x20;
+
+```
+openssl genrsa -out private.pem 4096
+```
+
+2. To generate Public Key&#x20;
+
+```
+openssl rsa -in private.pem -pubout -outform PEM -out public_key.pem
+```
+
+#### For Windows OS:
+
+Please install GitBash: The Git installation package comes with SSH. Using Git Bash, which is the Git command line tool, you can generate SSH key pairs. Git Bash has an SSH client that enables you to connect to and interact with Triton containers on Windows.
+
+**To install Git:**
+
+1. Download and initiate the [Git installer](https://git-scm.com/download/win).&#x20;
+2. When prompted, accept the default components by clicking Next.&#x20;
+3. Choose the default text editor. If you have Notepad++ installed, select Notepad++ and click Next.&#x20;
+4. Select to Use Git from the Windows Command Prompt and click Next.&#x20;
+5. Select to Use OpenSSL library and click Next.&#x20;
+6. Select to Checkout Windows-style, commit Unix-style line endings and click Next.&#x20;
+7. Select to Use MinTTY (The default terminal of mYSYS2) and click Next.&#x20;
+8. Accept the default extra option configuration by clicking Install. When the installation completes, you may need to restart Windows.
+
+**Launching GitBash:**&#x20;
+
+1. press Start+R to launch the Run dialog.&#x20;
+2. Type C:\Program Files\Git\bin\bash.exe and press Enter.
+
+**Generating Key pair:**
+
+1. To generate Private Key
+
+```
+openssl genrsa -out private.pem 4096
+```
+
+2. To generate Public Key
+
+```
+openssl rsa -in private.pem -pubout -outform PEM -out public_key.pem
+```
+
