@@ -25,7 +25,17 @@
 [LR-437](https://project-sunbird.atlassian.net/browse/LR-437) LegacyCertificateMigrator Flink job\
 [LR-438](https://project-sunbird.atlassian.net/browse/LR-438) Sunbird RC changes for updating schema for issued date\
 [LR-330](https://project-sunbird.atlassian.net/browse/LR-330) Certificate template font url migration\
-[LR-465](https://project-sunbird.atlassian.net/browse/LR-465) PII data security
+[LR-395](https://project-sunbird.atlassian.net/browse/LR-395), [LR-465](https://project-sunbird.atlassian.net/browse/LR-465) PII data security\
+[LR-451](https://project-sunbird.atlassian.net/browse/LR-451) Local setup of Data-pipeline - Ubuntu & Mac - Github and Microsite update\
+[LR-443](https://project-sunbird.atlassian.net/browse/LR-443) Local setup of UserOrg - Ubuntu & Mac - Github and Microsite update\
+[LR-445](https://project-sunbird.atlassian.net/browse/LR-445) Local setup of LMS - Ubuntu & Mac - Github and Microsite update\
+[LR-422](https://project-sunbird.atlassian.net/browse/LR-422) Point the channel create API to content-service instead of learning-service\
+[LR-519](https://project-sunbird.atlassian.net/browse/LR-519) Textbook APIs code cleanup from Course-Batch service\
+[LR-486](https://project-sunbird.atlassian.net/browse/LR-486) Microsite update with Certificate generation flow diagram\
+[LR-520](https://project-sunbird.atlassian.net/browse/LR-520) Group service - activity type should be case insensitive\
+[LR-556](https://project-sunbird.atlassian.net/browse/LR-556) Local setup of LMS - Ubuntu & Mac - **Mock service setup**\
+[LR-456](https://project-sunbird.atlassian.net/browse/LR-456) Local setup of Sunbird-utils - Ubuntu & Mac - Github and Microsite update\
+
 
 ### Env Configurations (Needs to be done before service deployment):
 
