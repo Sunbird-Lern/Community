@@ -2,15 +2,15 @@
 description: This page details about the Flink Jobs present as part of LERN Building block.
 ---
 
-# Data-pipeline (Flink Jobs)
+# BatchService(LMS) Flink Jobs
 
 Flink Jobs in LERN have been to developed to support LMS (Learning Management System) journey of a user. Jobs are used to compute data necessary to calculate user's progress and validate the same against certificate issuance criteria and then trigger Sunbird RC to create and issue certificate to the user.&#x20;
 
 &#x20;
 
-<figure><img src="../../.gitbook/assets/OVERVIEW - LERN JOBS.drawio (1) (1).png" alt=""><figcaption><p><strong>Data-pipeline Overview Diagram</strong></p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/OVERVIEW - LERN JOBS.drawio (1) (1).png" alt=""><figcaption><p><strong>Data-pipeline Overview Diagram</strong></p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/Untitled Diagram-V2 LERN - CERTIFICATE GENERATION FLOW.drawio.png" alt=""><figcaption><p><strong>Certificate Generation jobs execution flow diagram</strong></p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled Diagram-V2 LERN - CERTIFICATE GENERATION FLOW.drawio.png" alt=""><figcaption><p><strong>Certificate Generation jobs execution flow diagram</strong></p></figcaption></figure>
 
 ### Merge User Courses
 
@@ -23,11 +23,11 @@ This job performs following tasks:
 * Merges the user activity aggregate data from an account to primary account.
 * Performs a `batch-enrolment-sync` to primary account
 
-<figure><img src="../../.gitbook/assets/Untitled Diagram-merge-user-courses.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled Diagram-merge-user-courses.drawio.png" alt=""><figcaption></figcaption></figure>
 
 **Configuration variables:**
 
-<table><thead><tr><th width="246">Variable</th><th>Default Value</th><th>Purpose</th></tr></thead><tbody><tr><td>kafka.input.topic</td><td>{{env}}.lms.user.account.merge</td><td>Kafka topic from which messages/events are read to be processed.</td></tr><tr><td>kafka.output.failed.topic</td><td>{{env}}.learning.events.failed</td><td>Kafka topic to which message is written when an exception occurs while processing an event.</td></tr><tr><td>kafka.groupId</td><td></td><td>Kafka input topic group Id</td></tr><tr><td>kafka.output.course.batch.updater.topic</td><td>{{env}}.coursebatch.job.request</td><td>Kafka topic to which output message/event is inserted to perform user course progress activity reconciliation to merged Id</td></tr><tr><td>lms-cassandra.keyspace</td><td>sunbird_courses</td><td>Cassandra keyspace name</td></tr><tr><td>lms-cassandra.content_consumption.table</td><td>user_content_consumption</td><td>Cassandra table used to store content wise data for a collection of a batch by a user. Content progress, status etc</td></tr><tr><td>lms-cassandra.user_enrolments.table</td><td>user_enrolments</td><td>Cassandra table used to store user enrolment data in a collection of a particular batch. This also holds the consumption progress, enrolment status and issued certificate details</td></tr><tr><td>lms-cassandra.user_activity_agg.table</td><td>user_activity_agg</td><td>Cassandra table used to store user consumption aggregate details of a collection in a batch. Aggregates like the consumption completed content count</td></tr></tbody></table>
+<table><thead><tr><th width="241">Variable</th><th width="273">Default Value</th><th>Purpose</th></tr></thead><tbody><tr><td>kafka.input.topic</td><td>{{env}}.lms.user.account.merge</td><td>Kafka topic from which messages/events are read to be processed.</td></tr><tr><td>kafka.output.failed.topic</td><td>{{env}}.learning.events.failed</td><td>Kafka topic to which message is written when an exception occurs while processing an event.</td></tr><tr><td>kafka.groupId</td><td></td><td>Kafka input topic group Id</td></tr><tr><td>kafka.output.course.batch.updater.topic</td><td>{{env}}.coursebatch.job.request</td><td>Kafka topic to which output message/event is inserted to perform user course progress activity reconciliation to merged Id</td></tr><tr><td>lms-cassandra.keyspace</td><td>sunbird_courses</td><td>Cassandra keyspace name</td></tr><tr><td>lms-cassandra.content_consumption.table</td><td>user_content_consumption</td><td>Cassandra table used to store content wise data for a collection of a batch by a user. Content progress, status etc</td></tr><tr><td>lms-cassandra.user_enrolments.table</td><td>user_enrolments</td><td>Cassandra table used to store user enrolment data in a collection of a particular batch. This also holds the consumption progress, enrolment status and issued certificate details</td></tr><tr><td>lms-cassandra.user_activity_agg.table</td><td>user_activity_agg</td><td>Cassandra table used to store user consumption aggregate details of a collection in a batch. Aggregates like the consumption completed content count</td></tr></tbody></table>
 
 **Sample event:**
 
@@ -76,7 +76,7 @@ This job performs following tasks:
 | \<collectionId>:optionalnodes               | List\<String> | collectionId:optionalnodes: \[“resource1”,”resource2”]           |
 | \<rootCollectionId>:\<resourceId>:ancestors | List\<String> | collectionId:resource1:ancestors: \[“courseunit1”, “democourse”] |
 
-<figure><img src="../../.gitbook/assets/relation-cache-updater.drawio (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/relation-cache-updater.drawio (1).png" alt=""><figcaption></figcaption></figure>
 
 **Configuration variables:**
 
@@ -131,7 +131,7 @@ This job performs following tasks:
 
 'activity-aggregate-updater' job updates the Course progress of the enrolled users and upon completion pushes an event to certificate pre-processor job to validate and issue certificate.
 
-<figure><img src="../../.gitbook/assets/Untitled Diagram-activity-aggregate-updater.drawio (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled Diagram-activity-aggregate-updater.drawio (1).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="246">Variable</th><th>Default Value</th><th>Purpose</th></tr></thead><tbody><tr><td>kafka.input.topic</td><td>{{env}}.coursebatch.job.request</td><td>Kafka topic from which messages/events are read to be processed.</td></tr><tr><td>kafka.output.failed.topic</td><td>{{env}}.activity.agg.failed</td><td>Kafka topic to which message is written when an exception occurs while processing an event.</td></tr><tr><td>kafka.audit.topic</td><td>{{env}}.telemetry.raw</td><td>Kakfa topic to which and audit message is written to.</td></tr><tr><td>kafka.certissue.topic</td><td>{{env}}.issue.certificate.request</td><td>Kafka topic used to trigger certificate issue pre-processor job</td></tr><tr><td>kafka.groupId</td><td>{{env}}-activity-aggregate-updater-group</td><td>Kafka input topic group Id</td></tr><tr><td>lms-cassandra.keyspace</td><td>sunbird_courses</td><td>Cassandra keyspace name</td></tr><tr><td>lms-cassandra.content_consumption.table</td><td>user_content_consumption</td><td>Cassandra table used to store content wise data for a collection of a batch by a user. Content progress, status etc</td></tr><tr><td>lms-cassandra.user_enrolments.table</td><td>user_enrolments</td><td>Cassandra table used to store user enrolment data in a collection of a particular batch. This also holds the consumption progress, enrolment status and issued certificate details</td></tr><tr><td>lms-cassandra.user_activity_agg.table</td><td>user_activity_agg</td><td>Cassandra table used to store user consumption aggregate details of a collection in a batch. Aggregates like the consumption completed content count</td></tr><tr><td>redis.database.relationCache.id</td><td>10</td><td>Redis index from which computed data like leafnodes and optionalnodes is read. </td></tr><tr><td>dedup-redis.host</td><td>IP of deduplicate Redis host</td><td>De-duplication Redis is used to remove duplicate events possibly part of the events list in kafka input topic which is fetched in batch size of 'threshold.batch.read.size' parameter mentioned below.</td></tr><tr><td>dedup-redis.port</td><td>port</td><td>port of deduplicate Redis </td></tr><tr><td>dedup-redis.database.index</td><td>13</td><td>De-duplication Redis index</td></tr><tr><td>dedup-redis.database.expiry</td><td>604800</td><td>De-duplication Redis Expiry time</td></tr><tr><td>threshold.batch.read.interval</td><td></td><td>NOT USED</td></tr><tr><td>threshold.batch.read.size</td><td>1000</td><td>Flink stream window size</td></tr><tr><td>threshold.batch.write.size</td><td>10</td><td>Property used to specify batch size of the database update queries while updating a specific cassandra table in batch format</td></tr><tr><td>activity.module.aggs.enabled</td><td>true</td><td>Used to configure if the consumption aggregation calculation is to be enabled on course leaf nodes </td></tr><tr><td>activity.input.dedup.enabled</td><td>true</td><td>Used to configure if the aggregation job is to run in De-duplication mode</td></tr><tr><td>activity.filter.processed.enrolments</td><td>true</td><td>Used to configure if the activity aggregation process is to be skipped for user enrolments with status 2 (completed courses)</td></tr><tr><td>activity.collection.status.cache.expiry</td><td>3600 (in seconds)</td><td>Expiry time of TTL cache set  to read or store latest collection 'status' information. If latest TTL cache doesnt have collection 'status' information, then the same is read from Search service configured below and TTL cache will be updated.</td></tr><tr><td>service.search.basePath</td><td>IP of the search service</td><td>IP of the search service</td></tr></tbody></table>
 
@@ -178,7 +178,7 @@ This job performs following tasks:
 
 'assessment-aggregator' job is used to compute the course assessment content progress present as part of the Course. Job calculates the scores secured by the user during consumption against each Course Assessment Content.
 
-<figure><img src="../../.gitbook/assets/Untitled Diagram-assessment-aggregator.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled Diagram-assessment-aggregator.drawio.png" alt=""><figcaption></figcaption></figure>
 
 **Configuration variables:**
 
@@ -206,7 +206,7 @@ This job performs following tasks:
 
 'enrolment-reconciliation' job syncs the progress of the enrolled user. This job perform same tasks as 'activity-aggregator-updater' flink job. This is triggered by the user if the progress is not updated during course consumption.
 
-<figure><img src="../../.gitbook/assets/Untitled Diagram-enrolment-reconciliation.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled Diagram-enrolment-reconciliation.drawio.png" alt=""><figcaption></figcaption></figure>
 
 **Configuration variables:**
 
@@ -251,7 +251,7 @@ This job performs following tasks:
 
 'collection-cert-pre-processor' job is used to perform the validation of certificate issuance criteria.&#x20;
 
-<figure><img src="../../.gitbook/assets/Cert Pre-processor.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Cert Pre-processor.drawio.png" alt=""><figcaption></figcaption></figure>
 
 **Configuration variables:**
 
@@ -300,7 +300,7 @@ This job performs following tasks:
 
 'collection-certificate-generator' job is used to generate certificates.
 
-<figure><img src="../../.gitbook/assets/Cert Generator.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Cert Generator.drawio.png" alt=""><figcaption></figcaption></figure>
 
 **Configuration variables:**
 
@@ -372,203 +372,6 @@ This job performs following tasks:
 **Source code:**
 
 {% embed url="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.0/lms-jobs/credential-generator/collection-certificate-generator" %}
-
-### Notification Job
-
-'notification-job' is used to send notifications in an asynchronous mode via SMS, eMail and FCM channels.
-
-Additional Reading: [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/1057980431/Notification+service](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/1057980431/Notification+service)
-
-**Configuration variables:**
-
-<table><thead><tr><th width="246">Variable</th><th>Default Value</th><th>Purpose</th></tr></thead><tbody><tr><td>kafka.input.topic</td><td>{{env}}.lms.notification</td><td>Kafka topic from which messages/events are read to be processed.</td></tr><tr><td>kafka.groupId</td><td>{{env}}.lms.notification.group</td><td>Kafka input topic group Id</td></tr><tr><td>fcm_account_key</td><td></td><td>Firebase Cloud Messaging</td></tr><tr><td>sms_auth_key</td><td></td><td>SMS Service Authentication key</td></tr><tr><td>sms_default_sender</td><td></td><td>SMS sender name (it must be 6 character only)</td></tr><tr><td>mail_server_from_email</td><td></td><td>eMail Server</td></tr><tr><td>mail_server_username</td><td></td><td>eMail server username</td></tr><tr><td>mail_server_password</td><td></td><td>eMail server password</td></tr><tr><td>mail_server_host</td><td></td><td>eMail server host Ip</td></tr><tr><td>mail_server_port</td><td></td><td>eMail server port</td></tr></tbody></table>
-
-**Sample event:**
-
-```json
-SAMPLE EVENT 1:
-{
-  "actor": {
-    "id": "BroadCast Topic Notification",
-    "type": "System"
-  },
-  "eid": "BE_JOB_REQUEST",
-  "edata": {
-    "request": {
-      "notification": {
-        "config": {
-          "sender": "support@sunbird.com",
-          "subject": "Completion certificate"
-        },
-        "deliveryType": "message",
-        "mode": "email",
-        "template": {
-          "data": "Hi",
-          "params": {
-            "body": "email body",
-            "stateImgUrl": "https://sunbirddev.blob.core.windows.net/orgemailtemplate/img/File-0128212938260643843.png",
-            "firstName": "Hari",
-            "regards": "Minister of Humar Resources",
-            "TraningName": "test-cert-notification",
-            "regardsperson": "Chairperson",
-            "heldDate": "16-12-2019"
-          }
-        },
-        "ids": [
-          "harip@test.in"
-        ]
-      }
-    },
-    "action": "broadcast-topic-notification-all",
-    "iteration": 2
-  },
-  "trace": {
-    "X-Request-ID": null,
-    "X-Trace-Enabled": "false"
-  },
-  "context": {
-    "pdata": {
-      "ver": "1.0",
-      "id": "org.sunbird.platform"
-    }
-  },
-  "mid": "NS.1646230422793.70c10f26-631b-4d55-8aaa-fbe52b79cbc1",
-  "object": {
-    "id": "93a06b829d13c9fa797ea641f484e5d38ce28868fbd75014852cbe413515177c",
-    "type": "TopicNotifyAll"
-  }
-}
-
-SAMPLE EVENT 2:
-{
-  "actor": {
-    "id": "BroadCast Topic Notification",
-    "type": "System"
-  },
-  "eid": "BE_JOB_REQUEST",
-  "mid": "NS.1657555782237.a0603d3a-f668-47e1-940f-4620786f029b",
-  "trace": {
-    "X-Request-ID": null,
-    "X-Trace-Enabled": "false"
-  },
-  "ets": 1657555782237,
-  "edata": {
-    "action": "broadcast-topic-notification-all",
-    "iteration": 1,
-    "request": {
-      "notification": {
-        "mode": "phone",
-        "deliveryType": "message",
-        "config": {
-          "sender": null,
-          "topic": null,
-          "otp": null,
-          "subject": null
-        },
-        "ids": [
-          "8050688698"
-        ],
-        "template": {
-          "id": null,
-          "data": "You have successfully completed Sunbird training.",
-          "params": {
-            "courseName": "Sunbird training"
-          }
-        },
-        "rawData": null
-      }
-    }
-  },
-  "context": {
-    "pdata": {
-      "ver": "1.0",
-      "id": "org.sunbird.platform"
-    }
-  },
-  "object": {
-    "id": "f5e7243feabb343b029f154341c2d55dacb92febb0c1b0349ee0676a02c9b816",
-    "type": "TopicNotifyAll"
-  }
-}
-```
-
-**Source code:**
-
-{% embed url="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.0/notification/notification-job" %}
-
-### User cache updater
-
-'user-cache-updater-2.0' job is used to generate the user-metadata information which is complied by fetching information from various Cassandra tables and are stored into the Redis cache. This user-metadata information is used by few exhaust reports.
-
-Additional Reading: [https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1520074753/Design+Denormalise+User+Metadata](https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1520074753/Design+Denormalise+User+Metadata), [https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob](https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob)
-
-
-
-**Configuration variables:**
-
-<table><thead><tr><th width="246">Variable</th><th>Default Value</th><th>Purpose</th></tr></thead><tbody><tr><td>kafka.input.topic</td><td>{{env}}.telemetry.audit</td><td>Kafka topic from which messages/events are read to be processed.</td></tr><tr><td>kafka.groupId</td><td>{{env}}-user-cache-updater-group</td><td>Kafka input topic group Id</td></tr><tr><td>redis-meta.database.userstore.id</td><td>12</td><td>Redis index to which user metadata is to be written to for caching</td></tr><tr><td>redis-meta.database.key.expiry.seconds</td><td>3600</td><td>Redis cache expiry in seconds</td></tr><tr><td>user-read.api.url</td><td>"/learner/private/user/v1/read"</td><td>API Endpoint for fetching User profile details</td></tr><tr><td>regd.user.producer.pid</td><td>learner-service</td><td>used to specify service providing user microservice</td></tr><tr><td>user.self.signin.types</td><td>["google","self"]</td><td>used to specify self sign-in modes available in application</td></tr><tr><td>user.validated.types</td><td>["sso"]</td><td>used to specify sign-in modes where user validation is signed from third party system</td></tr><tr><td>user.self.signin.key</td><td>"Self-Signed-In"</td><td></td></tr><tr><td>user.valid.key</td><td>"Validated"</td><td></td></tr><tr><td>user.read.url.fields</td><td>"locations,organisations"</td><td>used to specify the user metadata properties that are to be cached to Redis</td></tr><tr><td>user.read.api.error</td><td>["CLIENT_ERROR"]</td><td></td></tr></tbody></table>
-
-**Sample event:**
-
-```json
-{
-  "eid": "AUDIT",
-  "ets": 1573121861118,
-  "ver": "3.0",
-  "mid": "1573121861118.40f9136b-1cc3-458d-a04a-4459606df",
-  "actor": {
-    "id": "5609876543234567890987654345678",
-    "type": "Request"
-  },
-  "context": {
-    "channel": "01285019302823526477",
-    "pdata": {
-      "id": "dev.sunbird.portal",
-      "pid": "learner-service",
-      "ver": "2.5.0"
-    },
-    "env": "User",
-    "did": "user-3",
-    "cdata": [
-      {
-        "id": "google",
-        "type": "SignupType"
-      }
-    ],
-    "rollup": {
-      "l1": "01285019302823526477"
-    }
-  },
-  "object": {
-    "id": "user-1",
-    "type": "user"
-  },
-  "edata": {
-    "state": "Update",
-    "props": [
-      "recoveryEmail",
-      "recoveryPhone",
-      "userId",
-      "id",
-      "externalIds",
-      "updatedDate",
-      "updatedBy"
-    ]
-  },
-  "syncts": 1573121861125,
-  "@timestamp": "2019-11-07T10:17:41.125Z",
-  "flags": {
-    "tv_processed": true,
-    "dd_processed": true
-  },
-  "type": "events",
-  "ts": "2019-11-07T10:17:41.118+0000"
-}
-```
-
-**Source code:**
-
-{% embed url="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.0/user-org-jobs/user-cache-updater-2.0" %}
 
 ### Additional Reading
 
