@@ -4,14 +4,7 @@ This page explains how a System Administrator can configure some settings in the
 
 #### Configurable Parameters <a href="#configurable-parameters" id="configurable-parameters"></a>
 
-| S NO. | PARAMETER            | DESCRIPTION                                                                                     | EXAMPLE |
-| ----- | -------------------- | ----------------------------------------------------------------------------------------------- | ------- |
-| 1     | custodianOrgChannel  | set default channel into system. The self sign-up or Google sign up user are under this channel | sunbird |
-| 2     | custodianRootOrgId   | set org id of custodianOrgChannel created earlier                                               |         |
-| 3     | contentComingSoonMsg | message for the rootOrgs whose content is being created or they don’t have content yet          |         |
-| 4     | courseFrameworkId    | framework ID for course creation, this framework needs to be created first                      | TPD     |
-| 5     | tncConfig            | terms and condition page                                                                        |         |
-| 6     | consumptionFaqs      | public page url for consumption FAQ                                                             |         |
+<table><thead><tr><th width="53">S NO.</th><th>PARAMETER</th><th width="344">DESCRIPTION</th><th>EXAMPLE</th></tr></thead><tbody><tr><td>1</td><td>custodianOrgChannel</td><td>set default channel into system. The self sign-up or Google sign up user are under this channel</td><td>sunbird</td></tr><tr><td>2</td><td>custodianRootOrgId</td><td>set org id of custodianOrgChannel created earlier</td><td> </td></tr><tr><td>3</td><td>contentComingSoonMsg</td><td>message for the rootOrgs whose content is being created or they don’t have content yet</td><td> </td></tr><tr><td>4</td><td>courseFrameworkId</td><td>framework ID for course creation, this framework needs to be created first</td><td>TPD</td></tr><tr><td>5</td><td>tncConfig</td><td>terms and condition page</td><td> </td></tr><tr><td>6</td><td>consumptionFaqs</td><td>public page url for consumption FAQ</td><td></td></tr></tbody></table>
 
 ### Read Values that are Already Set <a href="#read-values-that-are-already-set" id="read-values-that-are-already-set"></a>
 

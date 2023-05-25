@@ -51,7 +51,6 @@
     * [Reports](learn/product-and-developer-guide/batch-service/reports.md)
     * [System Configurations](learn/product-and-developer-guide/batch-service/system-configurations.md)
     * [Certificate Registry and Credentialing](learn/product-and-developer-guide/batch-service/certificate-registry-and-credentialing.md)
-    * [Data-pipeline (Flink Jobs)](learn/product-and-developer-guide/batch-service/datapipeline-flink-jobs.md)
   * [GROUPS](learn/product-and-developer-guide/groups/README.md)
     * [Architecture](learn/product-and-developer-guide/groups/architecture.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/groups/features-core-capabilities.md)
@@ -84,6 +83,7 @@
       * [Discussion MW & Nodebb System Config](learn/product-and-developer-guide/discussion-forum/configurations/discussion-mw-and-nodebb-system-config.md)
     * [Dependencies](learn/product-and-developer-guide/discussion-forum/dependencies.md)
     * [Telemetry Events](learn/product-and-developer-guide/discussion-forum/telemetry-events.md)
+  * [Data-pipeline (Flink Jobs)](learn/product-and-developer-guide/datapipeline-flink-jobs.md)
 * [Dependencies](learn/dependencies.md)
 * [Product Roadmap](learn/product-roadmap.md)
 

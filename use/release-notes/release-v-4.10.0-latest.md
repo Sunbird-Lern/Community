@@ -1,10 +1,8 @@
-# Release V 4.10.0 (Latest)
+# Release V 4.10.0
 
 ### Document Release Version <a href="#document-release-version" id="document-release-version"></a>
 
-| Project | Release Date           | Version  |
-| ------- | ---------------------- | -------- |
-| Lern    | 10 June 22 (tentative) | V 4.10.0 |
+<table><thead><tr><th width="180.33333333333331">Project</th><th>Release Date</th><th>Version</th></tr></thead><tbody><tr><td>Lern</td><td>10 June 22 (tentative)</td><td>V 4.10.0</td></tr></tbody></table>
 
 ### Details of Released Tag
 
