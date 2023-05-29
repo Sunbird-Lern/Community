@@ -29,7 +29,7 @@
     * [Reports](learn/product-and-developer-guide/user-and-org-service/reports.md)
     * [Dependencies](learn/product-and-developer-guide/user-and-org-service/dependencies.md)
     * [Schema](learn/product-and-developer-guide/user-and-org-service/schema.md)
-    * [Telemetry Events](learn/product-and-developer-guide/user-and-org-service/telemetry-events.md)
+    * [Telemetry Events & Configuration](learn/product-and-developer-guide/user-and-org-service/telemetry-events.md)
     * [System Settings](learn/product-and-developer-guide/user-and-org-service/system-settings.md)
     * [Keycloak Admin Configuration](learn/product-and-developer-guide/user-and-org-service/keycloak-admin-configuration.md)
     * [OTP based SMS Configuration](learn/product-and-developer-guide/user-and-org-service/otp-based-sms-configuration.md)
