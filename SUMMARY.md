@@ -33,7 +33,7 @@
     * [System Settings](learn/product-and-developer-guide/user-and-org-service/system-settings.md)
     * [Keycloak Admin Configuration](learn/product-and-developer-guide/user-and-org-service/keycloak-admin-configuration.md)
     * [OTP based SMS Configuration](learn/product-and-developer-guide/user-and-org-service/otp-based-sms-configuration.md)
-    * [Email Notification Configuration](learn/product-and-developer-guide/user-and-org-service/email-notification-configuration.md)
+    * [Email Configuration](learn/product-and-developer-guide/user-and-org-service/email-notification-configuration.md)
     * [How to Guide](learn/product-and-developer-guide/user-and-org-service/how-to-guide/README.md)
       * [Create Organization](learn/product-and-developer-guide/user-and-org-service/how-to-guide/create-organization.md)
       * [Create User](learn/product-and-developer-guide/user-and-org-service/how-to-guide/create-user.md)
