@@ -40,6 +40,7 @@
     * [Caching and Denormalising User Metadata](learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/README.md)
       * [ETLUserCacheUpdaterJob](learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/etlusercacheupdaterjob.md)
       * [UserCacheUpdaterFlinkJob](use/developer-installation/usercacheupdaterflinkjob.md)
+    * [SMS Configurations](learn/product-and-developer-guide/user-and-org-service/sms-configurations.md)
   * [BATCH SERVICE](learn/product-and-developer-guide/batch-service/README.md)
     * [Architecture](learn/product-and-developer-guide/batch-service/architecture.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/batch-service/features-core-capabilities.md)
