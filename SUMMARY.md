@@ -134,6 +134,7 @@
       * [Discussion-UI setup along with demo application.](use/developer-installation/discussion-forum/installation-guide/discussion-ui-setup-along-with-demo-application..md)
       * [Sunbird-lern portal for DF](use/developer-installation/discussion-forum/installation-guide/sunbird-lern-portal-for-df.md)
     * [Source Code](use/developer-installation/discussion-forum/source-code.md)
+  * [DATA PIPELINE (Flink Jobs)](use/developer-installation/data-pipeline-flink-jobs.md)
 * [Dependency setup](use/dependency-setup.md)
 * [Release Notes](use/release-notes/README.md)
   * [Release V 5.3.0](use/release-notes/release-v-5.3.0.md)

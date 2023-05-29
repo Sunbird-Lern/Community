@@ -26,7 +26,7 @@ Open this url in browser [http://loclahost:4567](http://localhost:4567/) and log
 
 You see this page. click on gear icon to navigate to nodebb admin panel.
 
-![](<../../../../.gitbook/assets/image (7).png>)
+![](<../../../../.gitbook/assets/image (7) (1).png>)
 
 **Step:4**
 
