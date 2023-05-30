@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "d0f28683-d050-49da-b7f4-07800b6fc11a",
+		"name": "Proxy Exhaust APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9863223"
+	},
+	"item": [
+		{
+			"name": "{host}/v1/jobrequest/submit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-authenticated-user-token",
+						"value": "{{auth_token}}",
+						"type": "text",
+						"description": "User token"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{kong_api_key}}",
+						"type": "text",
+						"description": "API key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-channel-id",
+						"value": "{{organisation_id}}",
+						"type": "text",
+						"description": "Organisation id of the requestor"
+					},
+					{
+						"key": "x-authenticated-userid",
+						"value": "{{requested_user_id}}",
+						"type": "text",
+						"description": "UserId of the requester - ORG_ADMIN, COURSE_MENTOR"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request\": {\n        \"tag\": \"do_2137002173427875841205_01370023185341644821\",\n        \"requestedBy\": \"fca2925f-1eee-4654-9177-fece3fd6afc9\",\n        \"dataset\": \"response-exhaust\",\n        \"datasetConfig\": {\n            \"batchId\": \"01370023185341644821\"\n        },\n        \"output_format\": \"csv\",\n        \"encryptionKey\": \"encryption-keyencryption-keyencryption-keyencryption-keyencryption-key\"\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/course/v1/jobrequest/submit",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"course",
+						"v1",
+						"jobrequest",
+						"submit"
+					]
+				},
+				"description": "This API will internally call ‘/dataset/v1/request/submit’ API in SB-Obsrv ‘On Demand Data Exhaust API’, to submit the on demand exhaust job request. The job status will be in the submitted state. \n\n- This API should encrypt the password using auto generated encryption key and pass it in the exhaust API request if the security level is L2 or L3. \n- L1 and L4 do not need encryption keys. \n- Fetch the security level using tenant preference APIs to check this.\n- Configure the exhaust api base url and endpoints."
+			},
+			"response": []
+		},
+		{
+			"name": "{host}/v1/jobrequest/list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-authenticated-user-token",
+						"value": "{{auth_token}}",
+						"type": "text",
+						"description": "User token"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{kong_api_key}}",
+						"type": "text",
+						"description": "API Key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-channel-id",
+						"value": "{{organisation_id}}",
+						"type": "text",
+						"description": "Organisation id of the requestor"
+					},
+					{
+						"key": "x-authenticated-userid",
+						"value": "{{requested_user_id}}",
+						"type": "text",
+						"description": "UserId of the requester - ORG_ADMIN, COURSE_MENTOR"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/course/v1/jobrequest/list/{{tag}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"course",
+						"v1",
+						"jobrequest",
+						"list",
+						"{{tag}}"
+					]
+				},
+				"description": "This API will internally call ‘/dataset/v1/request/list API in Obsrv ‘On Demand Data Exhaust API’, to list all the requests that are specific to a tag"
+			},
+			"response": []
+		}
+	]
+}
