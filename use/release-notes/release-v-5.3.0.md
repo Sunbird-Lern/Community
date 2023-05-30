@@ -4,7 +4,7 @@
 
 | Project | Release Date | Version |
 | ------- | ------------ | ------- |
-| Lern    |              | V 5.3.0 |
+| Lern    | 27-May-2023  | V 5.3.0 |
 
 ### Details of Released Tag
 
