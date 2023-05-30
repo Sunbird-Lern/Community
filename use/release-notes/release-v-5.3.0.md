@@ -48,6 +48,10 @@ The below environment variable needs to be configured in the dev ops repo.
 | exhaust\_api\_submit\_endpoint | /request/submit                                                                                               | To submit job request from batch service     |
 | exhaust\_api\_list\_endpoint   | /request/list/                                                                                                | To list job request from batch service       |
 
+### Exhaust Proxy API documentation
+
+[https://github.com/Sunbird-Lern/sunbird-course-service/blob/release-5.3.0/api-tests/Collection/Proxy%20Exhaust%20APIs.postman\_collection.json](https://github.com/Sunbird-Lern/sunbird-course-service/blob/release-5.3.0/api-tests/Collection/Proxy%20Exhaust%20APIs.postman\_collection.json)
+
 ### Flink Job Configurations for Lern:
 
 | Name of the Flink Job added     |
