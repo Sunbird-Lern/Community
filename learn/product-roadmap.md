@@ -6,11 +6,60 @@ Sunbird Lern [ISSUE TRACKER](https://github.com/Sunbird-Lern/Community/issues) :
 
 
 
+<mark style="color:orange;">**Release-5.4.0**</mark> <mark style="color:orange;">**(Planned release date - 07 Jul '23)**</mark>
+
+Release Plan:
+
+Design Discussions : 15 May '23 - 26 May '23 (2 weeks)\
+Sprint 01 : 29 May '23 - 09 Jun '23 (2 weeks)\
+Sprint 02 : 12 Jun '23 - 32 Jun '23 (2 weeks)\
+Regression & Testing : 26 Jun '23 to 06 Jul (2 weeks)\
+Production Release : 07 Jul '23
+
+
+
+
+
+<mark style="color:orange;">**Release-5.3.0**</mark> <mark style="color:orange;">**(Planned release date - 26 May '23)**</mark>
+
+Release plan:
+
+Design Discussions : 16 Jan '23 - 27 Jan '23 (2 weeks)\
+Sprint 01 : 17 Apr '23 - 28 Apr '23 (2 weeks)\
+Sprint 02 : 01 May '23 - 12 May '23 (2 weeks)\
+Regression & Testing : 15 May '23 to 25 May (2 weeks)\
+Production Release : 26 May '23
+
+
+
+`UPDATE:`
+
+`Actual release date for 5.3.0 : 27 May '23 (`[`Discussion Forum Update`](https://github.com/orgs/Sunbird-Lern/discussions/128)`)`
+
+`Release List for Lern 5.3 on` [`Jira`](https://project-sunbird.atlassian.net/projects/LR/versions/10233/tab/release-report-all-issues)
+
+
+
 <mark style="color:orange;">**Release-5.2.0**</mark> <mark style="color:orange;">**(Planned release date - 27 Mar '23)**</mark>
 
-[Click here](https://project-sunbird.atlassian.net/issues/?filter=12735) to see the list of issues planned for SB Lern release 5.2.0
 
 
+[Click here](https://project-sunbird.atlassian.net/issues/?filter=12735) to see the list of issues planned for SB Lern Release 5.2
+
+The following are the planned release dates of release 5.2:
+
+Design Discussions : 16 Jan '23 - 27 Jan '23 (2 weeks)\
+Sprint 01 : 30 Jan '23 - 17 Feb '23 (3 weeks)\
+Sprint 02 : 20 Feb '23 - 10 Mar '23 (3 weeks)\
+Regression & Testing : 13 March '23 to '24 March (2 weeks)\
+Production Release : 27 March '23\
+Bug Fixes & Support : 28 March ' 23 to 31 March '23 (1 week)
+
+UPDATE:
+
+`Actual Release date for 5.2.0 : 06 April '23 (see Discussion Forum update` [`here`](https://github.com/orgs/Sunbird-Lern/discussions/59)`)`\
+\
+`Release list for Lern 5.2 on` [`Jira`](https://project-sunbird.atlassian.net/projects/LR/versions/10232/tab/release-report-all-issues)&#x20;
 
 
 
