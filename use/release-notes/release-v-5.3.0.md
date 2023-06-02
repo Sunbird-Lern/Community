@@ -109,6 +109,8 @@ Once we migrate these certificates then we no longer need to store certificates 
 
 Reference Link: [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3117416449/LR-4+Design+of+migrating+existing+certificate+in+to+RC](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3117416449/LR-4+Design+of+migrating+existing+certificate+in+to+RC)
 
+**Note:** After migrating old certificates to RC, certificate verification of old certificates will become invalid. To support to old certificate verification, `Sunbird ED` building block is implementating in portal service in release 6.0. Kindly find the ticket in [this link](https://project-sunbird.atlassian.net/browse/ED-1594). So recommended to migrate the certificates after getting the old certification verification support as well.
+
 **Step 1**
 
 Create Kafka topic for only the purpose of this migration process
