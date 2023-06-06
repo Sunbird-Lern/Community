@@ -55,6 +55,7 @@
   * [GROUPS](learn/product-and-developer-guide/groups/README.md)
     * [Architecture](learn/product-and-developer-guide/groups/architecture.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/groups/features-core-capabilities.md)
+    * [Design References:](learn/product-and-developer-guide/groups/design-references.md)
     * [Schema](learn/product-and-developer-guide/groups/schema.md)
     * [API Documentation](learn/product-and-developer-guide/groups/api-documentation.md)
     * [Functional Configurations](learn/product-and-developer-guide/groups/functional-configurations.md)
@@ -106,6 +107,7 @@
         * [User Cache Indexer Job](learn/product-and-developer-guide/data-products/userorg/other-jobs/user-cache-indexer-job.md)
 * [Dependencies](learn/dependencies.md)
 * [Product Roadmap](learn/product-roadmap.md)
+* [Tech References](learn/tech-references.md)
 
 ## Engage
 

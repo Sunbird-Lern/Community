@@ -2,15 +2,20 @@
 
 #### **Architecture Diagram**
 
-![](../../../.gitbook/assets/groups.png)
+<figure><img src="../../../.gitbook/assets/Groups-Architecture.png" alt=""><figcaption></figcaption></figure>
 
-***
+#### Flow Diagram
 
-![](<../../../.gitbook/assets/image (4).png>)
+<figure><img src="../../../.gitbook/assets/GroupsFlowDiagram-Overall-FlowDiagram.drawio (1).png" alt=""><figcaption></figcaption></figure>
 
-1. **CRUD** operations are managed by **Group Service**.
-2. From Group Service If the API is related to the **user/member** then the **Learner Service** is called to get the user details.
-3. Notifications are created by Notification Service for some action in groups (eg: Group Created).
-4. **Content Service** is \*\*\*\* used to get all the results based on the Search Query.
-5. **Cassandra Databas**_**e**_ is used to do all the CRUD operations.
-6. All the Telemetry Data are stored in **Kafka**
+#### Code Flow Diagram
+
+<figure><img src="../../../.gitbook/assets/GroupsFlowDiagram-Code Flow Diagram.drawio (2).png" alt=""><figcaption></figcaption></figure>
+
+* Group service provide CRUD operations for group management.
+* This service is integrated with UserOrg service to fetch group member data. So APIs which handle group member details uses UserOrg service. System settings like custodian organisation id or default organisation id is fetched from UserOrg. Organisation details are read using Org read API from UserOrg.
+* Most of the group CRUD operations generate notifications to users using Notification Service (eg: Group Created)
+* Content Service is used to search the activity details with respect to the activity type and id using activityConfig.json.
+* Cassandra is the primary data store and Redis is used for caching the group data.
+* Every API call generates telemetry and with the help of logstash-logback, this telemetry is updated to "${ENV\_NAME}.telemetry.raw" Kafka topic. Datapipeline of Sunbird-Obsrv process this telemetry for various data operations.
+

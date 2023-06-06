@@ -9,7 +9,3 @@ Watch the video on the learning series on Sunbird Groups [here](https://www.yout
 **Adopters:** Diksha
 
 **Contributors**: EkStep
-
-**Last Release Date**: Nov 25, 2021
-
-**Version**: 4.5.0
