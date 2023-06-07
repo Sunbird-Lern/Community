@@ -55,7 +55,7 @@
   * [GROUPS](learn/product-and-developer-guide/groups/README.md)
     * [Architecture](learn/product-and-developer-guide/groups/architecture.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/groups/features-core-capabilities.md)
-    * [Design References:](learn/product-and-developer-guide/groups/design-references.md)
+    * [Design References](learn/product-and-developer-guide/groups/design-references.md)
     * [Schema](learn/product-and-developer-guide/groups/schema.md)
     * [API Documentation](learn/product-and-developer-guide/groups/api-documentation.md)
     * [Functional Configurations](learn/product-and-developer-guide/groups/functional-configurations.md)
