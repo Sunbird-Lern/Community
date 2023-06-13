@@ -1,5 +1,13 @@
 # On-Demand Exhaust
 
+**What is an exhaust?**\
+\
+In the context of reports, an "exhaust" typically refers to the complete or comprehensive set of data or information included in the report. In an exhaust report, all available relevant data or details on a particular topic or subject have been exhaustively gathered, analyzed, and presented in the report.
+
+Using the term "exhaust" implies that the report contains all the necessary information and leaves little room for additional details or data to be included.
+
+
+
 On-demand reports are the reports that the admin will request through the UI on an as-needed basis.
 
 **Overall architecture diagram:**
