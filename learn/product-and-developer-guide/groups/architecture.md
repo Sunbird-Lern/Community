@@ -10,7 +10,7 @@
 
 #### Code Flow Diagram
 
-<figure><img src="../../../.gitbook/assets/GroupsFlowDiagram-Code Flow Diagram.drawio (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/GroupsFlowDiagram-Code Flow Diagram.drawio (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Group service provide CRUD operations for group management.
 * This service is integrated with UserOrg service to fetch group member data. So APIs which handle group member details uses UserOrg service. System settings like custodian organisation id or default organisation id is fetched from UserOrg. Organisation details are read using Org read API from UserOrg.
