@@ -108,6 +108,7 @@
 * [Dependencies](learn/dependencies.md)
 * [Product Roadmap](learn/product-roadmap.md)
 * [Tech References](learn/tech-references.md)
+* [FAQs](learn/faqs.md)
 
 ## Engage
 
