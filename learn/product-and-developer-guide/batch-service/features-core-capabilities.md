@@ -57,3 +57,22 @@ Following are the available exhausts for a trackable collection:
 1. Progress Exhaust - Progress exhaust contains the progress related information for the collection and the nested collections including the assessment related scores of the collection. The nested collections and the assessments within the collection will be transposed as columns and hence the columns for each collection exhaust file would vary.
 2. User Info Exhaust - User personal info exhaust contains the additional information of the users that have joined the collection. The information contains personal details such as Email, Phone number etc and all such personal information is provided only on explicit consent by the user.
 3. Response Exhaust - Response exhaust contains the user responses to each question for all question sets in a trackable collection.
+
+**Group activity Aggregator:**
+
+The group activity aggregator feature fetches and aggregates activity data for a group. It works as follows,
+
+* Fetches the group members associated with the group ID.
+* Retrieves the user activity aggregates for the given activity ID and type, based on the group members.
+* Combines the group and user data to construct a response with aggregated information.
+* Returns the constructed response as a result.
+* The response contains the score aggregates also if the collection contains self-assessments.
+* It has completed count, enrollment count and score aggregate if it has assessments.
+
+This feature has a dependency on **groups service** to get the related group information.&#x20;
+
+\
+**Visualisation of Group activity aggregator response:**
+
+<figure><img src="../../../.gitbook/assets/activity aggregate response view.png" alt=""><figcaption></figcaption></figure>
+

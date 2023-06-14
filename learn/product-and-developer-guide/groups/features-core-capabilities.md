@@ -13,3 +13,5 @@
 9. Groups can be deleted only by the creator, not by the admin.
 10. The user can activate or deactivate the group
 11. The user can also edit and update the group based on the need
+12. There is a group activity aggregate feature belonging to **batch service** which actually uses groups service for getting information like activity completed count, enrollment count, and score aggregates if the assessment is present. \
+    **Design Reference Link:** [https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/2437251154/Scores+in+Group+aggregate+-+SC-2218](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/2437251154/Scores+in+Group+aggregate+-+SC-2218)
