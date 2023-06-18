@@ -2,9 +2,15 @@
 
 #### User\&Org Service Architecture Diagram
 
-![](../../../.gitbook/assets/userorg.png)
+<figure><img src="../../../.gitbook/assets/architecture.png" alt=""><figcaption></figcaption></figure>
 
-![](<../../../.gitbook/assets/image (11).png>)
+Flow Diagram:
+
+<figure><img src="../../../.gitbook/assets/UserOrgServiceFlowDiagram-Overall-FlowDiagram.drawio (1).png" alt=""><figcaption></figcaption></figure>
+
+Code Flow Diagram:
+
+<figure><img src="../../../.gitbook/assets/UserOrgServiceFlowDiagram-user.drawio.png" alt=""><figcaption></figcaption></figure>
 
 * User service includes multiple operations to creating new users and search the user.
 * Keyclock for user authentication.
