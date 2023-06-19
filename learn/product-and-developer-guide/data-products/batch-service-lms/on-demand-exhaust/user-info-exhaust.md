@@ -1,15 +1,15 @@
 # User Info Exhaust
 
-User personal info exhaust contains the additional information of the users that have joined the collection. The information contains personal details such as Email, Phone number etc and all such personal information is provided only with explicit consent by the user. Each record represents user details of the enrolled users in the course batch.Mail id and phone number are encrypted and will be decrypted based on consent
+User personal info exhaust contains the additional information of the users that have joined the course batch. The information contains personal details such as Email, Phone number etc and all such personal information is provided only with explicit consent by the user. Each record represents user details of the enrolled users in the course batch.Mail id and phone number are encrypted and will be decrypted based on consent
 
-<figure><img src="../../../../../.gitbook/assets/user_info_Exhaust.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/userinfo exhaust.png" alt=""><figcaption></figcaption></figure>
 
-The UserInfoExhaustJob processes the data, applies consent rules, decrypts user information, and generates a user information exhaust report based on the provided user enrolment data and collection batch information.\
+The UserInfoExhaustJob processes the data, applies consent rules, decrypts user information, and generates a user information exhaust report based on the provided user enrolment data and collection batch information.The encryption key is mandatory only for user info exhaust\
 \
 **Data provider:**\
 **cassandra**
 
-1. user table
+1. user redis
 2. user\_enrolments
 3. user\_consent
 
@@ -21,9 +21,9 @@ The UserInfoExhaustJob processes the data, applies consent rules, decrypts user 
 \
 **File Structure**
 
-| **Format**                       | **Nomenclature**                                 | **Example**                                                  |
-| -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------ |
-| **CSV zip (Password protected)** | _**\<batch\_id>\_userinfo\_\<updatedDate>.zip**_ | _**do\_1130264512015646721166\_userinfo\_26\_08\_2020.zip**_ |
+| **Format**                       | **Nomenclature**                                                                     | **Example**                                                  |
+| -------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| **CSV zip (Password protected)** | **user-info-exhaust/{request\_id}/**_**\<batch\_id>\_userinfo\_\<updatedDate>.zip**_ | _**do\_1130264512015646721166\_userinfo\_26\_08\_2020.zip**_ |
 
 #### File Contents <a href="#file-contents.1" id="file-contents.1"></a>
 

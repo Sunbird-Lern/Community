@@ -1,9 +1,9 @@
 # Response Exhaust
 
 The response exhaust report captures the user's responses to each question in the assessment. The response exhaust report contains data only if an assessment or question set is present. For each batch of users, a distinct response exhaust report is created. Each user's attempt at a particular question is exhaustively recorded, resulting in multiple rows for each attempt.\
+m
 
-
-<figure><img src="../../../../../.gitbook/assets/response_Exhaust sequence.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/Response exhaust (1).png" alt=""><figcaption></figcaption></figure>
 
 Overall, the code represents the job that processes user enrolment data and collects batch information. It retrieves assessment data, performs necessary transformations, joins with content data, and organizes the resulting DataFrame as a response exhaust report.
 
@@ -11,7 +11,7 @@ Overall, the code represents the job that processes user enrolment data and coll
 
 **cassandra**
 
-1. user table
+1. user redis
 2. user\_enrolments
 3. assessment\_aggregator
 4. user\_activity\_agg
@@ -24,9 +24,9 @@ Overall, the code represents the job that processes user enrolment data and coll
 
 #### File Structure <a href="#file-structure.2" id="file-structure.2"></a>
 
-| **Format** | **Nomenclature**                                 | **Example**                                                  |
-| ---------- | ------------------------------------------------ | ------------------------------------------------------------ |
-| **CSV**    | _**\<batch\_id>\_response\_\<updatedDate>.csv**_ | _**do\_1130264512015646721166\_response\_26\_08\_2020.csv**_ |
+| **Format** | **Nomenclature**                                                                    | **Example**                                                  |
+| ---------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| **CSV**    | **response-exhaust/{request\_id}/**_**\<batch\_id>\_response\_\<updatedDate>.csv**_ | _**do\_1130264512015646721166\_response\_26\_08\_2020.csv**_ |
 
 #### File Contents <a href="#file-contents.2" id="file-contents.2"></a>
 

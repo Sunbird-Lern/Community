@@ -9,7 +9,5 @@ Batch service jobs include,
 * Course batch status updater - updates course batch elastic search index.
 * Course enrollment - Report on enrollment details in the course batch
 * Course consumption -  Report on consumption metrics data of the course batch.
-* Cassandra migrator - Migrating User enrollment data to reports cluster.
-
-Progress exhaust job, Response exhaust job, User-info exhaust job, Collection summary job, course batch status updater job, course enrollment job, course consumption job and Cassandra migrator job.
+* Cassandra migrator - Migrating User enrollment data to the reports cluster.
 
