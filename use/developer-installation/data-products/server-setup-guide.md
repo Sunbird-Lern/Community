@@ -1,16 +1,8 @@
 ---
-description: This guide helps to deploy in local and server.
+description: This guide helps to deploy in data-products in server.
 ---
 
-# Installation Guide
-
-## Setup of data-products in local machine
-
-Each data-product is an independent spark job used for generating reports and data migrations, so each has different sets of data provider dependencies. So the data-products can be tested locally with the test cases. Kindly find the local setup guide from the below link.
-
-{% embed url="https://github.com/Sunbird-Lern/data-products/tree/release-5.4.0" %}
-README.md
-{% endembed %}
+# Server setup Guide
 
 ## Setup and execution of data-products in the server
 
@@ -84,25 +76,3 @@ Params:
 * end\_date - Data consumption end date. not required for LERN data-products
 * private\_branch - specific private branch
 * branch\_or\_tag - public branch
-
-### Logs for Data-products
-
-In the server, the spark execution log can be found in the below location.
-
-```
-/mount/data/analytics/logs/lern-data-products/{{date}}-job-execution.log
-```
-
-Also, from the job we are having logs for identifying the status of the job. This type of log configurable to put either in log file or kafka topic based on below config.
-
-```
-log.appender.kafka.enable="{{ boolean }}"
-log.appender.kafka.broker_host="{{ host }}:9092"
-log.appender.kafka.topic="{{ env }}.druid.events.log"
-```
-
-If `log.appender.kafka.enable` is `false`, the log goes into the below file.
-
-```
-/mount/data/analytics/scripts/logs/joblog.log
-```
