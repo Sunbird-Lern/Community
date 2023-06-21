@@ -6,5 +6,4 @@ Data-products is a collection of scala scripts which are used to generate report
 
 This guide helps you to install [Data-products](https://github.com/Sunbird-Lern/data-products) on developer machine.
 
-{% embed url="https://github.com/Sunbird-Lern/data-products/tree/release-5.4.0" %}
-
+{% embed url="https://github.com/Sunbird-Lern/data-products/tree/release-5.3.0" %}

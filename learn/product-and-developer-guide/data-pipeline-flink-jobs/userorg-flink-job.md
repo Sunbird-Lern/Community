@@ -6,7 +6,7 @@
 
 Additional Reading: [https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1520074753/Design+Denormalise+User+Metadata](https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1520074753/Design+Denormalise+User+Metadata), [https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob](https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob)
 
-
+Design guide: [https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob](https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob)
 
 **Configuration variables:**
 
