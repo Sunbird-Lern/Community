@@ -53,6 +53,8 @@
     * [Reports](learn/product-and-developer-guide/batch-service/reports.md)
     * [System Configurations](learn/product-and-developer-guide/batch-service/system-configurations.md)
     * [Certificate Registry and Credentialing using Sunbird-RC](learn/product-and-developer-guide/batch-service/certificate-registry-and-credentialing.md)
+    * [Certificate Flow](learn/product-and-developer-guide/batch-service/certificate-flow/README.md)
+      * [Certificates Creation and Configuration](learn/product-and-developer-guide/batch-service/certificate-flow/certificates-creation-and-configuration.md)
   * [GROUPS](learn/product-and-developer-guide/groups/README.md)
     * [Architecture](learn/product-and-developer-guide/groups/architecture.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/groups/features-core-capabilities.md)

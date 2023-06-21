@@ -38,10 +38,11 @@ The UserInfoExhaustJob processes the data, applies consent rules, decrypts user 
 | Batch Name            | Static          | String        | Batch Title                                                                                                                                                  |
 | User UUID             | Static          | String        | The system generated DIKSHA unique user ID                                                                                                                   |
 | User Name             | Static          | String        | Name of the user                                                                                                                                             |
+| User Type             | Static          | String        | Type of the user                                                                                                                                             |
+| User Sub Type         | Static          | String        | Sub Type of the user                                                                                                                                         |
 | State                 | Static          | String        | User declared state for self signed up users. If the user is a state validated user then the state as passed from state SSO or derived from school ID.       |
 | District              | Static          | String        | User declared district for self signed up users. If the user is a state validated user then the district as passed from state SSO or derived from school ID. |
 | Org Name              | Static          | String        | Name of user org - DIKSHA Custodian for self signed up users and respective tenant names for state validated users                                           |
-| External ID           | Static          | Number        | Self declared users this is their declared ID. For state validated users this is their Teacher ID                                                            |
 | School Id             | Static          | String        | If user is state validated teacher then the school ID mapped to this user. If user is self declared user then the user declared school ID.                   |
 | School Name           | Static          | String        | If user is state validated teacher then the school name mapped to this user. If user is self declared user then the user declared org/school name.           |
 | Block Name            | Static          | String        | Block name mapped to the user’s org/school id                                                                                                                |
@@ -56,9 +57,8 @@ The UserInfoExhaustJob processes the data, applies consent rules, decrypts user 
 
 Following are the fields/columns that will be available in the file only when the user consented for the data sharing.
 
-| External ID   |
-| ------------- |
 | School ID     |
+| ------------- |
 | School Name   |
 | Block Name    |
 | Mobile number |

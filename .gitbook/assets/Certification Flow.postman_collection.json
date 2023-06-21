@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "981b275c-cc3d-4809-a324-ebede62e76eb",
+		"name": "Certification Flow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "4875988"
+	},
+	"item": [
+		{
+			"name": "Tenant Preference Read API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-authenticated-user-token",
+						"value": "{{auth_user_token}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"request\": {\n\"orgId\": \"{{orgId}}\",\n\"key\": \"certRules\"\n}\n}"
+				},
+				"url": "{{host}}/api/org/v2/preferences/read"
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant Preference Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-authenticated-user-token",
+						"value": "{{auth_user_token}}--header"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"request\": {\n\"orgId\": \"{{orgId}}\",\n\"key\": \"certRules\",\n\"data\": {\n\"templateName\": \"certRules\",\n\"action\": \"save\",\n\"fields\": [\n{\n\"code\": \"certTypes\",\n\"dataType\": \"text\",\n\"name\": \"certTypes\",\n\"label\": \"Certificate type\",\n\"description\": \"Select certificate\",\n\"editable\": true,\n\"inputType\": \"select\",\n\"required\": true,\n\"displayProperty\": \"Editable\",\n\"visible\": true,\n\"renderingHints\": {\n\"fieldColumnWidth\": \"twelve\"\n},\n\"range\": [\n{\n\"name\": \"Completion certificate\",\n\"value\": {\n\"enrollment\": {\n\"status\": 2\n}\n}},\n{\n\"name\": \"Merit certificate\",\n\"value\": {\n\"score\": \">= 98\"\n}\n}\n],\n\"index\": 1\n},\n{\n\"code\": \"issueTo\",\n\"dataType\": \"text\",\n\"name\": \"issueTo\",\n\"label\": \"Issue certificate to\",\n\"description\": \"Select\",\n\"editable\": true,\n\"inputType\": \"select\",\n\"required\": true,\n\"displayProperty\": \"Editable\",\n\"visible\": true,\n\"renderingHints\": {\n\"fieldColumnWidth\": \"twelve\"\n},\n\"range\": [\n{\n\"name\": \"All\",\n\"value\": {\n\"user\": {\n\"rootOrgId\": \"\"\n}\n}},\n{\n\"name\": \"My Org User\",\n\"rootOrgId\": \"{{orgId}}\"\n}\n],\n\"index\": 2\n}\n]\n}\n}\n}"
+				},
+				"url": "{{host}}/api/org/v2/preferences/create"
+			},
+			"response": []
+		},
+		{
+			"name": "Asset create - Cert Template Layout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-authenticated-user-token",
+						"value": "{{auth_user_Token}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Channel-ID",
+						"value": "{{orgId}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{"
+				},
+				"url": "{{host}}/api/asset/v1/create"
+			},
+			"response": []
+		},
+		{
+			"name": "Asset upload API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{api_key}}"
+					},
+					{
+						"key": "x-authenticated-user-token",
+						"value": "{{auth_user_token}}"
+					},
+					{
+						"key": "X-Channel-ID",
+						"value": "{{orgId}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Downloads/SVG_TEMPLATE_LAYOUT_ID.svg"
+						}
+					]
+				},
+				"url": "{{host}}/api/asset/v1/upload/SVG_TEMPLATE_LAYOUT_ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Asset Read API",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{api_key}}"
+					}
+				],
+				"url": "{{host}}/api/asset/v1/read/{{SVG_TEMPLATE_LAYOUT_ID}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Assert Create - Cert Teamplate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{api_key}}"
+					},
+					{
+						"key": "x-authenticated-user-token",
+						"value": "{{auth_user_token}}"
+					},
+					{
+						"key": "X-Channel-ID",
+						"value": "{{orgId}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"request\": {\n\"asset\": {\n\"channel\": \"CHANNEL_ID\",\n\"name\": \"SVG_TEMPLATE_NAME\",\n\"identifier\": \"SVG_TEMPLATE_ID\",\n\"code\": \"SVG_TEMPLATE_ID\",\n\"mimeType\": \"image/svg+xml\",\n\"license\": \"CC BY 4.0\",\n\"primaryCategory\": \"Certificate Template\",\n\"mediaType\": \"image\",\n\"certType\": \"cert template\",\n\"data\": {\n\"title\": \"SVG_TEMPLATE_NAME\"\n},\n\"issuer\": {\n\"name\": \"\",\n\"url\": \"\"\n},\n\"signatoryList\": []\n}\n}\n}"
+				},
+				"url": "{{host}}/api/asset/v1/create"
+			},
+			"response": []
+		}
+	]
+}
