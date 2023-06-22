@@ -1,6 +1,6 @@
 # State Admin Report
 
-The consent Report gives the user info channel-wise as per the consent given by the user. StateAdminReportJob generates a folder declared\_user\_detail which contains the user-declared consent and user details. It is generated in CSV format with respect to the channel name.It also provides organisation-wise consent details.
+The consent Report gives the user info organization-wise as per the consent given by the user. StateAdminReportJob generates a folder declared\_user\_detail which contains the user-declared consent and user details. It is generated in CSV format with respect to the organization name. It also provides organisation-wise consent details.
 
 <figure><img src="../../../../../.gitbook/assets/state_Admin_Report.png" alt=""><figcaption></figcaption></figure>
 
@@ -8,7 +8,7 @@ The consent Report gives the user info channel-wise as per the consent given by 
 
 1. user\_declaration
 2. user\_consent
-3. organisation
+3. organization
 4. location
 5. user
 
