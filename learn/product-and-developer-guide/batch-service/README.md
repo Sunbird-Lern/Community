@@ -1,6 +1,6 @@
-# BATCH SERVICE
+# LMS(BATCH) SERVICE
 
-The Batch Service comprises APIs that permit for creation of Batches of users in the context of Collections, allowing for Batch management capabilities (tracking progress of users within a batch, assigning of mentors to batches as well as start and end dates for batches, attaching credentials etc.)
+The LMS Service comprises APIs that permit for creation of Batches of users in the context of Collections, allowing for LMS capabilities (tracking progress of users within a batch, assigning of mentors to batches as well as start and end dates for batches, attaching credentials etc.)
 
 #### References:
 
