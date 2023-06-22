@@ -3,7 +3,7 @@
 The response exhaust report captures the user's responses to each question in the assessment. The response exhaust report contains data only if an assessment or question set is present. For each batch of users, a distinct response exhaust report is created. Each user's attempt at a particular question is exhaustively recorded, resulting in multiple rows for each attempt.\
 m
 
-<figure><img src="../../../../../.gitbook/assets/Response exhaust.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/Response exhaust (1).png" alt=""><figcaption></figcaption></figure>
 
 Overall, the code represents the job that processes user enrolment data and collects batch information. It retrieves assessment data, performs necessary transformations, joins with content data, and organizes the resulting DataFrame as a response exhaust report.
 

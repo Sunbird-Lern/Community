@@ -34,7 +34,7 @@ b) Configure “cert template”\
 
  
 
-<figure><img src="../../../../.gitbook/assets/3 (1).png" alt="" width="533"><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/3.png" alt="" width="533"><figcaption></figcaption></figure>
 
 </div>
 
