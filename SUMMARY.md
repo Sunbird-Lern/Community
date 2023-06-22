@@ -43,6 +43,7 @@
       * [ETLUserCacheUpdaterJob](learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/etlusercacheupdaterjob.md)
       * [UserCacheUpdaterFlinkJob](use/developer-installation/usercacheupdaterflinkjob.md)
     * [Unit Tests and Code Coverage](learn/product-and-developer-guide/user-and-org-service/unit-tests-and-code-coverage.md)
+    * [FAQs](learn/product-and-developer-guide/user-and-org-service/faqs.md)
   * [LMS(BATCH) SERVICE](learn/product-and-developer-guide/batch-service/README.md)
     * [Architecture](learn/product-and-developer-guide/batch-service/architecture.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/batch-service/features-core-capabilities.md)
