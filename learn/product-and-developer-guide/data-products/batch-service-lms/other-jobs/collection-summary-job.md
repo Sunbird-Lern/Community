@@ -280,23 +280,23 @@ The 'Collection Summary Snapshot' data source in Druid serves as a repository fo
 
 #### Collection Summary Snapshot Spec:
 
-| **Dimension In Druid** | **Field In Report**         | **Description**        | **Data Type**                                          |               |
-| ---------------------- | --------------------------- | ---------------------- | ------------------------------------------------------ | ------------- |
-| 1                      | batch\_id                   | batchid                | Unique Batch Identifier                                | String        |
-| 2                      | batch\_name                 | batchname              | Name of the batch                                      | String        |
-| 3                      | content\_channel            | channel                | Name of the Channel                                    | String        |
-| 4                      | collection\_org\_name       | organisation           | Published By or Course Publisher Name or tenant        | String        |
-| 5                      | collection\_id              | courseid               | Unique Collection Identifier                           | String        |
-| 6                      | collection\_name            | collectionname         | Name of Course                                         | String        |
-| 7                      | batch\_start\_date          | startdate              | Start Date of the Batch                                | String        |
-| 8                      | batch\_end\_date            | enddate                | End Date of the Batch                                  | String        |
-| 9                      | user\_org                   | orgname                | User Organisation name                                 | String        |
-| 10                     | content\_status             | contentstatus          | State of Course. Ex: Live, Draft, etc.                 | String        |
-| 11                     | total\_enrolment            | enrolleduserscount     | The number of users are enrolled for the course.       | Long          |
-| 12                     | total\_completion           | completionuserscount   | The number of users have completed the course          | Long          |
-| 13                     | total\_certificates\_issued | certificateissuedcount | The number of users received the certificate in course | Long          |
-| 14                     | user\_state                 | state                  | Name of The State                                      | String        |
-| 15                     | user\_district              | district               | Name of the District                                   | String        |
-| 16                     | keywords                    | keywords               | Keywords/Tags which are assigned to course             | List\[String] |
-| 17                     | timestamp                   | timestamp              | TimeStamp of when the report is generated.             | Long          |
-| 18                     | has\_certificate            | hascertified           | Whether batch is certified or not                      | Boolean       |
+| **Dimension In Druid**      | **Column Label**       | **Data Type** | **Description**                                        |
+| --------------------------- | ---------------------- | ------------- | ------------------------------------------------------ |
+| batch\_id                   | batchid                | String        | Unique Batch Identifier                                |
+| batch\_name                 | batchname              | String        | Name of the batch                                      |
+| content\_channel            | channel                | String        | Name of the Channel                                    |
+| collection\_org\_name       | organisation           | String        | Published By or Course Publisher Name or tenant        |
+| collection\_id              | courseid               | String        | Unique Collection Identifier                           |
+| collection\_name            | collectionname         | String        | Name of Course                                         |
+| batch\_start\_date          | startdate              | String        | Start Date of the Batch                                |
+| batch\_end\_date            | enddate                | String        | End Date of the Batch                                  |
+| user\_org                   | orgname                | String        | User Organisation name                                 |
+| content\_status             | contentstatus          | String        | State of Course. Ex: Live, Draft, etc.                 |
+| total\_enrolment            | enrolleduserscount     | Long          | The number of users are enrolled for the course.       |
+| total\_completion           | completionuserscount   | Long          | The number of users have completed the course          |
+| total\_certificates\_issued | certificateissuedcount | Long          | The number of users received the certificate in course |
+| user\_state                 | state                  | String        | Name of The State                                      |
+| user\_district              | district               | String        | Name of the District                                   |
+| keywords                    | keywords               | List\[String] | Keywords/Tags which are assigned to course             |
+| timestamp                   | timestamp              | Long          | TimeStamp of when the report is generated.             |
+| has\_certificate            | hascertified           | Boolean       | Whether batch is certified or not                      |

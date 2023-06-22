@@ -38,21 +38,21 @@ Progress exhaust contains the progress-related information for the collection an
 
 #### File Contents <a href="#file-contents" id="file-contents"></a>
 
-| **Column Label**   | **Column Type** | **Data Type** | **Description**                                                                                                                                              |
-| ------------------ | --------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Collection Id      | Static          | String        | Id of the collection.                                                                                                                                        |
-| Collection Name    | Static          | String        | Collection Title                                                                                                                                             |
-| Batch Id           | Static          | String        | Batch Id                                                                                                                                                     |
-| Batch Name         | Static          | String        | Batch Title                                                                                                                                                  |
-| User UUID          | Static          | String        | The system generated DIKSHA unique user ID                                                                                                                   |
-| User Name          | Static          | String        | Name of the user                                                                                                                                             |
-| State              | Static          | String        | User declared state for self signed up users. If the user is a state validated user then the state as passed from state SSO or derived from school ID.       |
-| District           | Static          | String        | User declared district for self signed up users. If the user is a state validated user then the district as passed from state SSO or derived from school ID. |
-| Enrolment Date     | Static          | Date          | Collection enrolment date (for nested courses/collections it will be the parent collection enrolment date)                                                   |
-| Completion Date    | Static          | Date          | Collection completion date (for nested courses/collections it will be the parent collection completion date)                                                 |
-| Progress           | Static          | Number        | Collection progress (for nested courses/collections this will be the parent collection progress)                                                             |
-| Certificate Status | Static          | String        | Issued - if the certificate is issued. Blank - if it is not issued and. Failed - if issue has failed                                                         |
-| Total Score        | Static          | Number        | Total Score received by the user across all assessments within the collection with category type as “SelfAssess”                                             |
+| **Column Label**   | **Column Type** | **Data Type** | **Description**                                                                                                                                           |
+| ------------------ | --------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Collection Id      | Static          | String        | Id of the collection.                                                                                                                                     |
+| Collection Name    | Static          | String        | Collection Title                                                                                                                                          |
+| Batch Id           | Static          | String        | Batch Id                                                                                                                                                  |
+| Batch Name         | Static          | String        | Batch Title                                                                                                                                               |
+| User UUID          | Static          | String        | The system generated unique user ID                                                                                                                       |
+| User Name          | Static          | String        | Name of the user                                                                                                                                          |
+| State              | Static          | String        | User declared state for self signed up users. If the user is a org validated user then the state as passed from org SSO or derived from Sub-Org ID.       |
+| District           | Static          | String        | User declared district for self signed up users. If the user is a org validated user then the district as passed from Org SSO or derived from Sub-Org ID. |
+| Enrolment Date     | Static          | Date          | Collection enrolment date (for nested courses/collections it will be the parent collection enrolment date)                                                |
+| Completion Date    | Static          | Date          | Collection completion date (for nested courses/collections it will be the parent collection completion date)                                              |
+| Progress           | Static          | Number        | Collection progress (for nested courses/collections this will be the parent collection progress)                                                          |
+| Certificate Status | Static          | String        | Issued - if the certificate is issued. Blank - if it is not issued and. Failed - if issue has failed                                                      |
+| Total Score        | Static          | Number        | Total Score received by the user across all assessments within the collection with category type as “SelfAssess”                                          |
 
 #### Sample Data <a href="#sample-data" id="sample-data"></a>
 
