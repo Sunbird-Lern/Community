@@ -58,24 +58,22 @@ sunbird_us_org_read_url=/v1/org/read
 LEARNER_SERVICE_PORT=
 ```
 
-### SMS Template config
+### SMS Config
 
-{% embed url="https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3316809958/How+to+Set+up+SMS" %}
-How to setup SMS template
-{% endembed %}
+{% content-ref url="../../../learn/product-and-developer-guide/user-and-org-service/how-to-guide/sms-configuration.md" %}
+[sms-configuration.md](../../../learn/product-and-developer-guide/user-and-org-service/how-to-guide/sms-configuration.md)
+{% endcontent-ref %}
+
+### Email Config
+
+{% content-ref url="../../../learn/product-and-developer-guide/user-and-org-service/how-to-guide/email-notification-configuration.md" %}
+[email-notification-configuration.md](../../../learn/product-and-developer-guide/user-and-org-service/how-to-guide/email-notification-configuration.md)
+{% endcontent-ref %}
 
 ### Other Config
 
 ```
-sunbird_msg_91_auth=
-sunbird_msg_91_baseurl=http://api.msg91.com/
-sunbird_msg_91_get_url=api/sendhttp.php?
-sunbird_msg_91_post_url=api/v2/sendsms
 sunbird_fcm_url=https://fcm.googleapis.com/fcm/send
 sunbird_notification_otp_default_message=Your verification code is ##OTP##
-sunbird_mail_server_from_email=support@open-sunbird.org
-sunbird_mail_server_host=
-sunbird_mail_server_password=
-sunbird_mail_server_username=
-sunbird_mail_server_port=
+
 ```

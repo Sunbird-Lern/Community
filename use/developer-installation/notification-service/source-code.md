@@ -2,7 +2,7 @@
 
 **Source Code:**
 
-Notification UI - [https://github.com/NavKumarV/sunbird-notification](https://github.com/NavKumarV/sunbird-notification)
+Notification UI - [https://github.com/Sunbird-Ed/sb-notification](https://github.com/Sunbird-Ed/sb-notification)
 
 Notification Service - [GitHub - sunbird-lern/sunbird-notification-service: Microservice for sending notifications via different channels](https://github.com/sunbird-lern/sunbird-notification-service)
 

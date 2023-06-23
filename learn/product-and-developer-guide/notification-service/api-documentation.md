@@ -10,7 +10,9 @@ Detailed API information present in this Reference - [API Document](https://proj
 
 Group Notification will use the new notification create API to create notifications as defined in the document [Notification Design Discussion](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/2632613972/SB-24321+Group+Notification+Design+Discussion).
 
-{% swagger src="../../../.gitbook/assets/notification.yaml" path="undefined" method="undefined" %}
+
+
+{% swagger src="../../../.gitbook/assets/notification.yaml" path="/notification/v2/send" method="post" %}
 [notification.yaml](../../../.gitbook/assets/notification.yaml)
 {% endswagger %}
 

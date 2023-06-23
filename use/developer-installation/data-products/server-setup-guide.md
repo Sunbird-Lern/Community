@@ -28,8 +28,7 @@ Params:
 
 Data-product is running in demon mode which is getting triggered based on schedule by using cronjobs.
 
-```
-## Cron job list for LERN data-products
+<pre><code>## Cron job list for LERN data-products
 
 #Ansible: sunbird-job-manager
 30 2 * * * /mount/data/analytics/scripts/start-jobmanager.sh
@@ -48,12 +47,12 @@ Data-product is running in demon mode which is getting triggered based on schedu
 #Ansible: sunbird-response-exhaust
 0 09 * * * /mount/data/analytics/scripts/lern-run-job.sh response-exhaust
 #Ansible: sunbird-cassandra-migration
-15 19 * * * /mount/data/analytics/scripts/lern-run-job.sh cassandra-migration
-#Ansible: sunbird-userinfo-exhaust
+<strong>15 19 * * * /mount/data/analytics/scripts/lern-run-job.sh cassandra-migration
+</strong>#Ansible: sunbird-userinfo-exhaust
 0 10 * * * /mount/data/analytics/scripts/lern-run-job.sh userinfo-exhaust
 #Ansible: sunbird-collection-summary
 30 09 * * * /mount/data/analytics/scripts/lern-run-job.sh collection-summary-report
-```
+</code></pre>
 
 ### Provisioning Postgres DB for exhaust job execution
 
