@@ -4,13 +4,13 @@ Each data-product is an independent spark job that runs in a spark-submit mode f
 
 ### Data-product execution flow
 
-<figure><img src="../../../.gitbook/assets/Data-product.jpeg" alt=""><figcaption><p>Data-product tech level architecture</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Data-product (1).jpeg" alt=""><figcaption><p>Data-product tech level architecture</p></figcaption></figure>
 
 ### Exhaust job execution flow
 
 <div data-full-width="true">
 
-<figure><img src="../../../.gitbook/assets/Exhaust-Data-product.jpeg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Exhaust-Data-product (1).jpeg" alt=""><figcaption></figcaption></figure>
 
 </div>
 
