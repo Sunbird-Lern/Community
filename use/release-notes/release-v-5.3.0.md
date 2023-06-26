@@ -5,6 +5,173 @@
 | Project | Release Date | Version |
 | ------- | ------------ | ------- |
 | Lern    | 27-May-2023  | V 5.3.0 |
+| Lern    | 23-Jun-2023  | V 5.3.1 |
+
+### Hot Fix :- ML PII Data Product (23-06-2023)
+
+### Details of Released Tag
+
+<table data-full-width="false"><thead><tr><th width="166">Components</th><th width="167">Build Jenkins Job</th><th width="140">Build Tag</th><th width="192">Deploy Jenkins Job</th><th width="137">Deploy Tag</th><th width="197">Comment</th></tr></thead><tbody><tr><td>Data pipeline</td><td>Build/Lern/FlinkJobs</td><td></td><td>Deploy/Lern/FlinkJobs</td><td></td><td>Add <strong>program-user-info</strong> into job list and deploy it.</td></tr><tr><td>Data Products</td><td>Build/Lern/LernDataProducts</td><td></td><td>Deploy/Lern/LernDataProducts</td><td></td><td>Add <strong>program-user-exhaust</strong> into job list and deploy it.</td></tr><tr><td>Cassandra Migration</td><td>Build/Core/Cassandra</td><td></td><td>Deploy/Kubernetes/Cassandra</td><td></td><td>Create <strong>sunbird_programs</strong> keyspace in cassandra</td></tr></tbody></table>
+
+**Summary of the Changes**
+
+
+
+**Details of the Changes:**
+
+[LR-491](https://project-sunbird.atlassian.net/browse/LR-491) User detail (PII) report for ML programs - Data Product\
+[LR-285](https://project-sunbird.atlassian.net/browse/LR-285) User detail (PII) report for ML programs - Flink Job
+
+#### Default values for config
+
+default config for [services](https://github.com/Sunbird-Lern/data-products/blob/release-5.3.0/ansible/roles/lern-data-products-deploy/defaults/main.yml#L35)
+
+```
+sunbird.program.report.keyspace="{{ program_keyspace }}"
+ml.exhaust.store.prefix="ml_reports"
+```
+
+Please define below variables
+
+```
+program_keyspace: "sunbird_programs"
+ml.exhaust.store.prefix="ml_reports"
+```
+
+#### Cassandra Keyspace and Table for Program:-
+
+#### &#x20;[https://github.com/shikshalokam/sunbird-utils/blob/release-5.2.0/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra/sunbird\_programs/V1.1\_cassandra.cql](https://github.com/shikshalokam/sunbird-utils/blob/release-5.2.0/sunbird-cassandra-migration/cassandra-migration/src/main/resources/db/migration/cassandra/sunbird\_programs/V1.1\_cassandra.cql)
+
+### Flink Job Configurations for Lern:
+
+| Name of the Flink Job added |
+| --------------------------- |
+| **program-user-info**       |
+
+<details>
+
+<summary>LR-285 - User detail flink job for ML-programs - setup/configuration details:</summary>
+
+For this ticket, we have only done unit testing with the help of simulated events. Integration testing has not been done as the required workflows concerning this will only be enabled after Ed 6.0 release. As part of this ticket we have enabled new Flink jobs and they in no way impact any existing workflows\
+\
+**Job name: program-user-info**
+
+The purpose of this job is to record the user's information when the user submits the program. Whenever a program is submitted, this job receives an event with the user's information as JSON data and then it parses and stores it as respective key-value pairs in Cassandra.
+
+**Keyspace name**: sunbird\_program
+
+**Schema of the Kafka Topic:**\
+**Kafka Topic Name**: `{{envName}}.ml.programUsers.raw`\
+**Event** **Structure:-**
+
+<pre class="language-json" data-overflow="wrap"><code class="lang-json"><strong>{
+</strong>      programId: {
+        type : "ObjectId",
+        required : true,
+        index: true
+      },
+      programName: String,
+      programExternalId: String,
+      noOfResourcesStarted: {
+        type:Number,
+        index: true
+        }
+      userId: {
+        type: String,
+        index: true
+      },
+      requestForPIIConsent:true/false
+      userProfile: Object,
+      userRoleInformation: Object,
+      appInformation: Object,
+      createdAt: Date,
+      updatedAt: Date,
+      deleted:Boolean
+}
+</code></pre>
+
+**Job Configurations:**&#x20;
+
+<pre><code><strong>kafka {
+</strong> input.topic = ${job.env}".programuser.info"
+ groupId = ${job.env}"-programuser-group"
+}
+task {
+ consumer.parallelism = 1
+ downstream.parallelism = 1
+ programUser{
+  parallelism = 1
+ }
+}
+ml-cassandra {
+ keyspace = "sunbird_programs"
+ table = "program_enrollment"
+ port = "9042"
+ host =
+ }
+</code></pre>
+
+Flink **build** Jenkins job name: **/Build/job/Lern/job/FlinkJobs**
+
+Flink **deploy** Jenkins job name: **/Deploy/job/\<environment>/job/Lern/job/FlinkJobs/program-user-info**
+
+Jenkins job for **building** Cassandra: **/Build/job/Core/job/Cassandra/**
+
+Jenkins job for **deploying** Cassandra: **/Deploy/job/\<environment>/job/Kubernetes/job/Cassandra**
+
+</details>
+
+### Data Security Policy setup
+
+**Configurations to be done by System admin:**
+
+1. Setup **default** 'Data Security Policy' settings using tenant preference API.&#x20;
+
+```
+curl --location --request PATCH '{{host}}/api/org/v2/preferences/update' \
+--header 'x-authenticated-user-token: {{user_authentication_token}}' \
+--header 'Authorization: Bearer {{kong_api_token}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "request": {
+        "orgId": "default",
+        "key": "dataSecurityPolicy",
+        "data": {
+            "level": "PLAIN_DATASET",
+            "dataEncrypted": "No",
+            "comments": "Data is not encrypted",
+            "job": {
+                    "progress-exhaust": {
+                        "level": "PASSWORD_PROTECTED_DATASET",
+                        "dataEncrypted": "No",
+                        "comments": "Password protected file."
+                    },
+                    "response-exhaust": {
+                        "level": "PASSWORD_PROTECTED_DATASET",
+                        "dataEncrypted": "No",
+                        "comments": "Password protected file."
+                    },
+                    "userinfo-exhaust": {
+                        "level": "PASSWORD_PROTECTED_DATASET",
+                        "dataEncrypted": "No",
+                        "comments": "Password protected file."
+                    },
+                    "program-user-exhaust": {
+                        "level": "TEXT_KEY_ENCRYPTED_DATASET",
+                        "dataEncrypted": "Yes",
+                        "comments": "Text key Encrypted File"
+                    }
+                },
+            "securityLevels": {
+                "PLAIN_DATASET": "Data is present in plain text/zip. Generally applicable to open datasets.",
+                "PASSWORD_PROTECTED_DATASET": "Password protected zip file. Generally applicable to non PII data sets but can contain sensitive information which may not be considered open.",
+                "TEXT_KEY_ENCRYPTED_DATASET": "Data encrypted with a user provided encryption key. Generally applicable to non PII data but can contain sensitive information which may not be considered open.",
+                "PUBLIC_KEY_ENCRYPTED_DATASET": "Data encrypted via an org provided public/private key. Generally applicable to all PII data exhaust."
+            }
+        }
+    }
+}'
+```
 
 ### Details of Released Tag
 

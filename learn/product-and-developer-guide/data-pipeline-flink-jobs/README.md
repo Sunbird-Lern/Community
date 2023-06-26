@@ -7,3 +7,5 @@ UserOrg service uses User cache updater flink job to de-normalise the user data 
 BatchService(LMS) with the help of flink jobs calculate consumption progress, scores and generates certificates. Also there is Merge User Courses flink job which is used to merge course and certificate data from one user account to another.
 
 Notification Service has a flink job which helps in sending asynchronous notifications.
+
+Program User Info service uses flink job to parses user's information and stores it as respective key-value pairs in Cassandra.

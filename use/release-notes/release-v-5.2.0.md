@@ -23,7 +23,6 @@
 * **Movement of UserCache and UserCacheIndexer in Data Pipeline to Lern**
 * **Test Automation for CSP**
 * **Cassandra migration and grouping cql scripts with respect to keyspaces**
-* **User detail report for programs**
 
 \
 **Bug Fixes** - click [here](https://project-sunbird.atlassian.net/browse/LR-405?jql=created%20%3E%3D%202023-02-22%20AND%20created%20%3C%3D%202023-03-22%20AND%20project%20%3D%20LR%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20\(%22Failed%20Validation%22%2C%20%22In%20Development%22%2C%20%22In%20Validation%22%2C%20Open%2C%20%22Selected%20for%20Contribution%22\)%20AND%20affectedVersion%20in%20\(5.2.0%2C%205.2.0.0\)%20AND%20labels%20%3D%20External\_BB\_Issue%20ORDER%20BY%20created%20DESC) to see the list of bugs fixed as a part of this release.\
@@ -37,7 +36,6 @@
 [LR-325](https://project-sunbird.atlassian.net/browse/LR-325) BatchService: Refactoring of SB Lern Batch Service - DialCode Dependency \
 [LR-101](https://project-sunbird.atlassian.net/browse/LR-101) Cassandra migration and grouping cql scripts with respect to keyspaces\
 [LR-307](https://project-sunbird.atlassian.net/browse/LR-307) Setting up a complete testing env for Lern with all other BBs\
-[LR-285](https://project-sunbird.atlassian.net/browse/LR-285) User detail report for programs\
 [LR-122](https://project-sunbird.atlassian.net/browse/LR-122) Lern repo and pod name correction to match the component name
 
 ### Env Configurations (Needs to be done before service deployment):
@@ -96,7 +94,6 @@ sunbird.cassandra_migration_version TO '/tmp/cassandra_migration_version_count.c
 | Name of the Flink Job added |
 | --------------------------- |
 | **user-cache-updater-v2**   |
-| **program-user-info**       |
 
 <details>
 
@@ -109,79 +106,6 @@ Flink **deploy** Jenkins job name:&#x20;
 **/Deploy/job/\<environment>/job/Lern/job/FlinkJobs/user-cache-updater-v2**\
 \
 
-
-</details>
-
-<details>
-
-<summary>LR-285 - User detail flink job for ML-programs - setup/configuration details:</summary>
-
-For this ticket, we have only done unit testing with the help of simulated events. Integration testing has not been done as the required workflows concerning this will only be enabled after Ed 6.0 release. As part of this ticket we have enabled new Flink jobs and they in no way impact any existing workflows\
-\
-**Job name: program-user-info**
-
-The purpose of this job is to record the user's information when the user submits the program. Whenever a program is submitted, this job receives an event with the user's information as JSON data and then it parses and stores it as respective key-value pairs in Cassandra.
-
-**Keyspace name**: sunbird\_program
-
-**Schema of the Kafka Topic:**\
-**Kafka Topic Name**: `{{envName}}.ml.programUsers.raw`\
-**Event** **Structure:-**
-
-<pre class="language-json" data-overflow="wrap"><code class="lang-json"><strong>{
-</strong>      programId: {
-        type : "ObjectId",
-        required : true,
-        index: true
-      },
-      programName: String,
-      programExternalId: String,
-      noOfResourcesStarted: {
-        type:Number,
-        index: true
-        }
-      userId: {
-        type: String,
-        index: true
-      },
-      requestForPIIConsent:true/false
-      userProfile: Object,
-      userRoleInformation: Object,
-      appInformation: Object,
-      createdAt: Date,
-      updatedAt: Date,
-      deleted:Boolean
-}
-</code></pre>
-
-**Job Configurations:**&#x20;
-
-<pre><code><strong>kafka {
-</strong> input.topic = ${job.env}".programuser.info"
- groupId = ${job.env}"-programuser-group"
-}
-task {
- consumer.parallelism = 1
- downstream.parallelism = 1
- programUser{
-  parallelism = 1
- }
-}
-ml-cassandra {
- keyspace = "sunbird_programs"
- table = "program_enrollment"
- port = "9042"
- host =
- }
-</code></pre>
-
-Flink **build** Jenkins job name: **/Build/job/Lern/job/FlinkJobs**
-
-Flink **deploy** Jenkins job name: **/Deploy/job/\<environment>/job/Lern/job/FlinkJobs/program-user-info**
-
-Jenkins job for **building** Cassandra: **/Build/job/Core/job/Cassandra/**
-
-Jenkins job for **deploying** Cassandra: **/Deploy/job/\<environment>/job/Kubernetes/job/Cassandra**
 
 </details>
 
