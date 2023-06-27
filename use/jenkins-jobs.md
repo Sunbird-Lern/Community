@@ -12,9 +12,9 @@ description: This page list Jenkins Jobs related to LERN BB
 
 **Artifact Upload Job** : Once the build is complete, artifact upload is triggered automatically as per the configuration specified in Artifact upload Job Configure page. Jenkinsfile pipeline script in sunbird-devops/pipelines/upload/docker/ folder is executed and artifact is uploaded to docker-hub.
 
-**Deploy** : Deploy jobs is triggered after the Artifact Upload Job as per the configuration specified in Deploy Job Configure page. Jenkinsfile pipeline script in sunbird-devops/kubernetes/pipelines/deploy\_core/ folder is executed. The deploy job uses the helm chart from kubernetes/helm\_charts/core/ folder. It fetches the artifact from docker and deploys it in application container along with envoy , opa containers in specific pod.
+**Deploy Job**: Deploy jobs is triggered after the Artifact Upload Job as per the configuration specified in Deploy Job Configure page. Jenkinsfile pipeline script in sunbird-devops/kubernetes/pipelines/deploy\_core/ folder is executed. The deploy job uses the helm chart from kubernetes/helm\_charts/core/ folder. It fetches the artifact from docker and deploys it in application container along with envoy , opa containers in specific pod.
 
-**Provisioning** is done in the middleware to setup the data stores(Cassandra, ES, Redis, Postgre), spark and kafka.
+**Provisioning** **jobs** are run to setup the data stores(Cassandra, ES, Redis, Postgre), spark and kafka  in the middleware.
 
 
 
