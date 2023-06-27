@@ -8,13 +8,15 @@
 
 ### Details of Released Tag
 
-| Component           | Build Jenkins Job           | Build Tags                                                                                                                                              | Deploy Jenkins Job           | Deploy Tags                                                                                         | Comment                                             |
-| ------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Batch Service       | Build/Core/Lms              | <p><a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.2.0_RC2">release-5.2.0_RC2</a></p><p><br></p>                 | Deploy/Kubernetes/Lms        | [release-5.2.0-lern](https://github.com/project-sunbird/sunbird-devops/tree/release-5.2.0-lern)     |                                                     |
-| Data pipeline       | Build/Lern/FlinkJobs        | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.2.0\_RC1)                                                     | Deploy/Lern/FlinkJobs        | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.2.0\_RC1) | deploy the **user-cache-updater-v2** flink job only |
-| User\&Org Service   | Build/Core/Learner          | [release-5.2.0\_RC1](http://localhost:5000/s/aQ7wCJOT0ZaejHUiD6sb/about/product-and-developer-guide/adapters/file-adapter/excel-ftp-and-sftp-handler)   | Deploy/Kubernetes/Learner    | [release-5.2.0-lern](https://github.com/project-sunbird/sunbird-devops/tree/release-5.2.0-lern)     |                                                     |
-| Data Products       | Build/Lern/LernDataProducts | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.2.0\_RC1)                                                     | Deploy/Lern/LernDataProducts | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.2.0\_RC1) |                                                     |
-| Cassandra Migration | Build/Core/Cassandra        | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/sunbird-utils/releases/tag/release-5.2.0\_RC1)                                                     | Deploy/Kubernetes/Cassandra  | [release-5.2.0-lern](https://github.com/project-sunbird/sunbird-devops/tree/release-5.2.0-lern)     |                                                     |
+| Component           | Build Jenkins Job                | Build Tags                                                                                                                                              | Deploy Jenkins Job                                  | Deploy Tags                                                                                                                            | Comment                                                                                                       |
+| ------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Batch Service       | Build/Core/Lms                   | <p><a href="https://github.com/Sunbird-Lern/sunbird-course-service/releases/tag/release-5.2.0_RC2">release-5.2.0_RC2</a></p><p><br></p>                 | Deploy/Kubernetes/Lms                               | [release-5.2.0-lern](https://github.com/project-sunbird/sunbird-devops/tree/release-5.2.0-lern)                                        |                                                                                                               |
+| Data pipeline       | Build/Lern/FlinkJobs             | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.2.0\_RC1)                                                     | Deploy/Lern/FlinkJobs                               | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/data-pipeline/releases/tag/release-5.2.0\_RC1)                                    | deploy the **user-cache-updater-v2** flink job only                                                           |
+| User\&Org Service   | Build/Core/Learner               | [release-5.2.0\_RC1](http://localhost:5000/s/aQ7wCJOT0ZaejHUiD6sb/about/product-and-developer-guide/adapters/file-adapter/excel-ftp-and-sftp-handler)   | Deploy/Kubernetes/Learner                           | [release-5.2.0-lern](https://github.com/project-sunbird/sunbird-devops/tree/release-5.2.0-lern)                                        |                                                                                                               |
+| Data Products       | Build/Lern/LernDataProducts      | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.2.0\_RC1)                                                     | Deploy/Lern/LernDataProducts                        | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/data-products/releases/tag/release-5.2.0\_RC1)                                    |                                                                                                               |
+| Cassandra Migration | Build/Core/Cassandra             | [release-5.2.0\_RC1](https://github.com/Sunbird-Lern/sunbird-utils/releases/tag/release-5.2.0\_RC1)                                                     | Deploy/Kubernetes/Cassandra                         | [release-5.2.0-lern](https://github.com/project-sunbird/sunbird-devops/tree/release-5.2.0-lern)                                        |                                                                                                               |
+| SyncTool            | Build/KnowledgePlatform/SyncTool | [release-5.4.0\_RC1](https://github.com/Sunbird-Knowlg/sunbird-learning-platform/releases/tag/release-5.4.0\_RC1)                                       | Deploy/KnowledgePlatform/Neo4jElasticSearchSyncTool | <p>cmd: syncdialcodes<br><br>Sample params: </p><pre><code>--ids U7J3S8,R9Y6W5,Y3U3F1,D5C3D6,A7R6H3,J4F5V2,E1P7P2,Y5X5T7
+</code></pre> | SyncTool enhancement to be used by existing adopters for syncing "imageUrl" of DIAL codes to elastic search.  |
 
 **Summary of the Changes**
 
@@ -48,7 +50,22 @@ The below environment variable needs to be configured in the dev ops repo.
 | sunbird\_dial\_service\_search\_url | /api/dialcode/v1/search                                                   | To store the search url of the dial service |
 
 {% hint style="info" %}
-**Note:** <mark style="color:orange;">**Only For the adopters who are migrating from the previous versions to 5.2.0, run 'syncdialcodes' command in "Neo4jElasticSearchSyncTool" to sync "imageUrl" of dialcodes to Elastic Seach.**</mark>
+**Note:** <mark style="color:orange;">**Only For the adopters who are migrating from the previous versions to 5.2.0, run 'syncdialcodes' command in "Neo4jElasticSearchSyncTool" to sync "imageUrl" of dialcodes to Elastic Search. DIAL codes list can be fetched using below content search CURL:**</mark>
+
+```json
+curl --location --request POST '{{host}}/api/content/v1/search' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "request": {
+        "filters": {
+            "primaryCategory": "Course"
+        },
+        "exists": "dialcodes",
+        "fields": ["dialcodes"],
+        "limit": 10000
+    }
+}'
+```
 {% endhint %}
 
 
