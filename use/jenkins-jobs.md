@@ -8,6 +8,8 @@ description: This page list Jenkins Jobs related to LERN BB
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-22 at 1.12.56 PM.png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../.gitbook/assets/Screenshot from 2023-06-27 18-02-47.png" alt=""><figcaption></figcaption></figure>
+
 **Build Job** : When a build job is run in jenkins, the Jenkinsfile pipeline script in the specific component repo checks-out the specified branch from github repository, does build excutes testcases and creates the docker image. This image details are then uploaded to Jenkins.
 
 **Artifact Upload Job** : Once the build is complete, artifact upload is triggered automatically as per the configuration specified in Artifact upload Job Configure page. Jenkinsfile pipeline script in sunbird-devops/pipelines/upload/docker/ folder is executed and artifact is uploaded to docker-hub.
