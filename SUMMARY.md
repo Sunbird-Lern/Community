@@ -122,6 +122,8 @@
 * [Tech References](learn/tech-references.md)
 * [FAQs](learn/faqs.md)
 * [Telemetry Processing](learn/telemetry-processing.md)
+* [Data Dictionary](learn/data-dictionary/README.md)
+  * [User-Org Service](learn/data-dictionary/user-org-service.md)
 
 ## Engage
 

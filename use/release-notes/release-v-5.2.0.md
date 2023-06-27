@@ -47,6 +47,12 @@ The below environment variable needs to be configured in the dev ops repo.
 | sunbird\_dial\_service\_base\_url   | [https://sunbirddev.blob.core.windows.net](https://dev.lern.sunbird.org/) | To store the dial service base path         |
 | sunbird\_dial\_service\_search\_url | /api/dialcode/v1/search                                                   | To store the search url of the dial service |
 
+{% hint style="info" %}
+**Note:** <mark style="color:orange;">**Only For the adopters who are migrating from the previous versions to 5.2.0, run 'syncdialcodes' command in "Neo4jElasticSearchSyncTool" to sync "imageUrl" of dialcodes to Elastic Seach.**</mark>
+{% endhint %}
+
+
+
 {% hint style="warning" %}
 **Note: **<mark style="color:red;">**Only For the adopters who are migrating from the previous versions to 5.2.0, need to follow the following steps:**</mark>
 
