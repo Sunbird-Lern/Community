@@ -142,7 +142,7 @@
     * [Additional Installation Dependencies:](use/developer-installation/user-and-org-service/additional-installation-dependencies.md)
     * [Source Code](use/developer-installation/user-and-org-service/source-code.md)
     * [Installation Configuration](use/developer-installation/user-and-org-service/installation-configuration.md)
-  * [BATCH SERVICE](use/developer-installation/batch-service/README.md)
+  * [LMS(BATCH) SERVICE](use/developer-installation/batch-service/README.md)
     * [System Requirements](use/developer-installation/batch-service/system-requirements.md)
     * [Tech Stack](use/developer-installation/batch-service/tech-stack.md)
     * [Installation Guide](use/developer-installation/batch-service/installation-guide.md)

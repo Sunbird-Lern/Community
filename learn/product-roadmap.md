@@ -16,7 +16,7 @@ Sprint 02 : 12 Jun '23 - 32 Jun '23 (2 weeks)\
 Regression & Testing : 26 Jun '23 to 06 Jul (2 weeks)\
 Production Release : 07 Jul '23
 
-
+`Release List for Lern 5.4 on` [`Jira`](https://project-sunbird.atlassian.net/projects/LR/versions/10260/tab/release-report-all-issues)
 
 
 

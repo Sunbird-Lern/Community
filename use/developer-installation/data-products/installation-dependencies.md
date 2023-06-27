@@ -10,8 +10,6 @@ Analytics job driver and analytics framework is used to trigger the job in job m
 
 **Contributors**: EkStep
 
-**Last Release Date**:
-
 **Version :** 5.1.1
 
 **Jenkins Job:** &#x20;
@@ -25,7 +23,5 @@ Batch-models module is used from this library handling the execution of job
 **Adopters:** Diksha
 
 **Contributors**: EkStep
-
-**Last Release Date**: Oct 21 2021
 
 **Version :** 5.1.1
