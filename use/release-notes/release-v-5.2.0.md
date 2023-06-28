@@ -42,7 +42,7 @@
 
 ### Env Configurations (Needs to be done before service deployment):
 
-The below environment variable needs to be configured in the dev ops repo.
+The below environment variable needs to be configured in the dev ops repo in **'sunbird\_lms-service.env'** file.
 
 | Variable Name                       | Values                                                                    | Comments                                    |
 | ----------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------- |

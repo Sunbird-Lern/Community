@@ -124,6 +124,7 @@
 * [Telemetry Processing](learn/telemetry-processing.md)
 * [Data Dictionary](learn/data-dictionary/README.md)
   * [User-Org Service](learn/data-dictionary/user-org-service.md)
+  * [Course-Batch Service](learn/data-dictionary/course-batch-service.md)
 
 ## Engage
 
