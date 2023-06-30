@@ -125,6 +125,8 @@
 * [Data Dictionary](learn/data-dictionary/README.md)
   * [User-Org Service](learn/data-dictionary/user-org-service.md)
   * [Course-Batch Service](learn/data-dictionary/course-batch-service.md)
+  * [Groups Service](learn/data-dictionary/groups-service.md)
+  * [Notification Service](learn/data-dictionary/notification-service.md)
 
 ## Engage
 

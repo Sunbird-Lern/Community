@@ -84,7 +84,7 @@ description: List of tables in Cassandra database used in Course-Batch service
 
 
 
-<table><thead><tr><th width="177.33333333333331">Column Name</th><th width="116">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>batchid</td><td></td><td></td></tr><tr><td>userid</td><td></td><td></td></tr><tr><td>active</td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+<table><thead><tr><th width="185.33333333333331">Column Name</th><th width="158">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>batchid</td><td>text</td><td></td></tr><tr><td>userid</td><td>text</td><td></td></tr><tr><td>active</td><td>boolean</td><td></td></tr><tr><td>addedby</td><td>text</td><td></td></tr><tr><td>certificates</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td></td></tr><tr><td>completedon</td><td>text</td><td></td></tr><tr><td>completionpercentage</td><td>int</td><td></td></tr><tr><td>contentstatus</td><td>map&#x3C;text, int></td><td></td></tr><tr><td>courseid</td><td>text</td><td></td></tr><tr><td>datetime</td><td>timestamp</td><td></td></tr><tr><td>delta</td><td>text</td><td></td></tr><tr><td>enrolleddate</td><td>text</td><td></td></tr><tr><td>grade</td><td>text</td><td></td></tr><tr><td>lastreadcontentid</td><td>text</td><td></td></tr><tr><td>lastreadcontentstatus</td><td>int</td><td></td></tr><tr><td>progress</td><td>int</td><td></td></tr><tr><td>status</td><td>int</td><td></td></tr></tbody></table>
 
 
 
