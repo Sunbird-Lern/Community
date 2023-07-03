@@ -140,11 +140,11 @@
     * [User Consent](learn/data-dictionary/user-org-service/user-consent.md)
     * [Email Template](learn/data-dictionary/user-org-service/email-template.md)
     * [OTP](learn/data-dictionary/user-org-service/otp.md)
-    * [Page Management](learn/data-dictionary/user-org-service/page-management.md)
+    * [Page Management (LMS Service)](learn/data-dictionary/user-org-service/page-management-lms-service.md)
     * [Location](learn/data-dictionary/user-org-service/location.md)
     * [User Notes](learn/data-dictionary/user-org-service/user-notes.md)
     * [Deprecated](learn/data-dictionary/user-org-service/deprecated.md)
-  * [Course-Batch Service](learn/data-dictionary/course-batch-service.md)
+  * [LMS(Batch) Service](learn/data-dictionary/lms-batch-service.md)
   * [Groups Service](learn/data-dictionary/groups-service.md)
   * [Notification Service](learn/data-dictionary/notification-service.md)
 
