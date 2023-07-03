@@ -1,6 +1,6 @@
 # Cassandra
 
-Cassandra is the primary data store for groups and Redis is used for caching the group data.
+Cassandra is the primary data store for groups and Redis is used for caching the group API response.
 
 ### **Cassandra** Database \[keyspace : sunbird\_groups] <a href="#database" id="database"></a>
 
