@@ -152,3 +152,7 @@ Note:
 * Ensure Tenant system server is in sync with current time to avoid user sso token issues&#x20;
 * Ensure Tenant portal page for SSO login is a secure (https://), public domain URL for configuring in Sunbird&#x20;
 {% endhint %}
+
+
+
+<figure><img src="../../../.gitbook/assets/SSO_Authenticate_flow.drawio.png" alt=""><figcaption></figcaption></figure>
