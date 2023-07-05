@@ -1,5 +1,11 @@
 # Release V 5.3.0
 
+### <mark style="color:blue;">**Hot-fix:  5.3.1**</mark>** (05-07-2023)**
+
+| Component     | Build Job      | Build Tag                                                                                 | Deploy Job            | Deployment                                                                                | Comment                                                                                                                                                                    |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Batch Service | Build/Core/Lms | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/lms-service/tree/release-5.3.1\_RC1) | Deploy/Kubernetes/Lms | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/lms-service/tree/release-5.3.1\_RC1) | <p>QR Codes Image download Issue fix<br><br>Bug: <a href="https://project-sunbird.atlassian.net/browse/KN-889">https://project-sunbird.atlassian.net/browse/KN-889</a></p> |
+
 ### Document Release Version <a href="#document-release-version" id="document-release-version"></a>
 
 | Project | Release Date | Version |
@@ -177,9 +183,7 @@ curl --location --request PATCH '{{host}}/api/org/v2/preferences/update' \
 
 <table><thead><tr><th width="166">Components</th><th width="167">Build Jenkins Job</th><th width="140">Build Tag</th><th width="192">Deploy Jenkins Job</th><th width="139">Deploy Tag</th><th width="197">Comment</th></tr></thead><tbody><tr><td>Kafka Setup</td><td></td><td></td><td>Deploy/Lern/KafkaSetup</td><td><a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.0_RC3">release-5.3.0_RC3</a></td><td></td></tr><tr><td>Data pipeline</td><td>Build/Lern/FlinkJobs</td><td><a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.0_RC3">release-5.3.0_RC3</a></td><td>Deploy/Lern/FlinkJobs</td><td><a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.0_RC3">release-5.3.0_RC3</a></td><td>Add <strong>legacy-certificate-migrator</strong> into job list and deploy it.</td></tr><tr><td>Data Products</td><td>Build/Lern/LernDataProducts</td><td><a href="https://github.com/Sunbird-Lern/data-products/tree/release-5.3.0_RC3">release-5.3.0_RC3</a></td><td>Deploy/Lern/LernDataProducts</td><td><a href="https://github.com/Sunbird-Lern/data-products/tree/release-5.3.0_RC3">release-5.3.0_RC3</a></td><td></td></tr><tr><td>Batch Service</td><td>Build/Core/Lms</td><td><a href="https://github.com/Sunbird-Lern/sunbird-course-service/tree/release-5.3.0_RC1">release-5.3.0_RC1</a></td><td>Deploy/Kubernetes/Lms</td><td><a href="https://github.com/project-sunbird/sunbird-devops/tree/release-5.3.0-lern">release-5.3.0-lern</a></td><td></td></tr><tr><td>User&#x26;Org Service</td><td>Build/Core/Learner</td><td><a href="https://github.com/Sunbird-Lern/sunbird-lms-service/tree/release-5.3.0_RC2">release-5.3.0_RC2</a></td><td>Deploy/Kubernetes/Learner</td><td><a href="https://github.com/project-sunbird/sunbird-devops/tree/release-5.3.0-lern">release-5.3.0-lern</a></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
 
-**Summary of the Changes**
-
-
+### **Summary of the Changes** <a href="#1.-summary-of-the-changes" id="1.-summary-of-the-changes"></a>
 
 **Details of the Changes:**
 
@@ -197,6 +201,75 @@ curl --location --request PATCH '{{host}}/api/org/v2/preferences/update' \
 [LR-520](https://project-sunbird.atlassian.net/browse/LR-520) Group service - activity type should be case insensitive\
 [LR-556](https://project-sunbird.atlassian.net/browse/LR-556) Local setup of LMS - Ubuntu & Mac - **Mock service setup**\
 [LR-456](https://project-sunbird.atlassian.net/browse/LR-456) Local setup of Sunbird-utils - Ubuntu & Mac - Github and Microsite update\
+
+
+### **New APIs to onboard**
+
+```
+- name: exhaustSubmitProxyAPI
+  uris: "{{ course_service_prefix }}/v1/jobrequest/submit"
+  upstream_url: "{{ lms_service_url }}/v1/jobrequest/submit"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - courseAccess
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: exhaustListProxyAPI
+  uris: "{{ course_service_prefix }}/v1/jobrequest/list"
+  upstream_url: "{{ lms_service_url }}/v1/jobrequest/list"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - courseAccess
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+    
+- name: orgAddEncryptionKey
+  uris: "{{ org_service_prefix }}/v1/update/encryptionkey"
+  upstream_url: "{{ learning_service_url }}/v1/org/update/encryptionkey"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - orgSuperAdmin
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false    
+```
+
 
 
 ### Env Configurations (Needs to be done before service deployment):
