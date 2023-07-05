@@ -13,7 +13,7 @@ A few examples of solutions that can be assembled with Lern include:
 * Create a group of users, assign learning material, courses and quizzes to them, and track their progress or scores against Courses.
 *   Send notifications to a set of users about new content / activities that have been added on the platform
 
-    ***
+
 
 Sunbird Lern can be utilized to enable learning solutions that necessitate tracking of user progress and scores, issuance of certificates based on some criteria as well as to form defined Groups of users, or permit collaboration between them via forums.
 

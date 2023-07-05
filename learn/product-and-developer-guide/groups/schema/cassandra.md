@@ -54,7 +54,7 @@ CREATE TABLE sunbird_groups.group_member (
 CREATE INDEX idx_group_member_status ON sunbird_groups.group_member (status);
 ```
 
-***
+
 
 **User\_Group**
 
@@ -65,4 +65,3 @@ CREATE TABLE sunbird_groups.user_group (
 );
 ```
 
-***

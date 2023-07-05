@@ -1,0 +1,21 @@
+createUser,createUser,['/v1/user/create']
+removeMember,removeMember,
+ORG_MANAGEMENT,Org Management,
+flagCourse,flagCourse,
+publishContent,publishContent,['/v1/course/publish']
+orgupload,orgupload,['/v1/org/upload']
+suspendUser,suspendUser,['/v1/user/block']
+updateOrg,updateOrg,['/v1/organisation/update']
+updateCourse,updateCourse,
+addMember,addMember,['/v1/user/create']
+removeOrg,removeOrg,
+createOrg,createOrg,
+suspendOrg,suspendOrg,['/v1/org/suspend']
+publishCourse,publishCourse,['/v1/course/publish']
+FLAG_REVIEWER,flag Review,
+flagContent,flagContent,
+createContent,createContent,
+suspendMember,suspendMember,
+updateUser,updateUser,
+updateContent,updateContent,
+createCourse,createCourse,['v1/course/create']

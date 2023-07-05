@@ -52,4 +52,3 @@ After that you will land on this page. Use settings tab to change the below opti
 | 14 | Maximum posts per page                                          | 50               | [/settings/pagination](https://preprod.ntp.net.in/discussions/admin/settings/pagination) |
 | 15 | Pagination Settings                                             | Enable           | [/settings/pagination](https://preprod.ntp.net.in/discussions/admin/settings/pagination) |
 
-***

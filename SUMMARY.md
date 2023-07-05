@@ -147,6 +147,7 @@
   * [LMS(Batch) Service](learn/data-dictionary/lms-batch-service.md)
   * [Groups Service](learn/data-dictionary/groups-service.md)
   * [Notification Service](learn/data-dictionary/notification-service.md)
+  * [Sample Data](learn/data-dictionary/sample-data.md)
 
 ## Engage
 

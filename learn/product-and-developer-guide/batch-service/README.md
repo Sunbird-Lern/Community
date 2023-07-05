@@ -8,7 +8,7 @@ The LMS Service comprises APIs that permit for creation of Batches of users in t
 
 [Courses](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/632553473)
 
-***
+
 
 **Adopters:** Diksha
 

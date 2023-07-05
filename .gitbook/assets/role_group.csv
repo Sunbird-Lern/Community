@@ -1,0 +1,15 @@
+FLAG_REVIEWER ,Flag Reviewer,
+REPORT_ADMIN,Report Admin,['reportAdmin']
+REPORT_VIEWER,Report Viewer,['reportViewer']
+MEMBERSHIP_MANAGEMENT,Membership Management,"['addMember', 'removeMember', 'suspendMember']"
+CONTENT_CURATION,Content Curation,"['flagCourse', 'flagContent']"
+PROGRAM_DESIGNER,Program Designer,
+BOOK_REVIEWER,Book Reviewer,
+ORG_MANAGEMENT,Org Management,"['createOrg', 'updateOrg', 'removeOrg', 'createUser', 'updateUser']"
+CONTENT_CREATOR,Content Creator,
+BOOK_CREATOR,Book Creator,
+SYSTEM_ADMINISTRATION,System Administration,"['suspendOrg', 'suspendUser', 'orgupload']"
+PROGRAM_MANAGER,Program Manager,
+PUBLIC,Public,['public']
+COURSE_ADMIN,Course Admin,['courseAdmin']
+COURSE_MENTOR,Course Mentor,['courseMentor']
