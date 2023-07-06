@@ -60,7 +60,7 @@ In data-products, exhaust jobs are using job\_request table from postgres DB for
 
 Job Path: <mark style="color:green;">Provision/\{{env\}}/DataPipeline/PostgresDbUpdate</mark>
 
-### Running a data-product
+### Running a data-product through Jenkins
 
 Data-product is running in server using cronjobs. For development and testing purpose, below Jenkins job can be used to trigger the job with respective job id.
 
@@ -75,3 +75,12 @@ Params:
 * end\_date - Data consumption end date. not required for LERN data-products
 * private\_branch - specific private branch
 * branch\_or\_tag - public branch
+
+### Running a data-product using shell command
+
+The data-product can be executed with the following shell command in the server
+
+```
+/mount/data/analytics/scripts/lern-run-job.sh { job-id }
+#Example: /mount/data/analytics/scripts/lern-run-job.sh admin-user-reports
+```
