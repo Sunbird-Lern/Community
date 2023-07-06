@@ -7,6 +7,7 @@
 * [Functional Capabilities](learn/functional-capabilities.md)
 * [Product & Developer Guide](learn/product-and-developer-guide/README.md)
   * [USER & ORG SERVICE](learn/product-and-developer-guide/user-and-org-service/README.md)
+    * [Add new user type & location](learn/product-and-developer-guide/user-and-org-service/add-new-user-type-and-location.md)
     * [Roles](learn/product-and-developer-guide/user-and-org-service/roles/README.md)
       * [System Roles](learn/product-and-developer-guide/user-and-org-service/roles/system-roles.md)
       * [User Roles](learn/product-and-developer-guide/user-and-org-service/roles/user-roles.md)
