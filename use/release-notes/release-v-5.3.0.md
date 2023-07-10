@@ -163,9 +163,9 @@ curl --location --request PATCH '{{host}}/api/org/v2/preferences/update' \
                         "comments": "Password protected file."
                     },
                     "program-user-exhaust": {
-                        "level": "TEXT_KEY_ENCRYPTED_DATASET",
-                        "dataEncrypted": "Yes",
-                        "comments": "Text key Encrypted File"
+                        "level": "PASSWORD_PROTECTED_DATASET",
+                        "dataEncrypted": "No",
+                        "comments": "Password protected file."
                     }
                 },
             "securityLevels": {
