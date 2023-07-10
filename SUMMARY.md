@@ -223,6 +223,7 @@
   * [Release V 4.7.0](use/release-notes/release-v-4.7.0-live.md)
 * [Deprecation](use/deprecation/README.md)
   * [Release-5.4.0](use/deprecation/release-5.4.0.md)
+* [Server Installation](use/server-installation.md)
 * [Jenkins Jobs](use/jenkins-jobs.md)
 * [Release Calendar](use/release-calendar.md)
 * [Raise an Issue](https://github.com/Sunbird-Lern/Community/discussions/10)
