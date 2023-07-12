@@ -12,7 +12,7 @@ On-demand reports are the reports that the admin(course-batch-creator) will requ
 
 **Overall architecture diagram:**
 
-<figure><img src="../../../../../.gitbook/assets/on_Demand_exhaust.drawio (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/on_Demand_exhaust.drawio (1).drawio.png" alt=""><figcaption></figcaption></figure>
 
 **Internal architecture diagram:**
 
