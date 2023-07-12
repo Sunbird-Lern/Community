@@ -147,16 +147,6 @@ curl --location --request PATCH '{{host}}/api/org/v2/preferences/update' \
             "dataEncrypted": "No",
             "comments": "Data is not encrypted",
             "job": {
-                    "progress-exhaust": {
-                        "level": "PASSWORD_PROTECTED_DATASET",
-                        "dataEncrypted": "No",
-                        "comments": "Password protected file."
-                    },
-                    "response-exhaust": {
-                        "level": "PASSWORD_PROTECTED_DATASET",
-                        "dataEncrypted": "No",
-                        "comments": "Password protected file."
-                    },
                     "userinfo-exhaust": {
                         "level": "PASSWORD_PROTECTED_DATASET",
                         "dataEncrypted": "No",
@@ -327,16 +317,6 @@ curl --location --request POST '{{host}}/api/org/v2/preferences/create' \
             "dataEncrypted": "No",
             "comments": "Data is not encrypted",
             "job": {
-                    "progress-exhaust": {
-                        "level": "PASSWORD_PROTECTED_DATASET",
-                        "dataEncrypted": "No",
-                        "comments": "Password protected file."
-                    },
-                    "response-exhaust": {
-                        "level": "PASSWORD_PROTECTED_DATASET",
-                        "dataEncrypted": "No",
-                        "comments": "Password protected file."
-                    },
                     "userinfo-exhaust": {
                         "level": "PASSWORD_PROTECTED_DATASET",
                         "dataEncrypted": "No",
