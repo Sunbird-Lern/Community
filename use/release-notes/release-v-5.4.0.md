@@ -15,7 +15,12 @@
 **Details of the Changes:**
 
 [LR-122](https://project-sunbird.atlassian.net/browse/LR-122) Lern repo and pod name correction to match the component name - Development\
-[LR-588](https://project-sunbird.atlassian.net/browse/LR-588) PII Enhancement
+[LR-588](https://project-sunbird.atlassian.net/browse/LR-588) PII Enhancement\
+[LR-102](https://project-sunbird.atlassian.net/browse/LR-102) UserOrg: Ability for Lern to connect to shared instances of Cassandra, ES, Postgres, and Redis with lern specific keyspace and indexes\
+[LR-511](https://project-sunbird.atlassian.net/browse/LR-511) Ability for Lern to connect to shared instances of Cassandra, ES, Postgres, and Redis with lern specific keyspace and indexes in BatchService \
+[LR-512](https://project-sunbird.atlassian.net/browse/LR-512) Ability for Lern to connect to shared instances of Cassandra, and Redis with lern specific keyspace and indexes in GroupService \
+[LR-513](https://project-sunbird.atlassian.net/browse/LR-513) Ability for Lern to connect to shared instances of Cassandra with lern specific keyspace and indexes in NotificationService \
+[LR-394](https://project-sunbird.atlassian.net/browse/LR-394) \[Feed API] Update feed API with deleted feed id is giving 200k response and read is also giving feed details
 
 #### Github repositories name updates&#x20;
 
@@ -30,7 +35,12 @@ old: https://github.com/Sunbird-Lern/sunbird-notification-service
 new: https://github.com/Sunbird-Lern/notification-service
 ```
 
+### Release Notes: Dependent building blocks
 
-
-
+Sunbird-Knowlg: [Release notes](https://knowlg.sunbird.org/use/release-notes/release-5.5.0-latest) (V 5.5.0)\
+Sunbird-Obsrv: [Release notes](https://knowlg.sunbird.org/use/release-notes/release-5.5.0-latest) (V 5.1.0)\
+Sunbird-Ed: [Release notes ](https://ed.sunbird.org/use/releases/release-notes/release-5.2.0)(V 5.2.0)\
+Sunbird-Inquiry: [Release notes](https://inquiry.sunbird.org/use/release-notes/inquiry-release-v5.7.0) (V 5.7.0)\
+Sunbird-Telemetry: [Documentation](https://telemetry.sunbird.org/)\
+Sunbird-RC: [Documentation](https://docs.sunbirdrc.dev/learn/readme)
 
