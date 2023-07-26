@@ -4,7 +4,11 @@ The 'Collection Summary Snapshot' data source in Druid serves as a repository fo
 
 
 
+<div data-full-width="true">
+
 <figure><img src="../../../../../.gitbook/assets/collection_Summary.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 **Data provider:**
 

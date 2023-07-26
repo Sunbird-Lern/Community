@@ -13,7 +13,11 @@ reqId //request id from request header (x-request-id)
 
 This request id also set to API response as msgid. This helps in tracking once request that invokes multiple APIs and flows.
 
+<div data-full-width="true">
+
 <figure><img src="../../../.gitbook/assets/Logs and telemetry.drawio.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 ### Configuration
 

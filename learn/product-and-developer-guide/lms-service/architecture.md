@@ -1,11 +1,25 @@
 # Architecture
 
-<figure><img src="../../../.gitbook/assets/Batchservice-Architecture.png" alt=""><figcaption></figcaption></figure>
+## LMS Service Architecture
 
-Flow Diagram
+<div data-full-width="true">
 
-<figure><img src="../../../.gitbook/assets/LMS-ServiceFlowDiagram-Overall-FlowDiagram.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Batchservice-Architecture.png" alt=""><figcaption><p>LMS Architecture</p></figcaption></figure>
 
-Code Flow Diagram
+</div>
 
-<figure><img src="../../../.gitbook/assets/LMS-ServiceFlowDiagram-Code Flow Diagram.drawio (2).png" alt=""><figcaption></figcaption></figure>
+## Flow Diagram
+
+<div data-full-width="true">
+
+<figure><img src="../../../.gitbook/assets/LMS-ServiceFlowDiagram-Overall-FlowDiagram.drawio.png" alt=""><figcaption><p>LMS Flow Diagram</p></figcaption></figure>
+
+</div>
+
+## Code Flow
+
+<div data-full-width="true">
+
+<figure><img src="../../../.gitbook/assets/LMS-ServiceFlowDiagram-Code Flow Diagram.drawio (2).png" alt=""><figcaption><p>LMS Code Flow</p></figcaption></figure>
+
+</div>

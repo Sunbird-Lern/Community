@@ -2,7 +2,11 @@
 
 User personal info exhaust contains the additional information of the users that have joined the course batch. The information contains personal details such as Email, Phone number etc and all such personal information is provided only with explicit consent by the user. Each record represents user details of the enrolled users in the course batch.Mail id and phone number are encrypted and will be decrypted based on consent
 
+<div data-full-width="true">
+
 <figure><img src="../../../../../.gitbook/assets/userinfo exhaust (1).png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 The UserInfoExhaustJob processes the data, applies consent rules, decrypts user information, and generates a user information exhaust report based on the provided user enrolment data and collection batch information.The encryption key is mandatory only for user info exhaust\
 \

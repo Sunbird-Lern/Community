@@ -8,7 +8,11 @@ To make data analysis more efficient, we are creating a new table called "_**rep
 
 1. user\_enrolments
 
+<div data-full-width="true">
+
 <figure><img src="../../../../../.gitbook/assets/cassandra_migrator_job.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 \
 \

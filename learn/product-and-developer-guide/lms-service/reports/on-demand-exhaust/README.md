@@ -10,13 +10,21 @@ Using the term "exhaust" implies that the report contains all the necessary info
 
 On-demand reports are the reports that the admin(course-batch-creator) will request through the UI on an as-needed basis.
 
-**Overall architecture diagram:**
+## **Overall architecture diagram:**
+
+<div data-full-width="true">
 
 <figure><img src="../../../../../.gitbook/assets/on_Demand_exhaust.drawio (1).drawio.png" alt=""><figcaption></figcaption></figure>
 
-**Internal architecture diagram:**
+</div>
+
+## **Internal architecture diagram:**
+
+<div data-full-width="true">
 
 <figure><img src="../../../../../.gitbook/assets/Untitled design.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 1. The admin(course-batch-creator) initiates a report request from the Sunbird Ed portal to the Lern portal.&#x20;
 2. The Lern portal forwards the request to the Postgres Analytics database using Exhaust APIs.&#x20;

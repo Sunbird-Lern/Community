@@ -1,6 +1,6 @@
-# Elastic Search
+# ElasticSearch
 
-Elastic Search indexes and mappings used by LMS :&#x20;
+Elastic Search indexes and mappings used by LMS:&#x20;
 
 1. cbatch
 2. course-batch

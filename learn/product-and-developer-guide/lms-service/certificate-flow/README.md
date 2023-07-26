@@ -10,7 +10,11 @@ e. Sunbird allows you to create both the "certificate template layout" and "cert
 
 **Sample Workflow:**
 
+<div data-full-width="true">
+
 <figure><img src="../../../../.gitbook/assets/cert flow.drawio.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 1. Read certificate rules or criteria from the user organization service.
 2. Read asset details from the user organization service.
@@ -19,7 +23,11 @@ e. Sunbird allows you to create both the "certificate template layout" and "cert
 
 **Asset create/upload**
 
+<div data-full-width="true">
+
 <figure><img src="../../../../.gitbook/assets/asset create_upload.drawio.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 To create and upload a certificate template asset in Sunbird, follow these steps:
 

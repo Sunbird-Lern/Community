@@ -44,10 +44,10 @@
 
 The below environment variable needs to be configured in the dev ops repo in **'sunbird\_lms-service.env'** file.
 
-| Variable Name                       | Values                                                                    | Comments                                    |
-| ----------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------- |
-| sunbird\_dial\_service\_base\_url   | [https://sunbirddev.blob.core.windows.net](https://dev.lern.sunbird.org/) | To store the dial service base path         |
-| sunbird\_dial\_service\_search\_url | /api/dialcode/v1/search                                                   | To store the search url of the dial service |
+| Variable Name                       | Values                                                                                                   | Comments                                    |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| sunbird\_dial\_service\_base\_url   | [http://dial-service.\{{env\}}.svc.cluster.local:9000](http://dial-service.learn.svc.cluster.local:9000) | To store the dial service base path         |
+| sunbird\_dial\_service\_search\_url | /dialcode/v3/search                                                                                      | To store the search url of the dial service |
 
 {% hint style="info" %}
 **Note:** <mark style="color:orange;">**Only For the adopters who are migrating from the previous versions to 5.2.0, run 'syncdialcodes' command in "Neo4jElasticSearchSyncTool" to sync "imageUrl" of dialcodes to Elastic Search. DIAL codes list can be fetched using below content search CURL:**</mark>
