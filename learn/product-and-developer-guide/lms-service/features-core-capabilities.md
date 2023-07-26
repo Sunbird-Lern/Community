@@ -1,8 +1,8 @@
 # Features/Core Capabilities
 
-The following are a few sample functionalities that the Batch Service APIs can be used for, on the platform:
+The following are a few sample functionalities that the LMS Service APIs can be used for, on the platform:
 
-* Creation of a new batch for an existing/ new course, so as to track a cohort of users who are expected to take the course
+* Creation of a new batch for an existing/new course, so as to track a cohort of users who are expected to take the course
 * Configurations for the Batch such as - End date for batch enrolment, certificate criteria (completion of the course and minimum score of 70% for the course assessment) etc.
 * Extension of the batch end date if need be
 * Enrol and un-enrol from course batch
@@ -21,6 +21,12 @@ A batch is created to enable users to enrol to a course and consume. Batch and c
 
 Creator or mentors can update the batch. Once the batch is IN-Progress, we cannot update the startDate.
 
+**Content creator** (Allowed to create course and batch for their own course.)
+
+**Creator + Course Mentor** (Will be allowed to create a open batch only if the course is created by themselves.).
+
+**Note:** **Course mentor** (Role alone will not be able to create the batch, instead he can be added as one of the show watcher for the Open batches created by creator)
+
 #### How is the batch status updated?
 
 Batch status is updated by a data product CourseBatchStatusUpdater which runs every 30 mins.\
@@ -28,11 +34,11 @@ Batch status is updated by a data product CourseBatchStatusUpdater which runs ev
 
 Batch Metadata:
 
-Startdate: Beginning date of the batch. Users can consume the course from this date.
+StartDate: Beginning date of the batch. Users can consume the course from this date.
 
 EndDate: End date of the batch
 
-EnrollmentEndate: This date cannot be beyond endDate. By Deafult, it is one day before endDate if not defined.
+EnrollmentEndDate: This date cannot be beyond endDate. By deafult, it is one day before endDate if not defined.
 
 CreatedBy: Batch creator, only this user can update the batch
 

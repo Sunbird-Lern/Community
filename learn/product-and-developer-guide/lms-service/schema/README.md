@@ -1,8 +1,6 @@
-# Schema
+# Data Models
 
-Cassandra is the primary data store for LMS.&#x20;
-
-Elastic Search is used as secondary data store.&#x20;
-
-Redis is used for caching API response.
+* **Cassandra** - Cassandra is the primary data store for LMS.&#x20;
+* **ElasticSearch** - ElasticSearch is used as secondary data store.
+* **Redis** - Redis is used for caching API response.
 

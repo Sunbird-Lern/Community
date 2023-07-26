@@ -12,4 +12,4 @@ LMS Data dictionary for sunbird\_courses keyspace
 
 **ER Diagram for sunbird\_courses keyspace**
 
-![Sunbird Courses](../../../../.gitbook/assets/sunbird\_courses.png)
+![Sunbird Courses](../../../../../.gitbook/assets/sunbird\_courses.png)
