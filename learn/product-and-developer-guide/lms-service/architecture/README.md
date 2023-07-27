@@ -10,7 +10,7 @@ The below diagram represents the components involved and their arrangement in **
 
 <div data-full-width="true">
 
-<figure><img src="../../../.gitbook/assets/Batchservice-Architecture.png" alt=""><figcaption><p>LMS Architecture</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Batchservice-Architecture.png" alt=""><figcaption><p>LMS Architecture</p></figcaption></figure>
 
 </div>
 
@@ -18,14 +18,7 @@ The below diagram represents the components involved and their arrangement in **
 
 <div data-full-width="true">
 
-<figure><img src="../../../.gitbook/assets/LMS-ServiceFlowDiagram-Overall-FlowDiagram.drawio.png" alt=""><figcaption><p>LMS Flow Diagram</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/LMS-ServiceFlowDiagram-Overall-FlowDiagram.drawio.png" alt=""><figcaption><p>LMS Flow Diagram</p></figcaption></figure>
 
 </div>
 
-## Code Flow
-
-<div data-full-width="true">
-
-<figure><img src="../../../.gitbook/assets/LMS-ServiceFlowDiagram-Code Flow Diagram.drawio (2).png" alt=""><figcaption><p>LMS Code Flow</p></figcaption></figure>
-
-</div>
