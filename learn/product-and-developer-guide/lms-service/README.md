@@ -7,13 +7,3 @@ The LMS Service comprises APIs that permit for creation of Batches of users in t
 [Courses Infra - Design](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/1493041222)
 
 [Courses](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/632553473)
-
-***
-
-**Adopters:** Diksha
-
-**Contributors**: EkStep
-
-**Last Release Date**: May 6 2022
-
-**Version**: 4.9.0
