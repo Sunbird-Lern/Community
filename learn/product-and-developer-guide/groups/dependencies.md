@@ -7,7 +7,7 @@
 Group Service connects to Notification Service to fetch all the notifications for the particular user by using notification feed APIs.\
 \
 **Dependency API:**\
-[/notification/v1/feed/_\{{CRUD-operation\}}_](../notification-service/api-documentation.md)
+[/notification/v1/feed/_\{{CRUD-operation\}}_](../notification-service/apis.md)
 {% endtab %}
 
 {% tab title="Sunbird Lern - UserOrg Service" %}
