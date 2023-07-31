@@ -1,6 +1,4 @@
-# UserOrg Flink Job
-
-### User cache updater
+# User cache updater
 
 'user-cache-updater-2.0' job is used to generate the user-metadata information which is complied by fetching information from various Cassandra tables and are stored into the Redis cache. This user-metadata information is used by few exhaust reports.
 

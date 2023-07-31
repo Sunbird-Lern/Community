@@ -815,7 +815,7 @@ There is a dependency with User and Org Service to fetch user information for va
 **Dependency API:**\
 API Method: **GET**
 
-[user/v1/read](../user-and-org-service/api-documentation/user-management.md#user-v1-read-userid)
+[user/v1/read](../user-and-org-service/apis/user-management.md#user-v1-read-userid)
 
 <details>
 
