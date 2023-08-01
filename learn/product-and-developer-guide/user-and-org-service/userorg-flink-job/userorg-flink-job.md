@@ -2,9 +2,13 @@
 
 'user-cache-updater-2.0' job is used to generate the user-metadata information which is complied by fetching information from various Cassandra tables and are stored into the Redis cache. This user-metadata information is used by few exhaust reports.
 
-Additional Reading: [https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1520074753/Design+Denormalise+User+Metadata](https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1520074753/Design+Denormalise+User+Metadata), [https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob](https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob)
+#### Additional Reading:&#x20;
 
-Design guide: [https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob](https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob)
+[https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1520074753/Design+Denormalise+User+Metadata](https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1520074753/Design+Denormalise+User+Metadata),&#x20;
+
+#### Design guide:&#x20;
+
+[https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob](https://lern.sunbird.org/learn/product-and-developer-guide/user-and-org-service/caching-and-denormalising-user-metadata/usercacheupdaterflinkjob)
 
 **Configuration variables:**
 
