@@ -3,8 +3,8 @@
 ## LEARN
 
 * [Overview](README.md)
-* [Technical Architecture](learn/technical-architecture.md)
 * [Functional Capabilities](learn/functional-capabilities.md)
+* [Technical Architecture](learn/technical-architecture.md)
 * [Product & Developer Guide](learn/product-and-developer-guide/README.md)
   * [USER & ORG SERVICE](learn/product-and-developer-guide/user-and-org-service/README.md)
     * [Features/Core capabilities](learn/product-and-developer-guide/user-and-org-service/features-core-capabilities.md)
