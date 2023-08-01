@@ -8,13 +8,15 @@
 LMS Service
 {% endembed %}
 
-#### Flink Jobs
+[LMS Service APIs](https://lern.sunbird.org/learn/product-and-developer-guide/lms-service/apis)
+
+#### [Flink Jobs](https://lern.sunbird.org/learn/product-and-developer-guide/lms-service/lms-flink-jobs)
 
 {% embed url="https://github.com/Sunbird-Lern/data-pipeline/tree/master/lms-jobs" %}
 LMS data-pipeline
 {% endembed %}
 
-#### Reports
+#### [Reports](https://lern.sunbird.org/learn/product-and-developer-guide/lms-service/reports)
 
 {% embed url="https://github.com/Sunbird-Lern/data-products/tree/master/lern-data-products/src/main/scala/org/sunbird/lms" %}
 LMS data-product
