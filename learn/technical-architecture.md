@@ -1,3 +1,7 @@
 # Technical Architecture
 
-<figure><img src="../.gitbook/assets/LERN TECH Arch.png" alt=""><figcaption><p>Technical Architecture</p></figcaption></figure>
+<div data-full-width="true">
+
+<figure><img src="../.gitbook/assets/LERN TECH Arch.drawio (1).png" alt=""><figcaption></figcaption></figure>
+
+</div>
