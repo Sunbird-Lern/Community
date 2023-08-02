@@ -2,7 +2,11 @@
 
 Program user personal info exhaust contains the additional information of the users that have joined the program. The information contains personal details such as Email, Phone number and Username all such personal information is provided only with explicit consent by the user. Each record represents user details of the enrolled users in the program.Mail id ,Username and phone number are encrypted and will be decrypted based on consent
 
+<div data-full-width="true">
+
 <figure><img src="../../../.gitbook/assets/flowsequence.jpg" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 The ProgramUserInfoExhaustJob processes the data, applies consent rules, decrypts user information, and generates a program user information exhaust report based on the provided program enrolment data and user consent.The encryption key is mandatory only for program user info exhaust\
 \
