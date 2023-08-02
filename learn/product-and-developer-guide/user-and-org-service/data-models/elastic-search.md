@@ -10,4 +10,6 @@ Elastic Search indexes used by UserOrg :&#x20;
 
 **Note:** userv3 index is mapped to user\_alias and orgv3 index mapped to org\_alias.&#x20;
 
-{% embed url="https://github.com/project-sunbird/sunbird-devops/tree/master/ansible/roles/es-mapping/files" %}
+#### Elastic Search Indices and Mappings Setup
+
+{% embed url="https://github.com/Sunbird-Lern/userorg-service#elastic-search-indices-and-mappings-setup" %}

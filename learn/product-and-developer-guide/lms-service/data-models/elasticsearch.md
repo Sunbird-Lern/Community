@@ -2,10 +2,8 @@
 
 Elastic Search indexes and mappings used by LMS:&#x20;
 
-1. cbatch
-2. course-batch
-3. user
-4. org
-5. user-courses
+* [course-batch](https://github.com/project-sunbird/sunbird-devops/blob/release-5.3.0-lern/ansible/roles/es-mapping/files/indices/course-batch.json)
 
-{% embed url="https://github.com/project-sunbird/sunbird-devops/tree/master/ansible/roles/es-mapping/files" %}
+#### ElasticSearch Indices and Mappings Setup
+
+{% embed url="https://github.com/Sunbird-Lern/lms-service/tree/master#elastic-search-indices-and-mappings-setup" %}
