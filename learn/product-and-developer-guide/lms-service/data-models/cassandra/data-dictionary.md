@@ -2,183 +2,35 @@
 description: List of tables in Cassandra database used in LMS service
 ---
 
-# LMS(Batch) Service
+# Data Dictionary
 
-### sunbird\_courses.question \[PRIMARY KEY: id]
+### sunbird\_courses.question \[PRIMARY KEY: id] - <mark style="color:green;">(User Defined Type  - used in</mark> <mark style="color:green;">sunbird\_courses.assessment\_aggregator)</mark>
 
-<table><thead><tr><th width="164">Column Name</th><th width="199.33333333333331">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>text</td><td></td></tr><tr><td>assess_ts</td><td>timestamp</td><td></td></tr><tr><td>max_score</td><td>double</td><td></td></tr><tr><td>score</td><td>double</td><td></td></tr><tr><td>type</td><td>text</td><td></td></tr><tr><td>title</td><td>text</td><td></td></tr><tr><td>resvalues</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td></td></tr><tr><td>params</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td></td></tr><tr><td>description</td><td>text</td><td></td></tr><tr><td>duration</td><td>decimal</td><td></td></tr></tbody></table>
+<table><thead><tr><th width="164">Column Name</th><th width="199.33333333333331">Data Type</th><th>Description</th><th>Sample Data</th></tr></thead><tbody><tr><td>id</td><td>text</td><td>identifier of the question</td><td>do_2129173993575219201147</td></tr><tr><td>assess_ts</td><td>timestamp</td><td>Time at which the question was attempted by the user</td><td>2020-02-12 05:02:18.172000+0000</td></tr><tr><td>max_score</td><td>double</td><td>Maximum score that can be secured on the Question</td><td>1</td></tr><tr><td>score</td><td>double</td><td>Score secured by the user on the Question</td><td>0</td></tr><tr><td>type</td><td>text</td><td>Type of the Question</td><td>mcq</td></tr><tr><td>title</td><td>text</td><td>Title of the Question</td><td>Explore Question 1</td></tr><tr><td>resvalues</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td>Question Response Value</td><td>[{'2': '{"text":"Chlorophyll\n"}'}]</td></tr><tr><td>params</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td>List of Question Parameters</td><td>[{'1': '{"text":"Stomata\n"}'}, {'2': '{"text":"Chlorophyll\n"}'}, {'3': '{"text":"Chloroplast\n"}'}, {'4': '{"text":"Guard cells (correct)\n"}'}, {'answer': '{"correct":["4"]}'}]</td></tr><tr><td>description</td><td>text</td><td>Question Description</td><td>Sample Question</td></tr><tr><td>duration</td><td>decimal</td><td>time in seconds</td><td>2.0</td></tr></tbody></table>
 
 ### sunbird\_courses.content\_consumption \[PRIMARY KEY (userid, contentid, batchid, courseid)]
 
-<table><thead><tr><th width="199.33333333333331">Column Name</th><th width="114">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>userid</td><td>text</td><td></td></tr><tr><td>contentid</td><td>text</td><td></td></tr><tr><td>batchid</td><td>text</td><td></td></tr><tr><td>courseid</td><td>text</td><td></td></tr><tr><td>completedcount</td><td>text</td><td></td></tr><tr><td>contentversion</td><td>text</td><td></td></tr><tr><td>datetime</td><td>timestamp</td><td></td></tr><tr><td>grade</td><td>text</td><td></td></tr><tr><td>lastaccesstime</td><td>text</td><td></td></tr><tr><td>lastcompletedtime</td><td>text</td><td></td></tr><tr><td>lastupdatedtime</td><td>text</td><td></td></tr><tr><td>progress</td><td>int</td><td></td></tr><tr><td>result</td><td>text</td><td></td></tr><tr><td>score</td><td>text</td><td></td></tr><tr><td>status</td><td>int</td><td></td></tr><tr><td>viewcount</td><td>int</td><td></td></tr></tbody></table>
+<table><thead><tr><th width="199.33333333333331">Column Name</th><th width="114">Data Type</th><th>Description</th><th>Sample Data</th></tr></thead><tbody><tr><td>userid</td><td>text</td><td>UUID of the user</td><td>e44c93fb-ca7f-4d14-a8cb-c10144fc34c4</td></tr><tr><td>contentid</td><td>text</td><td>Content Identifier whose consumption details is recorded in the row</td><td>do_2129175755621335041147</td></tr><tr><td>batchid</td><td>text</td><td>Batch Identifier enrolled by the user</td><td>01291957301247180833</td></tr><tr><td>courseid</td><td>text</td><td>Course Identifier to which Batch belongs to</td><td>do_2129195698820055041246</td></tr><tr><td>completedcount</td><td>text</td><td></td><td>1</td></tr><tr><td><del>contentversion</del></td><td>text</td><td>Not used</td><td></td></tr><tr><td>datetime</td><td>timestamp</td><td></td><td></td></tr><tr><td><del>gra</del>de</td><td>text</td><td>Not used</td><td></td></tr><tr><td>lastaccesstime</td><td>text</td><td>Last Content access time</td><td>2020-06-04 13:10:31:296+0000</td></tr><tr><td>lastcompletedtime</td><td>text</td><td>Last Content Completion time</td><td>2020-06-04 12:52:23:964+0000</td></tr><tr><td>lastupdatedtime</td><td>text</td><td>Latest record updated time </td><td>2020-06-04 13:10:31:307+0000</td></tr><tr><td>progress</td><td>int</td><td>Maximum Content Consumption Progress percentage irrespective of view</td><td>70</td></tr><tr><td>result</td><td>text</td><td></td><td></td></tr><tr><td><del>score</del></td><td>text</td><td>Not used</td><td></td></tr><tr><td>status</td><td>int</td><td>Content consumption completion status</td><td>2</td></tr><tr><td>viewcount</td><td>int</td><td>Number of times user has consumed the content</td><td>7</td></tr></tbody></table>
 
 ### sunbird\_courses.user\_activity\_agg \[PRIMARY KEY ((activity\_type, activity\_id, user\_id), context\_id)]
 
-<table><thead><tr><th width="186.33333333333331">Column Name</th><th width="147">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>activity_type</td><td>text</td><td></td></tr><tr><td>activity_id</td><td>text</td><td></td></tr><tr><td>user_id</td><td>text</td><td></td></tr><tr><td>context_id</td><td>text</td><td></td></tr><tr><td>agg</td><td>map&#x3C;text, int></td><td></td></tr><tr><td>agg_details</td><td>list&#x3C;text></td><td></td></tr><tr><td>agg_last_updated</td><td>map&#x3C;text, timestamp></td><td></td></tr><tr><td>aggregates</td><td>map&#x3C;text, double></td><td></td></tr></tbody></table>
-
-### sunbird\_courses.report\_user\_enrolments \[PRIMARY KEY (userid, courseid, batchid)]
-
-<table><thead><tr><th width="223.33333333333331">Column Name</th><th width="165">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>userid</td><td>text</td><td></td></tr><tr><td>courseid</td><td>text</td><td></td></tr><tr><td>batchid</td><td>text</td><td></td></tr><tr><td>active</td><td>boolean</td><td></td></tr><tr><td>addedby</td><td>text</td><td></td></tr><tr><td>certificates</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td></td></tr><tr><td>certstatus</td><td>text</td><td></td></tr><tr><td>completedon</td><td>timestamp</td><td></td></tr><tr><td>completionpercentage</td><td>text</td><td></td></tr><tr><td>contentstatus</td><td>text</td><td></td></tr><tr><td>datetime</td><td>timestamp</td><td></td></tr><tr><td>enrolled_date</td><td>timestamp</td><td></td></tr><tr><td>enrolleddate</td><td>text</td><td></td></tr><tr><td>issued_certificates</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td></td></tr><tr><td>lastreadcontentid</td><td>text</td><td></td></tr><tr><td>lastreadcontentstatus</td><td>int</td><td></td></tr><tr><td>progress</td><td>int</td><td></td></tr><tr><td>status</td><td>int</td><td></td></tr></tbody></table>
+<table><thead><tr><th width="186.33333333333331">Column Name</th><th width="147">Data Type</th><th>Description</th><th>Sample Data</th></tr></thead><tbody><tr><td>activity_type</td><td>text</td><td>Type of the activity - Course, CourseUnit, Quiz etc</td><td>Course</td></tr><tr><td>activity_id</td><td>text</td><td>Id of the activity - course_id, content_id etc</td><td>do_21282054143234048014178</td></tr><tr><td>user_id</td><td>text</td><td>User Id</td><td>9ac843e9-47ee-4019-80ad-4ab23bf96045</td></tr><tr><td>context_id</td><td>text</td><td>Context in which the activity happened. Combination of type:value.</td><td>cb:01282120178297241653</td></tr><tr><td>agg</td><td>map&#x3C;text, int></td><td>Number of contents consumed by the user in the course </td><td>{'completedCount': 2}</td></tr><tr><td>agg_details</td><td>list&#x3C;text></td><td>Aggregate metrics for the user and activity combination</td><td>['{"max_score":5.0,"score":4.0,"type":"attempt_metrics","attempt_id":"19ac65ea5ec2e9ed9d29aacdbd46fddd","content_id":"do_212959942036119552130","attempted_on":1582086185}']</td></tr><tr><td>agg_last_updated</td><td>map&#x3C;text, timestamp></td><td>When did the aggregate metrics were last updated?</td><td>{'completedCount': '2020-08-19 05:55:48.000000+0000', 'max_score:do_212959942036119552130': '2021-12-02 06:42:17.037000+0000', 'score:do_212959942036119552130': '2021-12-02 06:42:17.037000+0000'}</td></tr><tr><td>aggregates</td><td>map&#x3C;text, double></td><td>consumption aggregate metrics of the assessments in the course </td><td>{'attempts_count:do_212959942036119552130': 1, 'completedCount': 2, 'max_score:do_212959942036119552130': 5, 'score:do_212959942036119552130': 4}</td></tr></tbody></table>
 
 ### sunbird\_courses.assessment\_aggregator \[PRIMARY KEY ((user\_id, course\_id), batch\_id, content\_id, attempt\_id)]
 
-<table><thead><tr><th width="190.33333333333331">Column Name</th><th width="214">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>user_id</td><td>text</td><td></td></tr><tr><td>course_id</td><td>text</td><td></td></tr><tr><td>batch_id</td><td>text</td><td></td></tr><tr><td>content_id</td><td>text</td><td></td></tr><tr><td>attempt_id</td><td>text</td><td></td></tr><tr><td>created_on</td><td>timestamp</td><td></td></tr><tr><td>grand_total</td><td>text</td><td></td></tr><tr><td>last_attempted_on</td><td>timestamp</td><td></td></tr><tr><td>question</td><td>list&#x3C;frozen&#x3C;question>></td><td></td></tr><tr><td>total_max_score</td><td>double</td><td></td></tr><tr><td>total_score</td><td>double</td><td></td></tr><tr><td>updated_on</td><td>timestamp</td><td></td></tr></tbody></table>
+<table><thead><tr><th width="189.33333333333331">Column Name</th><th width="127">Data Type</th><th width="167">Description</th><th>Sample Data</th></tr></thead><tbody><tr><td>user_id</td><td>text</td><td>UUID of the user</td><td>30b2571f-08f9-49ce-b97a-c643df0c82f7</td></tr><tr><td>course_id</td><td>text</td><td>Course Identifier</td><td>do_21295500947955712011099</td></tr><tr><td>batch_id</td><td>text</td><td>Batch Identifier</td><td>01295501508689100844</td></tr><tr><td>content_id</td><td>text</td><td>Assessment Content Identifier</td><td>do_2129493126207324161154</td></tr><tr><td>attempt_id</td><td>text</td><td>Attempt Identifier</td><td>638a8d6240f8df4b8cc5ef9b79fa0d67</td></tr><tr><td>created_on</td><td>timestamp</td><td>Record created on</td><td>2020-02-12 03:52:51.687000+0000</td></tr><tr><td>grand_total</td><td>text</td><td>Assessment aggregate score</td><td>1.0/8.0</td></tr><tr><td>last_attempted_on</td><td>timestamp</td><td>Last attempted timestamp of the assessment</td><td>2020-02-12 03:52:19.666000+0000</td></tr><tr><td>question</td><td>list&#x3C;frozen&#x3C;question>></td><td>Question Details</td><td>[{id: 'do_2129173993575219201147', assess_ts: '2020-02-12 05:02:18.172000+0000', max_score: 1, score: 0, type: 'mcq', title: 'Explore Question 1', resvalues: [{'2': '{"text":"Chlorophyll\n"}'}], params: [{'1': '{"text":"Stomata\n"}'}, {'2': '{"text":"Chlorophyll\n"}'}, {'3': '{"text":"Chloroplast\n"}'}, {'4': '{"text":"Guard cells (correct)\n"}'}, {'answer': '{"correct":["4"]}'}], description: 'By kiruba', duration: 2.000000000000000000}, {id: 'do_2129174037204910081236', assess_ts: '2020-02-12 05:02:16.590000+0000', max_score: 1, score: 0, type: 'mcq', title: 'Explore Question 6', resvalues: [{'2': '{"text":"FeSO4 acts as an oxidising agent and oxidises KMnO4\n"}'}], params: [{'1': '{"text":"KMnO4 is an oxidising agent, it oxidises FeSO4 (correct)\n"}'}, {'2': '{"text":"FeSO4 acts as an oxidising agent and oxidises KMnO4\n"}'}, {'3': '{"text":"The colour disappears due to dilution, no reaction is involved\n"}'}, {'4': '{"text":"KMnO4 is an unstable compound and decomposes in the presence of FeSO4 to a colourless compound\n"}'}, {'answer': '{"correct":["1"]}'}], description: 'By kiruba', duration: 2.000000000000000000}, {id: 'do_2129174014605885441232', assess_ts: '2020-02-12 05:02:14.750000+0000', max_score: 1, score: 0, type: 'mcq', title: 'Explore Question 3', resvalues: [{'2': '{"text":"Breaking down water molecule\n"}'}], params: [{'1': '{"text":"Absorbing light (correct)\n"}'}, {'2': '{"text":"Breaking down water molecule\n"}'}, {'3': '{"text":"No function\n"}'}, {'4': '{"text":"Reduction of CO2\n"}'}, {'answer': '{"correct":["1"]}'}], description: 'By kiruba', duration: 2.000000000000000000}, {id: 'do_2129174030324285441235', assess_ts: '2020-02-12 05:02:13.160000+0000', max_score: 1, score: 1, type: 'mcq', title: 'Explore Question 5', resvalues: [{'2': '{"text":"a brown residue is left (correct)\xa0\n"}'}], params: [{'1': '{"text":"crystals immediately melt\n"}'}, {'2': '{"text":"a brown residue is left (correct)\xa0\n"}'}, {'3': '{"text":"white fumes appear in the test tube\n"}'}, {'4': '{"text":"a yellow residue is left\n"}'}, {'answer': '{"correct":["2"]}'}], description: 'By kiruba', duration: 2.000000000000000000}, {id: 'do_2129195303901757441628', assess_ts: '2020-02-12 05:02:11.348000+0000', max_score: 1, score: 0, type: 'mcq', title: 'Question 7', resvalues: [{'2': '{"text":"Ravivarman\n"}'}], params: [{'1': '{"text":"Narasimhavarman II (correct)\n"}'}, {'2': '{"text":"Ravivarman\n"}'}, {'3': '{"text":"Mahendravarman\n"}'}, {'4': '{"text":"Devavarman\n"}'}, {'answer': '{"correct":["1"]}'}], description: 'By kiruba', duration: 2.000000000000000000}, {id: 'do_2129195314499747841629', assess_ts: '2020-02-12 05:02:09.774000+0000', max_score: 1, score: 0, type: 'mcq', title: 'Question 8', resvalues: [{'2': '{"text":"Sabha\n"}'}], params: [{'1': '{"text":"Ur (correct)\n"}'}, {'2': '{"text":"Sabha\n"}'}, {'3': '{"text":"Nagaram\n"}'}, {'4': '{"text":"Kurram\n"}'}, {'answer': '{"correct":["1"]}'}], description: 'By kiruba', duration: 2.000000000000000000}, {id: 'do_2129174008785797121231', assess_ts: '2020-02-12 05:02:08.046000+0000', max_score: 1, score: 0, type: 'mcq', title: 'Explore Question 2', resvalues: [{'2': '{"text":"Water\n"}'}], params: [{'1': '{"text":"Chlorophyll\n"}'}, {'2': '{"text":"Water\n"}'}, {'3': '{"text":"Blood\n"}'}, {'4': '{"text":"haemoglobin (correct)\n"}'}, {'answer': '{"correct":["4"]}'}], description: 'By kiruba', duration: 3.000000000000000000}, {id: 'do_2129174021075271681233', assess_ts: '2020-02-12 05:02:05.443000+0000', max_score: 1, score: 0, type: 'mcq', title: 'Explore Question 4', resvalues: [{'2': '{"text":"Small globules\n"}'}], params: [{'1': '{"text":"Carbohydrates\n"}'}, {'2': '{"text":"Small globules\n"}'}, {'3': '{"text":"Amino acids (correct)\n"}'}, {'4': '{"text":"Starch\n"}'}, {'answer': '{"correct":["3"]}'}], description: 'By kiruba', duration: 3.000000000000000000}]</td></tr><tr><td>total_max_score</td><td>double</td><td>Total Maximum score of assessments of the course</td><td>8</td></tr><tr><td>total_score</td><td>double</td><td>Total score achieved by the user</td><td>1</td></tr><tr><td>updated_on</td><td>timestamp</td><td>record updated on</td><td>2020-02-12 05:02:33.088000+0000</td></tr></tbody></table>
 
 ### sunbird\_courses.course\_batch \[PRIMARY KEY (courseid, batchid)]
 
-<table><thead><tr><th width="199.33333333333331">Column Name</th><th width="240">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>courseid</td><td>text</td><td></td></tr><tr><td>batchid</td><td>text</td><td></td></tr><tr><td>cert_templates</td><td>map&#x3C;text, frozen&#x3C;map&#x3C;text, text>>></td><td></td></tr><tr><td>created_date</td><td>timestamp</td><td></td></tr><tr><td>createdby</td><td>text</td><td></td></tr><tr><td>createddate</td><td>text</td><td></td></tr><tr><td>createdfor</td><td>list&#x3C;text></td><td></td></tr><tr><td>description</td><td>text</td><td></td></tr><tr><td>end_date</td><td>timestamp</td><td></td></tr><tr><td>enddate</td><td>text</td><td></td></tr><tr><td>enrollment_enddate</td><td>timestamp</td><td></td></tr><tr><td>enrollmentenddate</td><td>text</td><td></td></tr><tr><td>enrollmenttype</td><td>text</td><td></td></tr><tr><td>mentors</td><td>list&#x3C;text></td><td></td></tr><tr><td>name</td><td>text</td><td></td></tr><tr><td>start_date</td><td>timestamp</td><td></td></tr><tr><td>startdate</td><td>text</td><td></td></tr><tr><td>status</td><td>int</td><td></td></tr><tr><td>tandc</td><td>boolean</td><td></td></tr><tr><td>updated_date</td><td>timestamp</td><td></td></tr><tr><td>updateddate</td><td>text</td><td></td></tr></tbody></table>
+<table><thead><tr><th width="199.33333333333331">Column Name</th><th width="169">Data Type</th><th>Description</th><th>Sample Data</th></tr></thead><tbody><tr><td>courseid</td><td>text</td><td>Course Identifier</td><td>do_2134405168915005441176</td></tr><tr><td>batchid</td><td>text</td><td>Batch Identifier</td><td>013440524934594560116</td></tr><tr><td>cert_templates</td><td>map&#x3C;text, frozen&#x3C;map&#x3C;text, text>>></td><td>Certificate template details linked to the Batch</td><td>{'do_2134278778780631041124': {'criteria': '{"enrollment":{"status":2},"assessment":{"score":{">=":50}}}', 'identifier': 'do_2134278778780631041124', 'issuer': '{"name":"Gujarat Council of Educational Research and Training","url":"https://gcert.gujarat.gov.in/gcert/"}', 'name': 'sandhya', 'previewUrl': 'https://sunbirdstagingpublic.blob.core.windows.net/sunbird-content-staging/content/do_2134278778780631041124/artifact/do_2134278778780631041124_1639145248983_certificate_2021-12-10_19_37.svg', 'signatoryList': '[{"name":"sadndy","image":"data:image/png;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/wAALCAAuAHABAREA/8QAHAABAAIDAAMAAAAAAAAAAAAAAAYHAwUIAgQJ/8QAMBAAAQQBAwMCBAYCAwAAAAAAAgEDBAUABgcREhMhCEEUIjEyI0JRYXFyFTOBgpL/2gAIAQEAAD8A+/mMYxjNBrPcGr28qEmW0n4dtxwWGgECcekOl9rTYCikZr7CKKuR/TXqI03qXV7GnzK0pruYBORYNxWv1700R8krPdEUc6ffpVeMn+MYxjGMZFd0twWdt9MuTljPTJrpjGgQ2v8AZOkmvS20P8r9V/KPK5odgr3UdzJ1YzqOwi2L1ZahFbWNHRpmOXwkdx1pv3IAdcMUIvmXjzlkZUu8bHY9Q20suUqDWjLs448/ak1yGvYX+3bCSKfzmDfOAuut+9qaKMXz0Vs/quaQfVlhmG/FBF/Y3ZYp/wBVy4cZBd690JG21ZTM1sVqwvNR28apr4zhqIkply64vHnpbZF1xf6ZOsYxjGVrpeS3ubvXd2R9LtfoV1KiAP5fjDaByS7/ACIONtJ+n4v65DNIeqrT0DV17U0Gm7D/AA8Kej0mzR1sWrB+VLVlXGBUlJ7qf608ceUyzIW8+nLS1r4cWyCVItJ0uvjoy2RIbsXqSR54+1shUSL7erhOcgG9m6+mNf8ApomX0h+dFizJDiafdjohS5Mth4vhpMcff52u6Kr47fzFwnPHKcT1b7lX2zeoLiugXVbuJqqbHpbC6rqX4xtiWbgMRIdcLn4aRhF9HhfeL8TuuGIefHZWjt+Y7Op4ekJlZqBq2g1AWM16xdhibEVFJtJD/Q8vT1k2a/T2XJtN15S1hmki1r2VbfZil1yBHpde4Rlvyv3H1J0p785BZzAa49YEESQXGNB6cOT/AFlWD3bBf5RmI7/w7lrYxjGMp2w2H1U+GoaWs1W1p/T2obKTYvyoMVf8s38R5cbacJe23wSrw50kX7Z46e9I1fpfRdDWQLmXFmUrzLiTmojIkYtRzjtgIdPSCALhEHHPSa9XnINvXsDo/wBPexdhduXWs3JGn6CZVxO1NQpc+MTan8EKC2n3E2hKYILnKKRH45SNbN7AG3N0JW7ly6loKXSsaQtcLvTWxgDpbCCx18IQB20cfcX5nS7X5E4y0aXQ8T1CTtVXUOQdfUyLGsco7FhtFV1+vXuDLESTpNtXCRtPYhaX6eMyTPRbTXjtxOsr7Ur19qeIcC9to77caRaxyFRFgkEOltsEX5BDjjleVXNRbeiuwK8YsK/XM+U5GvWtSCxdQGprUiaDAsCTqh2yIAEepsAUBAvKftLvT9s7cbZax3Cn3M1+3k6mtY0xuxedTrlCEJhpRRsfDLYOC4ggnt598tbGMYxjPUsrBmphOSpDgMR2AVx1wy6RbFPKquc3atu5O+VdBF0Xhm7kIUGhhLx3KqhUg+LnuD+U3mv/AD3Wg5+udDX+j6jVUdpi0q66yZYLraCXGB4W1T3RCReF/fNk20LQIIiIiP2pmTGMYxjGMZo9w9Exdx9A3VBON5uFeQnoD5Ml0uI26CgXC/rwq5qtudmKrbSRImtOzLK5nADMmymmJSHmw+xtOkRBtsfYGxEU/TJjjGMYxjP/2Q==","designation":"CEO","id":"CEO/CEO"}]', 'url': 'https://sunbirdstagingpublic.blob.core.windows.net/sunbird-content-staging/content/do_2134278778780631041124/artifact/do_2134278778780631041124_1639145248983_certificate_2021-12-10_19_37.svg'}}</td></tr><tr><td>created_date</td><td>timestamp</td><td>Batch Creation Date</td><td>2021-12-15 12:19:07.049000+0000</td></tr><tr><td>createdby</td><td>text</td><td>Batch Created By</td><td>fca2925f-1eee-4654-9177-fece3fd6afc9</td></tr><tr><td><del>createddate</del></td><td>text</td><td>Not used</td><td></td></tr><tr><td>createdfor</td><td>list&#x3C;text></td><td>Batch creator user Organisations</td><td>['01269878797503692810', '01275629407654707220300']</td></tr><tr><td>description</td><td>text</td><td>Batch Description</td><td>Sample Batch</td></tr><tr><td>end_date</td><td>timestamp</td><td>Batch End Date</td><td></td></tr><tr><td><del>enddate</del></td><td>text</td><td>Not used</td><td></td></tr><tr><td>enrollment_enddate</td><td>timestamp</td><td>Batch Enrolment End Date</td><td>2022-06-20</td></tr><tr><td><del>enrollmentenddate</del></td><td>text</td><td>Not used</td><td></td></tr><tr><td>enrollmenttype</td><td>text</td><td>Batch Enrolment Type</td><td>open</td></tr><tr><td>mentors</td><td>list&#x3C;text></td><td>Mentors of the batch</td><td></td></tr><tr><td>name</td><td>text</td><td>Name of the Batch</td><td>Sample Batch</td></tr><tr><td>start_date</td><td>timestamp</td><td>Batch Enrolment Start Date</td><td>2021-12-15 12:19:07.049000+0000</td></tr><tr><td><del>startdate</del></td><td>text</td><td>Not used</td><td></td></tr><tr><td>status</td><td>int</td><td>status of the Batch (running or closed)</td><td>1</td></tr><tr><td><del>tandc</del></td><td>boolean</td><td>Not used</td><td></td></tr><tr><td>updated_date</td><td>timestamp</td><td>record last updated date</td><td>2021-12-15 12:19:07.049000+0000</td></tr><tr><td><del>updateddate</del></td><td>text</td><td>Not used</td><td></td></tr></tbody></table>
 
 ### sunbird\_courses.user\_enrolments \[PRIMARY KEY (userid, courseid, batchid)]
 
-<table><thead><tr><th width="230">Column Name</th><th width="161.33333333333331">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>userid</td><td>text</td><td></td></tr><tr><td>courseid</td><td>text</td><td></td></tr><tr><td>batchid</td><td>text</td><td></td></tr><tr><td>active</td><td>boolean</td><td></td></tr><tr><td>addedby</td><td>text</td><td></td></tr><tr><td>certificates</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td></td></tr><tr><td>certstatus</td><td>int</td><td></td></tr><tr><td>completedon</td><td>timestamp</td><td></td></tr><tr><td>completionpercentage</td><td>int</td><td></td></tr><tr><td>contentstatus</td><td>map&#x3C;text, int></td><td></td></tr><tr><td>datetime</td><td>timestamp</td><td></td></tr><tr><td>enrolled_date</td><td>timestamp</td><td></td></tr><tr><td>enrolleddate</td><td>text</td><td></td></tr><tr><td>issued_certificates</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td></td></tr><tr><td>lastreadcontentid</td><td>text</td><td></td></tr><tr><td>lastreadcontentstatus</td><td>int</td><td></td></tr><tr><td>progress</td><td>int</td><td></td></tr><tr><td>status</td><td>int</td><td></td></tr></tbody></table>
+<table><thead><tr><th width="230">Column Name</th><th width="161.33333333333331">Data Type</th><th>Description</th><th>Sample Data</th></tr></thead><tbody><tr><td>userid</td><td>text</td><td>UUID of the user</td><td>02b8bade-c8ed-44c7-87fd-ebabeaed98c2</td></tr><tr><td>courseid</td><td>text</td><td>Course Identifier</td><td>do_213432103242072064167</td></tr><tr><td>batchid</td><td>text</td><td>Batch Identifier</td><td>0134321075692503049</td></tr><tr><td>active</td><td>boolean</td><td>User Batch Enrolment status</td><td>True</td></tr><tr><td>addedby</td><td>text</td><td></td><td>abf44b3d-877d-7de8-1da3-1603a727cb10</td></tr><tr><td><del>certificates</del></td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td>Not Used</td><td></td></tr><tr><td><del>certstatus</del></td><td>int</td><td>Not Used</td><td></td></tr><tr><td>completedon</td><td>timestamp</td><td>Time at which user has completed the course consumption</td><td>2023-03-23 12:38:05.055000+0000</td></tr><tr><td>completionpercentage</td><td>int</td><td>Course Consumption percentage</td><td></td></tr><tr><td>contentstatus</td><td>map&#x3C;text, int></td><td>Course's Content consumption status</td><td>{'do_21337188080177971211': 2, 'do_21353023582218649615542': 2}</td></tr><tr><td>datetime</td><td>timestamp</td><td>record last updated on</td><td>2023-03-23 12:38:05.063000+0000</td></tr><tr><td>enrolled_date</td><td>timestamp</td><td>Time at which user enrolled to Course Batch</td><td>2023-03-23 12:37:12.105000+0000</td></tr><tr><td><del>enrolleddate</del></td><td>text</td><td>Not Used</td><td></td></tr><tr><td>issued_certificates</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td>Certificate details issued to the user upon course completion</td><td>[{'identifier': '1-ee112467-bea6-4218-82c6-692ad62d3f76', 'lastIssuedOn': '2023-03-23T12:38:05.981+0000', 'name': 'KA merit cert', 'templateUrl': 'https://sunbirdstagingpublic.blob.core.windows.net/sunbird-content-staging/content/do_213550147041189888119/artifact/do_213550147041189888119_1654070683979_certificate_2022-06-01_13_34.svg', 'token': '', 'type': 'TrainingCertificate'}]</td></tr><tr><td>lastcontentaccesstime</td><td>timestamp</td><td>Latest Timestamp at which user accessed the course</td><td>2023-03-23 12:37:57.451000+0000</td></tr><tr><td>lastreadcontentid</td><td>text</td><td>Latest content id consumed by the user from the course</td><td>do_21337188080177971211</td></tr><tr><td>lastreadcontentstatus</td><td>int</td><td>Consumption completion status of the recently consumed content by the user from the course</td><td>2</td></tr><tr><td>progress</td><td>int</td><td></td><td>2</td></tr><tr><td>status</td><td>int</td><td>User Course consumption completion status</td><td>2</td></tr></tbody></table>
+
+### sunbird\_courses.report\_user\_enrolments \[PRIMARY KEY (userid, courseid, batchid)] <mark style="color:purple;">- Table same as that of 'sunbird\_courses.user\_enrolments' used for</mark> [<mark style="color:purple;">certificate migration</mark>](https://lern.sunbird.org/learn/product-and-developer-guide/lms-service/reports/other-jobs/cassandra-migrator-job)
 
 ### sunbird\_courses.bulk\_upload\_process \[PRIMARY KEY: id]
 
-<table><thead><tr><th width="182.33333333333331">Column Name</th><th width="121">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>text</td><td></td></tr><tr><td>data</td><td>text</td><td></td></tr><tr><td>failureresult</td><td>text</td><td></td></tr><tr><td>objecttype</td><td>text</td><td></td></tr><tr><td>processendtime</td><td>text</td><td></td></tr><tr><td>processstarttime</td><td>text</td><td></td></tr><tr><td>status</td><td>int</td><td></td></tr><tr><td>successresult</td><td>text</td><td></td></tr><tr><td>uploadedby</td><td>text</td><td></td></tr><tr><td>uploadeddate</td><td>text</td><td></td></tr></tbody></table>
-
-### sunbird\_courses.assessment\_aggregator\_temp \[PRIMARY KEY (course\_id, batch\_id, user\_id, content\_id, attempt\_id)]
-
-<table><thead><tr><th width="190.33333333333331">Column Name</th><th width="213">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>course_id</td><td>text</td><td></td></tr><tr><td>batch_id</td><td>text</td><td></td></tr><tr><td>user_id</td><td>text</td><td></td></tr><tr><td>content_id</td><td>text</td><td></td></tr><tr><td>attempt_id</td><td>text</td><td></td></tr><tr><td>created_on</td><td>timestamp</td><td></td></tr><tr><td>grand_total</td><td>text</td><td></td></tr><tr><td>last_attempted_on</td><td>timestamp</td><td></td></tr><tr><td>question</td><td>list&#x3C;frozen&#x3C;question>></td><td></td></tr><tr><td>total_max_score</td><td>double</td><td></td></tr><tr><td>total_score</td><td>double</td><td></td></tr><tr><td>updated_on</td><td>timestamp</td><td></td></tr></tbody></table>
-
-### sunbird\_courses.user\_courses \[PRIMARY KEY (batchid, userid)]
-
-<table><thead><tr><th width="185.33333333333331">Column Name</th><th width="158">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>batchid</td><td>text</td><td></td></tr><tr><td>userid</td><td>text</td><td></td></tr><tr><td>active</td><td>boolean</td><td></td></tr><tr><td>addedby</td><td>text</td><td></td></tr><tr><td>certificates</td><td>list&#x3C;frozen&#x3C;map&#x3C;text, text>>></td><td></td></tr><tr><td>completedon</td><td>text</td><td></td></tr><tr><td>completionpercentage</td><td>int</td><td></td></tr><tr><td>contentstatus</td><td>map&#x3C;text, int></td><td></td></tr><tr><td>courseid</td><td>text</td><td></td></tr><tr><td>datetime</td><td>timestamp</td><td></td></tr><tr><td>delta</td><td>text</td><td></td></tr><tr><td>enrolleddate</td><td>text</td><td></td></tr><tr><td>grade</td><td>text</td><td></td></tr><tr><td>lastreadcontentid</td><td>text</td><td></td></tr><tr><td>lastreadcontentstatus</td><td>int</td><td></td></tr><tr><td>progress</td><td>int</td><td></td></tr><tr><td>status</td><td>int</td><td></td></tr></tbody></table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<table><thead><tr><th width="182.33333333333331">Column Name</th><th width="121">Data Type</th><th>Description</th><th>Sample Data</th></tr></thead><tbody><tr><td>id</td><td>text</td><td>Bulk Upload process Id</td><td>0128261582844723205</td></tr><tr><td>data</td><td>text</td><td>Bulk Enrolment request Data</td><td>[{"userIds":"eda95496-75db-4c98-bdcf-9812d62d49a8","batchId":"01282120178297241000"},{"userIds":"bfbd3ce2-d55e-45d2-9ca7-939dfaf18db4","batchId":"01282120178297241653"},{"userIds":"46cde213-a7fd-4f3d-a38b-f0b0b147ef60","batchId":"01282120178297241653"},{"userIds":"f8db86ba-bfe5-4f40-bfb5-c16a402beac2","batchId":"01282120178297241653"},{"userIds":"4a58a3ff-cfc2-445b-b961-3cb5b630ef90","batchId":"01282120178297241653"},{"userIds":"526f9591-c023-46cc-9c80-e8d3ec89b6b9","batchId":"01282120178297241653"},{"userIds":"e2187344-27f7-4683-8376-52181bffc4b4","batchId":"01282120178297241653"},{"userIds":"e905d310-f559-4dfc-a856-ff50a85c5e55","batchId":"01282120178297241653"},{"userIds":"872cdf0d-df7b-4845-be50-eb9d8aa37fcc","batchId":"01282120178297241653"},{"userIds":"1295ef17-38aa-48d3-ac08-e8eb9db00bd8","batchId":"01282120178297241653"},{"userIds":"e507427b-2bde-4aed-bc9a-b2b0f9020305","batchId":"01282120178297241653"},{"batchId":"0128212017829724165391350a7c-56ec-42d0-ba5e-75b2ab943d81"},{"userIds":"85fc81c7-7ac0-4416-b1c0-c8591a88fc8d","batchId":"01282120178297241653"},{"userIds":"162e2865-461c-4793-beb0-9012800b11f2","batchId":"01282120178297241653"},{"userIds":"10b11cbe-f328-4e4e-a350-bdcd54d2ba97","batchId":"01282120178297241653"},{"userIds":"ced03895-9fce-4db2-9cfe-db097ca3e224","batchId":"01282120178297241653"},{"userIds":"9cdaea2e-c7c5-4a44-b846-b4379682abd2","batchId":"01282120178297241653"}]</td></tr><tr><td>failureresult</td><td>text</td><td>Enrolment Failure Data</td><td>[{"userIds":"eda95496-75db-4c98-bdcf-9812d62d49a8","batchId":"01282120178297241000","err_msg":"Invalid course batch id "},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"batchId":"0128212017829724165391350a7c-56ec-42d0-ba5e-75b2ab943d81","err_msg":"Invalid course batch id "},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]},{"01282120178297241653":[]}]</td></tr><tr><td>objecttype</td><td>text</td><td>Bulk Upload Process Type</td><td>batchLearnerEnrol</td></tr><tr><td>processendtime</td><td>text</td><td>Time at which record processing was completed</td><td>2019-08-13 10:40:32:476+0000</td></tr><tr><td>processstarttime</td><td>text</td><td>Time at which records processing was started</td><td>2019-08-13 10:40:31:178+0000</td></tr><tr><td>status</td><td>int</td><td>Status of the Process</td><td>3</td></tr><tr><td>successresult</td><td>text</td><td>Enrolment Success Data</td><td>[{"01282120178297241653":[{"bfbd3ce2-d55e-45d2-9ca7-939dfaf18db4":"SUCCESS"}]},{"01282120178297241653":[{"46cde213-a7fd-4f3d-a38b-f0b0b147ef60":"SUCCESS"}]},{"01282120178297241653":[{"f8db86ba-bfe5-4f40-bfb5-c16a402beac2":"SUCCESS"}]},{"01282120178297241653":[{"4a58a3ff-cfc2-445b-b961-3cb5b630ef90":"SUCCESS"}]},{"01282120178297241653":[{"526f9591-c023-46cc-9c80-e8d3ec89b6b9":"SUCCESS"}]},{"01282120178297241653":[{"e2187344-27f7-4683-8376-52181bffc4b4":"SUCCESS"}]},{"01282120178297241653":[{"e905d310-f559-4dfc-a856-ff50a85c5e55":"SUCCESS"}]},{"01282120178297241653":[{"872cdf0d-df7b-4845-be50-eb9d8aa37fcc":"SUCCESS"}]},{"01282120178297241653":[{"1295ef17-38aa-48d3-ac08-e8eb9db00bd8":"SUCCESS"}]},{"01282120178297241653":[{"e507427b-2bde-4aed-bc9a-b2b0f9020305":"SUCCESS"}]},{"01282120178297241653":[{"85fc81c7-7ac0-4416-b1c0-c8591a88fc8d":"SUCCESS"}]},{"01282120178297241653":[{"162e2865-461c-4793-beb0-9012800b11f2":"SUCCESS"}]},{"01282120178297241653":[{"10b11cbe-f328-4e4e-a350-bdcd54d2ba97":"SUCCESS"}]},{"01282120178297241653":[{"ced03895-9fce-4db2-9cfe-db097ca3e224":"SUCCESS"}]},{"01282120178297241653":[{"9cdaea2e-c7c5-4a44-b846-b4379682abd2":"SUCCESS"}]}]</td></tr><tr><td>uploadedby</td><td>text</td><td>UUID of the user who initiated Bulk upload process</td><td>4707a109-edee-455b-9e6c-a9a45e7f331c</td></tr><tr><td>uploadeddate</td><td>text</td><td>Time at which Bulk upload was done</td><td>2019-08-13 10:40:31:163+0000</td></tr></tbody></table>
 
