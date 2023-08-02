@@ -41,7 +41,7 @@
       * [Data Sync](learn/product-and-developer-guide/user-and-org-service/apis/data-sync.md)
       * [Notification APIs](learn/product-and-developer-guide/user-and-org-service/apis/notification-apis.md)
     * [Flink Jobs](learn/product-and-developer-guide/user-and-org-service/userorg-flink-job/README.md)
-      * [User cache updater](learn/product-and-developer-guide/user-and-org-service/userorg-flink-job/userorg-flink-job.md)
+      * [User Cache Updater](learn/product-and-developer-guide/user-and-org-service/userorg-flink-job/user-cache-updater.md)
     * [Reports](learn/product-and-developer-guide/user-and-org-service/reports/README.md)
       * [Standard Exhaust](learn/product-and-developer-guide/user-and-org-service/reports/standard-exhaust/README.md)
         * [State Admin Geo report](learn/product-and-developer-guide/user-and-org-service/reports/standard-exhaust/state-admin-geo-report.md)

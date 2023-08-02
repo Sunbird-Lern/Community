@@ -1,14 +1,12 @@
 # Redis
 
-Redis is used for caching the user details metadata. Redis key is \<uuid> of the user.
+Redis is used for caching the user details metadata. Redis key is \<uuid> of the user. (dbIndex: 12)
 
 Redis data is updated by user cache updater flink job and also user cache indexer data product.&#x20;
 
 {% embed url="https://lern.sunbird.org/learn/product-and-developer-guide/data-products/userorg/other-jobs/user-cache-indexer-job" %}
 
-{% embed url="https://lern.sunbird.org/learn/product-and-developer-guide/data-pipeline-flink-jobs/userorg-flink-job" %}
-
-Sample Data:
+#### Sample Data:
 
 ```
 HGETALL user:08631a74-4b94-4cf7-a818-831135248a4a
