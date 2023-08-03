@@ -1,6 +1,8 @@
 # Technical Architecture
 
-**Microservices:** LERN BB provides the following services: - User-Org Service, LMS (Batch) Service, Groups Service, Notification Service and Discussion Forum Dependencies: LERN BB Microservices has dependencies on other BB microservices as well as intra-BB Services based. Individual micro-service architecture will provide the exact picture of dependcies of respective micro-service.&#x20;
+**Microservices:** LERN BB provides the following services: - User-Org Service, LMS (Batch) Service, Groups Service, Notification Service and Discussion Forum&#x20;
+
+**Dependencies:** LERN BB Microservices has dependencies on other BB microservices as well as intra-BB Services based. Individual micro-service architecture will provide the exact picture of dependcies of respective micro-service.&#x20;
 
 **Databases:** LERN BB use Cassandra database as the primary database across its micro-services; Redis for data caching mechanism; Elasticsearch for enabling data search capabilities; Druid and Cloud Storage for reports generation and storage; And, Postgres for KC integration and for storing reports process information.&#x20;
 
