@@ -2,6 +2,8 @@
 
 The below diagram represents the code flow of **UserOrg** service.
 
+<figure><img src="../../../../.gitbook/assets/LMS-ServiceFlowDiagram-Code Flow.drawio.png" alt=""><figcaption></figcaption></figure>
+
 <div data-full-width="true">
 
 <figure><img src="../../../../.gitbook/assets/UserOrgServiceFlowDiagram-user.drawio.png" alt=""><figcaption></figcaption></figure>

@@ -2,6 +2,8 @@
 
 The below diagram represents the code flow of **LMS** service.
 
+<figure><img src="../../../../.gitbook/assets/LMS-ServiceFlowDiagram-Code Flow.drawio.png" alt=""><figcaption></figcaption></figure>
+
 <div data-full-width="true">
 
 <figure><img src="../../../../.gitbook/assets/LMS-ServiceFlowDiagram-Code Flow Diagram.drawio (2).png" alt=""><figcaption><p>LMS Service Code Flow</p></figcaption></figure>
