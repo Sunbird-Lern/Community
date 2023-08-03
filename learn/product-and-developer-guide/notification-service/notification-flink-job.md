@@ -1,4 +1,6 @@
-# Notification Flink Job
+# Flink Jobs
+
+Notification Service has a flink job which helps in sending asynchronous notifications.
 
 ### Notification Job
 

@@ -4,6 +4,8 @@ description: This page details about the Flink Jobs present as part of LERN Buil
 
 # Flink Jobs
 
+BatchService(LMS) with the help of flink jobs calculate consumption progress, scores and generates certificates. Also there is Merge User Courses flink job which is used to merge course and certificate data from one user account to another.
+
 Flink Jobs in LERN have been to developed to support LMS (Learning Management System) journey of a user. Jobs are used to compute data necessary to calculate user's progress and validate the same against certificate issuance criteria and then trigger Sunbird RC to create and issue certificate to the user.&#x20;
 
 ## Data-pipeline Overview
