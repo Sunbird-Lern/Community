@@ -4,7 +4,7 @@
 
 <div data-full-width="true">
 
-<figure><img src="../../../../.gitbook/assets/Batchservice-Architecture.png" alt=""><figcaption><p>LMS Architecture</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/LMS-ServiceFlowDiagram-LMS (Batch) Service.drawio.png" alt=""><figcaption><p>LMS Architecture</p></figcaption></figure>
 
 </div>
 

@@ -8,11 +8,11 @@
 
 **Jobs:** We have flink jobs that reads events from Kafka for processing data in the background to enable multiple functionalities.&#x20;
 
-**Reports:**
+**Reports:** \<TBD>
 
 <div data-full-width="true">
 
-<figure><img src="../.gitbook/assets/LERN TECH Arch.drawio (2).png" alt=""><figcaption><p>Lern Technical Architecture</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/LMS-ServiceFlowDiagram-LERN TECH Arch.drawio (1).png" alt=""><figcaption><p>Lern Technical Architecture</p></figcaption></figure>
 
 </div>
 
@@ -23,3 +23,19 @@ The diagram represents the components involved and their arrangement in **Lern**
 * _**Elasticsearch**_ is a distributed, open-source search and analytics engine. It is built on top of Apache Lucene, and it is designed to be scalable, fault-tolerant, and highly available. By leveraging _**Elasticsearch**_, we can deliver an efficient and robust search experience to our users, ensuring that our application performs exceptionally well and remains flexible to adapt to future needs.&#x20;
 * _**Redis**_ is a popular open-source, in-memory data structure store often referred to as a "data structure server." It is designed for speed, efficiency, and versatility. _**Redis**_ stores data in RAM providing extremely fast read and write operations.
 * By leveraging **Flink**, we enable real-time and batch data processing with low latency, high throughput, and fault tolerance. Lern uses Flink jobs for asynchronous processes.&#x20;
+
+### **Overall Architecture of Reports (Data Products):**
+
+<div data-full-width="true">
+
+<figure><img src="../.gitbook/assets/Diksha Architecture and Infrastructure (1)(1) (1).png" alt=""><figcaption><p>Data-Product Architecture</p></figcaption></figure>
+
+</div>
+
+Reports (Data products) refer to products or services derived from data analysis or processing. They are typically created to provide valuable insights. Providing you with the list of data products available in the Sunbird platform below
+
+<div data-full-width="true">
+
+<figure><img src="../.gitbook/assets/Dataproducts_list.png" alt=""><figcaption></figcaption></figure>
+
+</div>
