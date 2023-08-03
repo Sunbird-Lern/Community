@@ -14,7 +14,7 @@ The below diagram represents the components involved and their arrangement in **
 
 <div data-full-width="true">
 
-<figure><img src="../../../../.gitbook/assets/UserOrgServiceFlowDiagram-Overall-FlowDiagram.drawio (1).png" alt=""><figcaption><p>UserOrg Flow Diagram</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/UserOrgServiceFlowDiagram-Simplyfied Overall-FlowDiagram.drawio.png" alt=""><figcaption><p>UserOrg Flow Diagram</p></figcaption></figure>
 
 </div>
 
