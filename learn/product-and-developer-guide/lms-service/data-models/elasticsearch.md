@@ -2,7 +2,7 @@
 
 Elastic Search indexes and mappings used by LMS:&#x20;
 
-* [course-batch](https://github.com/project-sunbird/sunbird-devops/blob/release-5.3.0-lern/ansible/roles/es-mapping/files/indices/course-batch.json)
+* [course-batch](https://github.com/project-sunbird/sunbird-devops/blob/release-5.3.0-lern/ansible/roles/es-mapping/files/indices/course-batch.json) - This index is used to store course batches data.
 
 #### ElasticSearch Indices and Mappings Setup
 
