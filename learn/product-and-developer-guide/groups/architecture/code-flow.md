@@ -2,9 +2,11 @@
 
 The below diagram represents the code flow of **Group** service.
 
+<figure><img src="../../../../.gitbook/assets/LMS-ServiceFlowDiagram-Group Code Flow.drawio.png" alt=""><figcaption><p>code flow</p></figcaption></figure>
+
 <div data-full-width="true">
 
-<figure><img src="../../../../.gitbook/assets/GroupsFlowDiagram-Code Flow Diagram.drawio (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/GroupsFlowDiagram-Code Flow Diagram.drawio (4).png" alt=""><figcaption><p>Group Service Code Flow</p></figcaption></figure>
 
 </div>
 

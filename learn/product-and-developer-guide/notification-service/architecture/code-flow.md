@@ -2,6 +2,8 @@
 
 The below diagram represents the code flow of **Notification** service.
 
+<figure><img src="../../../../.gitbook/assets/LMS-ServiceFlowDiagram-Code Flow.drawio.png" alt=""><figcaption><p>code flow</p></figcaption></figure>
+
 <div data-full-width="true">
 
 <figure><img src="../../../../.gitbook/assets/NotificationFlowDiagram-Code Flow Diagram.drawio (1).png" alt=""><figcaption><p>Notification Service Code Flow</p></figcaption></figure>
