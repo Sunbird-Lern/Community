@@ -12,7 +12,7 @@
 
 <div data-full-width="true">
 
-<figure><img src="../../../../.gitbook/assets/LMS-ServiceFlowDiagram-Overall-FlowDiagram.drawio.png" alt=""><figcaption><p>LMS Service Flow Diagram</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/LMS-ServiceFlowDiagram-Overall-FlowDiagram.drawio (1).png" alt=""><figcaption><p>LMS Service Flow Diagram</p></figcaption></figure>
 
 </div>
 
