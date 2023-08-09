@@ -8,10 +8,8 @@ Watch the video on the learning series on Sunbird Discussion Forums [here](https
 
 {% embed url="https://www.youtube.com/watch?v=OGj4qz4OBUY" %}
 
-**Adopters:** Diksha
 
-**Contributors**: EkStep
 
-**Last Release Date**: Feb 23, 2022
+## References
 
-**Version**: 4.7.0
+[https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/1813577729/Discussion+Forum](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/1813577729/Discussion+Forum)
