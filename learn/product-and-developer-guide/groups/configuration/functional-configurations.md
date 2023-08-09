@@ -1,5 +1,7 @@
 # Functional Configurations
 
+## Group Service Configuration
+
 {% tabs %}
 {% tab title="Functional Config" %}
 <table><thead><tr><th width="268.7935222672064">Property</th><th>Description</th><th>Default Value</th></tr></thead><tbody><tr><td>max_group_limit</td><td>Maximum number of groups a user can create</td><td>50</td></tr><tr><td>max_group_members_limit</td><td>Maximum number of members a group can have</td><td>150</td></tr><tr><td>max_activity_limit</td><td>Maximum number of activities a group can have</td><td>20</td></tr><tr><td>enable_userid_redis_cache</td><td>To enable cache for groups and group details</td><td>true</td></tr><tr><td>groups_redis_ttl</td><td>Group details cache duration</td><td>86400</td></tr><tr><td>user_redis_ttl</td><td>User group list cache duration</td><td>3600</td></tr><tr><td>activityConfig</td><td>To configure various types of activities and services to fetch it.</td><td></td></tr></tbody></table>

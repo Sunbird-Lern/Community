@@ -24,3 +24,12 @@ Group Service APIs
 Group Service APIs
 {% endembed %}
 
+#### Group UI
+
+{% embed url="https://github.com/Sunbird-Ed/SunbirdEd-portal/tree/master/src/app/client/src/app/modules/groups" %}
+Group UI
+{% endembed %}
+
+[Code flow document - Compodoc](https://sunbird-ed.github.io/docs/portal/modules/GroupsModule.html)
+
+The groups UI module is part of SunbirdEd portal. It can not be deployed or tested independently. For more detail find [here](https://ed.sunbird.org/use-1/source-code/workflows/portal/component-diagram#sunbird-portal-ui).

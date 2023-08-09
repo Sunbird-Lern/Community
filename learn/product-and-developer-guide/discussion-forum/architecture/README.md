@@ -2,9 +2,13 @@
 
 ### Architecture Diagram <a href="#architecture-diagram" id="architecture-diagram"></a>
 
-![](../../../.gitbook/assets/df.png)
+![](../../../../.gitbook/assets/df.png)
 
-![](../../../.gitbook/assets/DF\_Arch.drawio.png)
+<div data-full-width="true">
+
+<img src="../../../../.gitbook/assets/DF_Arch.drawio.png" alt="">
+
+</div>
 
 The above architecture Diagram shows, How we are integrating the discussion forum with sunbird-portal/Mobile app along with notification service. Once the request fired we are validating the request and the forwarded to DMW for there to Nodebb service. There are some action where we need to notify the users, For that we are integrated notification service. The actions are listed below.
 
@@ -14,7 +18,7 @@ The above architecture Diagram shows, How we are integrating the discussion foru
 
 #### Code Structure
 
-* [Repository](../../../use/developer-installation/discussion-forum/source-code.md)
+* [Repository](../../../../use/developer-installation/discussion-forum/source-code.md)
 *   Important Folder / Package structure
 
     <pre><code><strong>- projects

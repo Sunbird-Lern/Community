@@ -1,6 +1,6 @@
 # UI Telemetry Events
 
-### List of Events
+### List of Sample Events
 
 <details>
 
@@ -54,7 +54,7 @@
 
 <details>
 
-<summary>Intract Event</summary>
+<summary>Interact Event</summary>
 
 ```
 {
