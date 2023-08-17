@@ -1,20 +1,8 @@
-# Program Flink Job
+# Data Model
 
-### Program User Info Job
+### Sample Kafka Event
 
-'program-user-info' is used to record the user's information when the user submits the program. Whenever a program is submitted, this job receives an event with the user's information as JSON data and then it parses and stores it as respective key-value pairs in Cassandra.
-
-<figure><img src="../../../.gitbook/assets/programUser_Flink-Page-1 (1).jpg" alt=""><figcaption></figcaption></figure>
-
-Additional Reading: [https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/3266675098/Cassandra+Approach+for+PII+data](https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/3266675098/Cassandra+Approach+for+PII+data)
-
-**Configuration variables:**
-
-<table><thead><tr><th width="246">Variable</th><th>Default Value</th><th>Purpose</th></tr></thead><tbody><tr><td>kafka.input.topic</td><td>{{env}}.programuser.info</td><td>Kafka topic from which messages/events are read to be processed.</td></tr><tr><td>kafka.groupId</td><td>{{env}}-programuser-group</td><td>Kafka input topic group Id</td></tr><tr><td>ml-cassandra.keyspace</td><td>sunbird_programs</td><td>Cassandra keyspace name</td></tr><tr><td>ml-cassandra.table</td><td>program_enrollment</td><td>Cassandra table used to store user data</td></tr></tbody></table>
-
-**Sample event:**
-
-```json
+```
 {
     "_id" : "63bfa8f173f6368ebde21bbe",
     "deleted" : false,
@@ -73,9 +61,17 @@ Additional Reading: [https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/
       ],
       "profileUserTypes": [
         {
-          "subType" : "deo",
-          "type" : "administrator"
-        }
+           "type": "administrator",
+           "subType": "hm"
+        },
+        {
+           "type": "administrator",
+           "subType": "crp"
+         },
+         {
+            "type": "administrator",
+            "subType": "chm"
+         }
        ],
       "framework" : {
         "board" : [ 
@@ -96,6 +92,12 @@ Additional Reading: [https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/
 }
 ```
 
-**Source code:**
+### DB Schema
 
-{% embed url="https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.0/ml-jobs/program-user-info" %}
+The schema serves as a blueprint for creating and maintaining the Cassandra database that supports the Program User Info Services data storage and retrieval operations under sunbird\_programs keyspace.
+
+<figure><img src="../../../../.gitbook/assets/Screenshot 2023-08-14 at 6.41.25 PM.png" alt="" width="321"><figcaption></figcaption></figure>
+
+#### An example of _program\_enrollment_ table under _sunbird\_programs_ keyspace
+
+<table><thead><tr><th width="157">program_id</th><th width="158">user_id</th><th width="140">created_at</th><th width="152">organisation_id</th><th width="185">organisation_name</th><th width="187">pii_consent_required</th><th width="181">program_externalid</th><th width="144">program_name</th><th width="127">updated_at</th><th width="372">user_locations</th><th width="154">user_sub_type</th><th>user_type</th></tr></thead><tbody><tr><td>5f362b78af0a4decfa9a106f</td><td>ba9aa220-ff1b-4717-b6ea-ace55f04f11</td><td>2022-01-12</td><td>0126796199493140480</td><td>Staging Custodian Organization</td><td>True</td><td>0126796199493140480</td><td>Staging Custodian</td><td>2023-01-12</td><td>{'block_code': '282262', 'block_id': '966c3be4-c125-467d-aaff-1eb1cd525923', 'block_name': 'AGALI', 'cluster_code': '2822620004', 'cluster_id': 'beb0bcf4-d7cd-4a72-8f35-be8e5b03c0d1', 'cluster_name': 'ZPHS AGALI', 'district_code': '2822', 'district_id': '2f76dcf5-e43b-4f71-a3f2-c8f19e1fce03', 'district_name': 'ANANTAPUR', 'school_code': '28226200816', 'school_id': '01337588247832985613211', 'school_name': 'SMT PRAMEELAMMA AND SRI KGA GUPTA EM UP SCHOOL', 'state_code': '28', 'state_id': 'bc75cc99-9205-463e-a722-5326857838f8', 'state_name': 'Andhra Pradesh'}</td><td>deo</td><td>administrator</td></tr></tbody></table>
