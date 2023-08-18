@@ -26,6 +26,8 @@ Program Exhaust is a service that generates CSV file containing user details for
 
 <figure><img src="../../../../.gitbook/assets/Screenshot 2023-08-17 at 9.38.40 AM.png" alt=""><figcaption></figcaption></figure>
 
+This interaction diagram details the complete process of requesting and generating reports. The user can request a user info exhaust report through SunbirdEd from the program dashboard. Using exhaust APIs, this will map the request to SunbirdLern Which internally calls SunbirdObsrv service. userInfoExhaust data-product will be triggered by a scheduled cron task, which will query cassandra and redis to get data and process it using Spark to transform data and generate the report. The user receives the same report once it has been created.
+
 ## **CSV File Structure**
 
 <table data-header-hidden><thead><tr><th width="189"></th><th width="149.33333333333331"></th><th width="156"></th><th></th></tr></thead><tbody><tr><td><strong>Format</strong></td><td><strong>Nomenclature</strong></td><td><strong>Example</strong></td><td><strong>Security Levels</strong></td></tr><tr><td><strong>CSV zip (Password protected)</strong></td><td><strong>program-user-exhaust/&#x3C;request_id>_&#x3C;UpdatedDate>.zip</strong></td><td><strong>9CD107F48B5AF0D163F8AE8410829674_20230622.zip</strong></td><td><strong>L3 - Data encrypted with a user provided encryption key. Generally applicable to non PII data but can contain sensitive information which may not be considered open</strong></td></tr></tbody></table>
