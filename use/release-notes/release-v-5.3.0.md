@@ -272,6 +272,7 @@ The below environment variable needs to be configured in the 'sunbird-lms-servic
 | exhaust\_api\_submit\_endpoint | /request/submit                                                                                               | To submit job request from batch service     |
 | exhaust\_api\_list\_endpoint   | /request/list/                                                                                                | To list job request from batch service       |
 | sunbird\_api\_auth\_token      | "\{{ core\_vault\_sunbird\_api\_auth\_token \}}"                                                              | Authentication token for APIs                |
+| content\_read\_url             | /content/v3/read/                                                                                             |                                              |
 
 ### Exhaust Proxy API documentation
 
