@@ -1,5 +1,14 @@
 # Release V 5.3.0
 
+### <mark style="color:blue;">**Hot-fix:  CSP**</mark>** (24-08-2023)**
+
+| Component         | Build Job                   | Build Tag                                                                                     | Deploy Job                   | Deployment                                                                                    | Comment             |
+| ----------------- | --------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------------------------------------------------------- | ------------------- |
+| Batch Service     | Build/Core/Lms              | [`release-5.3.2_RC2`](https://github.com/Sunbird-Lern/lms-service/tree/release-5.3.1\_RC2)    | Deploy/Kubernetes/Lms        | [`release-5.3.2_RC2`](https://github.com/Sunbird-Lern/lms-service/tree/release-5.3.1\_RC2)    | CSP related changes |
+| User\&Org Service | Build/Core/Learner          | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/userorg-service/tree/release-5.3.1\_RC1) | Deploy/Kubernetes/Learner    | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/userorg-service/tree/release-5.3.1\_RC1) | CSP related changes |
+| Data pipeline     | Build/Lern/FlinkJobs        | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.1\_RC1)   | Deploy/Lern/FlinkJobs        | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.1\_RC1)   | CSP related changes |
+| Data Products     | Build/Lern/LernDataProducts | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/data-products/tree/release-5.3.1\_RC1)   | Deploy/Lern/LernDataProducts | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/data-products/tree/release-5.3.1\_RC1)   | CSP related changes |
+
 ### <mark style="color:blue;">**Hot-fix:  5.3.1**</mark>** (05-07-2023)**
 
 | Component     | Build Job      | Build Tag                                                                                 | Deploy Job            | Deployment                                                                                | Comment                                                                                                                                                                    |
