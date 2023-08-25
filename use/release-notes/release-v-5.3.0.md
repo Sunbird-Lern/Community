@@ -9,6 +9,22 @@
 | Data pipeline     | Build/Lern/FlinkJobs        | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.1\_RC1)   | Deploy/Lern/FlinkJobs        | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.1\_RC1)   | CSP related changes |
 | Data Products     | Build/Lern/LernDataProducts | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/data-products/tree/release-5.3.1\_RC1)   | Deploy/Lern/LernDataProducts | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/data-products/tree/release-5.3.1\_RC1)   | CSP related changes |
 
+**Jenkins Configurations for csp support:**
+
+Configure the variables cloud\_store\_group\_id, cloud\_store\_artifact\_id and cloud\_store\_version with proper values in the Jenkins, it can configured in the global or to the individual service of  build job.\
+For lms, user-org, flinks-jobs, lerndataproducts build jobs configure like as we mentioned below.
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-08-24 at 11.40.33 PM.png" alt=""><figcaption><p>Jenkins configuration</p></figcaption></figure>
+
+Configure the following values
+
+**Name                                 -  Default Value                            -  Description**
+
+cloud\_store\_group\_id  -  ${cloud\_store\_group\_id} - Set the Cloud store sdk group id. e.g. org.sunbird\
+cloud\_store\_artifact\_id - ${cloud\_store\_artifact\_id} - Set the Cloud store sdk artifact id. e.g. cloud-store-sdk
+
+cloud\_store\_version - ${cloud\_store\_version} - Set the Cloud store sdk version. e.g 1.4.6
+
 ### <mark style="color:blue;">**Hot-fix:  5.3.1**</mark>** (05-07-2023)**
 
 | Component     | Build Job      | Build Tag                                                                                 | Deploy Job            | Deployment                                                                                | Comment                                                                                                                                                                    |
