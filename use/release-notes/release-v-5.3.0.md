@@ -16,7 +16,7 @@ For lms, user-org, flinks-jobs, lerndataproducts build jobs configure like as we
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-08-24 at 11.40.33 PM.png" alt=""><figcaption><p>Jenkins configuration</p></figcaption></figure>
 
-Configure the following values
+#### Configure the following values
 
 **Name                                 -  Default Value                            -  Description**
 
@@ -24,6 +24,13 @@ cloud\_store\_group\_id  -  ${cloud\_store\_group\_id} - Set the Cloud store sdk
 cloud\_store\_artifact\_id - ${cloud\_store\_artifact\_id} - Set the Cloud store sdk artifact id. e.g. cloud-store-sdk
 
 cloud\_store\_version - ${cloud\_store\_version} - Set the Cloud store sdk version. e.g 1.4.6
+
+#### Config changes in Lern common.yaml for data-products
+
+```
+cloud_storage_report_verfication_bucketname: "" # default value is "report-verification"
+dp_storage_endpoint_config: "" # default is "{{s3_storage_endpoint}}"
+```
 
 ### <mark style="color:blue;">**Hot-fix:  5.3.1**</mark>** (05-07-2023)**
 
