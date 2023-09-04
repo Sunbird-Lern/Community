@@ -609,3 +609,12 @@ java -jar svg-uploader.jar "{{ content search host }}" "0" "1000" "{{ storage ke
 #java -jar svg-uploader.jar "dev.lern.sunbird.org" "0" "5" "sunbirddevbbpublic" "{{ secret }}" "/Users/{{username}}/svg_template_migration" "azure"
 ```
 
+\
+\
+**Configuration for making content read URL dynamic:**\
+[**https://project-sunbird.atlassian.net/browse/LR-579**](https://project-sunbird.atlassian.net/browse/LR-579)\
+Please define the below URL in the sunbird\_lms-service.env file this will make the content read endpoint URL Configurable.
+
+```
+content_read_url=/content/v3/read/
+```
