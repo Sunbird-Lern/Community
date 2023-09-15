@@ -1,6 +1,6 @@
 # Activity Aggregate Updater
 
-'activity-aggregate-updater' job updates the Course progress of the enrolled users and upon completion pushes an event to certificate pre-processor job to validate and issue certificate.
+'activity-aggregate-updater' job updates the Course progress of the enrolled users and upon completion of the course, pushes an event to certificate pre-processor job to validate and issue certificate.
 
 <div data-full-width="true">
 
