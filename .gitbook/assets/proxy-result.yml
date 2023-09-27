@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  title: Proxy Exhaust APIs
+  version: 1.0.0
+servers:
+  - url: http://{{host}}
+paths:
+  /api/course/v1/jobrequest/submit:
+    post:
+      tags:
+        - default
+      summary: '{host}/v1/jobrequest/submit'
+      description: "This API will internally call ‘/dataset/v1/request/submit’ API in SB-Obsrv ‘On Demand Data Exhaust API’, to submit the on demand exhaust job request. The job status will be in the submitted state.\_\n\n- This API should encrypt the password using auto generated encryption key and pass it in the exhaust API request if the security level is L2 or L3.\_\n- L1 and L4 do not need encryption keys.\_\n- Fetch the security level using tenant preference APIs to check this.\n- Configure the exhaust api base url and endpoints."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                request:
+                  tag: do_2137002173427875841205_01370023185341644821
+                  requestedBy: fca2925f-1eee-4654-9177-fece3fd6afc9
+                  dataset: response-exhaust
+                  datasetConfig:
+                    batchId: '01370023185341644821'
+                  output_format: csv
+                  encryptionKey: >-
+                    encryption-keyencryption-keyencryption-keyencryption-keyencryption-key
+      parameters:
+        - name: x-authenticated-user-token
+          in: header
+          schema:
+            type: string
+          description: User token
+          example: '{{auth_token}}'
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          description: API key
+          example: '{{kong_api_key}}'
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: x-channel-id
+          in: header
+          schema:
+            type: string
+          description: Organisation id of the requestor
+          example: '{{organisation_id}}'
+        - name: x-authenticated-userid
+          in: header
+          schema:
+            type: string
+          description: UserId of the requester - ORG_ADMIN, COURSE_MENTOR
+          example: '{{requested_user_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/course/v1/jobrequest/list/{tag}:
+    get:
+      tags:
+        - default
+      summary: '{host}/v1/jobrequest/list'
+      description: >-
+        This API will internally call ‘/dataset/v1/request/list API in Obsrv ‘On
+        Demand Data Exhaust API’, to list all the requests that are specific to
+        a tag
+      parameters:
+        - name: x-authenticated-user-token
+          in: header
+          schema:
+            type: string
+          description: User token
+          example: '{{auth_token}}'
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          description: API Key
+          example: '{{kong_api_key}}'
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: x-channel-id
+          in: header
+          schema:
+            type: string
+          description: Organisation id of the requestor
+          example: '{{organisation_id}}'
+        - name: x-authenticated-userid
+          in: header
+          schema:
+            type: string
+          description: UserId of the requester - ORG_ADMIN, COURSE_MENTOR
+          example: '{{requested_user_id}}'
+        - name: tag
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

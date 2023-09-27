@@ -161,39 +161,10 @@ Reference: [Page APIs](http://docs.sunbird.org/latest/apis/pagesapi/)
 [pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
 {% endswagger %}
 
-{% swagger method="post" path="/submit" baseUrl="{{host}}/api/course/v1/jobrequest" summary="Exhaust Submit Proxy API" fullWidth="false" %}
-{% swagger-description %}
-This API will internally call ‘/dataset/v1/request/submit’ API in SB-Obsrv ‘On Demand Data Exhaust API’, to submit the on demand exhaust job request. The job status will be in the submitted state. \n\n- This API should encrypt the password using auto generated encryption key and pass it in the exhaust API request if the security level is L2 or L3. \n- L1 and L4 do not need encryption keys. \n- Fetch the security level using tenant preference APIs to check this.\n- Configure the exhaust api base url and endpoints.
-{% endswagger-description %}
-
-{% swagger-parameter in="header" name="x-authenticated-user-token" required="true" %}
-User token
-{% endswagger-parameter %}
-
-{% swagger-parameter in="header" name="Authorization" required="true" %}
-To make use of the API, you require a authorization.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="header" name="Content-Type" required="true" %}
-application/json
-{% endswagger-parameter %}
-
-{% swagger-parameter in="header" name="x-channel-id" required="true" %}
-Organisation id of the requestor
-{% endswagger-parameter %}
-
-{% swagger-parameter in="header" name="x-authenticated-userid" required="true" %}
-UserId of the requester - ORG_ADMIN, COURSE_MENTOR
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="request" required="true" %}
-
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="OK successful." %}
-
-{% endswagger-response %}
+{% swagger src="../../../.gitbook/assets/proxy-result.yml" path="/api/course/v1/jobrequest/submit" method="post" %}
+[proxy-result.yml](../../../.gitbook/assets/proxy-result.yml)
 {% endswagger %}
 
-
-
+{% swagger src="../../../.gitbook/assets/proxy-result.yml" path="/api/course/v1/jobrequest/list/{tag}" method="get" %}
+[proxy-result.yml](../../../.gitbook/assets/proxy-result.yml)
+{% endswagger %}
