@@ -175,11 +175,6 @@
 * [Data Dictionary](learn/data-dictionary/README.md)
   * [Sample Data](learn/data-dictionary/sample-data.md)
 
-## Engage
-
-* [Discuss](https://github.com/Sunbird-Lern/Community/discussions)
-* [Contribute to Sunbird Lern](https://github.com/Sunbird-Lern/Community/discussions/15)
-
 ## USE
 
 * [Overview](use/use-overview.md)
@@ -249,3 +244,8 @@
 * [Release Calendar](use/release-calendar.md)
 * [Raise an Issue](https://github.com/Sunbird-Lern/Community/discussions/10)
 * [Contribute to Sunbird Lern](use/contribute-to-sunbird-lern.md)
+
+## Engage
+
+* [Discuss](https://github.com/Sunbird-Lern/Community/discussions)
+* [Contribute to Sunbird Lern](https://github.com/Sunbird-Lern/Community/discussions/15)
