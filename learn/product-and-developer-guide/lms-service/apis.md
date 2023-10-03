@@ -98,11 +98,7 @@ Id of the batch
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="intervals" type="String" required="false" %}
-`2019-09-23T00:00:00.000Z/2019-09-24T00:00:00.000Z"`
-
- St
-
-`artDate - Batch Start Date and  Default EndDate - Current Date`
+`2019-09-23T00:00:00.000Z/2019-09-24T00:00:00.000Z"` St`artDate - Batch Start Date and  Default EndDate - Current Date`
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}

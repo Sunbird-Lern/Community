@@ -242,10 +242,10 @@
 * [Server Installation](use/server-installation.md)
 * [Jenkins Jobs](use/jenkins-jobs.md)
 * [Release Calendar](use/release-calendar.md)
-* [Raise an Issue](https://github.com/Sunbird-Lern/Community/discussions/10)
-* [Contribute to Sunbird Lern](use/contribute-to-sunbird-lern.md)
 
 ## Engage
 
 * [Discuss](https://github.com/Sunbird-Lern/Community/discussions)
 * [Contribute to Sunbird Lern](https://github.com/Sunbird-Lern/Community/discussions/15)
+* [Raise an Issue](https://github.com/Sunbird-Lern/Community/discussions/10)
+* [Contribution Guidelines](engage/contribution-guidelines.md)
