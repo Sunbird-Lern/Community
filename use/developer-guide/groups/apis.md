@@ -1,10 +1,6 @@
-# API Documentation
+# APIs
 
 ### **API Document:**
-
-You can refer to \*\*\*\* the below API documentation to see all the Groups APIs.
-
-**Reference:** [Group Management APIs](http://docs.sunbird.org/latest/apis/groupapi/).
 
 **Group API**
 

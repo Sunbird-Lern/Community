@@ -1,4 +1,4 @@
-# Technical Architecture
+# Technical Architecture Diagram
 
 **Microservices:** LERN BB provides the following services: - User-Org Service, LMS (Batch) Service, Groups Service, Notification Service and Discussion Forum&#x20;
 
@@ -12,7 +12,7 @@
 
 <div data-full-width="true">
 
-<figure><img src="../.gitbook/assets/LMS-ServiceFlowDiagram-LERN TECH Arch.drawio (1).png" alt=""><figcaption><p>Lern Technical Architecture</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/LMS-ServiceFlowDiagram-LERN TECH Arch.drawio (1).png" alt=""><figcaption><p>Lern Technical Architecture</p></figcaption></figure>
 
 </div>
 
@@ -28,7 +28,7 @@ The diagram represents the components involved and their arrangement in **Lern**
 
 <div data-full-width="true">
 
-<figure><img src="../.gitbook/assets/Diksha Architecture and Infrastructure (1)(1) (1).png" alt=""><figcaption><p>Data-Product Architecture</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Diksha Architecture and Infrastructure (1)(1) (1).png" alt=""><figcaption><p>Data-Product Architecture</p></figcaption></figure>
 
 </div>
 
@@ -36,6 +36,6 @@ Reports (Data products) refer to products or services derived from data analysis
 
 <div data-full-width="true">
 
-<figure><img src="../.gitbook/assets/Dataproducts_list.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Dataproducts_list.png" alt=""><figcaption></figcaption></figure>
 
 </div>

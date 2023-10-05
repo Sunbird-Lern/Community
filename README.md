@@ -17,8 +17,6 @@ A few examples of solutions that can be assembled with Lern include:
 
 Sunbird Lern can be utilized to enable learning solutions that necessitate tracking of user progress and scores, issuance of certificates based on some criteria as well as to form defined Groups of users, or permit collaboration between them via forums.
 
-### \*\*\*\*
-
 ### **Key Capabilities that Sunbird Lern can enable:**
 
 * User Account Creation & Administration Capabilities: New user account creation, user login/ authentication and user profile with passbook. Assigning and management of user roles. Management of location and other master data. Enable login via various methods including userID/ password as well as SSO via Google or similar systems

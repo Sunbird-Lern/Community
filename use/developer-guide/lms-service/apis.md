@@ -4,9 +4,7 @@
 
 Refer to \*\*\*\* the below various API documentation related to all the different APIs that are being consumed with in all the batch jobs.
 
-**Reference:** [Course Batch Management APIs](http://docs.sunbird.org/latest/apis/coursebatchmanapi/)
-
-Course Batch Management APIs are listed below:
+#### Course Batch Management APIs are listed below:
 
 {% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml" path="/course/v1/batch/read/{batch-id}" method="get" %}
 [coursebatchmanapi (1) (2).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml>)
@@ -24,9 +22,7 @@ Course Batch Management APIs are listed below:
 [coursebatchmanapi (1) (1) (4).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (1) (4).yaml>)
 {% endswagger %}
 
-**Reference:** [Course Enrolment APIs](http://docs.sunbird.org/latest/apis/courseenrolmentapi/)
-
-Course Enrolment APIs are listed below:
+#### Course Enrolment APIs are listed below:
 
 {% swagger src="../../../.gitbook/assets/courseenrolmentapi (1) (1) (2).yaml" path="/course/v1/enrol" method="post" %}
 [courseenrolmentapi (1) (1) (2).yaml](<../../../.gitbook/assets/courseenrolmentapi (1) (1) (2).yaml>)
@@ -40,9 +36,7 @@ Course Enrolment APIs are listed below:
 [courseenrolmentapi (1) (1) (1).yaml](<../../../.gitbook/assets/courseenrolmentapi (1) (1) (1).yaml>)
 {% endswagger %}
 
-**Reference:** [Course Progress APIs](http://docs.sunbird.org/latest/apis/courseprogressapi/)
-
-Course Progress APIs are listed below:
+#### Course Progress APIs are listed below:
 
 {% swagger src="../../../.gitbook/assets/courseprogressapi (1) (1).yaml" path="/course/v1/content/state/read" method="post" %}
 [courseprogressapi (1) (1).yaml](<../../../.gitbook/assets/courseprogressapi (1) (1).yaml>)
@@ -52,9 +46,7 @@ Course Progress APIs are listed below:
 [courseprogressapi (1) (1).yaml](<../../../.gitbook/assets/courseprogressapi (1) (1).yaml>)
 {% endswagger %}
 
-**Reference:** [Course Batch Certificates](http://docs.sunbird.org/latest/apis/coursebatchcertificateapi/)
-
-Course Batch Certificates APIs are listed below:
+#### Course Batch Certificates APIs are listed below:
 
 {% swagger src="../../../.gitbook/assets/coursebatchcertificateapi (1).yaml" path="/course/batch/cert/v1/template/add" method="patch" %}
 [coursebatchcertificateapi (1).yaml](<../../../.gitbook/assets/coursebatchcertificateapi (1).yaml>)
@@ -64,13 +56,13 @@ Course Batch Certificates APIs are listed below:
 [coursebatchcertificateapi.yaml](../../../.gitbook/assets/coursebatchcertificateapi.yaml)
 {% endswagger %}
 
-Reference: [Group Activity Aggregator](http://docs.sunbird.org/latest/apis/groupactivityapi/#tag/Group-Activity-Apis)
+#### Group Activity Aggregator
 
 {% swagger src="../../../.gitbook/assets/groupactivityapi.yaml" path="/data/v1/group/activity/agg" method="post" %}
 [groupactivityapi.yaml](../../../.gitbook/assets/groupactivityapi.yaml)
 {% endswagger %}
 
-Reference: [Collection Summary](https://project-sunbird.atlassian.net/wiki/spaces/AN/pages/1121058947/Design+Druid+Proxy+API)
+#### Collection Summary
 
 {% swagger method="post" path="" baseUrl="" summary="Collection Summary(https://staging.open-sunbird.org/report/v1/collection/summary)" %}
 {% swagger-description %}
@@ -127,7 +119,7 @@ Id of the batch
 {% endswagger-response %}
 {% endswagger %}
 
-Reference: [Page APIs](http://docs.sunbird.org/latest/apis/pagesapi/)
+#### Page APIs
 
 {% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/create" method="post" %}
 [pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)

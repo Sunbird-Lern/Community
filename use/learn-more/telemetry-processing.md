@@ -10,4 +10,4 @@ Data-pipeline Flow Diagram:&#x20;
 
 Lern services like UserOrg, LMS, Groups and Notification Service push the telemetry to Raw Kafka in below diagram, so telemetry extractor flink job and ingest router flink job does not come in to action. Those two jobs are application in case of UI components, where telemetry service API is called to push telemetry events.
 
-<figure><img src="../.gitbook/assets/DataPipeline_HighLevel_Diagram.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/DataPipeline_HighLevel_Diagram.jpg" alt=""><figcaption></figcaption></figure>
