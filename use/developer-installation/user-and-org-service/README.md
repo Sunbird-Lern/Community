@@ -1,4 +1,4 @@
-# USER & ORG SERVICE
+# Developer Installation
 
 ### Getting Started Guide
 

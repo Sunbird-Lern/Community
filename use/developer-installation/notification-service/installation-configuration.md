@@ -60,14 +60,14 @@ LEARNER_SERVICE_PORT=
 
 ### SMS Config
 
-{% content-ref url="../../../../learn/product-and-developer-guide/user-and-org-service/configuration/sms-configuration.md" %}
-[sms-configuration.md](../../../../learn/product-and-developer-guide/user-and-org-service/configuration/sms-configuration.md)
+{% content-ref url="../../../learn/product-and-developer-guide/user-and-org-service/configuration/sms-configuration.md" %}
+[sms-configuration.md](../../../learn/product-and-developer-guide/user-and-org-service/configuration/sms-configuration.md)
 {% endcontent-ref %}
 
 ### Email Config
 
-{% content-ref url="../../../../learn/product-and-developer-guide/user-and-org-service/configuration/email-notification-configuration.md" %}
-[email-notification-configuration.md](../../../../learn/product-and-developer-guide/user-and-org-service/configuration/email-notification-configuration.md)
+{% content-ref url="../../../learn/product-and-developer-guide/user-and-org-service/configuration/email-notification-configuration.md" %}
+[email-notification-configuration.md](../../../learn/product-and-developer-guide/user-and-org-service/configuration/email-notification-configuration.md)
 {% endcontent-ref %}
 
 ### Other Config
