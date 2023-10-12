@@ -18,7 +18,7 @@ The above architecture Diagram shows, How we are integrating the discussion foru
 
 #### Code Structure
 
-* [Repository](../../../../use/developer-installation/discussion-forum/source-code.md)
+* [Repository](../../../../use/developer-guide/discussion-forum/developer-installation/source-code.md)
 *   Important Folder / Package structure
 
     <pre><code><strong>- projects

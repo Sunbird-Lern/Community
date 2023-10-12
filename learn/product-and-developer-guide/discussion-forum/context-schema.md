@@ -30,4 +30,4 @@ Example:
 | Batch  | 01316730820300800028                 | 5   | {JSON} |
 | Group  | 123475d2-c299-45f6-992e-a22d081431bd | 6   | {JSON} |
 
-Refer this link to attach a discussion forum for a context [link](../../../use/developer-installation/discussion-forum/installation-guide/discussion-forum-integration-with-any-application.md)
+Refer this link to attach a discussion forum for a context [link](../../../use/developer-guide/discussion-forum/developer-installation/installation-guide/discussion-forum-integration-with-any-application.md)

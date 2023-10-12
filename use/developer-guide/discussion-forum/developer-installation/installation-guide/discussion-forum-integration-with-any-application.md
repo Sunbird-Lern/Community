@@ -32,9 +32,9 @@ We need to create a categories in Nodebb.
 1. click on “Manage“ tab and select “Categories“
 2. You can see “**+**“ icon at right side bottom, click on that, It will open a popup. Enter Category name and click on Save. It will create a category “**Covid 19 Guidelines”**
 
-![](<../../../../.gitbook/assets/image (17).png>)
+![](<../../../../../.gitbook/assets/image (17).png>)
 
-![](../../../../.gitbook/assets/image-20220120-101751.png)
+![](../../../../../.gitbook/assets/image-20220120-101751.png)
 
 **Step:3**
 
@@ -224,4 +224,4 @@ curl 'https://staging.sunbirded.org/discussion/forum/v3/create' \
 
 n the above response we have `newCid` that is the category id which is created for the group context that we pass in the request. So whet ever the discussions happened in the group are present in the discussion forum category.
 
-![](../../../../.gitbook/assets/image-20220120-102557.png)
+![](../../../../../.gitbook/assets/image-20220120-102557.png)
