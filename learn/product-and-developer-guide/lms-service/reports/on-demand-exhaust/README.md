@@ -26,6 +26,12 @@ On-demand reports are the reports that the admin(course-batch-creator) will requ
 
 </div>
 
+{% embed url="https://youtu.be/xatsANZz4ik?t=343" %}
+Lern exhaust job flow
+{% endembed %}
+
+
+
 1. The admin(course-batch-creator) initiates a report request from the Sunbird Ed portal to the Lern portal.&#x20;
 2. The Lern portal forwards the request to the Postgres Analytics database using Exhaust APIs.&#x20;
 3. The Obsrv portal periodically checks the job request table in the Postgres Analytics database based on a predefined cron schedule.&#x20;

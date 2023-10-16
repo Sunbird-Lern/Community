@@ -10,6 +10,10 @@ The below diagram represents the code flow of **Group** service.
 
 </div>
 
+{% embed url="https://youtu.be/pRsRcv_hs8E?list=PLUrm4D0K_7nxlaZZYirokpx5Mo-jMd64M&t=1550" %}
+Gropus Service Architecture and code flow.
+{% endembed %}
+
 ### Repository
 
 #### Group Service

@@ -10,6 +10,10 @@ The below diagram represents the code flow of **Notification** service.
 
 </div>
 
+{% embed url="https://youtu.be/grjnxbe_CWw?list=PLUrm4D0K_7nxlaZZYirokpx5Mo-jMd64M" %}
+Notification Service Architecture
+{% endembed %}
+
 ### Repository
 
 #### Notification service

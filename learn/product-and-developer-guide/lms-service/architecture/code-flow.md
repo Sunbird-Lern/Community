@@ -10,6 +10,10 @@ The below diagram represents the code flow of **LMS** service.
 
 </div>
 
+{% embed url="https://youtu.be/Vh7DSJhsHFw?list=PLUrm4D0K_7nxlaZZYirokpx5Mo-jMd64M&t=163" %}
+LMS service Highlevel Architecture
+{% endembed %}
+
 ### Repository
 
 #### LMS service

@@ -1,5 +1,9 @@
 # Code Flow
 
+{% embed url="https://youtu.be/6k5mXinIJhI?list=PLUrm4D0K_7nxlaZZYirokpx5Mo-jMd64M" %}
+Discussion Forum Architecture
+{% endembed %}
+
 ### Discussion Forum Middleware
 
 {% embed url="https://github.com/Sunbird-Lern/discussions-middleware" %}

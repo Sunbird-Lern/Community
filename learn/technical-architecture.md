@@ -39,3 +39,7 @@ Reports (Data products) refer to products or services derived from data analysis
 <figure><img src="../.gitbook/assets/Dataproducts_list.png" alt=""><figcaption></figcaption></figure>
 
 </div>
+
+{% embed url="https://youtu.be/VGHIhGWI-us?list=PLUrm4D0K_7nxlaZZYirokpx5Mo-jMd64M" %}
+Lern Highlevel Architecture
+{% endembed %}

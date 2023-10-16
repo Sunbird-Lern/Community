@@ -25,3 +25,7 @@ The below diagram represents the components involved and their arrangement in **
 * OTP Creations on user merge action.
 * Admin Util will do token verification.
 * Content service is for to register the channel and framework validation.
+
+{% embed url="https://youtu.be/VGHIhGWI-us?list=PLUrm4D0K_7nxlaZZYirokpx5Mo-jMd64M&t=450" %}
+User-Org Highlevel Architecture
+{% endembed %}

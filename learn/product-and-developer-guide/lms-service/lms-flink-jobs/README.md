@@ -24,6 +24,10 @@ Flink Jobs in LERN have been to developed to support LMS (Learning Management Sy
 
 </div>
 
+{% embed url="https://youtu.be/pRsRcv_hs8E?list=PLUrm4D0K_7nxlaZZYirokpx5Mo-jMd64M&t=4223" %}
+Certificate generator flink job
+{% endembed %}
+
 ## Additional Reading
 
 {% embed url="https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/1520042020/Course+Infra+-+Async+Jobs+-+Implementation+Design" %}
