@@ -7,7 +7,7 @@
 | Batch Service     | Build/Core/Lms              | [`release-5.3.2_RC2`](https://github.com/Sunbird-Lern/lms-service/tree/release-5.3.1\_RC2)    | Deploy/Kubernetes/Lms        | [release-5.3.0-lern](https://github.com/project-sunbird/sunbird-devops/tree/release-5.3.0-lern) | CSP related changes |
 | User\&Org Service | Build/Core/Learner          | [release-5.3.1\_RC1](https://github.com/Sunbird-Lern/userorg-service/tree/release-5.3.1\_RC1) | Deploy/Kubernetes/Learner    | [release-5.3.0-lern](https://github.com/project-sunbird/sunbird-devops/tree/release-5.3.0-lern) | CSP related changes |
 | Data pipeline     | Build/Lern/FlinkJobs        | [release-5.3.1\_RC2](https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.1\_RC2)   | Deploy/Lern/FlinkJobs        | [release-5.3.1\_RC2](https://github.com/Sunbird-Lern/data-pipeline/tree/release-5.3.1\_RC2)     | CSP related changes |
-| Data Products     | Build/Lern/LernDataProducts | [release-5.3.1\_RC2](https://github.com/Sunbird-Lern/data-products/tree/release-5.3.1\_RC2)   | Deploy/Lern/LernDataProducts | [release-5.3.1\_RC2](https://github.com/Sunbird-Lern/data-products/tree/release-5.3.1\_RC2)     | CSP related changes |
+| Data Products     | Build/Lern/LernDataProducts | [release-5.3.1\_RC3](https://github.com/Sunbird-Lern/data-products/tree/release-5.3.1\_RC3)   | Deploy/Lern/LernDataProducts | [release-5.3.1\_RC3](https://github.com/Sunbird-Lern/data-products/tree/release-5.3.1\_RC3)     | CSP related changes |
 
 **Jenkins Configurations for csp support:**
 
