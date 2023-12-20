@@ -14,7 +14,8 @@
 
 * [Overview](use/use-overview.md)
 * [Release Notes](use/release-notes/README.md)
-  * [Release V 5.4.0 (Ongoing)](use/release-notes/release-v-5.4.0.md)
+  * [release-7.0.0 (Ongoing)](use/release-notes/release-7.0.0-ongoing.md)
+  * [Release V 5.4.0](use/release-notes/release-v-5.4.0.md)
   * [Release V 5.3.0](use/release-notes/release-v-5.3.0.md)
   * [Release V 5.2.0](use/release-notes/release-v-5.2.0.md)
   * [Release V 5.1.0](use/release-notes/release-v-5.1.0.md)
