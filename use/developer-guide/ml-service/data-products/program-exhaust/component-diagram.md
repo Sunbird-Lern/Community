@@ -1,6 +1,6 @@
 # Component Diagram
 
-<figure><img src="../../../../.gitbook/assets/Screenshot 2023-08-17 at 9.37.07 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/Screenshot 2023-08-17 at 9.37.07 AM.png" alt=""><figcaption></figcaption></figure>
 
 Program Exhaust is a service that generates CSV file containing user details for those who has joined a program.
 
@@ -24,7 +24,7 @@ Program Exhaust is a service that generates CSV file containing user details for
 
 ## **User Interaction Diagram**
 
-<figure><img src="../../../../.gitbook/assets/Screenshot 2023-08-17 at 9.38.40 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/Screenshot 2023-08-17 at 9.38.40 AM.png" alt=""><figcaption></figcaption></figure>
 
 This interaction diagram details the complete process of requesting and generating reports. The user can request a user info exhaust report through SunbirdEd from the program dashboard. Using exhaust APIs, this will map the request to SunbirdLern Which internally calls SunbirdObsrv service. userInfoExhaust data-product will be triggered by a scheduled cron task, which will query cassandra and redis to get data and process it using Spark to transform data and generate the report. The user receives the same report once it has been created.
 

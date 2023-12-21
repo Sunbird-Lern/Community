@@ -18,6 +18,8 @@
 
 [LR-699](https://project-sunbird.atlassian.net/browse/LR-699) - \[LERN] Making BMGS configurable
 
+[ED-3054](https://project-sunbird.atlassian.net/browse/ED-3054) - Implementation for allowing user to delete his account in Manage Learn service
+
 ### Configurations
 
 ### Release Notes: Dependent building blocks

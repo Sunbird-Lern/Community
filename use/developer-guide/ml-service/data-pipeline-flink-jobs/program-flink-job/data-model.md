@@ -96,7 +96,7 @@
 
 The schema serves as a blueprint for creating and maintaining the Cassandra database that supports the Program User Info Services data storage and retrieval operations under sunbird\_programs keyspace.
 
-<figure><img src="../../../../.gitbook/assets/Screenshot 2023-08-14 at 6.41.25 PM.png" alt="" width="321"><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/Screenshot 2023-08-14 at 6.41.25 PM.png" alt="" width="321"><figcaption></figcaption></figure>
 
 #### An example of _program\_enrollment_ table under _sunbird\_programs_ keyspace
 

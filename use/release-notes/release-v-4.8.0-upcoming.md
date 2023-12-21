@@ -25,7 +25,7 @@
 * Contribute to RC on QR code generation with a specific type
 *   Certificate Generator Job Integration with RC to re-issue the certificate
 
-
+    ***
 
 ### **Details of the Changes** <a href="#2.-details-of-the-changes" id="2.-details-of-the-changes"></a>
 
