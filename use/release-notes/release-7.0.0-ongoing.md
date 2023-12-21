@@ -14,7 +14,9 @@
 
 **Details of the Changes:**
 
+[LR-676](https://project-sunbird.atlassian.net/browse/LR-676) - User PII Information and account deletion from LERN DBs
 
+[LR-699](https://project-sunbird.atlassian.net/browse/LR-699) - \[LERN] Making BMGS configurable
 
 ### Configurations
 
