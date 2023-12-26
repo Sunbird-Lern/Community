@@ -20,6 +20,18 @@
 
 [ED-3054](https://project-sunbird.atlassian.net/browse/ED-3054) - Implementation for allowing user to delete his account in Manage Learn service
 
+[LR-637](https://project-sunbird.atlassian.net/browse/LR-637) - Postman API automation development for user-org micro-service.
+
+[LR-660](https://project-sunbird.atlassian.net/browse/LR-660) - Postman API automation development for LMS micro-service.
+
+[LR-662](https://project-sunbird.atlassian.net/browse/LR-662) - Postman API automation development for groups micro-service.
+
+[LR-664](https://project-sunbird.atlassian.net/browse/LR-664) - Postman API automation development for notification micro-service.\
+\
+[LR-703](https://project-sunbird.atlassian.net/browse/LR-703) - Jenkins automation job for postman / new man automation. Refer to the [**link**](https://project-sunbird.atlassian.net/wiki/x/KgCryQ) for more information.
+
+[LR-7](https://project-sunbird.atlassian.net/browse/LR-703)[11](https://project-sunbird.atlassian.net/browse/LR-711) - Addressing vulnerable dependencies and issues related to it in groups microservice.
+
 ### Configurations
 
 ### Release Notes: Dependent building blocks
