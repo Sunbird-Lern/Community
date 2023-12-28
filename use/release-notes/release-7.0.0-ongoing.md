@@ -32,6 +32,8 @@
 
 [LR-7](https://project-sunbird.atlassian.net/browse/LR-703)[11](https://project-sunbird.atlassian.net/browse/LR-711) - Addressing vulnerable dependencies and issues related to it in groups microservice.
 
+[LR-712](https://project-sunbird.atlassian.net/browse/LR-712) - Addressing vulnerable dependencies and issues related to it in notification microservice.
+
 ### Configurations
 
 ### Release Notes: Dependent building blocks
