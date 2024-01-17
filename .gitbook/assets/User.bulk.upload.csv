@@ -1,0 +1,5 @@
+name,phone,email,userType,userId,roles,orgExternalId
+Reet006,,Reet006@yopmail.com,student,,"BOOK_REVIEWER,CONTENT_CREATOR",
+Reet007,,Reet007@yopmail.com,teacher,,PUBLIC,
+Reet008,,Reet008@yopmail.com,teacher,,"CONTENT_CREATOR,BOOK_CREATOR",1.30E+17
+Reet009,,Reet009@yopmail.com,student,,ORG_ADMIN,1.30E+17
