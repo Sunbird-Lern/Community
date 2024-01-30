@@ -32,9 +32,9 @@
 
 ### Release Notes: Dependent building blocks
 
-Sunbird-Knowlg: [Release notes](https://knowlg.sunbird.org/use/release-notes/release-5.5.0-latest) (V 5.5.0)\
-Sunbird-Obsrv: [Release notes](https://knowlg.sunbird.org/use/release-notes/release-5.5.0-latest) (V 5.1.0)\
-Sunbird-Ed: [Release notes ](https://ed.sunbird.org/use/releases/release-notes/release-5.2.0)(V 5.2.0)\
+Sunbird-Knowlg: [Release notes](https://knowlg.sunbird.org/use/release-notes/release-5.7.0-latest) (V 5.7.0)\
+Sunbird-Obsrv: [Release notes](https://obsrv.sunbird.org/use/release-notes/release-v-5.1.0) (V 5.1.0)\
+Sunbird-Ed: [Release notes](https://ed.sunbird.org/use/release/updating-sunbird-releases/5.2.0-to-6.0.0) (V 6.0.0)\
 Sunbird-Inquiry: [Release notes](https://inquiry.sunbird.org/use/release-notes/inquiry-release-v5.7.0) (V 5.7.0)\
 Sunbird-Telemetry: [Documentation](https://telemetry.sunbird.org/)\
 Sunbird-RC: [Documentation](https://docs.sunbirdrc.dev/learn/readme)
