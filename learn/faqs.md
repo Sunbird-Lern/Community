@@ -39,3 +39,28 @@
 19. Default Tenant Organisation in Sunbird is referred as CustodianOrg
 20. Default cloud service provider in sunbird?&#x20;
     * Azure
+21. After creating a user using the API, the password couldn't be updated, resulting in the error message, **"User is created but password couldn't be updated"**
+    * Checked Cassandra provider in user federation and ensured channels are available in Cassandra DB.&#x20;
+    * Verified Keycloak environment variables, and if an issue is found, rebuild and redeploy Keycloak from Jenkins.&#x20;
+    * Confirmed that Ingress IP is properly updated in Keycloak configuration.&#x20;
+    * Checked and updated variables in the private repo, specifically related to public keys.&#x20;
+    * Ensured that recaptcha is set to false in the Player service configmap.&#x20;
+    * Restarted the Player pod after making configuration changes.&#x20;
+    * Verified mandatory variables in the installation documentation were filled before deployment.
+    * Resolved certificate-related issues by updating the certificate chain CRT file.&#x20;
+    * Checked if the user is visible in the system after creation and looked for errors in the learner service.&#x20;
+    *   Fixed the "unable to verify the first certificate" issue by updating the certificate chain CRT file.
+
+        **Note:** All mandatory variables mentioned in the installation documentation should be filled before deployment. Recaptcha settings and certificate updates are crucial for resolving password update issues.
+
+        \
+        **For more details check the below DF threads,**
+    * [https://github.com/orgs/Sunbird-Ed/discussions/306](https://github.com/orgs/Sunbird-Ed/discussions/306)&#x20;
+    * [https://github.com/orgs/Sunbird-Ed/discussions/678](https://github.com/orgs/Sunbird-Ed/discussions/678)
+22. I'm unable to change preferences for a logged-in user. How can I fix this issue?
+    * Identify the Missing Field:&#x20;
+      * Check the **user profile** system settings.&#x20;
+      * Ensure that the missing field is present under the framework.
+    * If you cannot find then, Update System Settings:&#x20;
+      * Use the update system settings API to set the missing framework fields:
+      * Verify and Close: Ensure the necessary system settings are updated. Confirm that the reported issue no longer occurs.
