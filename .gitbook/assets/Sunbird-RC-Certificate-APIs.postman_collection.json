@@ -1,0 +1,615 @@
+{
+	"info": {
+		"_postman_id": "55276d19-3944-4c0c-9f7b-62bd563212bc",
+		"name": "Sunbird-RC-Certificate-APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create certificate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{rc_api_key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipient\": {\n        \"id\": \"a7939df7-7c7b-4178-9325-cb13a0eaf87f\",\n        \"name\": \"Preksha\",\n        \"type\": \"user\"\n    },\n    \"issuer\": {\n        \"url\": \"https://gcert.gujarat.gov.in/gcert/\",\n        \"name\": \"Gujarat Council of Educational Research and Training\",\n        \"kid\": \"d50937e1-9359-4451-a66a-ebee45d1d605\"\n    },\n    \"training\": {\n        \"id\": \"do_2134278368470876161115\",\n        \"name\": \"AK merit course\",\n        \"type\": \"Course\",\n        \"batchId\": \"0134278454483681283\"\n    },\n    \"templateUrl\": \"https://obj.stage.sunbirded.org/sunbird-content-staging/content/do_2133570565865062401187/artifact/do_2133570565865062401187_1630500071869_certificate_2021-09-01_18_11.svg\",\n    \"status\": \"ACTIVE\",\n    \"signatory\": [\n        {\n            \"name\": \"commissioner\",\n            \"image\": \"data:image/png;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/wAALCAAuAHABAREA/8QAHQABAAICAgMAAAAAAAAAAAAAAAYHBQgBAwIECf/EADAQAAEEAQMDAgQGAgMAAAAAAAIBAwQFAAYHERITIQhBFCIxMiNCUWFxchUzgYKS/9oACAEBAAA/APv5jGMYyP6z3Bq9vKhJltJ+HbccFhoBAnHpDpfa02AopGa+wiirmA036iNN6l1gxp8ytKa7mATkWDcVr9e9NEfJKz3RFHOn36VXjJ/jGMYxjGRTdLcFnbfTLk5Yz0ya6YxoENr/AGTpJr0ttD/K/VfyjyuYLYK91HcytWM6jsIti9WWoRW1jR0aZjl8JHcdab9yAHXDFCL5l485ZGVJvGx2PUNtLLlKg1oy7OOPP2pNchr2F/t2wkin85075wF11v3tTRRi+eitn9VzSD6ssMw34oIv7G7LFP8AquXDjILvXuhI22rKZmtitWF5qO3jVNfGcNRElMuXXF489LbIuuL/AEydYxjGMrXTElvc3eu7sj6Xa/QzqVEAfy/GG0Dkl3+RBxtpP0/F/XIXpD1U6egauvamg03Yf4eFPR6TZo62LVg/KlqyrjAqSk91P9aeOPKZZkLefTlpa18OLZBKkWk6XXx0ZbIkN2L1JI88fa2QqJF9vVwnOQHezdbTGv8A00zL6Q/OixZkhxNPux0QpcmWw8Xw0mOPv87XdFV8dv5i4TnjVOJ6t9yr7ZvUFxXQLqt3E1VNj0thdV1L8Y2xLNwGIkOuFz8NIwi+jwvvF+J3XDEPPjcrRu/MdjU8PSEyt1A1bQagLGa9YuwxNiKik2kh/oeXp6ybNfp7Lk1m68paszSRa17KtvsxS65Aj0uvcIy35X7j6k6U9+cgs5gNcesCCJILjGg9OHJ/rKsHu2C/yjMR3/h3LXxjGMZTlhsRqqQGoaWs1W1p/T2obKTYvyoMVf8ALN/EeXG2nCXtt8Eq8OdJF+2cae9I9fpfRdDWQLmXFmUrzLiTmojIkYtRzjtgIdPSCALhEHHPSa9XnILvXsDo/wBPexdhduXWs3JGn6CZVxO1NQpc+MTan8EKC2n3E2hKYILnKKRH45SNbN7AG1M0JW7ly6loKXSsaQtcLvTWxgDpbCCx18IQB20cfcX5nS7X5E4y0qXQ8T1CTtVXUOQdfUyLGsco7FhtFV1+vXuDLESTpNtXCRtPYhaX6eM85notprx24nWV9qV6/wBTxDgXttHfbjSLWOQqIsEgh0ttgi/IIcccryq5ibb0V2BXjFjX65nynI161qQWLqA1NakTQYFgSdUO2RAAj1NgCgIF5T9pb6ftnbnbLWO4U+5mv28nU1rGmN2LzqdcoQhMNKKNj4ZbBwXEEE9vPvlr4xjGMZ6lnYM1MJyVIcBiOwCuOuGXSLYp5VVzW3Vt5J3yrYIui8M3chCg0MJeO5VUKkHxc9wfym81/wCe60HP1zYa/wBIVGqo7TFpV11kywXW0EuMDwtqnuiEi8L++ZNtoWgQREREftTOzGMYxjGMZgtxNExdxtA3VBPN5uFeQnoD5Ml0uI26CgXC/rwq5itutl6rbR+RNadmWVzOAGZNlMMSkPNh9jadIiDbY+wNiIp+mTLGMYxjGf/Z\",\n            \"designation\": \"CEO\",\n            \"id\": \"CEO/CEO\"\n        }\n    ],\n    \"oldId\": \"0c0733dd-2426-4ffc-a41d-d6a2496cd9f5\",\n    \"certificateLabel\": \"Merit certificate\",\n    \"issuedOn\": \"2023-05-04T14:04:16.947Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{rc_private_host}}/registry-service/api/v1/TrainingCertificate",
+					"host": [
+						"{{rc_private_host}}"
+					],
+					"path": [
+						"registry-service",
+						"api",
+						"v1",
+						"TrainingCertificate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create certificate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Sunbird Learner\", \n    \"contact\":\"12345\",\n    \"trainingTitle\":\"Sunbird RC Certificate Module\",\n    \"note\":\"IT IS FAILEd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/TrainingCertificate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"TrainingCertificate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Mar 2022 06:04:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"sunbird-rc.registry.create\",\n    \"ver\": \"1.0\",\n    \"ets\": 1646201090982,\n    \"params\": {\n        \"resmsgid\": \"\",\n        \"msgid\": \"05682949-5917-452d-b82f-5b9a5c353564\",\n        \"err\": \"\",\n        \"status\": \"SUCCESSFUL\",\n        \"errmsg\": \"\"\n    },\n    \"responseCode\": \"OK\",\n    \"result\": {\n        \"TrainingCertificate\": {\n            \"osid\": \"1-21c8ecab-7b8d-40f1-9961-cae7fcb6a5f9\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update certificate",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{rc_api_key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"templateUrl\": \"https://obj.stage.sunbirded.org/sunbird-content-staging/content/do_2133570565865062401187/artifact/do_2133570565865062401187_1630500071869_certificate_2021-09-01_18_11.svg\",\n    \"issuanceDate\":\"2021-02-12T04:35:56Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{rc_private_host}}/registry-service/api/v1/TrainingCertificate/892297d5-3b85-4193-991b-38ef47ee47c7",
+					"host": [
+						"{{rc_private_host}}"
+					],
+					"path": [
+						"registry-service",
+						"api",
+						"v1",
+						"TrainingCertificate",
+						"892297d5-3b85-4193-991b-38ef47ee47c7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create certificate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Sunbird Learner\", \n    \"contact\":\"12345\",\n    \"trainingTitle\":\"Sunbird RC Certificate Module\",\n    \"note\":\"IT IS FAILEd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/TrainingCertificate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"TrainingCertificate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Mar 2022 06:04:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"sunbird-rc.registry.create\",\n    \"ver\": \"1.0\",\n    \"ets\": 1646201090982,\n    \"params\": {\n        \"resmsgid\": \"\",\n        \"msgid\": \"05682949-5917-452d-b82f-5b9a5c353564\",\n        \"err\": \"\",\n        \"status\": \"SUCCESSFUL\",\n        \"errmsg\": \"\"\n    },\n    \"responseCode\": \"OK\",\n    \"result\": {\n        \"TrainingCertificate\": {\n            \"osid\": \"1-21c8ecab-7b8d-40f1-9961-cae7fcb6a5f9\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "delete certificate",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{rc_api_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{rc_private_host}}/registry-service/api/v1/TrainingCertificate/892297d5-3b85-4193-991b-38ef47ee47c7",
+					"host": [
+						"{{rc_private_host}}"
+					],
+					"path": [
+						"registry-service",
+						"api",
+						"v1",
+						"TrainingCertificate",
+						"892297d5-3b85-4193-991b-38ef47ee47c7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create certificate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Sunbird Learner\", \n    \"contact\":\"12345\",\n    \"trainingTitle\":\"Sunbird RC Certificate Module\",\n    \"note\":\"IT IS FAILEd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/TrainingCertificate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"TrainingCertificate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Mar 2022 06:04:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"sunbird-rc.registry.create\",\n    \"ver\": \"1.0\",\n    \"ets\": 1646201090982,\n    \"params\": {\n        \"resmsgid\": \"\",\n        \"msgid\": \"05682949-5917-452d-b82f-5b9a5c353564\",\n        \"err\": \"\",\n        \"status\": \"SUCCESSFUL\",\n        \"errmsg\": \"\"\n    },\n    \"responseCode\": \"OK\",\n    \"result\": {\n        \"TrainingCertificate\": {\n            \"osid\": \"1-21c8ecab-7b8d-40f1-9961-cae7fcb6a5f9\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Search Certificate",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{rc_api_key}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"filters\": {\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{rc_private_host}}/registry-service/api/v1/TrainingCertificate/search",
+					"host": [
+						"{{rc_private_host}}"
+					],
+					"path": [
+						"registry-service",
+						"api",
+						"v1",
+						"TrainingCertificate",
+						"search"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Search Certificate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"filters\":{\n          \"contact\":{\n              \"eq\":\"12345\"\n          }\n      }\n    \n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/TrainingCertificate/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"TrainingCertificate",
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Mar 2022 08:12:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"note\": \"IT IS FAILEd\",\n        \"contact\": \"12345\",\n        \"name\": \"Sunbird Learner\",\n        \"trainingTitle\": \"Sunbird RC Certificate Module\",\n        \"osid\": \"1-21c8ecab-7b8d-40f1-9961-cae7fcb6a5f9\",\n        \"_osSignedData\": \"{\\\"@context\\\":[\\\"https://www.w3.org/2018/credentials/v1\\\",\\\"https://gist.githubusercontent.com/dileepbapat/eb932596a70f75016411cc871113a789/raw/498e5af1d94784f114b32c1ab827f951a8a24def/skill\\\"],\\\"type\\\":[\\\"VerifiableCredential\\\"],\\\"issuanceDate\\\":\\\"2021-08-27T10:57:57.237Z\\\",\\\"credentialSubject\\\":{\\\"type\\\":\\\"Person\\\",\\\"name\\\":\\\"Sunbird Learner\\\",\\\"trainedOn\\\":\\\"Sunbird RC Certificate Module\\\"},\\\"issuer\\\":\\\"did:web:sunbirdrc.dev/vc/skill\\\",\\\"proof\\\":{\\\"type\\\":\\\"Ed25519Signature2018\\\",\\\"created\\\":\\\"2022-03-02T06:04:51Z\\\",\\\"verificationMethod\\\":\\\"did:india\\\",\\\"proofPurpose\\\":\\\"assertionMethod\\\",\\\"jws\\\":\\\"eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..IF9QRD87DJAJMPlppI7sn84ycX_CusBbb4NQpCZq0Rn8oFGR3v7H_3K1mwJrx1rPO9910YBC8t2e1irlELxZAQ\\\"}}\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Download certificate PDF",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "image/svg+xml",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{rc_api_key}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "template",
+						"value": "https://obj.stage.sunbirded.org/sunbird-content-staging/content/do_2133570565865062401187/artifact/do_2133570565865062401187_1630500071869_certificate_2021-09-01_18_11.svg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{rc_private_host}}/registry-service/api/v1/TrainingCertificate/892297d5-3b85-4193-991b-38ef47ee47c7",
+					"host": [
+						"{{rc_private_host}}"
+					],
+					"path": [
+						"registry-service",
+						"api",
+						"v1",
+						"TrainingCertificate",
+						"892297d5-3b85-4193-991b-38ef47ee47c7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Public key Search Certificate",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{rc_api_key}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"filters\": {\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{rc_private_host}}/registry-service/api/v1/PublicKey/search",
+					"host": [
+						"{{rc_private_host}}"
+					],
+					"path": [
+						"registry-service",
+						"api",
+						"v1",
+						"PublicKey",
+						"search"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

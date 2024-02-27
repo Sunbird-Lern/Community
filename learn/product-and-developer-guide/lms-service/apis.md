@@ -10,7 +10,7 @@ Refer to \*\*\*\* the below various API documentation related to all the differe
 [coursebatchmanapi (1) (2).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml>)
 {% endswagger %}
 
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (1) (2).yaml" path="/course/v1/batch/update" method="patch" %}
+{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (1) (2).yaml" path="/course/v1/batch/update" method="patch" expanded="true" fullWidth="false" %}
 [coursebatchmanapi (1) (1) (2).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (1) (2).yaml>)
 {% endswagger %}
 

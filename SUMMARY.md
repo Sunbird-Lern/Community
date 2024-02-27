@@ -153,6 +153,8 @@
     * [Dependencies](learn/product-and-developer-guide/lms-service/dependencies.md)
     * [Certificate Registry and Credentialing using Sunbird-RC](use/developer-guide/lms-service/certificate-registry-and-credentialing/README.md)
       * [Configuring PublicKey in Sunbird-RC](use/developer-guide/lms-service/certificate-registry-and-credentialing/configuring-publickey-in-sunbird-rc.md)
+      * [Server Setup guide for Sunbird-RC](use/developer-guide/lms-service/certificate-registry-and-credentialing/server-setup-guide-for-sunbird-rc.md)
+      * [API Guide For Sunbird-RC](use/developer-guide/lms-service/certificate-registry-and-credentialing/api-guide-for-sunbird-rc.md)
     * [Certificate Flow](learn/product-and-developer-guide/lms-service/certificate-flow/README.md)
       * [Certificates Creation and Configuration](learn/product-and-developer-guide/lms-service/certificate-flow/certificates-creation-and-configuration.md)
   * [GROUPS](learn/product-and-developer-guide/groups/README.md)

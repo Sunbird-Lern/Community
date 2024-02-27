@@ -1,0 +1,647 @@
+openapi: 3.0.0
+info:
+  title: Sunbird-RC-Certificate-APIs
+  version: 1.0.0
+servers:
+  - url: http://{{rc_private_host}}
+paths:
+  /registry-service/api/v1/TrainingCertificate:
+    post:
+      tags:
+        - default
+      summary: Create certificate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: |-
+                {
+                    "recipient": {
+                        "id": {{user id}},
+                        "name": {{user name}},
+                        "type": "user"
+                    },
+                    "issuer": {
+                        "url": {{issure url}},
+                        "name": {{issure name}},
+                        "kid": {{Public key osid}}
+                    },
+                    "training": {
+                        "id": {{course id}},
+                        "name": {{course name}},
+                        "type": "Course",
+                        "batchId": {{batch id}}
+                    },
+                    "templateUrl": {{template url}},
+                    "status": "ACTIVE",
+                    "signatory": [
+                        {
+                            "name": "commissioner",
+                            "image": {{base64 signatory}},
+                            "designation": "CEO",
+                            "id": "CEO/CEO"
+                        }
+                    ],
+                    "oldId": {{old certificate id if certificate is reissue}},
+                    "certificateLabel": {{certificate name}},
+                    "issuedOn": {{issued time}}
+                }
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{rc_api_key}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Wed, 02 Mar 2022 06:04:51 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: sunbird-rc.registry.create
+                ver: '1.0'
+                ets: 1646201090982
+                params:
+                  resmsgid: ''
+                  msgid: 05682949-5917-452d-b82f-5b9a5c353564
+                  err: ''
+                  status: SUCCESSFUL
+                  errmsg: ''
+                responseCode: OK
+                result:
+                  PublicKey:
+                    osid: 1-21c8ecab-7b8d-40f1-9961-cae7fcb6a5f9
+  /registry-service/api/v1/PublicKey:
+    post:
+      tags:
+        - default
+      summary: Create PublicKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                value: '{{key}}'
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{rc_api_key}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Wed, 02 Mar 2022 06:04:51 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: sunbird-rc.registry.create
+                ver: '1.0'
+                ets: 1646201090982
+                params:
+                  resmsgid: ''
+                  msgid: 05682949-5917-452d-b82f-5b9a5c353564
+                  err: ''
+                  status: SUCCESSFUL
+                  errmsg: ''
+                responseCode: OK
+                result:
+                  TrainingCertificate:
+                    osid: 1-21c8ecab-7b8d-40f1-9961-cae7fcb6a5f9
+  /registry-service/api/v1/TrainingCertificate/{osid}:
+    put:
+      tags:
+        - default
+      summary: Update certificate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: |-
+                {
+                    /// updated fields
+                }
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{rc_api_key}}'
+        - name: osid
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Wed, 02 Mar 2022 06:04:51 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: sunbird-rc.registry.update
+                ver: '1.0'
+                ets: 1646201090982
+                params:
+                  resmsgid: ''
+                  msgid: 05682949-5917-452d-b82f-5b9a5c353564
+                  err: ''
+                  status: SUCCESSFUL
+                  errmsg: ''
+                responseCode: OK
+    delete:
+      tags:
+        - default
+      summary: delete certificate
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{rc_api_key}}'
+        - name: osid
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Wed, 02 Mar 2022 06:04:51 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: sunbird-rc.registry.delete
+                ver: '1.0'
+                ets: 1646201090982
+                params:
+                  resmsgid: ''
+                  msgid: 05682949-5917-452d-b82f-5b9a5c353564
+                  err: ''
+                  status: SUCCESSFUL
+                  errmsg: ''
+                responseCode: OK
+    get:
+      tags:
+        - default
+      summary: Download certificate PDF
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: image/svg+xml
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{rc_api_key}}'
+        - name: template
+          in: header
+          schema:
+            type: string
+          example: '{{template_url}}'
+        - name: osid
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        undefined:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: null
+  /registry-service/api/v1/TrainingCertificate/search:
+    post:
+      tags:
+        - default
+      summary: Search Certificate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: |-
+                {
+                    "filters": {
+                        // fields
+                    }
+                }
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{rc_api_key}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Wed, 02 Mar 2022 08:12:26 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: Search Certificate
+                  value:
+                    - osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                      osUpdatedBy: anonymous
+                      '@type': TrainingCertificate
+                      training:
+                        osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                        osCreatedAt: '2022-04-12T11:54:36.990Z'
+                        osUpdatedBy: anonymous
+                        '@type': training
+                        name: 4.8 reg report Course for Question set
+                        osCreatedBy: anonymous
+                        id: do_213505518232150016154
+                        osid: a6f3defd-202e-4c67-8fba-4e89d3d58862
+                        type: Course
+                        batchId: '01350552513233715292'
+                      osid: 8928890e-5997-42c1-9f79-5f874215e531
+                      _osSignedData: >-
+                        {"@context":["https://obj.stage.sunbirded.org/sunbird-content-staging/schema/v1_context.json","https://obj.stage.sunbirded.org/sunbird-content-staging/schema/sunbird_context.json"],"type":["VerifiableCredential"],"id":"did:sunbird:1-8928890e-5997-42c1-9f79-5f874215e531","issuanceDate":"2022-04-12T11:54:36.990Z","credentialSubject":{"type":"Merit
+                        Certificate","recipientName":"ಪ್ರಿಯಾ","trainingName":"4.8
+                        reg report Course for Question
+                        set","trainingId":"do_213505518232150016154"},"issuer":{"id":"https://raw.githubusercontent.com/project-sunbird/sunbird-devops/release-4.8.0/kubernetes/helm_charts/sunbird-RC/registry/templates/READ.md#Issuer","type":["Issuer"],"name":"Gujarat
+                        Council of Educational Research and
+                        Training","url":"https://gcert.gujarat.gov.in/gcert/","publicKey":["d50937e1-9359-4451-a66a-ebee45d1d605"]},"proof":{"type":"RsaSignature2018","created":"2022-04-12T11:54:37Z","verificationMethod":"did:india","proofPurpose":"assertionMethod","jws":"eyJhbGciOiJQUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..phI5GuJd45TiNjo5JJSvrLPvVGvcqGy7rZH8TclcH3PaGIeUJkD5FH6mFKnID3Qz8uiKfaHwzOG2VXZzBLy68ivAx3QHdwjUzVRA5PG__JA9RJZ8XRFBLJwNT-TLocOpoQGuq5KvmIX4g9zWj70rb-MpU_deqkcCzM_0kTsmlEin8_Bt2cb1cguPANVJ0Q9IUScyqOTk9Lg6v6X8IOnyMX54P4KAi2dnT6ICPEGHAryQQp69uzYzLmMBFp7rCLg_8PT3chiUTjkqo3MemiJtBbDbqKdSAZ-G61tP_SMWC-12bwfH10fTQLAgKR2kaUIyGcx23n1kLCaUnOhcd5h9KQ"}}
+                      osOwner:
+                        - anonymous
+                      issuer:
+                        osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                        osCreatedAt: '2022-04-12T11:54:36.990Z'
+                        osUpdatedBy: anonymous
+                        '@type': issuer
+                        kid: d50937e1-9359-4451-a66a-ebee45d1d605
+                        name: Gujarat Council of Educational Research and Training
+                        osCreatedBy: anonymous
+                        osid: d2d336a4-149f-45bc-951d-2272cbb25cb5
+                        url: https://gcert.gujarat.gov.in/gcert/
+                      templateUrl: >-
+                        https://obj.stage.sunbirded.org/sunbird-content-staging/content/do_21348140209112678412/artifact/do_21348140209112678412_1645678966806_certificate_2022-02-24_10_32.svg
+                      certificateLabel: Merit Certificate
+                      osCreatedAt: '2022-04-12T11:54:36.990Z'
+                      recipient:
+                        osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                        osCreatedAt: '2022-04-12T11:54:36.990Z'
+                        osUpdatedBy: anonymous
+                        '@type': recipient
+                        name: ಪ್ರಿಯಾ
+                        osCreatedBy: anonymous
+                        id: a7939df7-7c7b-4178-9325-cb13a0eaf87f
+                        osid: f4932960-c0ad-4e77-b99c-41d5fa51ee72
+                      osCreatedBy: anonymous
+                      signatory:
+                        - image: >-
+                            data:image/png;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/wAALCAAuAHABAREA/8QAHQABAAICAgMAAAAAAAAAAAAAAAYHBQgBAwIECf/EADAQAAEEAQMDAgQGAgMAAAAAAAIBAwQFAAYHERITIQhBFCIxMiNCUWFxchUzgYKS/9oACAEBAAA/APv5jGMYyP6z3Bq9vKhJltJ+HbccFhoBAnHpDpfa02AopGa+wiirmA036iNN6l1gxp8ytKa7mATkWDcVr9e9NEfJKz3RFHOn36VXjJ/jGMYxjGRTdLcFnbfTLk5Yz0ya6YxoENr/AGTpJr0ttD/K/VfyjyuYLYK91HcytWM6jsIti9WWoRW1jR0aZjl8JHcdab9yAHXDFCL5l485ZGVJvGx2PUNtLLlKg1oy7OOPP2pNchr2F/t2wkin85075wF11v3tTRRi+eitn9VzSD6ssMw34oIv7G7LFP8AquXDjILvXuhI22rKZmtitWF5qO3jVNfGcNRElMuXXF489LbIuuL/AEydYxjGMrXTElvc3eu7sj6Xa/QzqVEAfy/GG0Dkl3+RBxtpP0/F/XIXpD1U6egauvamg03Yf4eFPR6TZo62LVg/KlqyrjAqSk91P9aeOPKZZkLefTlpa18OLZBKkWk6XXx0ZbIkN2L1JI88fa2QqJF9vVwnOQHezdbTGv8A00zL6Q/OixZkhxNPux0QpcmWw8Xw0mOPv87XdFV8dv5i4TnjVOJ6t9yr7ZvUFxXQLqt3E1VNj0thdV1L8Y2xLNwGIkOuFz8NIwi+jwvvF+J3XDEPPjcrRu/MdjU8PSEyt1A1bQagLGa9YuwxNiKik2kh/oeXp6ybNfp7Lk1m68paszSRa17KtvsxS65Aj0uvcIy35X7j6k6U9+cgs5gNcesCCJILjGg9OHJ/rKsHu2C/yjMR3/h3LXxjGMZTlhsRqqQGoaWs1W1p/T2obKTYvyoMVf8ALN/EeXG2nCXtt8Eq8OdJF+2cae9I9fpfRdDWQLmXFmUrzLiTmojIkYtRzjtgIdPSCALhEHHPSa9XnILvXsDo/wBPexdhduXWs3JGn6CZVxO1NQpc+MTan8EKC2n3E2hKYILnKKRH45SNbN7AG1M0JW7ly6loKXSsaQtcLvTWxgDpbCCx18IQB20cfcX5nS7X5E4y0qXQ8T1CTtVXUOQdfUyLGsco7FhtFV1+vXuDLESTpNtXCRtPYhaX6eM85notprx24nWV9qV6/wBTxDgXttHfbjSLWOQqIsEgh0ttgi/IIcccryq5ibb0V2BXjFjX65nynI161qQWLqA1NakTQYFgSdUO2RAAj1NgCgIF5T9pb6ftnbnbLWO4U+5mv28nU1rGmN2LzqdcoQhMNKKNj4ZbBwXEEE9vPvlr4xjGMZ6lnYM1MJyVIcBiOwCuOuGXSLYp5VVzW3Vt5J3yrYIui8M3chCg0MJeO5VUKkHxc9wfym81/wCe60HP1zYa/wBIVGqo7TFpV11kywXW0EuMDwtqnuiEi8L++ZNtoWgQREREftTOzGMYxjGMZgtxNExdxtA3VBPN5uFeQnoD5Ml0uI26CgXC/rwq5itutl6rbR+RNadmWVzOAGZNlMMSkPNh9jadIiDbY+wNiIp+mTLGMYxjGf/Z
+                          osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                          osCreatedAt: '2022-04-12T11:54:36.990Z'
+                          osUpdatedBy: anonymous
+                          name: AK director
+                          osCreatedBy: anonymous
+                          designation: CEO
+                          osid: edde9972-e443-4afa-9fdd-ae087c8dcef4
+                          id: CEO/CEO
+                      status: ACTIVE
+                example-1:
+                  summary: Search Certificate example 2
+                  value:
+                    - osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                      osUpdatedBy: anonymous
+                      '@type': TrainingCertificate
+                      training:
+                        osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                        osCreatedAt: '2022-04-12T11:54:36.990Z'
+                        osUpdatedBy: anonymous
+                        '@type': training
+                        name: 4.8 reg report Course for Question set
+                        osCreatedBy: anonymous
+                        id: do_213505518232150016154
+                        osid: a6f3defd-202e-4c67-8fba-4e89d3d58862
+                        type: Course
+                        batchId: '01350552513233715292'
+                      osid: 8928890e-5997-42c1-9f79-5f874215e531
+                      _osSignedData: >-
+                        {"@context":["https://obj.stage.sunbirded.org/sunbird-content-staging/schema/v1_context.json","https://obj.stage.sunbirded.org/sunbird-content-staging/schema/sunbird_context.json"],"type":["VerifiableCredential"],"id":"did:sunbird:1-8928890e-5997-42c1-9f79-5f874215e531","issuanceDate":"2022-04-12T11:54:36.990Z","credentialSubject":{"type":"Merit
+                        Certificate","recipientName":"ಪ್ರಿಯಾ","trainingName":"4.8
+                        reg report Course for Question
+                        set","trainingId":"do_213505518232150016154"},"issuer":{"id":"https://raw.githubusercontent.com/project-sunbird/sunbird-devops/release-4.8.0/kubernetes/helm_charts/sunbird-RC/registry/templates/READ.md#Issuer","type":["Issuer"],"name":"Gujarat
+                        Council of Educational Research and
+                        Training","url":"https://gcert.gujarat.gov.in/gcert/","publicKey":["d50937e1-9359-4451-a66a-ebee45d1d605"]},"proof":{"type":"RsaSignature2018","created":"2022-04-12T11:54:37Z","verificationMethod":"did:india","proofPurpose":"assertionMethod","jws":"eyJhbGciOiJQUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..phI5GuJd45TiNjo5JJSvrLPvVGvcqGy7rZH8TclcH3PaGIeUJkD5FH6mFKnID3Qz8uiKfaHwzOG2VXZzBLy68ivAx3QHdwjUzVRA5PG__JA9RJZ8XRFBLJwNT-TLocOpoQGuq5KvmIX4g9zWj70rb-MpU_deqkcCzM_0kTsmlEin8_Bt2cb1cguPANVJ0Q9IUScyqOTk9Lg6v6X8IOnyMX54P4KAi2dnT6ICPEGHAryQQp69uzYzLmMBFp7rCLg_8PT3chiUTjkqo3MemiJtBbDbqKdSAZ-G61tP_SMWC-12bwfH10fTQLAgKR2kaUIyGcx23n1kLCaUnOhcd5h9KQ"}}
+                      osOwner:
+                        - anonymous
+                      issuer:
+                        osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                        osCreatedAt: '2022-04-12T11:54:36.990Z'
+                        osUpdatedBy: anonymous
+                        '@type': issuer
+                        kid: d50937e1-9359-4451-a66a-ebee45d1d605
+                        name: Gujarat Council of Educational Research and Training
+                        osCreatedBy: anonymous
+                        osid: d2d336a4-149f-45bc-951d-2272cbb25cb5
+                        url: https://gcert.gujarat.gov.in/gcert/
+                      templateUrl: >-
+                        https://obj.stage.sunbirded.org/sunbird-content-staging/content/do_21348140209112678412/artifact/do_21348140209112678412_1645678966806_certificate_2022-02-24_10_32.svg
+                      certificateLabel: Merit Certificate
+                      osCreatedAt: '2022-04-12T11:54:36.990Z'
+                      recipient:
+                        osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                        osCreatedAt: '2022-04-12T11:54:36.990Z'
+                        osUpdatedBy: anonymous
+                        '@type': recipient
+                        name: ಪ್ರಿಯಾ
+                        osCreatedBy: anonymous
+                        id: a7939df7-7c7b-4178-9325-cb13a0eaf87f
+                        osid: f4932960-c0ad-4e77-b99c-41d5fa51ee72
+                      osCreatedBy: anonymous
+                      signatory:
+                        - image: >-
+                            data:image/png;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/wAALCAAuAHABAREA/8QAHQABAAICAgMAAAAAAAAAAAAAAAYHBQgBAwIECf/EADAQAAEEAQMDAgQGAgMAAAAAAAIBAwQFAAYHERITIQhBFCIxMiNCUWFxchUzgYKS/9oACAEBAAA/APv5jGMYyP6z3Bq9vKhJltJ+HbccFhoBAnHpDpfa02AopGa+wiirmA036iNN6l1gxp8ytKa7mATkWDcVr9e9NEfJKz3RFHOn36VXjJ/jGMYxjGRTdLcFnbfTLk5Yz0ya6YxoENr/AGTpJr0ttD/K/VfyjyuYLYK91HcytWM6jsIti9WWoRW1jR0aZjl8JHcdab9yAHXDFCL5l485ZGVJvGx2PUNtLLlKg1oy7OOPP2pNchr2F/t2wkin85075wF11v3tTRRi+eitn9VzSD6ssMw34oIv7G7LFP8AquXDjILvXuhI22rKZmtitWF5qO3jVNfGcNRElMuXXF489LbIuuL/AEydYxjGMrXTElvc3eu7sj6Xa/QzqVEAfy/GG0Dkl3+RBxtpP0/F/XIXpD1U6egauvamg03Yf4eFPR6TZo62LVg/KlqyrjAqSk91P9aeOPKZZkLefTlpa18OLZBKkWk6XXx0ZbIkN2L1JI88fa2QqJF9vVwnOQHezdbTGv8A00zL6Q/OixZkhxNPux0QpcmWw8Xw0mOPv87XdFV8dv5i4TnjVOJ6t9yr7ZvUFxXQLqt3E1VNj0thdV1L8Y2xLNwGIkOuFz8NIwi+jwvvF+J3XDEPPjcrRu/MdjU8PSEyt1A1bQagLGa9YuwxNiKik2kh/oeXp6ybNfp7Lk1m68paszSRa17KtvsxS65Aj0uvcIy35X7j6k6U9+cgs5gNcesCCJILjGg9OHJ/rKsHu2C/yjMR3/h3LXxjGMZTlhsRqqQGoaWs1W1p/T2obKTYvyoMVf8ALN/EeXG2nCXtt8Eq8OdJF+2cae9I9fpfRdDWQLmXFmUrzLiTmojIkYtRzjtgIdPSCALhEHHPSa9XnILvXsDo/wBPexdhduXWs3JGn6CZVxO1NQpc+MTan8EKC2n3E2hKYILnKKRH45SNbN7AG1M0JW7ly6loKXSsaQtcLvTWxgDpbCCx18IQB20cfcX5nS7X5E4y0qXQ8T1CTtVXUOQdfUyLGsco7FhtFV1+vXuDLESTpNtXCRtPYhaX6eM85notprx24nWV9qV6/wBTxDgXttHfbjSLWOQqIsEgh0ttgi/IIcccryq5ibb0V2BXjFjX65nynI161qQWLqA1NakTQYFgSdUO2RAAj1NgCgIF5T9pb6ftnbnbLWO4U+5mv28nU1rGmN2LzqdcoQhMNKKNj4ZbBwXEEE9vPvlr4xjGMZ6lnYM1MJyVIcBiOwCuOuGXSLYp5VVzW3Vt5J3yrYIui8M3chCg0MJeO5VUKkHxc9wfym81/wCe60HP1zYa/wBIVGqo7TFpV11kywXW0EuMDwtqnuiEi8L++ZNtoWgQREREftTOzGMYxjGMZgtxNExdxtA3VBPN5uFeQnoD5Ml0uI26CgXC/rwq5itutl6rbR+RNadmWVzOAGZNlMMSkPNh9jadIiDbY+wNiIp+mTLGMYxjGf/Z
+                          osUpdatedAt: '2022-04-12T11:54:37.188Z'
+                          osCreatedAt: '2022-04-12T11:54:36.990Z'
+                          osUpdatedBy: anonymous
+                          name: AK director
+                          osCreatedBy: anonymous
+                          designation: CEO
+                          osid: edde9972-e443-4afa-9fdd-ae087c8dcef4
+                          id: CEO/CEO
+                      status: ACTIVE
+  /registry-service/api/v1/PublicKey/search:
+    post:
+      tags:
+        - default
+      summary: Public key Search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                filters: {}
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{rc_api_key}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
