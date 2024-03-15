@@ -157,6 +157,7 @@
       * [API Guide For Sunbird-RC](use/developer-guide/lms-service/certificate-registry-and-credentialing/api-guide-for-sunbird-rc.md)
     * [Certificate Flow](learn/product-and-developer-guide/lms-service/certificate-flow/README.md)
       * [Certificates Creation and Configuration](learn/product-and-developer-guide/lms-service/certificate-flow/certificates-creation-and-configuration.md)
+    * [FAQs](use/developer-guide/lms-service/faqs.md)
   * [GROUPS](learn/product-and-developer-guide/groups/README.md)
     * [Features/Core Capabilities](learn/product-and-developer-guide/groups/features-core-capabilities.md)
     * [Architecture](learn/product-and-developer-guide/groups/architecture/README.md)
