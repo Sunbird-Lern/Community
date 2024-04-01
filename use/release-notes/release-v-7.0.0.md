@@ -28,6 +28,8 @@
 
 [LR-664](https://project-sunbird.atlassian.net/browse/LR-664) - Postman API automation development for notification micro-service.
 
+[LR-756](https://project-sunbird.atlassian.net/browse/LR-756) - Adding a "status" column to Admin reports.
+
 ### Configurations
 
 ### Release Notes: Dependent building blocks
@@ -48,3 +50,6 @@ Job : `Deploy/Lern/LernAnalyticsReplayJobs`
 Kindly refer the below image for params
 
 <figure><img src="../../.gitbook/assets/Screenshot 2024-01-04 at 12.21.28 PM (2).png" alt=""><figcaption></figcaption></figure>
+
+In this release, a new column called **"status"** has been added to the user data frame (`userDF`) of [**UsercacheindexerJob**](https://github.com/Sunbird-Lern/data-products/blob/release-7.0.0/lern-data-products/src/main/scala/org/sunbird/userorg/job/report/UserCacheIndexerJob.scala) of dataproducts. inorder to cache the status column from the Cassandra DB to Redis. Also same has been added to usercacheupdater config to make sure it is fetched from Redis to the state admin report and user info report. This will help the admin understand whether the user is active/inactive or deleted.\
+Rerun the user cache-updater-v2 job(**/Deploy/job/\<environment>/job/Lern/job/FlinkJobs/user-cache-updater-v2**) and a user-cache-index job(**/job/\<environment>/job/Deploy/Lern/LernAnalyticsReplayJobs/user-cache-indexer-job**) once so that the status column is fetched correctly.
