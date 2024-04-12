@@ -1,10 +1,10 @@
-# Release V 7.0.0
+# Release V 8.0.0 (Ongoing)
 
 ### Document Release Version <a href="#document-release-version" id="document-release-version"></a>
 
 | Project | Release Date | Version |
 | ------- | ------------ | ------- |
-| Lern    | 30-Dec-2023  | V 7.0.0 |
+| Lern    |              | V 8.0.0 |
 
 ### Details of Released Tag
 
@@ -14,21 +14,7 @@
 
 **Details of the Changes:**
 
-[LR-676](https://project-sunbird.atlassian.net/browse/LR-676) - User PII Information and account deletion from LERN DBs
-
-[LR-699](https://project-sunbird.atlassian.net/browse/LR-699) - \[LERN] Making BMGS configurable
-
-[LR-687](https://project-sunbird.atlassian.net/browse/LR-687) - Removal of Adopter specific keywords from LERN repos
-
-[LR-637](https://project-sunbird.atlassian.net/browse/LR-637) - Postman API automation development for user-org micro-service.
-
-[LR-660](https://project-sunbird.atlassian.net/browse/LR-660) - Postman API automation development for LMS micro-service.
-
-[LR-662](https://project-sunbird.atlassian.net/browse/LR-662) - Postman API automation development for groups micro-service.
-
-[LR-664](https://project-sunbird.atlassian.net/browse/LR-664) - Postman API automation development for notification micro-service.
-
-[LR-756](https://project-sunbird.atlassian.net/browse/LR-756) - Adding a "status" column to Admin reports.
+[LR-676](https://project-sunbird.atlassian.net/browse/LR-676) - \<Description>
 
 ### Configurations
 
@@ -36,20 +22,7 @@
 
 Sunbird-Knowlg: [Release notes](https://knowlg.sunbird.org/use/release-notes/release-5.7.0-latest) (V 5.7.0)\
 Sunbird-Obsrv: [Release notes](https://obsrv.sunbird.org/use/release-notes/release-v-5.1.0) (V 5.1.0)\
-Sunbird-Ed: [Release notes](https://ed.sunbird.org/use/release/updating-sunbird-releases/5.2.0-to-6.0.0) (V 7.0.0)\
+Sunbird-Ed: [Release notes](https://ed.sunbird.org/use/release/updating-sunbird-releases/5.2.0-to-6.0.0) (V 8.0.0)\
 Sunbird-Inquiry: [Release notes](https://inquiry.sunbird.org/use/release-notes/inquiry-release-v5.7.0) (V 5.7.0)\
 Sunbird-Telemetry: [Documentation](https://telemetry.sunbird.org/)\
 Sunbird-RC: [Documentation](https://docs.sunbirdrc.dev/learn/readme)
-
-### Steps to update user's cache in Redis
-
-As part of making framework categories configurable, framework category details in the user's cache are updated. To support the new data-product, the existing Redis user's data should be updated through the Usercache indexer job. Run the below job with the below params to update the same.
-
-Job : `Deploy/Lern/LernAnalyticsReplayJobs`
-
-Kindly refer the below image for params
-
-<figure><img src="../../.gitbook/assets/Screenshot 2024-01-04 at 12.21.28 PM (2).png" alt=""><figcaption></figcaption></figure>
-
-In this release, a new column called **"status"** has been added to the user data frame (`userDF`) of [**UsercacheindexerJob**](https://github.com/Sunbird-Lern/data-products/blob/release-7.0.0/lern-data-products/src/main/scala/org/sunbird/userorg/job/report/UserCacheIndexerJob.scala) of dataproducts. inorder to cache the status column from the Cassandra DB to Redis. Also same has been added to usercacheupdater config to make sure it is fetched from Redis to the state admin report and user info report. This will help the admin understand whether the user is active/inactive or deleted.\
-Rerun the user cache-updater-v2 job(**/Deploy/job/\<environment>/job/Lern/job/FlinkJobs/user-cache-updater-v2**) and a user-cache-index job(**/job/\<environment>/job/Deploy/Lern/LernAnalyticsReplayJobs/user-cache-indexer-job**) once so that the status column is fetched correctly.
