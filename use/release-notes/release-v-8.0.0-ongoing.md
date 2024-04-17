@@ -16,6 +16,9 @@
 
 [LR-676](https://project-sunbird.atlassian.net/browse/LR-676) - \<Description>
 
+[LR-309](https://project-sunbird.atlassian.net/browse/LR-309) - Keycloak version is upgraded with 21.1.2 from 7.0.1. , we are supporting the existing features.\
+Migration activity details are mentioned [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3356000303/Keycloak+Migration+7.0.1+to+21.x+Design](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/3356000303/Keycloak+Migration+7.0.1+to+21.x+Design)
+
 ### Configurations
 
 ### Release Notes: Dependent building blocks
