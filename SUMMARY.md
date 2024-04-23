@@ -78,6 +78,7 @@
         * [State Admin Report](learn/product-and-developer-guide/user-and-org-service/reports/standard-exhaust/state-admin-report.md)
       * [Other Jobs](learn/product-and-developer-guide/user-and-org-service/reports/other-jobs/README.md)
         * [User Cache Indexer Job](learn/product-and-developer-guide/user-and-org-service/reports/other-jobs/user-cache-indexer-job.md)
+        * [Delete Users Assets Report](use/developer-guide/user-and-org-service/reports/other-jobs/state-admin-geo-report.md)
       * [Data Products Developer Installation](use/developer-guide/user-and-org-service/reports/data-products-developer-installation/README.md)
         * [System Requirements](use/developer-guide/user-and-org-service/reports/data-products-developer-installation/system-requirements.md)
         * [Tech Stack](use/developer-guide/user-and-org-service/reports/data-products-developer-installation/tech-stack.md)

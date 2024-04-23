@@ -64,36 +64,25 @@ Refer to \*\*\*\* the below various API documentation related to all the differe
 
 #### Collection Summary
 
-{% swagger method="post" path="" baseUrl="" summary="Collection Summary(https://staging.open-sunbird.org/report/v1/collection/summary)" %}
-{% swagger-description %}
+## Collection Summary(https://staging.open-sunbird.org/report/v1/collection/summary)
+
+<mark style="color:green;">`POST`</mark>&#x20;
+
 This API gives the collection summary, like the total number of enrolments, completion count, count of certificates issued.
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="request" required="true" type="Object" %}
+#### Request Body
 
-{% endswagger-parameter %}
+| Name                                           | Type         | Description                                                                                                             |
+| ---------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| request<mark style="color:red;">\*</mark>      | Object       |                                                                                                                         |
+| filters<mark style="color:red;">\*</mark>      | Object       | Search filters                                                                                                          |
+| collectionId<mark style="color:red;">\*</mark> | String       | Id of the collection                                                                                                    |
+| batchId<mark style="color:red;">\*</mark>      | String       | Id of the batch                                                                                                         |
+| group\_by                                      | String Array | `"state", "dist"`                                                                                                       |
+| intervals                                      | String       | `2019-09-23T00:00:00.000Z/2019-09-24T00:00:00.000Z"` St`artDate - Batch Start Date and  Default EndDate - Current Date` |
 
-{% swagger-parameter in="body" name="filters" type="Object" required="true" %}
-Search filters
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="collectionId" type="String" required="true" %}
-Id of the collection
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="batchId" type="String" required="true" %}
-Id of the batch
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="group_by" type="String Array" required="false" %}
-`"state", "dist"`
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="intervals" type="String" required="false" %}
-`2019-09-23T00:00:00.000Z/2019-09-24T00:00:00.000Z"` St`artDate - Batch Start Date and  Default EndDate - Current Date`
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
   "result": {
@@ -116,8 +105,8 @@ Id of the batch
   }
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 #### Page APIs
 
