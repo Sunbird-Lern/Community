@@ -72,6 +72,8 @@
       * [Notification APIs](learn/product-and-developer-guide/user-and-org-service/apis/notification-apis.md)
     * [Flink Jobs](learn/product-and-developer-guide/user-and-org-service/userorg-flink-job/README.md)
       * [User Cache Updater](learn/product-and-developer-guide/user-and-org-service/userorg-flink-job/userorg-flink-job.md)
+      * [User Deletion Cleanup Flink Job](use/developer-guide/user-and-org-service/userorg-flink-job/user-deletion-cleanup-flink-job.md)
+      * [Ownership Transfer Flink Job](use/developer-guide/user-and-org-service/userorg-flink-job/ownership-transfer-flink-job.md)
     * [Reports](learn/product-and-developer-guide/user-and-org-service/reports/README.md)
       * [Standard Exhaust](learn/product-and-developer-guide/user-and-org-service/reports/standard-exhaust/README.md)
         * [State Admin Geo report](learn/product-and-developer-guide/user-and-org-service/reports/standard-exhaust/state-admin-geo-report.md)
