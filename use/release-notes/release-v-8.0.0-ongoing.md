@@ -25,6 +25,8 @@ Migration activity details are mentioned [https://project-sunbird.atlassian.net/
 
 [LR-766](https://project-sunbird.atlassian.net/browse/LR-766) - Elasticsearch upgrade 6.8.22 to 7.17.13. Steps to upgrade elasticsearch are available [here](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3494182916/Elasticsearch+Version+Upgrade+6.8.22+to+7.17.13).
 
+[LR-738](https://project-sunbird.atlassian.net/browse/LR-738) - Scala upgrade from 2.11 to 2.12 for userorg, course, notification and group service.
+
 ### Bug Fixes
 
 [LR-759](https://project-sunbird.atlassian.net/browse/LR-759) - After deleting a user, and when tried to login to the same user immediately, we are getting "Access denied" error
