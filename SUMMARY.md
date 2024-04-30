@@ -256,6 +256,8 @@
   * [Telemetry Processing](learn/telemetry-processing.md)
   * [Data Dictionary](learn/data-dictionary/README.md)
     * [Sample Data](learn/data-dictionary/sample-data.md)
+  * [Delete User Functionality](use/learn-more/delete-user-functionality.md)
+  * [Asset Ownership Transfer](use/learn-more/asset-ownership-transfer.md)
 * [FAQs](learn/faqs.md)
 
 ## Engage
