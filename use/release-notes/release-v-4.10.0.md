@@ -12,12 +12,12 @@
 | User\&Org Service   | sunbird-lms-service : release-4.10.0\_RC1    |
 | Discussion Forum    | discussions-middleware : release-4.10.0\_RC1 |
 
-### **Summary of the Changes** <a href="#1.-summary-of-the-changes" id="1.-summary-of-the-changes"></a>
+### **Summary of the Changes** <a href="#id-1.-summary-of-the-changes" id="id-1.-summary-of-the-changes"></a>
 
 * DF Moderation changes
 * OrgSearch to allow partial search and fuzzy Search
 
-### **Details of the Changes** <a href="#2.-details-of-the-changes" id="2.-details-of-the-changes"></a>
+### **Details of the Changes** <a href="#id-2.-details-of-the-changes" id="id-2.-details-of-the-changes"></a>
 
 {% tabs %}
 {% tab title="User&Org Service" %}
@@ -45,6 +45,6 @@ Detailed Information is present in the [JIRA](https://project-sunbird.atlassian.
 
 ### Manual Configurations
 
-| Manual Tasks                            | Details                                                                                                                                                                                                                            | Comments               |
-| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Reindex Org ES Index in UserOrg Service | [https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/2346156058/SC-2190+ES+scaling+-+reindexing+Org+index](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/2346156058/SC-2190+ES+scaling+-+reindexing+Org+index) | New index name - orgv3 |
+| Manual Tasks                            | Details                                                                                                                                                                                                                                  | Comments               |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Reindex Org ES Index in UserOrg Service | [https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3494150389/SC-2190+ES+scaling+-+reindexing+Org+index](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3494150389/SC-2190+ES+scaling+-+reindexing+Org+index) | New index name - orgv3 |
