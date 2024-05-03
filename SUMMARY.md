@@ -22,7 +22,7 @@
   * [Release V 5.1.0](use/release-notes/release-v-5.1.0.md)
   * [Release V 5.0.1](use/release-notes/release-v-5.0.1.md)
   * [Release V 5.0.0](use/release-notes/release-v-5.0.0-latest.md)
-  * [Release V 4.10.0](use/release-notes/release-v-4.10.0.md)
+  * [Release V 4.10.0](use/release-notes/release-v-4.10.0-latest.md)
   * [Release V 4.9.0](use/release-notes/release-v-4.9.0.md)
   * [Release V 4.8.0](use/release-notes/release-v-4.8.0-upcoming.md)
   * [Release V 4.7.0](use/release-notes/release-v-4.7.0-live.md)

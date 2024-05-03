@@ -4,11 +4,7 @@
 
 The user deletion requirement in Lern has originated from the below requirement.
 
-PRD: [\[PRD\] Delete Account functionality](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3351969808)
-
-BE Design Lern - [\[Design\] Delete Account Functionality](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3354492949)
-
-FE Design Lern - [\[Design\] \[Front-end\]Delete User Functionality](https://project-sunbird.atlassian.net/wiki/spaces/SUN/pages/3359146039)
+PRD: [\[PRD\] Asset Ownership Transfer](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3365863425/Design+Transfer+Ownership)
 
 ## What is changing? <a href="#what-is-changing" id="what-is-changing"></a>
 
@@ -28,65 +24,12 @@ The user can request for deletion of their account in Sunbird, this means two pr
 
 ### Configurations
 
-\
-**LR-722 - Ownership Transfer API**
+### Adoption of the feature Through Flink Job
 
-1. Added the below configuration in the user org service [application.conf ](https://github.com/Sunbird-Lern/userorg-service/blob/9b9ba14f38d8ed26e3e4d4a94bfad7b148c01cf3/controller/conf/application.conf#L118)file of user org service
+#### **Ownership transfer Flink job**
 
-```properties
-       "/user_ownership_transfer_actor"
-             {
-               router = smallest-mailbox-pool
-               nr-of-instances = 5
-               dispatcher = brr-usr-dispatcher
-             }
-           "/user_ownership_transfer_actor/*"
-              {
-                dispatcher = akka.actor.brr-usr-dispatcher
-              }
-```
-
-2. Added the below property in [external resource.properties](https://github.com/Sunbird-Lern/userorg-service/blob/9b9ba14f38d8ed26e3e4d4a94bfad7b148c01cf3/core/platform-common/src/main/resources/externalresource.properties#L112)  related to ownership transfer kafka topic in user org service
-
-```properties
-user-ownership-transfer-topic={{env_name}}.user.ownership.transfer
-```
-
-3. Added the below configuration in [**ansible/roles/kong-api/defaults/main.yml**](https://github.com/project-sunbird/sunbird-devops/pull/3969/files#diff-0ee5a2ff6501d6e8fc33eff9ad8844f490abfcae4f10597790399ced589484d5) for ownership transfer API in sunbird devops repository.
-
-```properties
-- name: ownershipTransfer
-  uris: "{{ user_service_prefix }}/v1/ownership/transfer"
-  upstream_url: "{{ userorg_service_url }}/v1/user/ownership/transfer"
-  strip_uri: true
-  plugins:
-  - name: jwt
-  - name: cors
-  - "{{ statsd_pulgin }}"
-  - name: acl
-    config.whitelist:
-    - userUpdate
-  - name: rate-limiting
-    config.policy: local
-    config.hour: "{{ medium_rate_limit_per_hour }}"
-    config.limit_by: credential
-  - name: request-size-limiting
-    config.allowed_payload_size: "{{ medium_request_size_limit }}"
-  - name: opa-checks
-    config.required: false
-    config.enabled: false
-```
-
-4. Added the user ownership transfer topic to the [userorgservice.env](https://github.com/project-sunbird/sunbird-devops/pull/3969/files#diff-a3b1fa3f7ba85e038caa90e6dd9cd445b9fc7241ddff502767adc8c21377bc77) file in Sunbird DevOps repository.
-
-```properties
-user-ownership-transfer-topic={{env_name}}.user.ownership.transfer
-```
-
-**LR-685 Ownership transfer Flink job**
-
-{% hint style="warning" %}
-This job was introduced as the part of 8.0.0 release, if any adopter wants to use this feature before the release have to use this flink job
+{% hint style="danger" %}
+This flink job was introduced as part of the 7.0.0 release, if any adopter wants to use this feature before the release have to configure and use this flink job.
 {% endhint %}
 
 1. Added below partition related settings and replication\_factor related settings in [**ansible/roles/setup-lern-kafka/defaults/main.yml**](https://github.com/AmiableAnil/lern-data-pipeline/blob/0a106fa18133c715d0cd5cf311491f172bfb76b4/ansible/roles/setup-lern-kafka/defaults/main.yml#L66) file of data pipeline repository.
@@ -155,7 +98,7 @@ user_ownership_transfer_batch_write_size: 10
     cpu_requests: 0.3
 ```
 
-#### Flink Job Configurations for Lern: <a href="#flink-job-configurations-for-lern" id="flink-job-configurations-for-lern"></a>
+**Jenkins Job Details For the deployment of the above flink job:**
 
 <details>
 
@@ -168,3 +111,63 @@ Flink **deploy** Jenkins job name:
 [**/Deploy/job/\<environment>/job/Lern/job/FlinkJobs/user-ownership-transfer**](http://10.20.0.14:8080/jenkins/job/Deploy/job/dev/job/Lern/job/LernFlinkJobs/build?delay=0sec)
 
 </details>
+
+### Adoption of the feature Through API
+
+{% hint style="danger" %}
+This API was introduced as part of the 8.0.0 release and can be used directly from this release. Before this release adopters have to use either the flink job or extend this logic
+{% endhint %}
+
+**Ownership Transfer API**
+
+1. Added the below configuration in the user org service [application.conf ](https://github.com/Sunbird-Lern/userorg-service/blob/9b9ba14f38d8ed26e3e4d4a94bfad7b148c01cf3/controller/conf/application.conf#L118)file of user org service
+
+```properties
+       "/user_ownership_transfer_actor"
+             {
+               router = smallest-mailbox-pool
+               nr-of-instances = 5
+               dispatcher = brr-usr-dispatcher
+             }
+           "/user_ownership_transfer_actor/*"
+              {
+                dispatcher = akka.actor.brr-usr-dispatcher
+              }
+```
+
+2. Added the below property in [external resource.properties](https://github.com/Sunbird-Lern/userorg-service/blob/9b9ba14f38d8ed26e3e4d4a94bfad7b148c01cf3/core/platform-common/src/main/resources/externalresource.properties#L112)  related to ownership transfer kafka topic in user org service
+
+```properties
+user-ownership-transfer-topic={{env_name}}.user.ownership.transfer
+```
+
+3. Added the below configuration in [**ansible/roles/kong-api/defaults/main.yml**](https://github.com/project-sunbird/sunbird-devops/pull/3969/files#diff-0ee5a2ff6501d6e8fc33eff9ad8844f490abfcae4f10597790399ced589484d5) for ownership transfer API in sunbird devops repository.
+
+```properties
+- name: ownershipTransfer
+  uris: "{{ user_service_prefix }}/v1/ownership/transfer"
+  upstream_url: "{{ userorg_service_url }}/v1/user/ownership/transfer"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userUpdate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ medium_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+```
+
+4. Added the user ownership transfer topic to the [userorgservice.env](https://github.com/project-sunbird/sunbird-devops/pull/3969/files#diff-a3b1fa3f7ba85e038caa90e6dd9cd445b9fc7241ddff502767adc8c21377bc77) file in Sunbird DevOps repository.
+
+```properties
+user-ownership-transfer-topic={{env_name}}.user.ownership.transfer
+```

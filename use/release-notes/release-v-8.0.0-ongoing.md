@@ -39,8 +39,8 @@ _Upgrade Sunbird Lern from 7.0.0 to 8.0.0_
 
 ## Configurations
 
-* To know more about the configuration of delete user assets report visit [here](https://app.gitbook.com/o/-Mi9QwJlsfb7xuxTBc0J/s/4ZKyfmmhMWpPkD6iYvKF/\~/changes/598/use/learn-more/delete-user-functionality/\~/page#configurations)
-* To know more about the configuration of ownership transfer functionality visit [here](../learn-more/asset-ownership-transfer.md)
+* To know more about the configuration of delete user assets report visit [here](https://lern.sunbird.org/use/learn-more/delete-user-functionality)
+* To know more about the configuration of ownership transfer functionality visit [here](https://lern.sunbird.org/use/learn-more/asset-ownership-transfer)
 
 ## Release Notes: Dependent building blocks
 

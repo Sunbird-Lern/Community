@@ -1,6 +1,6 @@
 # Component Diagram
 
-<figure><img src="../../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 The Program User Info service is constructed upon the framework of Flink, Kafka and Cassandra, a powerful approach for processing and managing data in a scalable and real-time manner.
 

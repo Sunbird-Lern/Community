@@ -31,6 +31,8 @@ The user can request for deletion of their account in Sunbird, this means two pr
 1. The user's Personal Identifiable Information (PII) needs to be removed
 2. The assets created by this user (such as questions, question sets, content, etc.) need to be transferred to an identified user.
 
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
 ## Changes on Lern: <a href="#scope-for-inquiry" id="scope-for-inquiry"></a>
 
 1. A user deletion API which produces a kafka event on **\<env>.delete.user** topic.
@@ -40,68 +42,12 @@ The user can request for deletion of their account in Sunbird, this means two pr
 
 <table data-full-width="false"><thead><tr><th width="166">Components</th><th width="167">Build Jenkins Job</th><th width="140">Build Tag</th><th width="192">Deploy Jenkins Job</th><th width="137">Deploy Tag</th><th width="197">Comment</th></tr></thead><tbody><tr><td>OnboardAPIs</td><td>NA</td><td>NA</td><td>Deploy/Kubernetes/OnboardAPIs</td><td><a href="https://github.com/project-sunbird/sunbird-devops/tree/release-7.0.0">release-7.0.0</a></td><td>To onboard the delete user API</td></tr><tr><td>Cassandra Migration</td><td>Build/Core/Cassandra</td><td><a href="https://github.com/Sunbird-Lern/sunbird-utils/tree/release-7.0.0_RC3">release-7.0.0_RC3</a></td><td>Deploy/Kubernetes/Cassandra</td><td><a href="https://github.com/project-sunbird/sunbird-devops/tree/release-7.0.0">release-7.0.0</a></td><td><p>Select the <strong>sunbird</strong> in <strong>cassandra_keyspace_to_migrate</strong> while deploying</p><p>script_repo_branch_or_tag: release-7.0.0_RC3</p></td></tr><tr><td>UserOrg Service</td><td>Build/Core/UserOrg</td><td><a href="https://github.com/Sunbird-Lern/userorg-service/tree/release-7.0.0_RC5">release-7.0.0_RC5</a></td><td>Deploy/Kubernetes/UserOrg</td><td><a href="https://github.com/project-sunbird/sunbird-devops/tree/release-7.0.0">release-7.0.0</a></td><td></td></tr><tr><td>Kafka Setup</td><td>NA</td><td>NA</td><td>Deploy/Lern/KafkaSetup</td><td><a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0_RC6">release-7.0.0_RC6</a></td><td></td></tr><tr><td>DataPipeline</td><td>Build/Lern/LernFlinkJobs</td><td><a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0_RC6">release-7.0.0_RC6</a></td><td>Deploy/Lern/LernFlinkJobs</td><td><a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0_RC6">release-7.0.0_RC6</a></td><td>Define the <em><strong>core_vault_sunbird_keycloak_user_federation_provider_id</strong></em> in Lern inventory secret. Add <strong>user-deletion-cleanup</strong> and <strong>ml-user-delete</strong> into job list and deploy it.</td></tr><tr><td>Data Product</td><td>Build/Lern/LernDataProducts</td><td><a href="https://github.com/Sunbird-Lern/data-products/tree/release-7.0.0_RC5">release-7.0.0_RC5</a></td><td>Deploy/Lern/LernDataProducts</td><td><a href="https://github.com/Sunbird-Lern/data-products/tree/release-7.0.0_RC5">release-7.0.0_RC5</a></td><td></td></tr></tbody></table>
 
-### Configurations
+### Adoption of the feature Through Flink Job
 
-**Delete user API**
+#### &#x20;**User delete Flink job**
 
-1. Added the below configuration in the user org service [application.conf ](https://github.com/Sunbird-Lern/userorg-service/blob/0d513befe7e6dc8b39b4975e9a21bbdc0e139497/controller/conf/application.conf#L107)file of user org service
-
-```properties
-      "/user_deletion_background_job_actor"
-      {
-        router = smallest-mailbox-pool
-        nr-of-instances = 5
-        dispatcher = brr-usr-dispatcher
-      }
-    "/user_deletion_background_job_actor/*"
-       {
-         dispatcher = akka.actor.brr-usr-dispatcher
-       }
-```
-
-2. Added the below property in [external resource.properties](https://github.com/Sunbird-Lern/userorg-service/blob/0d513befe7e6dc8b39b4975e9a21bbdc0e139497/core/platform-common/src/main/resources/externalresource.properties#L113)  related to user delete kafka topic in user org service
-
-```properties
-user-deletion-roles=public
-user-deletion-broadcast-topic={{env_name}}.delete.user
-```
-
-3. Added the below configuration in [**ansible/roles/kong-api/defaults/main.yml**](https://github.com/project-sunbird/sunbird-devops/blob/788217ec28d99636e4fd2271a74fef482c41feaf/ansible/roles/kong-api/defaults/main.yml#L9226) for owuser delete API in sunbird devops repository.
-
-```properties
-- name: deleteUser
-  uris: "{{ user_service_prefix }}/v1/delete"
-  upstream_url: "{{ userorg_service_url }}/v1/user/delete"
-  strip_uri: true
-  plugins:
-  - name: jwt
-  - name: cors
-  - "{{ statsd_pulgin }}"
-  - name: acl
-    config.whitelist:
-    - userUpdate
-  - name: rate-limiting
-    config.policy: local
-    config.hour: "{{ medium_rate_limit_per_hour }}"
-    config.limit_by: credential
-  - name: request-size-limiting
-    config.allowed_payload_size: "{{ medium_request_size_limit }}"
-  - name: opa-checks
-    config.required: true
-    config.enabled: true
-```
-
-4. Added the user delete topic to the [userorgservice.env](https://github.com/project-sunbird/sunbird-devops/blob/788217ec28d99636e4fd2271a74fef482c41feaf/ansible/roles/stack-sunbird/templates/userorg-service.env#L138) file in Sunbird DevOps repository.
-
-```properties
-user-deletion-roles=public
-user-deletion-broadcast-topic={{env_name}}.delete.user
-```
-
-### &#x20;**User delete Flink job**
-
-{% hint style="warning" %}
-This flink job was introduced as the part of 7.0.0 release, if any adopter want's to use this feature before the release have to use this flink job.
+{% hint style="danger" %}
+This flink job was introduced as part of the 7.0.0 release, if any adopter wants to use this feature before the release have to configure and use this flink job.
 {% endhint %}
 
 1. Added below partition related settings and replication\_factor related settings in [**ansible/roles/setup-lern-kafka/defaults/main.yml**](https://github.com/AmiableAnil/lern-data-pipeline/blob/32087ed4e6f1b09842f903ce50a8c6c3b89270c4/ansible/roles/setup-lern-kafka/defaults/main.yml#L63) file of data pipeline repository.
@@ -176,10 +122,10 @@ user_deletion_cleanup_job_parallelism: 1
     cpu_requests: 0.3
 ```
 
-### **LR-748 Ownership transfer delete user assets report:**
+#### **Ownership transfer delete user assets report:**
 
-{% hint style="warning" %}
-This report was introduced as the part of 8.0.0 release, if any adopter want's to use this feature before the release have to use this report
+{% hint style="danger" %}
+This report was introduced as part of the 8.0.0 release, if any adopter wants to use this feature before the release have to use the above flink job
 {% endhint %}
 
 1. Added below ownership transfer delete user assets report related configuration in [**ansible/roles/lern-data-products-deploy/templates/lern-model-config.j2**](https://github.com/Sunbird-Lern/data-products/pull/102/files#diff-a0a9e8125a5048e7b06cfdd96ac06e45d557714ece40b77e61f1528a09845662) of data products repository.
@@ -209,7 +155,9 @@ sunbird_instance_name="Sunbird"
 delete.user.cloud.objectKey="reports/"
 ```
 
-**Data Product Configurations for Lern:**
+To learn more about Delete user Assets report visit [here](../developer-guide/user-and-org-service/reports/other-jobs/state-admin-geo-report.md)\
+\
+**Jenkins Job Details For the deployment of the above flink job:**
 
 <details>
 
@@ -221,4 +169,64 @@ Data products jenkins **deploy** job name: [**/Deploy/job/\<environment>/job/Ler
 
 </details>
 
-To learn more about User visit [here](../developer-guide/user-and-org-service/reports/other-jobs/state-admin-geo-report.md)
+### Adoption of the feature Through API
+
+{% hint style="danger" %}
+This API was introduced as part of the 7.0.0 release and can be used directly from this release. Before to this release adopters have to use either the flink job or extend this logic
+{% endhint %}
+
+**Delete user API**
+
+1. Added the below configuration in the user org service [application.conf ](https://github.com/Sunbird-Lern/userorg-service/blob/0d513befe7e6dc8b39b4975e9a21bbdc0e139497/controller/conf/application.conf#L107)file of user org service
+
+```properties
+      "/user_deletion_background_job_actor"
+      {
+        router = smallest-mailbox-pool
+        nr-of-instances = 5
+        dispatcher = brr-usr-dispatcher
+      }
+    "/user_deletion_background_job_actor/*"
+       {
+         dispatcher = akka.actor.brr-usr-dispatcher
+       }
+```
+
+2. Added the below property in [external resource.properties](https://github.com/Sunbird-Lern/userorg-service/blob/0d513befe7e6dc8b39b4975e9a21bbdc0e139497/core/platform-common/src/main/resources/externalresource.properties#L113)  related to user delete kafka topic in user org service
+
+```properties
+user-deletion-roles=public
+user-deletion-broadcast-topic={{env_name}}.delete.user
+```
+
+3. Added the below configuration in [**ansible/roles/kong-api/defaults/main.yml**](https://github.com/project-sunbird/sunbird-devops/blob/788217ec28d99636e4fd2271a74fef482c41feaf/ansible/roles/kong-api/defaults/main.yml#L9226) for owuser delete API in sunbird devops repository.
+
+```properties
+- name: deleteUser
+  uris: "{{ user_service_prefix }}/v1/delete"
+  upstream_url: "{{ userorg_service_url }}/v1/user/delete"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userUpdate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ medium_request_size_limit }}"
+  - name: opa-checks
+    config.required: true
+    config.enabled: true
+```
+
+4. Added the user delete topic to the [userorgservice.env](https://github.com/project-sunbird/sunbird-devops/blob/788217ec28d99636e4fd2271a74fef482c41feaf/ansible/roles/stack-sunbird/templates/userorg-service.env#L138) file in Sunbird DevOps repository.
+
+```properties
+user-deletion-roles=public
+user-deletion-broadcast-topic={{env_name}}.delete.user
+```
