@@ -25,28 +25,7 @@ Migration activity details are mentioned [https://project-sunbird.atlassian.net/
 
 [LR-738](https://project-sunbird.atlassian.net/browse/LR-738) - Scala upgrade from 2.11 to 2.12 for userorg, course, notification and group service.
 
-<details>
-
-<summary><a href="https://project-sunbird.atlassian.net/browse/LR-766">LR-766</a> - Elasticsearch upgrade 6.8.22 to 7.17.13. Steps to upgrade Elasticsearch are available <a href="https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3494182916/Elasticsearch+Version+Upgrade+6.8.22+to+7.17.13">here</a>.</summary>
-
-**Upgrade Overview:**
-
-This release involves upgrading Elasticsearch from version 6.8.22 to version 7.17.13. The upgrade brings significant enhancements, bug fixes, and potential breaking changes that administrators and developers need to be aware of.
-
-**Upgrade Steps:**
-
-1. **Preparation:**
-   * Ensure compatibility with Java 11, as Elasticsearch 7.17.13 requires this version.
-2. **Backup:**
-   * Before proceeding with the upgrade, ensure all data is backed up to prevent any loss during the migration process.
-   * Please [**Click here**](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3446112295/Elasticsearch+Backup+Restore+In+Azure+and+Local+Environment) for Backup & Restore In Local & Azure documentation
-3. **Upgrade Process:**
-   * Follow the Elasticsearch upgrade documentation for detailed instructions on upgrading from version 6.8.22 to 7.17.13.
-   * Please [**Click Here**](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3494182916/Elasticsearch+Version+Upgrade+6.8.22+to+7.17.13) for upgrading ES from 6.8.22 to 7.17.13 documentation.
-
-Once you have upgraded to Elasticsearch 7.17.13
-
-</details>
+[LR-766](https://project-sunbird.atlassian.net/browse/LR-766) - Elasticsearch upgrade 6.8.22 to 7.17.13. Steps to upgrade Elasticsearch are available [here](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3494182916/Elasticsearch+Version+Upgrade+6.8.22+to+7.17.13).
 
 ## Bug Fixes
 
