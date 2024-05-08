@@ -36,6 +36,8 @@
 
 ### Configurations
 
+To know more about the configuration of Delete user functionality visit [here](https://lern.sunbird.org/use/learn-more/delete-user-functionality)
+
 ### Release Notes: Dependent building blocks
 
 Sunbird-Knowlg: [Release notes](https://knowlg.sunbird.org/use/release-notes/release-5.7.0-latest) (V 5.7.0)\

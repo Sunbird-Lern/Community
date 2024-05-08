@@ -64,3 +64,27 @@
     * If you cannot find then, Update System Settings:&#x20;
       * Use the update system settings API to set the missing framework fields:
       * Verify and Close: Ensure the necessary system settings are updated. Confirm that the reported issue no longer occurs.
+23. "I've uploaded the encryption key for my organization. How do I verify if the upload was successful?
+    * If you haven't uploaded an encryption key for your organization yet, please do so by following the steps outlined [**here**](https://lern.sunbird.org/use/release-notes/release-v-5.3.0#data-security-policy-setup-1)
+    * After uploading the key, you can verify the success of the upload by running the following cURL command for the organization read API.
+
+```url
+curl --location 'https://dev.sunbirded.org/api/org/v1/read' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: {{kong_api_key}}' \
+--data '{
+  "request": {
+    "organisationId": "{{org_id}}"
+  }
+}'
+```
+
+* In the response, look for the 'keys' section to find the URL of the uploaded encryption key for your organization.
+
+```json
+"keys": {
+                "exhaustEncryptionKey": [
+                    "{{url of encryption key/pem file}}"
+                ]
+        },
+```
