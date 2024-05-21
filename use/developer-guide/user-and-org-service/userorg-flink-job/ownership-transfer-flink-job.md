@@ -16,9 +16,9 @@ The **`UserOwnershipTransferFunction`** job facilitates the transfer of course b
   * The job maintains metrics to track the number of processed events, successful operations, and database updates.
   * It logs detailed information for auditing and error handling.
 
-In summary, this job facilitates the smooth transfer of course ownership, updating relevant data in multiple locations to maintain consistency across the system. It plays a crucial role in ensuring that the information in both the database and search systems accurately reflects the ownership transfer.\
-\
-**Configuration variables:**
+In summary, this job facilitates the smooth transfer of course ownership, updating relevant data in multiple locations to maintain consistency across the system. It plays a crucial role in ensuring that the information in both the database and search systems accurately reflects the ownership transfer.
+
+### **Configuration variables:**
 
 | Variable                            | Default value                                          | purpose                                                                                                                                                                                                             |
 | ----------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -33,7 +33,7 @@ In summary, this job facilitates the smooth transfer of course ownership, updati
 | batch\_search\_api                  | /v1/course/batch/search                                | API route for fetching batch details                                                                                                                                                                                |
 | user.ownership.transfer.parallelism | 1                                                      | Degree of parallelism for the user ownership                                                                                                                                                                        |
 
-**Sample event:**
+### **Sample event:**
 
 ```json
 {
@@ -93,6 +93,6 @@ In summary, this job facilitates the smooth transfer of course ownership, updati
 }
 ```
 
-**Source code:**
+### **Source code:**
 
 {% embed url="https://github.com/Sunbird-Lern/data-pipeline/tree/release-8.0.0/user-org-jobs/user-ownership-transfer" %}

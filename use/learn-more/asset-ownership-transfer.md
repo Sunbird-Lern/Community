@@ -1,5 +1,7 @@
 # Asset Ownership Transfer
 
+
+
 ## **Overview**
 
 The user deletion requirement in Lern has originated from the below requirement.
@@ -25,6 +27,18 @@ The user can request for deletion of their account in Sunbird, this means two pr
 ### Configurations
 
 ### Adoption of the feature Through Flink Job
+
+## **Code changes**
+
+[https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0/user-org-jobs/user-ownership-transfer](https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0/user-org-jobs/user-ownership-transfer)
+
+* For making the ownership transfer functionality work through the flink job, the adapter needs to trigger the Kafka event, For more details about that refer to the below link,
+
+{% embed url="https://lern.sunbird.org/use/developer-guide/user-and-org-service/userorg-flink-job/ownership-transfer-flink-job#sample-event" %}
+event
+{% endembed %}
+
+* For more details on the user deletion cleanup flink job, please [visit](https://lern.sunbird.org/use/developer-guide/user-and-org-service/userorg-flink-job/ownership-transfer-flink-job)
 
 #### **Ownership transfer Flink job**
 

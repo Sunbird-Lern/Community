@@ -16,7 +16,7 @@ layout:
 
 ## **Overview**
 
-The user deletion requirement in Lern has been originated from the below requirement.
+The user deletion requirement in Lern has originated from the below requirement.
 
 PRD: [\[PRD\] Delete Account functionality](https://project-sunbird.atlassian.net/wiki/spaces/SBDES/pages/3351969808)
 
@@ -33,16 +33,23 @@ The user can request for deletion of their account in Sunbird, this means two pr
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-## Changes on Lern: <a href="#scope-for-inquiry" id="scope-for-inquiry"></a>
-
-1. A user deletion API which produces a kafka event on **\<env>.delete.user** topic.
-2. For more details on the user deletion cleanup flink job, please [visit](https://lern.sunbird.org/use/developer-guide/user-and-org-service/userorg-flink-job/user-deletion-cleanup-flink-job)
-
 ## **Release Tags:**
 
 <table data-full-width="false"><thead><tr><th width="166">Components</th><th width="167">Build Jenkins Job</th><th width="140">Build Tag</th><th width="192">Deploy Jenkins Job</th><th width="137">Deploy Tag</th><th width="197">Comment</th></tr></thead><tbody><tr><td>OnboardAPIs</td><td>NA</td><td>NA</td><td>Deploy/Kubernetes/OnboardAPIs</td><td><a href="https://github.com/project-sunbird/sunbird-devops/tree/release-7.0.0">release-7.0.0</a></td><td>To onboard the delete user API</td></tr><tr><td>Cassandra Migration</td><td>Build/Core/Cassandra</td><td><a href="https://github.com/Sunbird-Lern/sunbird-utils/tree/release-7.0.0_RC3">release-7.0.0_RC3</a></td><td>Deploy/Kubernetes/Cassandra</td><td><a href="https://github.com/project-sunbird/sunbird-devops/tree/release-7.0.0">release-7.0.0</a></td><td><p>Select the <strong>sunbird</strong> in <strong>cassandra_keyspace_to_migrate</strong> while deploying</p><p>script_repo_branch_or_tag: release-7.0.0_RC3</p></td></tr><tr><td>UserOrg Service</td><td>Build/Core/UserOrg</td><td><a href="https://github.com/Sunbird-Lern/userorg-service/tree/release-7.0.0_RC5">release-7.0.0_RC5</a></td><td>Deploy/Kubernetes/UserOrg</td><td><a href="https://github.com/project-sunbird/sunbird-devops/tree/release-7.0.0">release-7.0.0</a></td><td></td></tr><tr><td>Kafka Setup</td><td>NA</td><td>NA</td><td>Deploy/Lern/KafkaSetup</td><td><a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0_RC6">release-7.0.0_RC6</a></td><td></td></tr><tr><td>DataPipeline</td><td>Build/Lern/LernFlinkJobs</td><td><a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0_RC6">release-7.0.0_RC6</a></td><td>Deploy/Lern/LernFlinkJobs</td><td><a href="https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0_RC6">release-7.0.0_RC6</a></td><td>Define the <em><strong>core_vault_sunbird_keycloak_user_federation_provider_id</strong></em> in Lern inventory secret. Add <strong>user-deletion-cleanup</strong> and <strong>ml-user-delete</strong> into job list and deploy it.</td></tr><tr><td>Data Product</td><td>Build/Lern/LernDataProducts</td><td><a href="https://github.com/Sunbird-Lern/data-products/tree/release-7.0.0_RC5">release-7.0.0_RC5</a></td><td>Deploy/Lern/LernDataProducts</td><td><a href="https://github.com/Sunbird-Lern/data-products/tree/release-7.0.0_RC5">release-7.0.0_RC5</a></td><td></td></tr></tbody></table>
 
 ### Adoption of the feature Through Flink Job
+
+## **Code changes**
+
+[https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0/user-org-jobs/user-deletion-cleanup](https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0/user-org-jobs/user-deletion-cleanup)
+
+* For making the delete user functionality work through the flink job, the adapter needs to trigger the kafka event, For more details about that refer the below link,
+
+{% embed url="https://lern.sunbird.org/use/developer-guide/user-and-org-service/userorg-flink-job/user-deletion-cleanup-flink-job#sample-event" %}
+Event
+{% endembed %}
+
+* For more details on the user deletion cleanup flink job, please [visit](https://lern.sunbird.org/use/developer-guide/user-and-org-service/userorg-flink-job/user-deletion-cleanup-flink-job)
 
 #### &#x20;**User delete Flink job**
 

@@ -17,10 +17,9 @@ The **`UserDeletionCleanupFunction`** job handles the cleanup and deletion of us
   * The job generates audit events to track the cleanup process for telemetry and auditing purposes.
   * It logs detailed information during the deletion process for troubleshooting and error handling.
 
-In summary, this job ensures that when a user is deleted, all related data is appropriately removed or masked across multiple storage systems, maintaining data privacy and consistency. It plays a crucial role in the cleanup process, ensuring that user data is properly handled upon deletion.\
-\
-**Configuration Variables:**\
+In summary, this job ensures that when a user is deleted, all related data is appropriately removed or masked across multiple storage systems, maintaining data privacy and consistency. It plays a crucial role in the cleanup process, ensuring that user data is properly handled upon deletion.
 
+### **Configuration Variables:**
 
 | Variable                                          | Default value                                     | purpose                                                         |
 | ------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------------- |
@@ -38,7 +37,7 @@ In summary, this job ensures that when a user is deleted, all related data is ap
 | batch\_search\_api                                |                                                   | API route for fetching batch details                            |
 | user.ownership.transfer.parallelism               | 1                                                 | Degree of parallelism for the user ownership                    |
 
-**Sample event:**
+### **Sample event:**
 
 ```json
 {
