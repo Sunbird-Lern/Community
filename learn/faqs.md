@@ -88,3 +88,9 @@ curl --location 'https://dev.sunbirded.org/api/org/v1/read' \
                 ]
         },
 ```
+
+24. &#x20;When using the user bulk upload API, if I set `orgExternalId` it to null, I get a notification to onboard. But I don't get the notification if I set it to a value. How can I debug/fix this"
+    * To debug/fix:
+      * Perform a user read to identify the organization ID of the user.
+      * Perform an org search using this ID and find the external ID in the response.
+      * Use the external ID from the response in your upload. If the external ID is null, don't pass any value for it.

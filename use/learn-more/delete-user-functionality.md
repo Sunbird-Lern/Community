@@ -39,7 +39,7 @@ The user can request for deletion of their account in Sunbird, this means two pr
 
 ### Adoption of the feature Through Flink Job
 
-## **Code changes**
+#### **Code changes**
 
 [https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0/user-org-jobs/user-deletion-cleanup](https://github.com/Sunbird-Lern/data-pipeline/tree/release-7.0.0/user-org-jobs/user-deletion-cleanup)
 
