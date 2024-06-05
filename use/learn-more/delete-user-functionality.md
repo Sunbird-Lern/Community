@@ -166,21 +166,12 @@ To learn more about Delete user Assets report visit [here](../developer-guide/us
 \
 **Jenkins Job Details For the deployment of the above flink job:**
 
-**To trigger the job,**
+**To trigger the job: Deploy/Lern/LernAnalyticsReplayJobs**
 
-**job\_id**: Set to delete-users-assets-report-job. \
-**specific\_user\_id / user\_id\_filter:** Set to an empty string "". if you want to get the report for all deleted users you can provide multiple user IDs separated by commas within double quotes, like "a, b" **refresh\_user\_data / channel filter:** Set to an empty string "". If you want to get the report for all channels or you can provide multiple channel IDs separated by commas within double quotes, like "a, b" \
-**then trigger**
-
-<details>
-
-<summary><strong>delete-users-assets-report-job</strong></summary>
-
-Data products jenkins **build** job name: [**/Build/job/Lern/job/LernDataProducts/**](http://10.20.0.14:8080/jenkins/job/Build/job/Lern/job/LernDataProducts/)
-
-Data products jenkins **deploy** job name: [**/Deploy/job/\<environment>/job/Lern/job/LernDataProducts/LernAnalyticsReplayJobs/delete-users-assets-report-job**](http://10.20.0.14:8080/jenkins/job/Deploy/job/dev/job/Lern/job/LernAnalyticsReplayJobs/build?delay=0sec)
-
-</details>
+* **job\_id**: Set to **delete-users-assets-report-job**.&#x20;
+* **specific\_user\_id / user\_id\_filter:** Set to an empty string "". if you want to get the report for all deleted users you can provide multiple user IDs separated by commas within double quotes, like "a, b"&#x20;
+* **refresh\_user\_data / channel filter:** Set to an empty string "". If you want to get the report for all channels or you can provide multiple channel IDs separated by commas within double quotes, like "a, b" \
+  **then trigger**
 
 ### Adoption of the feature Through API
 
