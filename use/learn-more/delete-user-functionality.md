@@ -166,6 +166,12 @@ To learn more about Delete user Assets report visit [here](../developer-guide/us
 \
 **Jenkins Job Details For the deployment of the above flink job:**
 
+**To trigger the job,**
+
+**job\_id**: Set to delete-users-assets-report-job. \
+**specific\_user\_id / user\_id\_filter:** Set to an empty string "". if you want to get the report for all deleted users you can provide multiple user IDs separated by commas within double quotes, like "a, b" **refresh\_user\_data / channel filter:** Set to an empty string "". If you want to get the report for all channels or you can provide multiple channel IDs separated by commas within double quotes, like "a, b" \
+**then trigger**
+
 <details>
 
 <summary><strong>delete-users-assets-report-job</strong></summary>

@@ -6,13 +6,14 @@
 2. **Extract User IDs:** Extract the unique identifiers for these deleted users.
 3. **Fetch Content Assets:** Query an external API to fetch assets (such as documents, media, etc.) created by these deleted users.
 4. **Fetch Course Assets:** Query an external API to fetch course-related assets (like course batches) associated with these deleted users.
-5. **Process DataFrames:** Integrate the dataframes for deleted users and their assets, and perform necessary processing, such as filtering and deduplication.
-6. **Save Report to Blob Storage:** Save the final processed report to a cloud-based blob storage, typically in CSV format.
+5. **Fetch ML Assets from API or MongoDB**: The job queries an external API (ML\_ASSET\_SEARCH\_URL) to fetch ML assets (solutions and programs) created by the deleted users. Alternatively, if the API call fails, the job directly queries MongoDB to retrieve the required ML asset data. This involves connecting to the MongoDB instance and executing aggregate queries to filter and retrieve the relevant ML assets based on user IDs.
+6. **Process DataFrames:** Integrate the dataframes for deleted users and their assets, and perform necessary processing, such as filtering and deduplication.
+7. **Save Report to Blob Storage:** Save the final processed report to a cloud-based blob storage, typically in CSV format.
 
 This report is useful for auditing, tracking, and removing assets that are no longer needed, ensuring system cleanliness and compliance with data retention policies.\
 
 
-<figure><img src="../../../../../.gitbook/assets/XPBFRi8m3CRlVWgBEo-mmmIiOcAN8T0UmBI6LMkJodRt_4lQ8DM7QgSc-NrsF__PgP7Os7S0rbh7M777nWr-AOlYNfLDyS9350EWsgBWc10C9DRMxK31S5DB31_nja5IB6SlkARR3rvPjOrXaaqlNbIHqOsK9ruTFDoVJzDx-dfmwE8DhnQ57dDaEGDadxXzVJh2buH83BCxA8-UNvWQV8lXtZv68KjU5xhPSb9z3XpGLGJpRUkIEONxON.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/Untitled Diagram.drawio(1).png" alt=""><figcaption></figcaption></figure>
 
 \
 **Data provider:**
@@ -23,15 +24,15 @@ This report is useful for auditing, tracking, and removing assets that are no lo
 
 **Delete Asset report CSV content:**
 
-| Column Label    | Column Type | Data Type | Description                                                         |
-| --------------- | ----------- | --------- | ------------------------------------------------------------------- |
-| userId          | Static      | String    | User Id of the deleted User                                         |
-| username        | Static      | String    | Decrypted user name of the deleted user                             |
-| roles           | Static      | String    | Roles of the deleted user                                           |
-| assetIdentifier | Static      | String    | Identifier of the asset / course batch                              |
-| assetName       | Static      | String    | Name of the asset / course batch                                    |
-| assetStatus     | Static      | String    | Status of the asset / course batch i.e live/draft                   |
-| objectType      | Static      | String    | Object type of the asset/course batch i.e QuestionSet/content/batch |
+| Column Label    | Column Type | Data Type | Description                                                                                 |
+| --------------- | ----------- | --------- | ------------------------------------------------------------------------------------------- |
+| userId          | Static      | String    | User Id of the deleted User                                                                 |
+| username        | Static      | String    | Decrypted user name of the deleted user                                                     |
+| roles           | Static      | String    | Roles of the deleted user                                                                   |
+| assetIdentifier | Static      | String    | Identifier of the asset / course batch / ML program / solution                              |
+| assetName       | Static      | String    | Name of the asset / course batch / ML program / solution                                    |
+| assetStatus     | Static      | String    | Status of the asset / course batch / ML program / solution i.e live/draft                   |
+| objectType      | Static      | String    | Object type of the asset/course batch / ML program / solution i.e QuestionSet/content/batch |
 
 \
 **Sample data:**
