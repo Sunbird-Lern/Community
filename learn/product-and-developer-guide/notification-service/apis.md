@@ -1,6 +1,6 @@
 # APIs
 
-#### API Documentation:
+API Documentation:
 
 Detailed API information present in this Reference - [API Document](https://project-sunbird.atlassian.net/wiki/spaces/UM/pages/2847178765/SB-24361+Group+Notification+Design)
 
