@@ -4,6 +4,12 @@
 
 **Group API**
 
+
+
+{% swagger src="../../../.gitbook/assets/groupactivityapi.yaml" path="/data/v1/group/activity/agg" method="post" %}
+[groupactivityapi.yaml](../../../.gitbook/assets/groupactivityapi.yaml)
+{% endswagger %}
+
 {% swagger src="../../../.gitbook/assets/group.yaml" path="/group/v1/create" method="post" %}
 [group.yaml](../../../.gitbook/assets/group.yaml)
 {% endswagger %}
