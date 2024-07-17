@@ -2,6 +2,6 @@
 
 
 
-{% swagger src="../../../.gitbook/assets/Group-activity_new.yml" path="/data/v1/group/activity/agg" method="post" %}
-[Group-activity_new.yml](../../../.gitbook/assets/Group-activity_new.yml)
+{% swagger src="../../../.gitbook/assets/openapi-test.yml" path="/pet" method="put" %}
+[openapi-test.yml](../../../.gitbook/assets/openapi-test.yml)
 {% endswagger %}
