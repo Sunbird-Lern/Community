@@ -178,6 +178,7 @@
       * [Cassandra](learn/product-and-developer-guide/groups/data-models/cassandra/README.md)
         * [Data Dictionary](learn/product-and-developer-guide/groups/data-models/cassandra/data-dictionary.md)
       * [Redis](learn/product-and-developer-guide/groups/data-models/redis.md)
+    * [API](use/developer-guide/groups/api.md)
     * [APIs](learn/product-and-developer-guide/groups/apis.md)
     * [Logs, Telemetry Events](learn/product-and-developer-guide/groups/telemetry-events/README.md)
       * [UI Telemetry Events](learn/product-and-developer-guide/groups/telemetry-events/ui-telemetry-events.md)
