@@ -2,6 +2,6 @@
 
 
 
-{% swagger src="../../../.gitbook/assets/RC_openapi.yml" path="/registry-service/api/v1/TrainingCertificate" method="post" %}
-[RC_openapi.yml](../../../.gitbook/assets/RC_openapi.yml)
+{% swagger src="../../../.gitbook/assets/groupactivityapi.yaml" path="/data/v1/group/activity/agg" method="post" %}
+[groupactivityapi.yaml](../../../.gitbook/assets/groupactivityapi.yaml)
 {% endswagger %}
