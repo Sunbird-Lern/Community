@@ -8,7 +8,7 @@ description: API for deleted user
 
 The User Deletion API allows authorized users to delete a user from the system. This API requires the user ID of the user to be deleted and is accessible via an HTTP POST request.
 
-### Delete a new user
+### Delete a user
 
 <mark style="color:green;">`POST`</mark> /api/user/v1/delete
 
