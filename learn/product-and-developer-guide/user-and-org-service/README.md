@@ -14,7 +14,7 @@ This service provides a set of APIs to manage the user, organisation, and locati
 
 ### Terms:
 
-#### **slug** &#x20;
+#### **Slug** &#x20;
 
 * Slug is a text and its a set of characters, usually 2 to 4 in length, is used in a URL
 * Slug and channel are abbreviations of organisation name, where a slug is a URL compatible, while the channel is not.

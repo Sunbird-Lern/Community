@@ -11,9 +11,7 @@ A few examples of solutions that can be assembled with Lern include:
 * Assign a group of learners to a batch and allow them take a course within specified start-end dates.
 * Enable a discussion forum for a Batch of users taking a course or a Group of users so that participants can collaborate
 * Create a group of users, assign learning material, courses and quizzes to them, and track their progress or scores against Courses.
-*   Send notifications to a set of users about new content / activities that have been added on the platform
-
-    ***
+* Send notifications to a set of users about new content / activities that have been added on the platform
 
 Sunbird Lern can be utilized to enable learning solutions that necessitate tracking of user progress and scores, issuance of certificates based on some criteria as well as to form defined Groups of users, or permit collaboration between them via forums.
 
@@ -28,7 +26,7 @@ Sunbird Lern can be utilized to enable learning solutions that necessitate track
 
 Sunbird Lern is leveraged in DIKSHA - Digital Infrastructure for Knowledge Sharing, the national school education platform of India.
 
-[_**Contribute to Sunbird Lern**_](https://github.com/orgs/Sunbird-Lern/discussions/15)
+[**Contribute to Sunbird Lern**](https://github.com/orgs/Sunbird-Lern/discussions/15)
 
 
 

@@ -8,13 +8,9 @@
 
 **Jobs:** We have flink jobs that reads events from Kafka for processing data in the background to enable multiple functionalities.&#x20;
 
-**Reports:** \<TBD>
+**Reports:** The functional and business metrics are computed by fetching the data from various data sources using Spark and executed as Batch processing jobs.
 
-<div data-full-width="true">
-
-<figure><img src="../.gitbook/assets/LMS-ServiceFlowDiagram-LERN TECH Arch.drawio (1).png" alt=""><figcaption><p>Lern Technical Architecture</p></figcaption></figure>
-
-</div>
+<div data-full-width="true"><figure><img src="../.gitbook/assets/LMS-ServiceFlowDiagram-LERN TECH Arch.drawio (1).png" alt=""><figcaption><p>Lern Technical Architecture</p></figcaption></figure></div>
 
 The diagram represents the components involved and their arrangement in **Lern**.
 
@@ -26,19 +22,11 @@ The diagram represents the components involved and their arrangement in **Lern**
 
 ### **Overall Architecture of Reports (Data Products):**
 
-<div data-full-width="true">
-
-<figure><img src="../.gitbook/assets/Diksha Architecture and Infrastructure (1)(1) (1).png" alt=""><figcaption><p>Data-Product Architecture</p></figcaption></figure>
-
-</div>
+<div data-full-width="true"><figure><img src="../.gitbook/assets/Diksha Architecture and Infrastructure (1)(1) (1).png" alt=""><figcaption><p>Data-Product Architecture</p></figcaption></figure></div>
 
 Reports (Data products) refer to products or services derived from data analysis or processing. They are typically created to provide valuable insights. Providing you with the list of data products available in the Sunbird platform below
 
-<div data-full-width="true">
-
-<figure><img src="../.gitbook/assets/Dataproducts_list.png" alt=""><figcaption></figcaption></figure>
-
-</div>
+<div data-full-width="true"><figure><img src="../.gitbook/assets/Dataproducts_list.png" alt=""><figcaption></figcaption></figure></div>
 
 {% embed url="https://youtu.be/VGHIhGWI-us?list=PLUrm4D0K_7nxlaZZYirokpx5Mo-jMd64M" %}
 Lern Highlevel Architecture

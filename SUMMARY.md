@@ -249,7 +249,7 @@
         * [Component Diagram](use/developer-guide/ml-service/data-products/program-exhaust/component-diagram.md)
         * [Folder Structure](use/developer-guide/ml-service/data-products/program-exhaust/folder-structure.md)
 * [Server Installation](use/server-installation.md)
-* [Dependency setup](use/dependency-setup.md)
+* [Dependency Setup](use/dependency-setup.md)
 * [Deprecation](use/deprecation/README.md)
   * [Release-5.4.0](use/deprecation/release-5.4.0.md)
 * [Jenkins Jobs](use/jenkins-jobs.md)
