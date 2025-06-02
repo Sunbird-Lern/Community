@@ -6,61 +6,61 @@ Refer to \*\*\*\* the below various API documentation related to all the differe
 
 #### Course Batch Management APIs are listed below:
 
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml" path="/course/v1/batch/read/{batch-id}" method="get" %}
-[coursebatchmanapi (1) (2).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml>)
-{% endswagger %}
+{% openapi-operation spec="lms-service-v1-2" path="/course/v1/batch/read/{batch-id}" method="get" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (1) (2).yaml" path="/course/v1/batch/update" method="patch" expanded="true" fullWidth="false" %}
-[coursebatchmanapi (1) (1) (2).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (1) (2).yaml>)
-{% endswagger %}
+{% openapi-operation spec="lms-service-v-1-1-2" path="/course/v1/batch/update" method="patch" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml" path="/course/v1/batch/list" method="post" %}
-[coursebatchmanapi (1) (2).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (2).yaml>)
-{% endswagger %}
+{% openapi-operation spec="lms-service-v1-2" path="/course/v1/batch/list" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% swagger src="../../../.gitbook/assets/coursebatchmanapi (1) (1) (4).yaml" path="/course/v1/batch/create" method="post" %}
-[coursebatchmanapi (1) (1) (4).yaml](<../../../.gitbook/assets/coursebatchmanapi (1) (1) (4).yaml>)
-{% endswagger %}
+{% openapi-operation spec="lms-service-v-1-1-4" path="/course/v1/batch/create" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
 #### Course Enrolment APIs are listed below:
 
-{% swagger src="../../../.gitbook/assets/courseenrolmentapi (1) (1) (2).yaml" path="/course/v1/enrol" method="post" %}
+{% openapi src="../../../.gitbook/assets/courseenrolmentapi (1) (1) (2).yaml" path="/course/v1/enrol" method="post" %}
 [courseenrolmentapi (1) (1) (2).yaml](<../../../.gitbook/assets/courseenrolmentapi (1) (1) (2).yaml>)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/courseenrolmentapi (1) (1) (2).yaml" path="/course/v1/unenrol" method="post" %}
+{% openapi src="../../../.gitbook/assets/courseenrolmentapi (1) (1) (2).yaml" path="/course/v1/unenrol" method="post" %}
 [courseenrolmentapi (1) (1) (2).yaml](<../../../.gitbook/assets/courseenrolmentapi (1) (1) (2).yaml>)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/courseenrolmentapi (1) (1) (1).yaml" path="/course/v1/user/enrollment/list/{user-id}" method="get" %}
+{% openapi src="../../../.gitbook/assets/courseenrolmentapi (1) (1) (1).yaml" path="/course/v1/user/enrollment/list/{user-id}" method="get" %}
 [courseenrolmentapi (1) (1) (1).yaml](<../../../.gitbook/assets/courseenrolmentapi (1) (1) (1).yaml>)
-{% endswagger %}
+{% endopenapi %}
 
 #### Course Progress APIs are listed below:
 
-{% swagger src="../../../.gitbook/assets/courseprogressapi (1) (1).yaml" path="/course/v1/content/state/read" method="post" %}
+{% openapi src="../../../.gitbook/assets/courseprogressapi (1) (1).yaml" path="/course/v1/content/state/read" method="post" %}
 [courseprogressapi (1) (1).yaml](<../../../.gitbook/assets/courseprogressapi (1) (1).yaml>)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/courseprogressapi (1) (1).yaml" path="/course/v1/content/state/update" method="patch" %}
+{% openapi src="../../../.gitbook/assets/courseprogressapi (1) (1).yaml" path="/course/v1/content/state/update" method="patch" %}
 [courseprogressapi (1) (1).yaml](<../../../.gitbook/assets/courseprogressapi (1) (1).yaml>)
-{% endswagger %}
+{% endopenapi %}
 
 #### Course Batch Certificates APIs are listed below:
 
-{% swagger src="../../../.gitbook/assets/coursebatchcertificateapi (1).yaml" path="/course/batch/cert/v1/template/add" method="patch" %}
+{% openapi src="../../../.gitbook/assets/coursebatchcertificateapi (1).yaml" path="/course/batch/cert/v1/template/add" method="patch" %}
 [coursebatchcertificateapi (1).yaml](<../../../.gitbook/assets/coursebatchcertificateapi (1).yaml>)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/coursebatchcertificateapi.yaml" path="/course/batch/cert/v1/template/remove" method="patch" %}
+{% openapi src="../../../.gitbook/assets/coursebatchcertificateapi.yaml" path="/course/batch/cert/v1/template/remove" method="patch" %}
 [coursebatchcertificateapi.yaml](../../../.gitbook/assets/coursebatchcertificateapi.yaml)
-{% endswagger %}
+{% endopenapi %}
 
 #### Group Activity Aggregator
 
-{% swagger src="../../../.gitbook/assets/groupactivityapi.yaml" path="/data/v1/group/activity/agg" method="post" %}
+{% openapi src="../../../.gitbook/assets/groupactivityapi.yaml" path="/data/v1/group/activity/agg" method="post" %}
 [groupactivityapi.yaml](../../../.gitbook/assets/groupactivityapi.yaml)
-{% endswagger %}
+{% endopenapi %}
 
 #### Collection Summary
 
@@ -110,38 +110,38 @@ This API gives the collection summary, like the total number of enrolments, comp
 
 #### Page APIs
 
-{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/create" method="post" %}
+{% openapi src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/create" method="post" %}
 [pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/update" method="patch" %}
+{% openapi src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/update" method="patch" %}
 [pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/read/{pageName}" method="get" %}
+{% openapi src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/read/{pageName}" method="get" %}
 [pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/create" method="post" %}
+{% openapi src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/create" method="post" %}
 [pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/update" method="patch" %}
+{% openapi src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/update" method="patch" %}
 [pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/read/{SectionId}" method="get" %}
+{% openapi src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/read/{SectionId}" method="get" %}
 [pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/list" method="get" %}
+{% openapi src="../../../.gitbook/assets/pagesapi.yaml" path="/data/v1/page/section/list" method="get" %}
 [pagesapi.yaml](../../../.gitbook/assets/pagesapi.yaml)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/proxy-result.yml" path="/api/course/v1/jobrequest/submit" method="post" %}
+{% openapi src="../../../.gitbook/assets/proxy-result.yml" path="/api/course/v1/jobrequest/submit" method="post" %}
 [proxy-result.yml](../../../.gitbook/assets/proxy-result.yml)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../../.gitbook/assets/proxy-result.yml" path="/api/course/v1/jobrequest/list/{tag}" method="get" %}
+{% openapi src="../../../.gitbook/assets/proxy-result.yml" path="/api/course/v1/jobrequest/list/{tag}" method="get" %}
 [proxy-result.yml](../../../.gitbook/assets/proxy-result.yml)
-{% endswagger %}
+{% endopenapi %}
