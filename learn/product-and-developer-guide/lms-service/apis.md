@@ -38,13 +38,13 @@ Refer to \*\*\*\* the below various API documentation related to all the differe
 
 #### Course Progress APIs are listed below:
 
-{% openapi src="../../../.gitbook/assets/courseprogressapi (1) (1).yaml" path="/course/v1/content/state/read" method="post" %}
-[courseprogressapi (1) (1).yaml](<../../../.gitbook/assets/courseprogressapi (1) (1).yaml>)
-{% endopenapi %}
+{% openapi-operation spec="lms-service-progress-api" path="/course/v1/content/state/read" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% openapi src="../../../.gitbook/assets/courseprogressapi (1) (1).yaml" path="/course/v1/content/state/update" method="patch" %}
-[courseprogressapi (1) (1).yaml](<../../../.gitbook/assets/courseprogressapi (1) (1).yaml>)
-{% endopenapi %}
+{% openapi-operation spec="lms-service-progress-api" path="/course/v1/content/state/update" method="patch" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
 #### Course Batch Certificates APIs are listed below:
 
@@ -58,9 +58,9 @@ Refer to \*\*\*\* the below various API documentation related to all the differe
 
 #### Group Activity Aggregator
 
-{% openapi src="../../../.gitbook/assets/groupactivityapi.yaml" path="/data/v1/group/activity/agg" method="post" %}
-[groupactivityapi.yaml](../../../.gitbook/assets/groupactivityapi.yaml)
-{% endopenapi %}
+{% openapi-operation spec="lms-service-groupagg-api" path="/data/v1/group/activity/agg" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
 #### Collection Summary
 
